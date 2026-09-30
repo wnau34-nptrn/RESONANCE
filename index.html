@@ -31615,7 +31615,29 @@ function combatResultFloats(meta,source,target,showTriggers=true){
  if(triggerEvents.length){for(const ev of triggerEvents){let anchor=p4SourceFromEvent(ev);if(!anchor&&meta.targetDied&&ev.sourceUid===meta.targetUid)anchor=target;if(!anchor&&meta.sourceDied&&ev.sourceUid===meta.sourceUid)anchor=source;if(anchor)p4TriggerCue(anchor,m12115TriggerFloatLabel(ev))}}
  else{const followups=combatFollowupCount(meta);if(followups)p4TriggerCue(meta.targetDied?target:source||target,followups>1?`TRIGGER ×${followups}`:'TRIGGER')}
 }
-async function presentCombatFx(meta,commit=null){
+function combatDamageCheckpoint(entries,meta){
+ return entries.find(x=>x.event?.fxKind==='COMBAT'&&x.event.sourceUid===meta.sourceUid&&x.event.sourceOwner===meta.owner)?.snapshot||null;
+}
+function presentCombatNumbers(snapshot,meta){
+ if(!snapshot)return;
+ for(const owner of [meta.owner,1-meta.owner]){
+  const uid=owner===meta.owner?meta.sourceUid:meta.targetUid;
+  const unit=snapshot.players[owner].board.find(x=>x.uid===uid),el=fxCard(uid,owner);
+  // Keep lethal cards and replacement effects on the existing death/trigger timeline.
+  if(!unit||unit.hp<=0||!el)continue;
+  const hp=el.querySelector('.stats .hp b');if(hp)hp.textContent=String(unit.hp);
+  if(el.hasAttribute('aria-label'))el.setAttribute('aria-label',el.getAttribute('aria-label').replace(/HP -?\d+/,`HP ${unit.hp}`));
+ }
+ if(meta.targetWasKeeper){
+  const el=fxKeeper(1-meta.owner),spirit=snapshot.players[1-meta.owner].spirit,value=Math.max(0,spirit);
+  const number=el?.querySelector('.keeper-spirit-badge b'),meter=el?.querySelector('.keeper-spirit-meter i'),footer=el?.querySelector('.keeper-spirit-footer');
+  if(number)number.textContent=String(value);
+  if(meter)meter.style.width=`${Math.min(100,value)}%`;
+  if(footer)footer.setAttribute('aria-label',`Keeper Spirit ${spirit} จาก 100`);
+  if(el?.hasAttribute('aria-label'))el.setAttribute('aria-label',el.getAttribute('aria-label').replace(/-?\d+ Spirit/,`${spirit} Spirit`));
+ }
+}
+async function presentCombatFx(meta,commit=null,checkpoint=null){
  if(!meta)return null;
  const {source,target}=combatNodes(meta);
  if(!source||!target)return commit?commit():meta;
@@ -31663,6 +31685,7 @@ async function presentCombatFx(meta,commit=null){
   await aiWait(directIntent?185:combatDwell('BARRIER'));
  }
  combatDamageFloats(resolved,source,target);
+ presentCombatNumbers(typeof checkpoint==='function'?checkpoint(resolved):checkpoint,resolved);
  if(resolved.targetWasKeeper)m12115SetCausalReadout('DAMAGE',`${m12115NodeName(target,'Keeper')} −${Math.max(0,Number(resolved.damageToTarget??resolved.sourceAt??0))} Spirit`);
  else m12115SetCausalReadout('DAMAGE',`${m12115NodeName(target,'Target')} −${Math.max(0,Number(resolved.damageToTarget||0))} HP${Number(resolved.damageToSource||0)>0?` · ${m12115NodeName(source,'Source')} −${Number(resolved.damageToSource)} HP`:''}`);
  await aiWait(directIntent?(resolved.targetWasKeeper?225:195):combatDwell('DAMAGE'));
@@ -31686,7 +31709,7 @@ async function resolveAttackFx(attackerUid,targetUid=null,opts={}){
     rebuilding the whole Duel before the hit. This removes the visible render gap. */
  if(!directIntent){render();await new Promise(resolve=>requestAnimationFrame(resolve));}
  const seed={owner:0,sourceUid:attackerUid,targetUid,targetWasKeeper:targetUid===null,sourceAt:attacker.at,targetAt:defender?.at||0,directIntent};
- const resolved=await presentCombatFx(seed,()=>{game.lastCombat=null;game.attack(attackerUid,targetUid);return game.lastCombat});const captures=game._presentationCapture||[];delete game._presentationCapture;
+ const resolved=await presentCombatFx(seed,()=>{game.lastCombat=null;game.attack(attackerUid,targetUid);return game.lastCombat},meta=>combatDamageCheckpoint(game._presentationCapture||[],meta));const captures=game._presentationCapture||[];delete game._presentationCapture;
  if(!resolved?.ok){
   deferResultPresentation=false;fxLock=false;resolutionState=null;
   if(ownsLayoutFreeze)m13I2EndCombatLayoutFreeze();
@@ -31967,7 +31990,7 @@ async function drainAIQueue(generation){
    }
    if(report.combat&&report.kind==='combat'){
     aiPacingState={label:'COMBAT',index:1,total:Math.max(1,beats.length),kind:'combat'};
-    await presentCombatFx(report.combat);
+    await presentCombatFx(report.combat,null,combatDamageCheckpoint(report.beats,report.combat));
     if(generation!==aiQueueGeneration)break;
     beats=beats.filter(b=>!['COMBAT','BARRIER'].includes(aiCanonicalBeat(b.label)));
     if(!beats.length)renderPresentationSnapshot(report.finalSnapshot);
