@@ -31699,6 +31699,8 @@ async function presentPlayerFollowupBeats(report,skipLabels=[],baseSnapshot=null
 }
 async function resolveAttackFx(attackerUid,targetUid=null,opts={}){
  if(fxLock||resolutionState)return false;const attacker=game.players[0].board.find(x=>x.uid===attackerUid);if(!attacker)return false;const defender=targetUid===null?null:game.players[1].board.find(x=>x.uid===targetUid);if(targetUid!==null&&!defender)return false;
+ const mobileAttackLayout=window.__RESONANCE_D52_BEGIN_ATTACK__?.();
+ try{
  const directIntent=!!opts?.fromIntent;
  const beforeSeq=game.eventSeq||0,beforeSnapshot=game.presentationSnapshot();game._presentationCapture=[];deferResultPresentation=true;fxLock=true;selected=null;
  const ownsLayoutFreeze=!m13I2CombatLayoutFreeze?.active;
@@ -31719,6 +31721,7 @@ async function resolveAttackFx(attackerUid,targetUid=null,opts={}){
  const finalSnapshot=game.presentationSnapshot(),report=playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,'combat');await presentPlayerFollowupBeats(report,['COMBAT','BARRIER']);await aiWait(180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();
  m13I3HoldCombatGeometry('player-attack-settled');
  render();return true;
+ }finally{window.__RESONANCE_D52_END_ATTACK__?.(mobileAttackLayout)}
 }
 async function resolveAbilityFx(){return false;}
 async function resolveUntargetedAbilityFx(sourceUid){
@@ -31979,6 +31982,8 @@ async function drainAIQueue(generation){
    if(detail.open||rules.open||graveyard.open){pausedForDialog=true;break;}
    const report=aiStepReport();
    if(!report.ok)break;
+   const mobileAttackLayout=report.combat&&report.kind==='combat'?window.__RESONANCE_D52_BEGIN_ATTACK__?.():null;
+   try{
    const ownsLayoutFreeze=!m13I2CombatLayoutFreeze?.active&&m13I2ReportNeedsLayoutFreeze(report);
    if(ownsLayoutFreeze)m13I2BeginCombatLayoutFreeze(report.beforeSnapshot,`ai-${report.kind||'action'}`);
    let beats=[...report.beats];
@@ -32026,6 +32031,7 @@ async function drainAIQueue(generation){
     break;
    }
    await aiWait(aiDecisionSettleDelay(report));
+   }finally{window.__RESONANCE_D52_END_ATTACK__?.(mobileAttackLayout)}
   }
  }finally{
   if(generation===aiQueueGeneration){
@@ -34164,6 +34170,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     /* V36: release is a visible travel beat, not the impact itself. Contact FX is
        created only when combat reaches the actual IMPACT beat. */
     const uid=st.uid,targetUid=target.targetUid,app=document.getElementById('app');
+    const mobileAttackLayout=window.__RESONANCE_D52_BEGIN_ATTACK__?.();
     app?.classList.add('v35-direct-attack-resolving');
     cleanup(st,{keepIntent:!!intent});
     suppressClickUntil=Date.now()+700;dragSuppressClickUntil=Date.now()+700;
@@ -34172,7 +34179,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     requestAnimationFrame(async()=>{
       const task=resolveAttackFx(uid,targetUid,{fromIntent:true});
       setTimeout(()=>intent?.remove(),245);
-      try{await task}finally{app?.classList.remove('v35-direct-attack-resolving')}
+      try{await task}finally{app?.classList.remove('v35-direct-attack-resolving');window.__RESONANCE_D52_END_ATTACK__?.(mobileAttackLayout)}
     });
   }
 
@@ -35045,7 +35052,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  #app.d52-mobile .hand-area>.hand-scroll>.card{transition:none!important}
 }
 </style><script id="d5-2-mobile-controller">(()=>{
- const state={raf:0,manualTucked:false,tucked:false,focusUid:null,signature:''};
+ const state={raf:0,manualTucked:false,tucked:false,focusUid:null,signature:'',attackLayout:null};
  const clamp=(lo,n,hi)=>Math.max(lo,Math.min(n,hi));
  const imp=(el,k,v)=>el?.style.setProperty(k,v,'important');
  const rect=el=>{if(!el)return null;const r=el.getBoundingClientRect();return {left:+r.left.toFixed(1),top:+r.top.toFixed(1),right:+r.right.toFixed(1),bottom:+r.bottom.toFixed(1),width:+r.width.toFixed(1),height:+r.height.toFixed(1)}};
@@ -35115,8 +35122,11 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   const close=document.createElement('button');close.type='button';close.textContent='ปิด';close.addEventListener('click',()=>{mobileHandFocusUid=null;state.focusUid=null;state.signature='';setupTacticalFanHand();schedule()});
   actions.append(detail,close);main.appendChild(actions);inspector.append(image,main);
  }
+ function resetAttackLayout(){
+  if(state.attackLayout&&(!started||!document.querySelector('#app>.game')||state.attackLayout.gameRef!==game))state.attackLayout=null;
+ }
  function sync(){
-  state.raf=0;const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),field=game?.querySelector(':scope>.battlefield'),turn=game?.querySelector(':scope>.turn-panel.phase3-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll');
+  resetAttackLayout();state.raf=0;const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),field=game?.querySelector(':scope>.battlefield'),turn=game?.querySelector(':scope>.turn-panel.phase3-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll');
   if(!active()||!app||!game||!field||!turn||!hand||!rail||!started){
    if(app?.classList.contains('d52-mobile')){
     for(const [el,keys] of [[game,['display','grid-template-rows','grid-template-columns','gap','overflow']],[field,['grid-row','height','min-height','max-height']],[turn,['grid-row','height','min-height','max-height']],[hand,['grid-row','height','min-height','max-height']],[rail,['height','min-height']]])for(const key of keys)el?.style.removeProperty(key);
@@ -35128,7 +35138,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   state.focusUid=mobileHandFocusUid===null?null:Number(mobileHandFocusUid);
   if(state.focusUid!==null)state.manualTucked=false;
   const targeting=!!app.querySelector('.targeting-mode')||app.classList.contains('creature-drag-active')||app.classList.contains('artifact-drag-active')||app.classList.contains('d34-direct-active');
-  state.tucked=state.manualTucked||targeting;
+  state.tucked=state.attackLayout?state.attackLayout.tucked:state.manualTucked||targeting;
   const metrics=layout(app,game,field,turn,hand,rail,cards),inspector=ensureTools(game);
   inspect(inspector,cards,app);
   window.__RESONANCE_D52_METRICS__=metrics;
@@ -35141,6 +35151,16 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  document.addEventListener('click',e=>{if(e.target.closest?.('#app .hand-scroll>.card'))requestAnimationFrame(schedule)},{passive:true});
  document.addEventListener('pointerdown',e=>{if(e.target.closest?.('#app .d52-inspector,#app .d52-toggle,#app .hand-scroll>.card'))return;state.signature='';requestAnimationFrame(schedule)},{passive:true});
  document.addEventListener('keydown',e=>{if(e.key!=='Escape'||document.querySelector('.card-detail-modal[open],.commit-detail-modal[open]'))return;if(document.querySelector('#app .d52-inspector.is-visible')){mobileHandFocusUid=null;state.focusUid=null;state.signature='';setupTacticalFanHand();schedule()}},{passive:true});
+ window.__RESONANCE_D52_BEGIN_ATTACK__=()=>{
+  resetAttackLayout();
+  if(state.attackLayout)return state.attackLayout;
+  if(!active()||!started||!document.querySelector('#app>.game'))return null;
+  sync();state.attackLayout={gameRef:game,tucked:state.tucked};return state.attackLayout;
+ };
+ window.__RESONANCE_D52_END_ATTACK__=token=>{
+  if(!token||state.attackLayout!==token)return;
+  state.attackLayout=null;schedule();
+ };
  window.__RESONANCE_D52_SYNC__=()=>{sync();return window.__RESONANCE_D52_QA__()};
  window.__RESONANCE_D52_QA__=()=>{
   const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),turn=game?.querySelector(':scope>.turn-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll'),inspector=game?.querySelector(':scope>.d52-inspector'),v=vp(),tr=rect(turn),hr=rect(hand),cards=[...(rail?.querySelectorAll(':scope>.card[data-zone="hand"]')||[])],creatures=cards.filter(x=>x.dataset.cardType==='creature').map(x=>({uid:Number(x.dataset.card),card:rect(x),stats:rect(x.querySelector('.stats'))}));
