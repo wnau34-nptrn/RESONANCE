@@ -38457,6 +38457,12 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row.count-5 .card.board .stats>span,
   body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row.count-6 .card.board .stats>span {width:35px!important;height:35px!important;}
 }
+/* Short desktop lanes can clip the card's lower edge; keep only player stats above the name plaque. */
+@media (min-width:1181px) and (max-height:820px) {
+  body.battlefield-first-desktop-active #app.duel-viewport .battlefield .player-row .card.board .stats>span {
+    bottom:60px!important;
+  }
+}
 </style>
 <script id="resonance-balance-v24">
 /* WONDERBOUND: RESONANCE — balance pass 2.4
