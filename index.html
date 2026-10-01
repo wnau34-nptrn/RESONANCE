@@ -28665,8 +28665,8 @@ const cardArtworkSrc=c=>{
 }
 const R={beacon:{name:'Beacon',icon:'✦',color:'#e8c87d'},glass:{name:'Glasswind',icon:'◇',color:'#8bdce1'},fracture:{name:'Fracture',icon:'◆',color:'#d1a0ee'},root:{name:'Wildroot',icon:'♧',color:'#aad590'}};
 const C={
-fracturedHost:{name:'Fractured Host',type:'Keeper',cost:0,req:{},text:'Keeper portrait',uiOnly:true,keeperArtKey:'fracturedHost'},
-liora:{name:'Liora, Keeper of the Atlas',type:'Creature',cost:4,req:{beacon:2},at:20,hp:40,text:'Summon → จั่ว 1 · Restore 1\nถ้าหลังลงสนาม ฝ่ายเรายังมี Creature น้อยกว่าศัตรู → เลือก Creature ฝ่ายเรา 1 ใบที่ EXHAUSTED ให้ READY · เลือกไม่ได้ถ้า Creature ใบนั้นเพิ่งลงสนามและยังโจมตีไม่ได้',summon:'liora'},
+fracturedHost:{name:'Fractured Host',type:'Keeper',cost:0,req:{},text:'Keeper portrait',uiOnly:true,keeperArtKey:'fracturedHost',portraitPosition:'28% 45%'},
+liora:{name:'Liora, Keeper of the Atlas',type:'Creature',cost:4,req:{beacon:2},at:20,hp:40,text:'Summon → จั่ว 1 · Restore 1\nถ้าหลังลงสนาม ฝ่ายเรายังมี Creature น้อยกว่าศัตรู → เลือก Creature ฝ่ายเรา 1 ใบที่ EXHAUSTED ให้ READY · เลือกไม่ได้ถ้า Creature ใบนั้นเพิ่งลงสนามและยังโจมตีไม่ได้',summon:'liora',portraitPosition:'center 22%'},
 scout:{name:'Whisperglass Scout',type:'Creature',cost:2,req:{glass:1},at:10,hp:20,text:'เมื่ออัญเชิญ → จั่ว 1 แล้วเลือกการ์ด 1 ใบจากมือวางใต้ Deck'},
 return:{name:'Return Through Glass',type:'Sorcery',cost:2,req:{glass:2},text:'นำ Creature ฝ่ายเรา 1 ใบกลับขึ้นมือ · Restore 1\nถ้าก่อนเล่น ฝ่ายเรามี Creature น้อยกว่าศัตรู → หลังนำกลับ คุณอาจเลือก Creature ศัตรู 1 ใบที่มี Cost ไม่เกิน Creature ฝ่ายเราที่นำกลับ แล้วนำกลับขึ้นมือด้วย',effect:'return',target:'ally'},
 atlas:{name:'Living Atlas Fragment',type:'Artifact',cost:2,req:{beacon:2},text:'หลังคุณ Restore → Creature ใบถัดไปที่เล่นใน Turn นี้ได้ +10 AT / +10 Max HP'},
@@ -28710,8 +28710,8 @@ const DECK_SIZE=30,MAX_COPIES=2,SIGNATURE_MAX_COPIES=1,LEGEND_MAX_COPIES=1,DECK_
 /* Phase 3B: Keeper portrait/identity is independent from Resonance construction.
    home[] remains only a legacy/default-preset hint for old presentation callers. */
 const KEEPER_DECK_RULES={
-  0:{name:'Liora Expedition',portrait:'liora',home:['beacon','glass'],defaultPrimary:'beacon',defaultSecondary:'glass',tagline:'Canonical Core · QA Preset'},
-  1:{name:'Fractured Host',portrait:'fracturedHost',home:['fracture','root'],defaultPrimary:'fracture',defaultSecondary:'root',tagline:'Canonical Core · QA Preset'}
+  0:{name:'Liora Expedition',portrait:'liora',portraitPosition:'center 22%',home:['beacon','glass'],defaultPrimary:'beacon',defaultSecondary:'glass',tagline:'Canonical Core · QA Preset'},
+  1:{name:'Fractured Host',portrait:'fracturedHost',portraitPosition:'28% 45%',home:['fracture','root'],defaultPrimary:'fracture',defaultSecondary:'root',tagline:'Canonical Core · QA Preset'}
 };
 const COLLECTIBLE_KEYS=Object.keys(C).filter(k=>!C[k].token&&!C[k].uiOnly);
 const cardResonances=key=>Object.keys(C[key]?.req||{});
@@ -29164,7 +29164,7 @@ function detailAbilityCostNotation(c){
 }
 const landmarkArt=lm=>(lm&&WORLD_ART.landmarks&&WORLD_ART.landmarks[lm.id])||WORLD_ART.world;
 const req=c=>Object.entries(c.req).map(([k,n])=>`<span style="color:${R[k].color}" title="${R[k].name} ${n}">${R[k].icon.repeat(n)}</span>`).join(' ');
-const art=(c,extra='')=>{const ref=c?.c8id||c?.c8Token||c?.keeperArtKey||'world-fallback';return `<div class="art ${extra}" data-art-ref="${ref}"><img src="${cardArtworkSrc(c)}" alt="${esc(c.name)}" draggable="false"></div>`};
+const art=(c,extra='')=>{const ref=c?.c8id||c?.c8Token||c?.keeperArtKey||'world-fallback',isPortrait=/\bportrait\b/.test(extra),pos=isPortrait&&c?.portraitPosition?` style="object-position:${c.portraitPosition}!important;"`:'';return `<div class="art ${extra}" data-art-ref="${ref}"><img src="${cardArtworkSrc(c)}" alt="${esc(c.name)}" draggable="false"${pos}></div>`};
 function card(x,zone='hand',owner=0){
  const c=C[x.key],reason=game.reason(x,game.players[owner]),ready=zone==='board'&&x.ready,summonGuard=zone==='board'&&!x.ready&&!!x.summonGuard,active=game.active===0&&started&&game.winner===null&&!resolutionState&&!fxLock,suppressHints=zone==='board'&&battleHintsSuppressed();
  const selectedAbilitySource=selected?.kind==='ability'?game.players[0].board.find(a=>a.uid===selected.uid):null,selectedAbilityCard=selectedAbilitySource?C[selectedAbilitySource.key]:null;
@@ -32657,7 +32657,7 @@ detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid;pend
 (()=>{
 'use strict';
 // Keeper portrait entities remain UI-only and are NOT collectible cards.
-C.liora={name:'Liora',type:'Keeper',cost:0,req:{},text:'Keeper portrait',uiOnly:true,keeperArtKey:'liora'};
+C.liora={name:'Liora',type:'Keeper',cost:0,req:{},text:'Keeper portrait',uiOnly:true,keeperArtKey:'liora',portraitPosition:'center 22%'};
 C["atlas"]={"c8id":"B01","name":"Living Atlas Fragment","type":"Artifact","cost":2,"req":{"beacon":2},"text":"หลังคุณ Restore → Creature ใบถัดไปที่เล่นใน Turn นี้ได้ +10 AT / +10 Max HP","phase3cCanonical":true};
 C["azurewarden"]={"c8id":"B02","name":"Azure Gate Warden","type":"Creature","cost":3,"req":{"beacon":3},"text":"GUARDIAN","phase3cCanonical":true,"at":10,"hp":40,"guardian":true};
 C["light"]={"c8id":"B03","name":"Relay Lightbearer","type":"Creature","cost":3,"req":{"beacon":2},"text":"เมื่ออัญเชิญ: ฟื้น Keeper 10 Spirit","phase3cCanonical":true,"at":10,"hp":20};
