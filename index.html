@@ -5189,10 +5189,45 @@ body.wb-body.duel-viewport-active .wb-shell{
 #app .game.resolving-input-lock .resolution-spinner{grid-row:1/3;font-size:19px;color:#e8c87d;animation:wbResolutionSpin .8s linear infinite}
 #app .game.resolving-input-lock .resolution-lock-note b{font-size:12px;color:#edf4ee!important}
 #app .game.resolving-input-lock .resolution-lock-note small{font-size:10px;color:#aec7c2}
-#app .game.resolving-input-lock .battlefield{cursor:progress}
-#app .game.resolving-input-lock button{cursor:progress!important}
+#app .game.resolving-input-lock,
+#app .game.resolving-input-lock *{cursor:progress!important}
+#app .game.resolving-input-lock .battlefield,
+#app .game.resolving-input-lock .hand-area,
+#app .game.resolving-input-lock .turn-panel,
+#app .game.resolving-input-lock .card,
+#app .game.resolving-input-lock .keeper,
+#app .game.resolving-input-lock .landmark,
+#app .game.resolving-input-lock .desktop-bf-cta-group,
+#app .game.resolving-input-lock .desktop-bf-cta,
+#app .game.resolving-input-lock .desktop-bf-mini,
+#app .game.resolving-input-lock .mobile-primary-cta,
+#app .game.resolving-input-lock .turn-action button,
+#app .game.resolving-input-lock button[data-action="next"]{
+  pointer-events:none!important;
+}
 @keyframes wbResolutionSpin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){#app .game.resolving-input-lock .resolution-spinner{animation:none!important}}
+#app .game.resolving-input-lock .desktop-bf-cta.primary,
+#app .game.resolving-input-lock .mobile-primary-cta,
+#app .game.resolving-input-lock button[data-action="next"],
+#app .game.resolving-input-lock .is-resolving,
+#app .game.resolving-input-lock [aria-disabled="true"]{
+  opacity:0.62!important;
+  filter:grayscale(0.4) brightness(0.82)!important;
+  cursor:progress!important;
+}
+#app .game.resolving-input-lock .card[data-zone="hand"]{
+  filter:brightness(0.82) saturate(0.75)!important;
+  cursor:progress!important;
+}
+#app .game.resolving-input-lock .card[data-zone="hand"].playable{
+  box-shadow:none!important;
+  border-color:rgba(255,255,255,0.12)!important;
+}
+#app .game.resolving-input-lock .card[data-zone="hand"].playable::before,
+#app .game.resolving-input-lock .card[data-zone="hand"].playable::after{
+  display:none!important;
+}
 
 
 /* ===== SOURCE LAYER 11: m12-10-p4-death-trigger-token-fx ===== */
@@ -29082,7 +29117,7 @@ Game.prototype.mulligan=function(p,uids=[]){
 
 
 
-let customDeckProfile=loadCustomDeckProfile(),builderState=customDeckProfile?normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))}):makeBuilderState(0),builderFilter='all',deckBuilderOpen=false;let game=new Game(),chosenDeck=customDeckProfile?'custom':0,started=false,selected=null,pendingPayment=null,mulliganOpen=false,mulliganSelected=new Set(),timer=null,historyOpen=false,resolutionState=null,aiPacingState=null,aiQueueRunning=false,aiQueueGeneration=0,deferResultPresentation=false,causalReadout=null,mobileHandFocusUid=null,creatureDragState=null,artifactDragState=null,dragSuppressClickUntil=0,dragPlayHandoff=null,commitTouchState=null,commitTouchSuppressUntil=0;
+let customDeckProfile=loadCustomDeckProfile(),builderState=customDeckProfile?normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))}):makeBuilderState(0),builderFilter='all',deckBuilderOpen=false;let game=new Game(),chosenDeck=customDeckProfile?'custom':0,started=false,selected=null,pendingPayment=null,mulliganOpen=false,mulliganSelected=new Set(),timer=null,historyOpen=false,resolutionState=null,fxLock=false,aiPacingState=null,aiQueueRunning=false,aiQueueGeneration=0,deferResultPresentation=false,causalReadout=null,mobileHandFocusUid=null,creatureDragState=null,artifactDragState=null,dragSuppressClickUntil=0,dragPlayHandoff=null,commitTouchState=null,commitTouchSuppressUntil=0;
 const app=document.querySelector('#app'),detail=document.querySelector('#detail'),rules=document.querySelector('#rules'),graveyard=document.querySelector('#graveyard');
 let graveOwner=0;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -29131,7 +29166,7 @@ const landmarkArt=lm=>(lm&&WORLD_ART.landmarks&&WORLD_ART.landmarks[lm.id])||WOR
 const req=c=>Object.entries(c.req).map(([k,n])=>`<span style="color:${R[k].color}" title="${R[k].name} ${n}">${R[k].icon.repeat(n)}</span>`).join(' ');
 const art=(c,extra='')=>{const ref=c?.c8id||c?.c8Token||c?.keeperArtKey||'world-fallback';return `<div class="art ${extra}" data-art-ref="${ref}"><img src="${cardArtworkSrc(c)}" alt="${esc(c.name)}" draggable="false"></div>`};
 function card(x,zone='hand',owner=0){
- const c=C[x.key],reason=game.reason(x,game.players[owner]),ready=zone==='board'&&x.ready,summonGuard=zone==='board'&&!x.ready&&!!x.summonGuard,active=game.active===0&&started&&game.winner===null,suppressHints=zone==='board'&&battleHintsSuppressed();
+ const c=C[x.key],reason=game.reason(x,game.players[owner]),ready=zone==='board'&&x.ready,summonGuard=zone==='board'&&!x.ready&&!!x.summonGuard,active=game.active===0&&started&&game.winner===null&&!resolutionState&&!fxLock,suppressHints=zone==='board'&&battleHintsSuppressed();
  const selectedAbilitySource=selected?.kind==='ability'?game.players[0].board.find(a=>a.uid===selected.uid):null,selectedAbilityCard=selectedAbilitySource?C[selectedAbilitySource.key]:null;
  const target=selected&&(selected.kind==='attack'?owner===1:selected.kind==='ability'?game.abilityTargetLegal(selected.uid,x.uid,game.players[0]):owner===(C[game.players[0].hand.find(y=>y.uid===selected.uid)?.key]?.target==='enemy'?1:0));
  const selectedAttacker=selected?.kind==='attack'?game.players[0].board.find(a=>a.uid===selected.uid):null;
@@ -29958,7 +29993,7 @@ function render(){syncWebAppMode();
  };
  const selectedObj=selected?((selected.kind==='attack'||selected.kind==='ability')?p.board.find(x=>x.uid===selected.uid):p.hand.find(x=>x.uid===selected.uid)):null;
  const selectedName=selectedObj?C[selectedObj.key].name:'';
- const actionState=resolutionState?'resolving':!isTurn?'opponent':selected?'targeting':attuning?'attune':game.phase==='END'?'end':'action';
+ const actionState=(resolutionState||fxLock)?'resolving':!isTurn?'opponent':selected?'targeting':attuning?'attune':game.phase==='END'?'end':'action';
  const attackBlock=selected?.kind==='attack'&&selectedObj?game.directAttackBlock(selectedObj,e):'';
  const attackDirectOpen=selected?.kind==='attack'&&selectedObj?!attackBlock:false;
  const attackGuards=selected?.kind==='attack'&&selectedObj?game.protectors(e):[];
@@ -29966,17 +30001,17 @@ function render(){syncWebAppMode();
  const selectedPlayDef=selected?.kind==='play'&&selectedObj?C[selectedObj.key]:null;
  const selectedTargetCount=selected?.kind==='attack'?(e.board.length+(attackDirectOpen?1:0)):selected?.kind==='ability'&&selectedObj?((selectedAbilityDef?.activatedTarget==='any'?[...p.board,...e.board]:selectedAbilityDef?.activatedTarget==='enemy'?e.board:p.board).filter(x=>game.abilityTargetLegal(selected.uid,x.uid,p)).length):selected?.kind==='play'&&selectedObj?(selectedPlayDef?.target==='enemy'?e.board.length:p.board.length):0;
  const attackInstruction=selected?.kind==='attack'?(attackDirectOpen?(game.attackHasRiftstrike(selectedObj)?'RIFTSTRIKE · เลือกวง TARGET ที่ Creature หรือ Keeper เพื่อโจมตีโดยตรง':'เลือกวง TARGET ที่ Creature ศัตรู หรือ Keeper เพื่อโจมตี'):`Keeper ถูกป้องกัน · เลือกวง TARGET ที่ Creature ศัตรูก่อน`):'';
- const instruction=resolutionState?(resolutionState.kind==='attack'?'กำลังแก้ผลการต่อสู้ · รอ Damage และ Trigger จบก่อนทำ Action ถัดไป':'กำลังแก้ผลของ Action'):game.pendingChoice?(game.pendingChoice.type==='scout_filter'?'Whisperglass Scout · เลือกการ์ด 1 ใบจากมือเพื่อวางใต้ Deck':game.pendingChoice.type==='liora_ready'?'Liora · เลือก Creature ฝ่ายเราที่ EXHAUSTED ให้ READY':'เลือก 1 ใน 3 การ์ดจาก Starfall Observatory ก่อน'):selected?(selected.kind==='attack'?attackInstruction:selected.kind==='ability'?`${abilityTargetInstruction(selected.uid)} · เลือกวง TARGET`:'เลือกวง TARGET บนสนาม'):attuning?'เลือก Resonance 1 สาย · Stone ใหม่จะ DORMANT จน Refill':isTurn?(game.phase==='REFILL'?'Refill เสร็จแล้ว · ไป Attune เพื่อพัฒนา Resonance':game.phase==='ACTION'?'เล่นการ์ด · โจมตี · จัดการ Trigger':game.phase==='END'?'กดเพื่อส่ง Turn ให้คู่ต่อสู้':'แตะการ์ดเพื่ออ่านและเล่น'):(aiPacingState?`AI · ${aiPacingState.label}${aiPacingState.total>1?` · ${aiPacingState.index}/${aiPacingState.total}`:''}`:'คู่ต่อสู้กำลังวางแผน');
- const compactActionGuidance=isTurn&&game.phase==='ACTION'&&!resolutionState&&!selected&&!game.pendingChoice&&!attuning;
+ const instruction=(resolutionState||fxLock)?(resolutionState?.kind==='attack'?'กำลังแก้ผลการต่อสู้ · รอ Damage และ Trigger จบก่อนทำ Action ถัดไป':'กำลังแก้ผลของ Action'):game.pendingChoice?(game.pendingChoice.type==='scout_filter'?'Whisperglass Scout · เลือกการ์ด 1 ใบจากมือเพื่อวางใต้ Deck':game.pendingChoice.type==='liora_ready'?'Liora · เลือก Creature ฝ่ายเราที่ EXHAUSTED ให้ READY':'เลือก 1 ใน 3 การ์ดจาก Starfall Observatory ก่อน'):selected?(selected.kind==='attack'?attackInstruction:selected.kind==='ability'?`${abilityTargetInstruction(selected.uid)} · เลือกวง TARGET`:'เลือกวง TARGET บนสนาม'):attuning?'เลือก Resonance 1 สาย · Stone ใหม่จะ DORMANT จน Refill':isTurn?(game.phase==='REFILL'?'Refill เสร็จแล้ว · ไป Attune เพื่อพัฒนา Resonance':game.phase==='ACTION'?'เล่นการ์ด · โจมตี · จัดการ Trigger':game.phase==='END'?'กดเพื่อส่ง Turn ให้คู่ต่อสู้':'แตะการ์ดเพื่ออ่านและเล่น'):(aiPacingState?`AI · ${aiPacingState.label}${aiPacingState.total>1?` · ${aiPacingState.index}/${aiPacingState.total}`:''}`:'คู่ต่อสู้กำลังวางแผน');
+ const compactActionGuidance=isTurn&&game.phase==='ACTION'&&!(resolutionState||fxLock)&&!selected&&!game.pendingChoice&&!attuning;
  const aiCausal=(!isTurn&&aiPacingState&&causalReadout)?`<span class="causal-inline-label">${esc(causalReadout.label)}</span> · ${esc(causalReadout.text)}`:'';
  const instructionMarkup=compactActionGuidance?'<div class="action-guidance"><strong>เล่นการ์ด · ใช้ความสามารถ · โจมตี</strong><small>จัดลำดับได้อิสระตามสถานการณ์</small></div>':`<p class="instruction ${aiCausal?'ai-causal-instruction':''}">${aiCausal||instruction}</p>`;
- const actionLabel=resolutionState?'RESOLVING':selected?'TARGETING':attuning?'ATTUNE CHOICE':!isTurn?(aiPacingState?'OPPONENT RESOLVING':'OPPONENT ACTION'):game.phase==='END'?'END TURN':'ACTION';
- const actionStep=resolutionState?(resolutionState.kind==='attack'?'COMBAT · INPUT LOCKED':'ACTION · INPUT LOCKED'):selected?(selected.kind==='attack'?(attackDirectOpen?(game.attackHasRiftstrike(selectedObj)?`RIFTSTRIKE · ${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'}`:`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · KEEPER OPEN`):`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · KEEPER PROTECTED`):selected.kind==='ability'?`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · ABILITY`:`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · EFFECT`):attuning?'ต้องเลือก 1 สาย':game.phase==='ACTION'?'':game.phase==='END'?'ส่ง Turn เมื่อพร้อม':isTurn?'จัดลำดับ Action ของคุณ':(aiPacingState?`${aiPacingState.label}${aiPacingState.total>1?` · STEP ${aiPacingState.index}/${aiPacingState.total}`:''}`:'รอการเล่นของ AI');
+ const actionLabel=(resolutionState||fxLock)?'RESOLVING':selected?'TARGETING':attuning?'ATTUNE CHOICE':!isTurn?(aiPacingState?'OPPONENT RESOLVING':'OPPONENT ACTION'):game.phase==='END'?'END TURN':'ACTION';
+ const actionStep=(resolutionState||fxLock)?(resolutionState?.kind==='attack'?'COMBAT · INPUT LOCKED':'ACTION · INPUT LOCKED'):selected?(selected.kind==='attack'?(attackDirectOpen?(game.attackHasRiftstrike(selectedObj)?`RIFTSTRIKE · ${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'}`:`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · KEEPER OPEN`):`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · KEEPER PROTECTED`):selected.kind==='ability'?`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · ABILITY`:`${selectedTargetCount} TARGET${selectedTargetCount===1?'':'S'} · EFFECT`):attuning?'ต้องเลือก 1 สาย':game.phase==='ACTION'?'':game.phase==='END'?'ส่ง Turn เมื่อพร้อม':isTurn?'จัดลำดับ Action ของคุณ':(aiPacingState?`${aiPacingState.label}${aiPacingState.total>1?` · STEP ${aiPacingState.index}/${aiPacingState.total}`:''}`:'รอการเล่นของ AI');
  const selectionSource=selectedName?`<div class="selection-source"><span>${selected.kind==='attack'?'ATTACKER':selected.kind==='ability'?'ABILITY':'SOURCE'}</span><b>${esc(selectedName)}</b><small>${selectedTargetCount} เป้าหมายที่เลือกได้</small></div>`:'';
- const nextLabel=!isTurn?'กำลังเล่น…':game.phase==='ACTION'?'จบเทิร์น':game.phase==='END'?'จบเทิร์น':'เข้าสู่ Attune';
- const nextNote=!isTurn?'':game.phase==='ACTION'?'กดครั้งเดียวเพื่อส่ง Turn ให้คู่ต่อสู้ทันที':game.phase==='END'?'เริ่ม Turn ของฝ่ายตรงข้าม':'';
+ const nextLabel=(resolutionState||fxLock)?'กำลังประมวลผล…':!isTurn?'กำลังเล่น…':game.phase==='ACTION'?'จบเทิร์น':game.phase==='END'?'จบเทิร์น':'เข้าสู่ Attune';
+ const nextNote=(resolutionState||fxLock)?'':!isTurn?'':game.phase==='ACTION'?'กดครั้งเดียวเพื่อส่ง Turn ให้คู่ต่อสู้ทันที':game.phase==='END'?'เริ่ม Turn ของฝ่ายตรงข้าม':'';
  commitDuelMarkup(`<header class="topbar"><div class="wordmark"><span>WONDERBOUND</span><strong>RESONANCE</strong></div>${journeyPreview()}<div class="top-actions"><button data-action="rules" class="icon-button" aria-label="วิธีเล่น">?</button><button data-action="fullscreen" class="icon-button fullscreen-button" aria-label="Full Screen" title="Full Screen">⛶</button><button data-action="menu" class="icon-button" aria-label="เมนู">☰</button></div></header>
- <main class="game ${mulliganOpen?'mulligan-active':''} ${resolutionState?'resolving-input-lock':''} ${(aiQueueRunning||aiPacingState)?'ai-fx-running':''}" ${resolutionState?'aria-busy="true"':''}><section class="battlefield ${selected?`targeting-mode targeting-${selected.kind}`:''} ${resolutionState?'resolving-mode':''} ${(aiQueueRunning||aiPacingState)?'ai-fx-mode':''} ${e.artifacts.length?'enemy-artifact-column':''} ${p.artifacts.length?'player-artifact-column':''}" aria-label="สนามต่อสู้"><img class="scene" src="${WORLD_ART.world}" alt="${lm?esc(lm.name):'เส้นทางสู่ Aurelian'} ในโลก Caldris"><div class="field-shade"></div>
+ <main class="game ${mulliganOpen?'mulligan-active':''} ${(resolutionState||fxLock)?'resolving-input-lock':''} ${(aiQueueRunning||aiPacingState)?'ai-fx-running':''}" ${(resolutionState||fxLock)?'aria-busy="true"':''}><section class="battlefield ${selected?`targeting-mode targeting-${selected.kind}`:''} ${(resolutionState||fxLock)?'resolving-mode':''} ${(aiQueueRunning||aiPacingState)?'ai-fx-mode':''} ${e.artifacts.length?'enemy-artifact-column':''} ${p.artifacts.length?'player-artifact-column':''}" aria-label="สนามต่อสู้"><img class="scene" src="${WORLD_ART.world}" alt="${lm?esc(lm.name):'เส้นทางสู่ Aurelian'} ในโลก Caldris"><div class="field-shade"></div>
  <div class="field-top">${keeper(e,1)}</div>${permanent(e,1)}
  <div class="arena-row enemy-row count-${Math.min(e.board.length,6)}" aria-label="Creature ศัตรู">${e.board.length?e.board.map(x=>card(x,'board',1)).join(''):'<div class="empty-lane">◆ พื้นที่ Creature ฝ่ายตรงข้าม</div>'}</div>
  <div class="landmark-row"><span class="field-divider"></span><button class="landmark dynamic-landmark lm-${lm?.id||'complete'} ${game.landmarkClaimed?'claimed':''}" data-landmark-id="${lm?.id||'complete'}" data-action="landmark"><span class="landmark-art" aria-hidden="true"><img src="${landmarkArt(lm)}" alt="" draggable="false"></span><span class="landmark-symbol">${lm?.icon||'✦'}</span><span class="landmark-copy"><small>${game.landmarkClaimed?'CLAIMED':'CURRENT'} · ${lmIndex}/${game.landmarkDeck.length}</small><strong>${lm?esc(lm.name):'Journey Complete'}</strong><span class="landmark-reward">${lm?`${esc(lm.rewardName)} — ${esc(lm.rewardShort)}`:'ไม่มี Landmark เหลือใน Duel นี้'}</span><span class="landmark-state">${esc(lmState)}</span></span><span class="restore-scores compact-landmark-progress"><span class="your-progress" aria-label="Restore ฝ่ายเรา ${p.restore} จาก 3"><span class="score-label">YOU</span><b>${p.restore}/3</b></span><span class="score-sep" aria-hidden="true">·</span><span class="their-progress" aria-label="Restore ศัตรู ${e.restore} จาก 3"><span class="score-label">ENEMY</span><b>${e.restore}/3</b></span></span></button><span class="field-divider"></span></div>
@@ -29984,7 +30019,7 @@ function render(){syncWebAppMode();
  <aside class="turn-panel phase3-panel" style="--panel-world:url(${WORLD_ART.world})"><div class="mobile-panel-tools" aria-label="Mobile duel tools"><button data-action="rules" class="mobile-panel-tool" aria-label="วิธีเล่น" title="วิธีเล่น">?</button><button data-action="menu" class="mobile-panel-tool" aria-label="เมนู" title="เมนู">☰</button></div><div class="turn-status"><div class="turn-status-row"><span class="eyebrow">${isTurn?'YOUR TURN':'OPPONENT TURN'}</span><span class="turn-number">TURN <b>${String(game.round).padStart(2,'0')}</b></span></div><div class="current-phase-card"><span>CURRENT PHASE</span><strong>${game.phase}</strong><small>${phaseHelp[game.phase]||''}</small></div></div>
  <ol class="phase-track phase-flow" aria-label="Turn flow">${phases.map((f,i)=>`<li class="${game.phase===f?'current':phases.indexOf(game.phase)>i?'done':''}" ${game.phase===f?'aria-current="step"':''}>${f}</li>`).join('')}</ol>
  <div class="resource-block"><div class="resource-summary"><div class="energy-display resonance-ready-summary"><span>READY RESONANCE</span><div><b>${game.readyCapacity(p)}</b><span>/ ${game.capacity(p)}</span></div><small>${attuning?'Stone ใหม่จะ DORMANT จน Refill':game.unavailableCapacity(p)?`${game.unavailableCapacity(p)} Stone ยังใช้ไม่ได้ใน Turn นี้`:'ใช้ Commit เพื่อเล่นการ์ด'}</small></div><div class="zone-counts"><div class="hand-count" aria-label="การ์ดในมือ ${p.hand.length} ใบ"><span>HAND</span><b>${p.hand.length}</b><small>CARDS</small></div><button class="graveyard-button" type="button" data-action="graveyard" aria-label="ดูการ์ดในสุสาน ${p.grave.length} ใบ" title="ดูสุสาน"><span>สุสาน</span><b>${p.grave.length}</b></button></div></div><span class="resource-subheading">RESONANCE POOL · READY / TOTAL</span><div class="stones-list">${stones(p)}</div></div>
- <div class="turn-action action-state state-${actionState}"><div class="action-head"><span class="action-label">${actionLabel}</span><span class="action-step">${actionStep}</span></div>${instructionMarkup}${selectionSource}${resolutionState?`<div class="resolution-lock-note" role="status" aria-live="polite"><span class="resolution-spinner" aria-hidden="true">✦</span><b class="causal-label">${esc(causalReadout?.label||'RESOLVING')}</b><small class="causal-detail">${esc(causalReadout?.text||'กำลังประมวลผล Action ตามลำดับเหตุการณ์')}</small></div>`:selected?'<button class="secondary cancel-target" data-action="cancel">ยกเลิก Targeting</button>':attuning?`<div class="attune-options">${p.keys.map(k=>`<button data-attune="${k}" style="--stone:${R[k].color}"><i>${R[k].icon}</i><span>${R[k].name}<small>${p.stones[k]} → ${p.stones[k]+1} TOTAL · ใหม่ DORMANT</small></span><b>+1</b></button>`).join('')}</div>`:`<button data-action="next" class="primary phase-next" ${!isTurn||game.winner!==null?'disabled':''}>${nextLabel} <span>→</span></button>${nextNote?`<small class="phase-cta-note">${nextNote}</small>`:''}`}</div>
+ <div class="turn-action action-state state-${actionState}"><div class="action-head"><span class="action-label">${actionLabel}</span><span class="action-step">${actionStep}</span></div>${instructionMarkup}${selectionSource}${(resolutionState||fxLock)?`<div class="resolution-lock-note" role="status" aria-live="polite"><span class="resolution-spinner" aria-hidden="true">✦</span><b class="causal-label">${esc(causalReadout?.label||'RESOLVING')}</b><small class="causal-detail">${esc(causalReadout?.text||'กำลังประมวลผล Action ตามลำดับเหตุการณ์')}</small></div>`:selected?'<button class="secondary cancel-target" data-action="cancel">ยกเลิก Targeting</button>':attuning?`<div class="attune-options">${p.keys.map(k=>`<button data-attune="${k}" style="--stone:${R[k].color}"><i>${R[k].icon}</i><span>${R[k].name}<small>${p.stones[k]} → ${p.stones[k]+1} TOTAL · ใหม่ DORMANT</small></span><b>+1</b></button>`).join('')}</div>`:`<button data-action="next" class="primary phase-next" ${!isTurn||game.winner!==null||resolutionState||fxLock?'disabled':''}>${nextLabel} <span>→</span></button>${nextNote?`<small class="phase-cta-note">${nextNote}</small>`:''}`}</div>
  <section class="battle-history ${historyOpen?'history-open':'history-closed'}" aria-label="Battle History"><button class="log-toggle" data-action="history" aria-expanded="${historyOpen?'true':'false'}" aria-controls="battleHistoryLog"><span class="history-copy"><span class="history-icon" aria-hidden="true">◷</span><span class="history-title">BATTLE LOG</span><span class="history-latest">${esc(game.log[0]||'ยังไม่มีเหตุการณ์')}</span></span><span class="history-control"><b>${game.log.length}</b><span>${historyOpen?'CLOSE':'HISTORY'}</span><i aria-hidden="true">${historyOpen?'−':'+'}</i></span></button><div id="battleHistoryLog" class="log ${historyOpen?'expanded':''}" aria-live="polite">${historyOpen?game.log.slice(0,40).map(x=>`<p>${esc(x)}</p>`).join(''):''}</div></section></aside>
  <section class="hand-area" aria-label="การ์ดในมือ"><div class="hand-header"><h2>YOUR HAND <span>${p.hand.length} CARDS</span></h2><span>เลือกเพื่ออ่าน · ลาก Creature ขึ้นสนามเพื่อเล่น</span></div><div class="hand-scroll">${p.hand.length?p.hand.map(x=>card(x)).join(''):'<p class="empty-hand">ไม่มีการ์ดในมือ · จั่วเพิ่มเมื่อเริ่ม Turn ถัดไป</p>'}</div></section>${pendingChoice?`<div class="landmark-choice-layer" role="dialog" aria-modal="true" aria-label="Starfall Observatory"><section class="landmark-choice-card"><span class="eyebrow">LANDMARK CLAIM · FORESEE</span><h2>Starfall Observatory</h2><p>เลือก 1 ใบเข้ามือ · ใบที่เหลือวางไว้ใต้สำรับ</p><div class="landmark-choice-options">${pendingChoice.options.map((k,i)=>`<button class="landmark-choice-option" data-landmark-choice="${i}">${art(C[k])}<span>${esc(C[k].name)}</span><small>Cost ${C[k].cost} · ${C[k].type}</small></button>`).join('')}</div></section></div>`:''}${scoutChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Whisperglass Scout"><section class="ability-choice-card"><span class="eyebrow">ใช้ความสามารถ</span><h2>เลือกการ์ด 1 ใบวางใต้ Deck</h2><p>คุณจั่ว 1 ใบแล้ว · เลือกใบที่ไม่ต้องการเก็บไว้ตอนนี้เพื่อวางไว้ใต้ Deck</p><div class="ability-choice-options">${p.hand.map(x=>`<button class="ability-choice-option" data-scout-bottom="${x.uid}">${art(C[x.key])}<span>${esc(C[x.key].name)}</span><small>Cost ${C[x.key].cost} · ${C[x.key].type}</small></button>`).join('')}</div></section></div>`:''}${cartSummonChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Glasswind Cartographer"><section class="ability-choice-card"><span class="eyebrow">เมื่อลงสนาม · จัดเส้นทาง</span><h2>เลือก 1 ใบไว้บนสุดของ Deck</h2><p>การ์ดที่เหลือจะถูกวางไว้ใต้ Deck</p><div class="ability-choice-options">${cartSummonChoice.options.map((k,i)=>`<button class="ability-choice-option" data-cart-summon="${i}">${art(C[k])}<span>${esc(C[k].name)}</span><small>Cost ${C[k].cost} · ${C[k].type}</small></button>`).join('')}</div></section></div>`:''}${cartPickChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Glasswind Cartographer"><section class="ability-choice-card"><span class="eyebrow">ใช้ความสามารถ</span><h2>เลือก 1 ใบเข้ามือ</h2><p>ดูการ์ด ${cartPickChoice.options.length} ใบบนสุดของ Deck · เลือก 1 ใบขึ้นมือ · ใบที่ไม่เลือกวางใต้ Deck</p><div class="ability-choice-options">${cartPickChoice.options.map((k,i)=>`<button class="ability-choice-option" data-cart-pick="${i}">${art(C[k])}<span>${esc(C[k].name)}</span><small>Cost ${C[k].cost} · ${C[k].type}</small></button>`).join('')}</div></section></div>`:''}${cartBottomChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Glasswind Cartographer"><section class="ability-choice-card"><span class="eyebrow">ใช้ความสามารถ · ขั้นที่ 2</span><h2>เลือกการ์ด 1 ใบจากมือวางใต้ Deck</h2><p>จำนวนการ์ดในมือสุทธิจะไม่เพิ่มขึ้น</p><div class="ability-choice-options">${p.hand.map(x=>`<button class="ability-choice-option" data-cart-bottom="${x.uid}">${art(C[x.key])}<span>${esc(C[x.key].name)}</span><small>Cost ${C[x.key].cost} · ${C[x.key].type}</small></button>`).join('')}</div></section></div>`:''}${returnBounceChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Return Through Glass"><section class="ability-choice-card"><span class="eyebrow">RETURN THROUGH GLASS · เปิดจังหวะ</span><h2>นำ Creature ศัตรูกลับขึ้นมือหรือไม่?</h2><p>เลือก Creature ศัตรู 1 ใบที่มี Cost ไม่เกิน ${returnBounceChoice.maxCost} เพื่อนำกลับขึ้นมือ หรือข้ามเอฟเฟกต์นี้</p><div class="ability-choice-options">${returnBounceChoice.options.map(uid=>{const x=e.board.find(y=>y.uid===uid);return x?`<button class="ability-choice-option" data-return-bounce="${x.uid}">${art(C[x.key])}<span>${esc(C[x.key].name)}</span><small>Cost ${C[x.key].cost} · AT ${x.at} / HP ${x.hp}</small></button>`:''}).join('')}</div><button class="secondary" data-return-bounce-skip="1">ไม่ใช้เอฟเฟกต์เพิ่ม</button></section></div>`:''}${lioraReadyChoice?`<div class="ability-choice-layer" role="dialog" aria-modal="true" aria-label="Liora, Keeper of the Atlas"><section class="ability-choice-card"><span class="eyebrow">LIORA · จัดแนวใหม่</span><h2>เลือก Creature ให้กลับเป็น READY</h2><p>เลือก Creature ฝ่ายเรา 1 ใบที่ EXHAUSTED · เลือกไม่ได้หาก Creature ใบนั้นเพิ่งลงสนามและยังโจมตีไม่ได้</p><div class="ability-choice-options">${lioraReadyChoice.options.map(uid=>{const x=p.board.find(y=>y.uid===uid);return x?`<button class="ability-choice-option" data-liora-ready="${x.uid}">${art(C[x.key])}<span>${esc(C[x.key].name)}</span><small>AT ${x.at} · HP ${x.hp}</small></button>`:''}).join('')}</div></section></div>`:''}${mulliganOpen?mulliganOverlay():''}</main>${showResult?endScreen():''}`);
  if(showResult)app.querySelectorAll('header,main').forEach(x=>x.inert=true);
@@ -31349,10 +31384,42 @@ function fitCardDetailViewport(){
 }
 
 
-let fxLock=false;
+function applyResolvingInputLock(){
+ try{if(document.activeElement&&document.activeElement!==document.body)document.activeElement.blur();}catch{}
+ const gEl=document.querySelector('.game');
+ gEl?.classList.add('resolving-input-lock');
+ gEl?.setAttribute('aria-busy','true');
+ document.querySelectorAll('[data-action="next"],.desktop-bf-cta.primary,.mobile-primary-cta').forEach(b=>{
+  b.setAttribute('aria-disabled','true');
+  b.disabled=true;
+ });
+ document.querySelectorAll('.hand-scroll .card[data-zone="hand"]').forEach(c=>{
+  if(c.classList.contains('playable')){
+   c.classList.remove('playable');
+   c.dataset.wbWasPlayable='true';
+  }
+ });
+ window.__RESONANCE_D41_SYNC__?.();
+}
+function clearResolvingInputLock(){
+ const gEl=document.querySelector('.game');
+ gEl?.classList.remove('resolving-input-lock');
+ gEl?.removeAttribute('aria-busy');
+ document.querySelectorAll('[data-action="next"],.desktop-bf-cta.primary,.mobile-primary-cta').forEach(b=>{
+  b.removeAttribute('aria-disabled');
+  b.disabled=(!started||game.active!==0||game.winner!==null||resolutionState||fxLock);
+ });
+ document.querySelectorAll('.hand-scroll .card[data-zone="hand"][data-wb-was-playable="true"]').forEach(c=>{
+  c.classList.add('playable');
+  delete c.dataset.wbWasPlayable;
+ });
+ window.__RESONANCE_D41_SYNC__?.();
+}
+function isFxPlaying(){return !!(fxLock||resolutionState||window.__WB_CAST_TRANSITION_ACTIVE__)}
+window.isFxPlaying=isFxPlaying;
 function uiInputLocked(){return !!(resolutionState||fxLock||window.__WB_CAST_TRANSITION_ACTIVE__)}
-function beginFxLock(kind,data={}){m12115ClearCausalReadout();fxLock=true;resolutionState={kind,...data}}
-function endFxLock(renderNow=true){fxLock=false;resolutionState=null;m12115ClearCausalReadout();if(renderNow)render()}
+function beginFxLock(kind,data={}){m12115ClearCausalReadout();fxLock=true;resolutionState={kind,...data};applyResolvingInputLock()}
+function endFxLock(renderNow=true){fxLock=false;resolutionState=null;m12115ClearCausalReadout();clearResolvingInputLock();if(renderNow)render()}
 function fxCard(uid,owner){return document.querySelector(`.card.board[data-card="${uid}"][data-owner="${owner}"]`)}
 function fxKeeper(owner){return document.querySelector(`.keeper.${owner===1?'enemy':'player'}`)}
 function fxCenter(el,field){if(!el||!field)return null;const r=el.getBoundingClientRect(),f=field.getBoundingClientRect();return{x:r.left-f.left+r.width/2,y:r.top-f.top+r.height/2}}
@@ -31711,16 +31778,17 @@ async function resolveAttackFx(attackerUid,targetUid=null,opts={}){
  resolutionState={kind:'attack',sourceUid:attackerUid,targetUid,directIntent};
  /* V35 direct gesture path keeps the current Battlefield DOM for contact instead of
     rebuilding the whole Duel before the hit. This removes the visible render gap. */
+ applyResolvingInputLock();
  if(!directIntent){render();await new Promise(resolve=>requestAnimationFrame(resolve));}
  const seed={owner:0,sourceUid:attackerUid,targetUid,targetWasKeeper:targetUid===null,sourceAt:attacker.at,targetAt:defender?.at||0,directIntent};
  const resolved=await presentCombatFx(seed,()=>{game.lastCombat=null;game.attack(attackerUid,targetUid);return game.lastCombat},meta=>combatDamageCheckpoint(game._presentationCapture||[],meta));const captures=game._presentationCapture||[];delete game._presentationCapture;
  if(!resolved?.ok){
-  deferResultPresentation=false;fxLock=false;resolutionState=null;
+  deferResultPresentation=false;fxLock=false;resolutionState=null;clearResolvingInputLock();
   if(ownsLayoutFreeze)m13I2EndCombatLayoutFreeze();
   else m13I3HoldCombatGeometry('player-attack-cancelled');
   render();return false
  }
- const finalSnapshot=game.presentationSnapshot(),report=playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,'combat');await presentPlayerFollowupBeats(report,['COMBAT','BARRIER']);await aiWait(180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();
+ const finalSnapshot=game.presentationSnapshot(),report=playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,'combat');await presentPlayerFollowupBeats(report,['COMBAT','BARRIER']);await aiWait(180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();clearResolvingInputLock();
  m13I3HoldCombatGeometry('player-attack-settled');
  render();return true;
  }finally{window.__RESONANCE_D52_END_ATTACK__?.(mobileAttackLayout)}
@@ -34439,6 +34507,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   if(!started||game.winner!==null)return {state:'wait',icon:'·',label:game.winner!==null?'DUEL จบแล้ว':'รอ DUEL',reason:''};
   if(game.active!==0)return {state:'wait',icon:'◷',label:'รอ TURN',reason:'รอ Turn ของคุณ'};
   if(game.phase!=='ACTION')return {state:'wait',icon:'◷',label:`รอ ${game.phase}`,reason:'เล่นได้ใน ACTION'};
+  if(resolutionState||fxLock)return {state:'wait',icon:'◷',label:'กำลังแก้ผล',reason:'รอการแก้ผล Action/Combat'};
   const reason=game.reason(card,game.players[0]);
   if(reason)return {state:'blocked',icon:'×',label:reasonLabel(reason),reason};
   const g=gestureFor(card);return {state:'playable',icon:g.icon,label:g.label,reason:'',mode:g.mode};
@@ -34792,6 +34861,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  document.addEventListener('touchend',()=>requestAnimationFrame(schedule),{passive:true});
  document.addEventListener('touchcancel',()=>requestAnimationFrame(schedule),{passive:true});
  document.addEventListener('keydown',ev=>{
+  if(uiInputLocked())return;
   if(!['ArrowLeft','ArrowRight','Home','End','Escape'].includes(ev.key))return;
   const cards=handCards();if(!cards.length)return;
   if(ev.key==='Escape'){
