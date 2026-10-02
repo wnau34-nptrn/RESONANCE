@@ -30156,6 +30156,7 @@ function renderPaymentDialog(animateEntry=false){
  detail.innerHTML=`<button class="close" data-pay-cancel="1" aria-label="ยกเลิก">×</button><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">RESONANCE COMMIT</span><h2>${esc(c.name)}</h2><div class="commit-picker"><div class="commit-summary"><span><b>เลือก Resonance</b><small>ปรับจำนวนแต่ละสีให้ครบ Cost</small></span><strong>${total} / ${c.cost}</strong></div><div class="commit-rows">${rows}</div><div class="commit-status-slot">${paymentState}</div><p class="commit-tip"><b>Requirement</b> = จำนวนขั้นต่ำของ Resonance สีนั้นที่ต้องใช้ · <b>AUTO SUGGEST</b> เลือกการจ่ายให้อัตโนมัติ โดยเติม Requirement ให้ครบก่อน</p><div class="commit-actions"><button class="secondary commit-auto" type="button" data-pay-auto="1">AUTO SUGGEST</button><button class="secondary commit-cancel" type="button" data-pay-cancel="1">ยกเลิก</button><button class="primary" type="button" data-pay-confirm="1" ${valid?'':'disabled'}>ยืนยัน COMMIT ${c.cost} →</button></div></div></div>`;
  if(!detail.open)detail.showModal();
  if(animateEntry&&dragPlayHandoff&&Number(dragPlayHandoff.uid)===Number(card.uid))requestAnimationFrame(()=>dragHandoffApplyCommitOrigin(card.uid));
+ syncLockedControls();
 }
 function startPayment(uid,targetUid=null,castLayout=null){
  mobileHandFocusUid=null;
@@ -31663,7 +31664,7 @@ function clearResolvingInputLock(){
  gEl?.removeAttribute('aria-busy');
  document.querySelectorAll('[data-action="next"],.desktop-bf-cta.primary,.mobile-primary-cta').forEach(b=>{
   b.removeAttribute('aria-disabled');
-  b.disabled=(!started||game.active!==0||game.winner!==null||resolutionState||fxLock);
+  b.disabled=gameplayControlBlocked(b)||uiInputLocked();
  });
  document.querySelectorAll('.hand-scroll .card[data-zone="hand"][data-wb-was-playable="true"]').forEach(c=>{
   c.classList.add('playable');
@@ -31699,7 +31700,7 @@ function gameplayControlBlocked(el){
  if(d.activate!==undefined){const unit=game.players[0].board.find(x=>x.uid===Number(d.activate));return !unit||!!game.abilityReason(unit,game.players[0]);}
  return false;
 }
-const buttonLockSelector='[data-action="history"],[data-action="graveyard"],[data-action="landmark"],[data-action="choose-deck"],[data-action="restart"],[data-action="start"],[data-action="deck-builder"],[data-action="next"],[data-action="cancel"],[data-grave-owner],[data-play],[data-attack],[data-activate],[data-attune],[data-card],[data-keeper],[data-adv],[data-adv-entry],[data-adv-stage],[data-p23-skip],[data-p3d-choice]';
+const buttonLockSelector='[data-action="history"],[data-action="graveyard"],[data-action="landmark"],[data-action="choose-deck"],[data-action="restart"],[data-action="start"],[data-action="deck-builder"],[data-action="next"],[data-action="cancel"],[data-grave-owner],[data-play],[data-attack],[data-activate],[data-attune],[data-card],[data-keeper],[data-adv],[data-adv-entry],[data-adv-stage],[data-p23-skip],[data-p3d-choice],[data-pay-key],[data-pay-auto],[data-pay-confirm],[data-pay-cancel]';
 const buttonLockPrevious=new Map();
 function syncLockedControls(){
  const locked=uiInputLocked();
@@ -31726,7 +31727,7 @@ document.addEventListener('click',ev=>{
  const el=ev.target.closest?.(buttonLockSelector);if(!el)return;
  if(uiInputLocked()||gameplayControlBlocked(el)||el.disabled||el.getAttribute('aria-disabled')==='true'){ev.preventDefault();ev.stopImmediatePropagation();}
 },true);
-new MutationObserver(syncLockedControls).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+new MutationObserver(syncLockedControls).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','disabled','aria-disabled']});
 
 function beginFxLock(kind,data={}){m12115ClearCausalReadout();fxLock=true;resolutionState={kind,...data};applyResolvingInputLock()}
 function endFxLock(renderNow=true){fxLock=false;resolutionState=null;m12115ClearCausalReadout();clearResolvingInputLock();if(renderNow)render()}
@@ -32555,6 +32556,7 @@ document.getElementById('landscapeButton')?.addEventListener('click',requestLand
 
 async function handleCommitControl(el){
  if(!el||!el.closest?.('.commit-detail-modal'))return false;
+ if(uiInputLocked()||el.disabled||el.getAttribute('aria-disabled')==='true')return true;
 
  if(el.dataset.payKey!==undefined){
   const s=paymentStatus();if(!s)return true;
