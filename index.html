@@ -7384,6 +7384,43 @@ body.wb-webapp-mode .fullscreen-button{
     font-size:12px!important;
     line-height:1.55!important;
   }
+  body.battlefield-first-desktop-active .desktop-bf-history-header{
+    position:sticky!important;
+    top:-10px!important;
+    z-index:2!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    margin:-10px -12px 6px!important;
+    padding:8px 12px!important;
+    background:rgba(5,24,31,.98)!important;
+    border-bottom:1px solid rgba(80,108,115,.45)!important;
+  }
+  body.battlefield-first-desktop-active .desktop-bf-history-header strong{
+    color:#e1eeea!important;
+    font-size:11px!important;
+    letter-spacing:1px!important;
+  }
+  body.battlefield-first-desktop-active .desktop-bf-history-close{
+    display:grid!important;
+    place-items:center!important;
+    width:24px!important;
+    height:24px!important;
+    min-height:24px!important;
+    padding:0!important;
+    border:1px solid rgba(95,125,132,.52)!important;
+    border-radius:6px!important;
+    background:rgba(16,47,56,.8)!important;
+    color:#dcebdf!important;
+    font-size:16px!important;
+    line-height:1!important;
+    cursor:pointer!important;
+  }
+  body.battlefield-first-desktop-active .desktop-bf-history-close:hover{
+    background:#16424e!important;
+    color:#fff!important;
+    border-color:rgba(120,165,175,.75)!important;
+  }
 
   
 
@@ -29659,9 +29696,7 @@ function m13I1NormalizeDesktopCommandDeck(scope,duel,panel){
  `;
 
  const logEntries=game.log.slice(0,40);
- history.innerHTML=logEntries.length
-  ?logEntries.map(entry=>`<p>${esc(entry)}</p>`).join('')
-  :'<div class="history-empty">ยังไม่มี Battle Log ในตอนนี้</div>';
+ history.innerHTML=`<div class="desktop-bf-history-header"><strong>BATTLE LOG</strong><button type="button" class="desktop-bf-history-close" data-bf-proxy="history-close" aria-label="Close Battle Log">×</button></div>${logEntries.length?logEntries.map(entry=>`<p>${esc(entry)}</p>`).join(''):'<div class="history-empty">ยังไม่มี Battle Log ในตอนนี้</div>'}`;
 }
 
 function m13I1RemoveDesktopCommandDeck(duel){
@@ -32803,19 +32838,42 @@ detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid,cast
 (function(){
   /* Interaction-only controller.
      Structural/content ownership belongs to m13I1NormalizeDesktopCommandDeck(). */
+  function closeHistoryDrawer(){
+    const handArea=document.querySelector('#app .hand-area')||app?.querySelector('.hand-area');
+    if(!handArea||!handArea.classList.contains('history-open'))return false;
+    handArea.classList.remove('history-open');
+    const historyBtn=handArea.querySelector('[data-bf-proxy="history"]');
+    if(historyBtn)historyBtn.setAttribute('aria-expanded','false');
+    return true;
+  }
+
   document.addEventListener('click',ev=>{
+    if(!m13IDesktopActive())return;
+
     const proxy=ev.target.closest('[data-bf-proxy]');
-    if(!proxy||!m13IDesktopActive())return;
+    if(!proxy){
+      if(!ev.target.closest('.desktop-bf-history-drawer'))closeHistoryDrawer();
+      return;
+    }
 
     const kind=proxy.dataset.bfProxy;
     const panel=app?.querySelector('.turn-panel.phase3-panel');
 
+    if(kind==='history-close'){
+      ev.preventDefault();
+      closeHistoryDrawer();
+      return;
+    }
+
     if(kind==='history'){
       ev.preventDefault();
-      const open=app?.querySelector('.hand-area')?.classList.toggle('history-open');
+      const handArea=document.querySelector('#app .hand-area')||app?.querySelector('.hand-area');
+      const open=handArea?.classList.toggle('history-open');
       proxy.setAttribute('aria-expanded',String(!!open));
       return;
     }
+
+    closeHistoryDrawer();
 
     if(kind==='primary'||kind==='secondary'){
       ev.preventDefault();
@@ -32833,6 +32891,12 @@ detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid,cast
     if(kind==='graveyard'){
       ev.preventDefault();
       panel?.querySelector('.graveyard-button')?.click();
+    }
+  });
+
+  document.addEventListener('keydown',ev=>{
+    if(ev.key==='Escape'&&m13IDesktopActive()){
+      closeHistoryDrawer();
     }
   });
 
