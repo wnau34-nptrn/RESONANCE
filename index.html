@@ -29626,6 +29626,7 @@ function m13I1NormalizeDesktopCommandDeck(scope,duel,panel){
  if(!history){
   history=document.createElement('section');
   history.className='desktop-bf-history-drawer';
+  history.id='desktopBattleHistoryLog';
   handArea.appendChild(history);
  }
 
@@ -29652,13 +29653,13 @@ function m13I1NormalizeDesktopCommandDeck(scope,duel,panel){
   <div class="desktop-bf-cta-group">
    ${m13I1DesktopActionHTML(panel)}
    <button class="desktop-bf-mini" type="button" data-bf-proxy="graveyard">GRAVE ${p.grave.length}</button>
-   <button class="desktop-bf-mini" type="button" data-bf-proxy="history">HISTORY ${historyCount}</button>
+   <button class="desktop-bf-mini" type="button" data-bf-proxy="history" aria-controls="desktopBattleHistoryLog" aria-expanded="${handArea.classList.contains('history-open')}">HISTORY ${historyCount}</button>
   </div>
  `;
 
- const logNodes=[...(panel?.querySelectorAll('.log p')||[])];
- history.innerHTML=logNodes.length
-  ?logNodes.map(node=>`<p>${node.innerHTML}</p>`).join('')
+ const logEntries=game.log.slice(0,40);
+ history.innerHTML=logEntries.length
+  ?logEntries.map(entry=>`<p>${esc(entry)}</p>`).join('')
   :'<div class="history-empty">ยังไม่มี Battle Log ในตอนนี้</div>';
 }
 
@@ -31686,10 +31687,14 @@ function handleSafeUtility(el){
   case 'rules':showRules();return true;
   case 'fullscreen':toggleFullscreen();return true;
   case 'menu':
-   if(started){rules.innerHTML='<button class="close" data-close="rules" aria-label="ปิด">×</button><div class="rules-content"><h2>พักการเดินทาง</h2><p>เลือก Deck ใหม่จะเริ่ม Duel ใหม่</p><button class="primary" data-close="rules">กลับสู่ Duel</button><button class="secondary" data-action="choose-deck">เลือก Deck ใหม่</button></div>';rules.showModal();syncLockedControls();}
+   if(started){rules.innerHTML='<button class="close" data-close="rules" aria-label="ปิด">×</button><div class="rules-content"><h2>พักการเดินทาง</h2><p>เลือก Deck ใหม่จะเริ่ม Duel ใหม่</p><button class="primary" data-close="rules">กลับสู่ Duel</button><button class="secondary" data-action="battle-log">History · ดู Battle Log</button><button class="secondary" data-action="choose-deck">เลือก Deck ใหม่</button></div>';rules.showModal();syncLockedControls();}
    return true;
  }
  return false;
+}
+function showBattleHistory(){
+ rules.innerHTML=`<button class="close" data-close="rules" aria-label="ปิด">×</button><div class="rules-content"><h2>BATTLE LOG</h2><p>เหตุการณ์ล่าสุด ${Math.min(game.log.length,40)} / ${game.log.length}</p><div class="battle-log-entries" style="max-height:55vh;overflow-y:auto">${game.log.slice(0,40).map(entry=>`<p>${esc(entry)}</p>`).join('')||'<p>ยังไม่มีเหตุการณ์</p>'}</div></div>`;
+ if(!rules.open)rules.showModal();
 }
 function gameplayControlBlocked(el){
  const d=el.dataset;
@@ -31700,7 +31705,7 @@ function gameplayControlBlocked(el){
  if(d.activate!==undefined){const unit=game.players[0].board.find(x=>x.uid===Number(d.activate));return !unit||!!game.abilityReason(unit,game.players[0]);}
  return false;
 }
-const buttonLockSelector='[data-action="history"],[data-action="graveyard"],[data-action="landmark"],[data-action="choose-deck"],[data-action="restart"],[data-action="start"],[data-action="deck-builder"],[data-action="next"],[data-action="cancel"],[data-grave-owner],[data-play],[data-attack],[data-activate],[data-attune],[data-card],[data-keeper],[data-adv],[data-adv-entry],[data-adv-stage],[data-p23-skip],[data-p3d-choice],[data-pay-key],[data-pay-auto],[data-pay-confirm],[data-pay-cancel]';
+const buttonLockSelector='[data-bf-proxy="history"],[data-bf-proxy="graveyard"],[data-action="battle-log"],[data-action="history"],[data-action="graveyard"],[data-action="landmark"],[data-action="choose-deck"],[data-action="restart"],[data-action="start"],[data-action="deck-builder"],[data-action="next"],[data-action="cancel"],[data-grave-owner],[data-play],[data-attack],[data-activate],[data-attune],[data-card],[data-keeper],[data-adv],[data-adv-entry],[data-adv-stage],[data-p23-skip],[data-p3d-choice],[data-pay-key],[data-pay-auto],[data-pay-confirm],[data-pay-cancel]';
 const buttonLockPrevious=new Map();
 function syncLockedControls(){
  const locked=uiInputLocked();
@@ -32656,7 +32661,7 @@ if(el.dataset.deck!==undefined){chosenDeck=el.dataset.deck==='custom'?'custom':N
 case'graveyard':showGraveyard(0);break;
 case'mulligan-clear':if(mulliganOpen){mulliganSelected.clear();render()}break;
 case'mulligan-confirm':if(mulliganOpen){const human=[...mulliganSelected];game.mulligan(game.players[0],human);game.aiMulligan(game.players[1]);mulliganSelected.clear();mulliganOpen=false;game.note('Opening Mulligan เสร็จสิ้น · เริ่ม Turn แรก');render()}break;
-case'deck-builder':deckBuilderOpen=true;if(customDeckProfile&&chosenDeck==='custom')builderState=normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))});else if(window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__)builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__(Number.isInteger(Number(chosenDeck))?Number(chosenDeck):0);render();break;case'builder-back':deckBuilderOpen=false;render();break;case'builder-clear':builderState.counts={};render();break;case'builder-starter':builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__?window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__(builderState.keeper,builderState.primary):makeBuilderState(builderState.keeper);builderFilter='all';render();break;case'builder-save':if(builderValid(builderState)){customDeckProfile=builderProfile(builderState);saveCustomDeckProfile(customDeckProfile);chosenDeck='custom';deckBuilderOpen=false;render()}break;case'start':mobileHandFocusUid=null;started=true;fresh(true);break;case'restart':mobileHandFocusUid=null;started=true;fresh(true);break;case'next':if(started&&game.active===0){selected=null;game.next();render();runAI()}break;case'cancel':selected=null;render();break;case'history':historyOpen=!historyOpen;render();if(historyOpen)requestAnimationFrame(()=>{const log=document.querySelector('#battleHistoryLog.expanded');if(log)log.scrollTop=0});break;case'landmark':showRules(true);break;case'choose-deck':cancelAIQueue();rules.close();started=false;deckBuilderOpen=false;fresh(false);break}});
+case'deck-builder':deckBuilderOpen=true;if(customDeckProfile&&chosenDeck==='custom')builderState=normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))});else if(window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__)builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__(Number.isInteger(Number(chosenDeck))?Number(chosenDeck):0);render();break;case'builder-back':deckBuilderOpen=false;render();break;case'builder-clear':builderState.counts={};render();break;case'builder-starter':builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__?window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__(builderState.keeper,builderState.primary):makeBuilderState(builderState.keeper);builderFilter='all';render();break;case'builder-save':if(builderValid(builderState)){customDeckProfile=builderProfile(builderState);saveCustomDeckProfile(customDeckProfile);chosenDeck='custom';deckBuilderOpen=false;render()}break;case'start':mobileHandFocusUid=null;started=true;fresh(true);break;case'restart':mobileHandFocusUid=null;started=true;fresh(true);break;case'next':if(started&&game.active===0){selected=null;game.next();render();runAI()}break;case'cancel':selected=null;render();break;case'battle-log':showBattleHistory();break;case'history':historyOpen=!historyOpen;render();if(historyOpen)requestAnimationFrame(()=>{const log=document.querySelector('#battleHistoryLog.expanded');if(log)log.scrollTop=0});break;case'landmark':showRules(true);break;case'choose-deck':cancelAIQueue();rules.close();started=false;deckBuilderOpen=false;fresh(false);break}});
 document.addEventListener('keydown',e=>{if(uiInputLocked())return;if(e.key==='Escape'&&selected){selected=null;render()}});
 render();
 const publicState=()=>({started,mulliganOpen,mulliganSelected:[...mulliganSelected],turn:game.round,phase:game.phase,uiActionState:resolutionState?'RESOLVING':aiPacingState?'AI_RESOLVING':selected?'TARGETING':null,aiPacing:aiPacingState?{...aiPacingState}:null,active:game.active===0?'player':'opponent',winner:game.winner,landmarkOwner:game.landmark,landmark:{current:game.currentLandmark?.id||null,name:game.currentLandmark?.name||null,next:game.landmarkDeck[game.landmarkStep+1]?.id||null,nextName:game.landmarkDeck[game.landmarkStep+1]?.name||null,index:game.landmarkStep+1,total:game.landmarkDeck.length,claimed:game.landmarkClaimed,pendingReveal:game.pendingLandmarkReveal,history:game.landmarkHistory,pendingChoice:game.pendingChoice?.type||null},combat:{playerProtectors:game.protectors(game.players[0]).map(x=>x.uid),opponentProtectors:game.protectors(game.players[1]).map(x=>x.uid)},player:{spirit:game.players[0].spirit,stones:game.players[0].stones,readyStones:game.players[0].readyStones,dormantStones:game.players[0].dormantStones,committedStones:game.players[0].committedStones,hand:game.players[0].hand.map(x=>({...x,...C[x.key],blocked:game.active!==0?'Opponent turn':game.reason(x)})),board:game.players[0].board.map(x=>({...x,activated:C[x.key].activated||null,activatedName:C[x.key].activatedName||null,activatedCost:C[x.key].activatedCost||null,abilityUsed:!!x.abilityUsed,abilityBlocked:C[x.key].activated?game.abilityReason(x,game.players[0]):null})),artifacts:game.players[0].artifacts,restore:game.players[0].restore,boons:game.players[0].boons,abilityStats:game.players[0].abilityStats},opponent:{spirit:game.players[1].spirit,handCount:game.players[1].hand.length,stones:game.players[1].stones,readyStones:game.players[1].readyStones,dormantStones:game.players[1].dormantStones,committedStones:game.players[1].committedStones,board:game.players[1].board,artifacts:game.players[1].artifacts,restore:game.players[1].restore,boons:game.players[1].boons,abilityStats:game.players[1].abilityStats}});
@@ -32806,7 +32811,8 @@ detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid,cast
 
     if(kind==='history'){
       ev.preventDefault();
-      app?.querySelector('.hand-area')?.classList.toggle('history-open');
+      const open=app?.querySelector('.hand-area')?.classList.toggle('history-open');
+      proxy.setAttribute('aria-expanded',String(!!open));
       return;
     }
 
