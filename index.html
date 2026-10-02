@@ -6656,6 +6656,16 @@ body.wb-webapp-mode .fullscreen-button{
   opacity:.34!important;
   filter:saturate(.65) brightness(.78)!important;
 }
+#app.mobile-hand-fan-active .hand-scroll>.card.creature-drag-source,
+#app.mobile-duel-viewport .hand-scroll>.card.creature-drag-source,
+#app.creature-drag-active .hand-scroll>.card.mobile-touch-owned,
+#app.artifact-drag-active .hand-scroll>.card.artifact-touch-owned,
+#app .hand-scroll>.card.mobile-touch-owned.creature-drag-source,
+#app .hand-scroll>.card.artifact-touch-owned.creature-drag-source{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
 
 .creature-drag-proxy{
   position:fixed!important;
@@ -22718,9 +22728,8 @@ body.wb-viewport-geometry-locked #app .battlefield{
   .deck-builder-footer{padding:3px 7px;font-size:5.5px;white-space:nowrap;overflow:hidden}.deck-builder-footer span:first-child{display:none}
 }
 
-/* Mobile portrait: Deck Builder is allowed in portrait even though Duel remains landscape-only. */
+/* Legacy mobile-portrait Deck Builder sizing retained as dormant fallback; R4 final portrait lock keeps it unreachable. */
 @media (max-width:760px) and (orientation:portrait){
-  #portraitDeckBuilderButton{margin-top:8px;background:#0c2a33!important;color:#d9e7e2!important;border-color:#55757a!important}
   body:has(.deck-builder-layer) .orientation-gate{display:none!important}
   body:has(.deck-builder-layer){overflow:hidden!important}
   .deck-builder-layer{padding:3px}
@@ -22808,7 +22817,7 @@ body.wb-viewport-geometry-locked #app .battlefield{
 /* C8.4D-UX — cross-platform information architecture refactor.
    Scope: Start/Starter Selection + Deck Builder only. Duel presentation/gameplay untouched. */
 
-/* Let players choose/build in portrait; landscape is still required only once the Duel begins. */
+/* Legacy onboarding visibility rule; superseded in portrait by R4 final landscape-only lock. */
 body:has(.start-layer) .orientation-gate,
 body:has(.deck-builder-layer) .orientation-gate{display:none!important}
 
@@ -22880,7 +22889,7 @@ body:has(.deck-builder-layer) .orientation-gate{display:none!important}
   .deck-builder-layer{padding:2px!important}.deck-builder-shell.c84dx-builder{width:100%!important;height:100%!important;--builder-deck-width:28vw;grid-template-rows:38px auto minmax(0,1fr)!important;border-radius:5px}.c84dx-builder .deck-builder-top{min-height:38px!important;padding:3px 5px 3px 8px!important}.c84dx-builder .deck-builder-top h1{font-size:13px!important}.c84dx-builder .deck-builder-top p{display:none!important}.c84dx-builder .deck-builder-top-actions{gap:3px}.c84dx-builder .deck-builder-top-actions button{min-width:0!important;min-height:29px!important;padding:3px 6px!important;font-size:6.5px!important}.c84dx-profile-bar{min-height:32px;padding:3px 5px;gap:3px}.c84dx-profile-bar .profile-label{display:none}.c84dx-profile-chip{padding:4px 5px;font-size:6px}.c84dx-profile-chip b{font-size:8px}.c84dx-profile-edit{min-height:23px;padding:3px 5px;font-size:5.8px}.c84dx-profile-drawer{position:absolute;z-index:30;left:2px;right:2px;top:70px;grid-template-columns:1fr 1.35fr 1.8fr;padding:5px;background:#06171ff8;box-shadow:0 12px 35px #000c}.c84dx-builder .deck-builder-main{grid-template-columns:minmax(0,72vw) minmax(180px,28vw)!important}.c84dx-builder .builder-section-head{padding:3px 5px!important;display:flex!important}.c84dx-builder .builder-section-head h2{font-size:9px!important}.c84dx-builder .builder-section-head .eyebrow{display:none}.c84dx-builder .builder-filters{max-width:70%;gap:2px}.c84dx-builder .builder-filters button{padding:3px 4px;font-size:5.3px}.c84dx-builder .builder-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:4px!important;gap:4px!important}.c84dx-builder .builder-card{min-height:132px!important;grid-template-columns:64px minmax(0,1fr)!important}.c84dx-builder .builder-card .builder-card-art{width:64px!important}.c84dx-builder .builder-card-copy{padding:5px!important}.c84dx-builder .builder-card-title{padding-right:22px}.c84dx-builder .builder-card-title strong{font-size:9px!important}.c84dx-builder .builder-card-title span{font-size:5.5px!important}.c84dx-builder .builder-card-meta{gap:2px;margin-top:3px}.c84dx-builder .builder-card-meta span{font-size:5.2px!important;padding:2px 3px}.c84dx-builder .builder-card-stats{margin-top:3px}.c84dx-builder .builder-card-stats span{font-size:5.5px!important;padding:2px 3px;min-width:28px}.c84dx-builder .builder-card-rules{margin-top:3px!important;font-size:6.4px!important;line-height:1.18!important}.c84dx-builder .builder-card-draghint{display:none}.c84dx-builder .builder-card-copycount{right:3px;top:3px;min-width:20px;height:20px;font-size:6px}.c84dx-builder .builder-deck-summary{padding:4px 5px!important}.c84dx-builder .builder-deck-summary .eyebrow,.c84dx-builder .builder-deck-summary>p{display:none}.c84dx-builder .deck-count b{font-size:18px!important}.c84dx-builder .deck-count span{font-size:8px}.c84dx-builder .deck-breakdown{display:none}.c84dx-builder .builder-quick-actions{grid-template-columns:1fr 1fr;margin-top:3px;gap:2px}.c84dx-builder .builder-quick-actions button{padding:3px 2px;font-size:5px}.c84dx-builder .builder-deck-list{padding:2px 3px 6px!important}.c84dx-builder .builder-deck-row{grid-template-columns:25px minmax(0,1fr) 17px!important;gap:3px!important;padding:2px 1px!important}.c84dx-builder .builder-deck-row .deck-mini-art{width:25px!important;height:34px!important}.c84dx-builder .builder-deck-row strong{font-size:6.7px!important}.c84dx-builder .builder-deck-row small{font-size:5px!important}.c84dx-builder .builder-deck-row .deck-row-rules{display:none!important}.c84dx-builder .builder-deck-row>b{font-size:7px!important}
 }
 
-/* Small portrait phones: choose/build works; Duel itself still asks for landscape. */
+/* Legacy small-portrait sizing retained dormant under the R4 final landscape-only lock. */
 @media (orientation:portrait) and (max-width:520px){
   .start-layer{padding:3px!important}.start-screen.c84dx-start{height:100%!important;grid-template-rows:82px minmax(0,1fr)!important;border-radius:6px}.c84dx-start .start-world{padding:8px 10px!important}.c84dx-start .start-world h1{font-size:7px!important;letter-spacing:2px!important}.c84dx-start .start-world h1 span{font-size:21px!important;letter-spacing:2px!important;margin-top:3px!important}.c84dx-start .world-caption{font-size:5px!important;right:8px;bottom:7px}.c84dx-start .start-content{padding:8px!important;grid-template-rows:auto 70px auto auto auto;overflow:auto}.c84dx-deck-rail{display:flex;overflow-x:auto;overflow-y:hidden;max-height:70px;scroll-snap-type:x proximity}.c84dx-deck-tile{flex:0 0 168px;min-height:62px;grid-template-columns:36px minmax(0,1fr);scroll-snap-align:start}.c84dx-start-head h2{font-size:16px!important}.c84dx-start-head>.eyebrow{display:none}.c84dx-deck-tile{flex-basis:168px;min-height:62px;grid-template-columns:36px minmax(0,1fr);padding:4px}.c84dx-deck-tile .deck-art{width:36px;height:48px}.c84dx-deck-tile strong{font-size:9px}.c84dx-deck-tile p{font-size:5.8px}.c84dx-selection{grid-template-columns:1fr;margin-top:6px}.c84dx-selected{padding:7px}.c84dx-duel-controls{padding:7px}.c84dx-cta-row{grid-template-columns:1fr 100px}.c84dx-start-foot{padding-bottom:3px}
   .deck-builder-shell.c84dx-builder{--builder-deck-width:36vw;grid-template-rows:43px auto minmax(0,1fr)!important}.c84dx-builder .deck-builder-top h1{font-size:13px!important}.c84dx-builder .deck-builder-top-actions button{font-size:6px!important;min-height:30px!important}.c84dx-profile-bar{padding:4px;gap:2px}.c84dx-profile-chip{padding:4px;font-size:5.5px}.c84dx-profile-edit{font-size:5.5px;padding:4px}.c84dx-profile-edit{font-size:0!important}.c84dx-profile-edit::after{content:"SETUP";font-size:6px}.c84dx-profile-drawer{grid-template-columns:1fr;max-height:150px;overflow:auto}.c84dx-builder .deck-builder-main{grid-template-columns:minmax(0,64vw) minmax(118px,36vw)!important}.c84dx-builder .builder-section-head h2{font-size:8px!important}.c84dx-builder .builder-filters button{font-size:5px!important}.c84dx-builder .builder-card{min-height:168px!important;grid-template-columns:66px minmax(0,1fr)!important}.c84dx-builder .builder-card .builder-card-art{width:66px!important}.c84dx-builder .builder-card-rules{font-size:6.5px!important}.c84dx-builder .builder-card-meta span{font-size:5.2px!important}.c84dx-builder .builder-card-stats span{font-size:5.5px!important}.c84dx-builder .builder-deck-summary{padding:4px!important}.c84dx-builder .deck-breakdown{display:none}.c84dx-builder .builder-quick-actions{grid-template-columns:1fr}.c84dx-builder .builder-quick-actions button{font-size:5px!important;padding:3px!important}
@@ -27114,8 +27123,8 @@ html,body{max-width:100%;overflow-x:clip}
   }
 }
 
-/* D3.1 regression hardening — Duel is landscape-only on the whole mobile/tablet
-   family (<=1180px), while Starter Selection and Deck Builder remain portrait-capable. */
+/* D3.1 legacy portrait gate. R4 final product lock below makes the entire mobile/tablet
+   family (<=1180px) landscape-only, including Starter Selection and Deck Builder. */
 @media (min-width:761px) and (max-width:1180px) and (orientation:portrait){
   html,body{overflow:hidden!important}
   .orientation-gate{
@@ -28153,6 +28162,12 @@ html,body{max-width:100%;overflow-x:clip}
 .d34-command-cue.is-hot>strong{
   color:#f4d989!important;
 }
+.d34-command-cue.d34-command-cue-desktop{
+  position:fixed!important;
+  inset:auto!important;
+  margin:0!important;
+  z-index:9995!important;
+}
 
 #app .turn-action.action-state,
 #app .desktop-bf-cta-group{
@@ -28638,8 +28653,14 @@ html,body{max-width:100%;overflow-x:clip}
  #detail.card-detail-modal .detail-action-bar{margin-top:5px!important}
 }
 </style>
+
+<style id="wb-button-hardening">
+.wb-input-disabled{opacity:.45!important;filter:saturate(.35)!important;cursor:not-allowed!important;box-shadow:none!important;}
+#app .game.resolving-input-lock :is([data-action="rules"],[data-action="fullscreen"],[data-action="menu"],[data-audio-toggle]){cursor:pointer!important;}
+#app .game.resolving-input-lock .wb-input-disabled{cursor:not-allowed!important;}
+</style>
 </head>
-<body class="wb-body"><div class="wb-shell"><div id="app"></div><dialog aria-label="รายละเอียดการ์ด" id="detail"></dialog><dialog aria-label="วิธีเล่น" id="rules"></dialog><dialog aria-label="สุสาน" id="graveyard"></dialog><div aria-labelledby="orientationTitle" aria-modal="true" class="orientation-gate" id="orientationGate" role="dialog"><div class="orientation-card"><span aria-hidden="true" class="orientation-mark">↻</span><span class="eyebrow">MOBILE PLAY</span><h2 id="orientationTitle">เล่นในแนวนอน</h2><p>WONDERBOUND: RESONANCE ออกแบบสนาม Duel บนมือถือสำหรับ Landscape เพื่อให้เห็นสนาม การ์ด และทรัพยากรพร้อมกัน</p><button id="landscapeButton" type="button">เข้าสู่โหมดแนวนอน</button><button id="portraitDeckBuilderButton" type="button">จัด Deck ในแนวตั้ง</button><span class="orientation-status" id="orientationStatus">หรือหมุนโทรศัพท์เป็นแนวนอน แล้วเกมจะเปิดให้เล่นอัตโนมัติ</span></div></div></div>
+<body class="wb-body"><div class="wb-shell"><div id="app"></div><dialog aria-label="รายละเอียดการ์ด" id="detail"></dialog><dialog aria-label="วิธีเล่น" id="rules"></dialog><dialog aria-label="สุสาน" id="graveyard"></dialog><dialog aria-labelledby="orientationTitle" class="orientation-gate" id="orientationGate"><div class="orientation-card"><span aria-hidden="true" class="orientation-mark">↻</span><span class="eyebrow">LANDSCAPE REQUIRED</span><h2 id="orientationTitle">เล่นในแนวนอน</h2><p>WONDERBOUND: RESONANCE บนมือถือและอุปกรณ์พับรองรับการใช้งานเฉพาะ Landscape เพื่อให้เห็นสนาม การ์ด และทรัพยากรพร้อมกัน</p><button id="landscapeButton" type="button">เข้าสู่โหมดแนวนอน</button><span class="orientation-status" id="orientationStatus">หมุนอุปกรณ์เป็นแนวนอนเพื่อเล่นเกม · Portrait จะไม่เปิด Battle, Adventure หรือ Deck Builder</span></div></dialog></div>
 <!-- Phase 4.2R3B: Adds Thornseed Beast Death → Restore 1 to the R3 landmark parity package. -->
 <!-- Phase 4.2R3: Landmark parity candidate — Rootkeeper Wildroot 2; Splinter kill Restore 1; Wildroot Rebirth Restore 1. -->
 <!-- Phase 3.6: READY Creature protects Keeper; GUARDIAN protects while Exhausted; RIFTSTRIKE bypasses protection. -->
@@ -30075,6 +30096,7 @@ function graveyardEntries(p){
  return order.map(k=>map.get(k));
 }
 function showGraveyard(owner=graveOwner){
+ if(dragPlayHandoff&&dragPlayHandoff.state!=='committed')dragHandoffCancel(dragPlayHandoff.uid);
  graveOwner=Number(owner)===1?1:0;
  const p=game.players[graveOwner],entries=graveyardEntries(p),who=graveOwner===0?'สุสานของคุณ':'สุสานฝ่ายตรงข้าม';
  const typeCounts=entries.reduce((a,e)=>{const t=C[e.key].type;a[t]=(a[t]||0)+e.count;return a},{});
@@ -30134,27 +30156,41 @@ function renderPaymentDialog(animateEntry=false){
  detail.innerHTML=`<button class="close" data-pay-cancel="1" aria-label="ยกเลิก">×</button><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">RESONANCE COMMIT</span><h2>${esc(c.name)}</h2><div class="commit-picker"><div class="commit-summary"><span><b>เลือก Resonance</b><small>ปรับจำนวนแต่ละสีให้ครบ Cost</small></span><strong>${total} / ${c.cost}</strong></div><div class="commit-rows">${rows}</div><div class="commit-status-slot">${paymentState}</div><p class="commit-tip"><b>Requirement</b> = จำนวนขั้นต่ำของ Resonance สีนั้นที่ต้องใช้ · <b>AUTO SUGGEST</b> เลือกการจ่ายให้อัตโนมัติ โดยเติม Requirement ให้ครบก่อน</p><div class="commit-actions"><button class="secondary commit-auto" type="button" data-pay-auto="1">AUTO SUGGEST</button><button class="secondary commit-cancel" type="button" data-pay-cancel="1">ยกเลิก</button><button class="primary" type="button" data-pay-confirm="1" ${valid?'':'disabled'}>ยืนยัน COMMIT ${c.cost} →</button></div></div></div>`;
  if(!detail.open)detail.showModal();
  if(animateEntry&&dragPlayHandoff&&Number(dragPlayHandoff.uid)===Number(card.uid))requestAnimationFrame(()=>dragHandoffApplyCommitOrigin(card.uid));
+ syncLockedControls();
 }
-function startPayment(uid,targetUid=null){
- const p=game.players[0],card=p.hand.find(x=>x.uid===uid);if(!card||game.reason(card))return false;
- const c=C[card.key],suggested=game.suggestSpend(p,c);if(!suggested)return false;
- pendingPayment={uid,targetUid,spend:{...suggested}};
+function startPayment(uid,targetUid=null,castLayout=null){
+ mobileHandFocusUid=null;
+ const p=game.players[0],card=p.hand.find(x=>x.uid===uid);
+ if(!card||game.reason(card)){
+  if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
+  return false;
+ }
+ const c=C[card.key],suggested=game.suggestSpend(p,c);
+ if(!suggested){
+  if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
+  return false;
+ }
+ pendingPayment={uid,targetUid,spend:{...suggested},castLayout};
  renderPaymentDialog(true);return true;
 }
 
-function beginHandPlay(uid){
+function beginHandPlay(uid,castLayout=null){
  mobileHandFocusUid=null;
  const x=game.players[0].hand.find(a=>a.uid===Number(uid));
- if(game.active!==0||!x||game.reason(x))return false;
+ if(game.active!==0||!x||game.reason(x)){
+  if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
+  return false;
+ }
  const c=C[x.key];
 
  /* 7A9: Card Detail and Resonance Commit intentionally share the same <dialog>.
     For an untargeted card, closing Card Detail before startPayment() could queue a
     close event that later cleared the newly-created pendingPayment. Morph the
     already-open dialog directly into Commit instead. */
- if(!c.target)return startPayment(Number(uid));
+ if(!c.target)return startPayment(Number(uid),null,castLayout);
 
  /* Targeted cards still leave Card Detail first and enter canonical STEP 4 targeting. */
+ if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
  if(detail.open)detail.close();
  selected={kind:'play',uid:Number(uid)};
  render();
@@ -30557,6 +30593,15 @@ function dragHandoffClear(remove=true){
  if(remove)proxy?.remove();
  dragPlayHandoff=null;
  detail?.classList?.remove('drag-commit-enter');
+ if(remove){
+  document.querySelectorAll('.creature-drag-proxy:not(.desktop-mouse-drag):not(.mobile-touch-drag),.creature-drop-surface-cue,.artifact-drop-surface-cue').forEach(el=>el.remove());
+ }
+ document.querySelectorAll('#app .hand-scroll>.card').forEach(c=>{
+  if(c!==creatureDragState?.source&&c!==artifactDragState?.source){
+   c.classList.remove('creature-drag-source','d34-drag-source','d38-spell-cast-source','artifact-touch-owned','mobile-touch-owned');
+   c.removeAttribute('aria-grabbed');
+  }
+ });
 }
 function dragHandoffStage(st){
  if(!st?.proxy)return null;
@@ -30572,7 +30617,7 @@ function dragHandoffStage(st){
  dragPlayHandoff={
   uid:st.uid,
   proxy,
-  sourceRect:sr?{left:sr.left,top:sr.top,width:sr.width,height:sr.height}:null,
+  sourceRect:(sr&&sr.width>0&&sr.height>0)?{left:sr.left,top:sr.top,width:sr.width,height:sr.height}:st.sourceRect||null,
   stageX:cx,stageY:cy,
   state:'staging'
  };
@@ -30593,17 +30638,38 @@ function dragHandoffApplyCommitOrigin(uid){
  setTimeout(()=>detail.classList.remove('drag-commit-enter'),300);
 }
 function dragHandoffCancel(uid){
- const h=dragPlayHandoff;if(!h||Number(h.uid)!==Number(uid)){dragHandoffClear();return}
+ dragSuppressClickUntil=Math.max(dragSuppressClickUntil,Date.now()+450);
+ const h=dragPlayHandoff;if(!h||Number(h.uid)!==Number(uid)){dragHandoffClear(true);return}
  const proxy=dragHandoffProxy();
  const source=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(uid)}"][data-zone="hand"][data-owner="0"]`);
- const r=source?.getBoundingClientRect()||h.sourceRect;
+ source?.classList.remove('creature-drag-source','d34-drag-source','d38-spell-cast-source','artifact-touch-owned','mobile-touch-owned');
+ source?.removeAttribute('aria-grabbed');
+ document.querySelectorAll('#app .hand-scroll>.card').forEach(c=>{
+  if(c!==creatureDragState?.source&&c!==artifactDragState?.source){
+   c.classList.remove('creature-drag-source','d34-drag-source','d38-spell-cast-source','artifact-touch-owned','mobile-touch-owned');
+   c.removeAttribute('aria-grabbed');
+  }
+ });
+ const sr=source?.getBoundingClientRect();
+ const rail=document.querySelector('#app .hand-scroll')||document.querySelector('#app .hand-area');
+ const rr=rail?.getBoundingClientRect();
+ const fallbackHandRect=(rr&&rr.width>0&&rr.height>0)?{left:rr.left+rr.width/2-74,top:rr.top+8,width:148,height:216}:null;
+ const r=(sr&&sr.width>0&&sr.height>0)?sr:(h.sourceRect||fallbackHandRect);
  if(proxy&&r){
-  proxy.classList.remove('creature-drag-staging','creature-drag-commit-launch');
+  proxy.classList.remove('creature-drag-staging','creature-drag-commit-launch','artifact-drag-auto-route','artifact-drag-staged');
   proxy.classList.add('creature-drag-snapback');
   proxy.querySelector('.drag-staging-tag')?.remove();
   proxy.style.left=`${r.left+r.width/2}px`;proxy.style.top=`${r.top+r.height/2}px`;
-  setTimeout(()=>proxy.remove(),220);
- }else proxy?.remove();
+  setTimeout(()=>{
+   proxy.remove();
+   dragHandoffClear(false);
+   setupTacticalFanHand();
+  },220);
+ }else{
+  proxy?.remove();
+  dragHandoffClear(false);
+  setupTacticalFanHand();
+ }
  dragPlayHandoff=null;
 }
 function dragHandoffCommit(uid){
@@ -30697,16 +30763,50 @@ function creatureDragPlayStillLegal(uid){
  const x=game.players[0].hand.find(a=>a.uid===Number(uid));
  return !!(x&&C[x.key]?.type==='Creature'&&!game.reason(x));
 }
+function isPointOverCreatureDropZone(x,y,st=null){
+ const r=refreshHandDropRect(st,creatureDropRect,'.creature-drop-surface-cue');
+ const zone=creatureDropZone(),zr=zone?.getBoundingClientRect();
+ const app=document.querySelector('#app');
+ const field=app?.querySelector('.battlefield'),fr=field?.getBoundingClientRect();
+ const hand=app?.querySelector('.hand-area')||app?.querySelector('.hand-scroll');
+ const hr=hand?.getBoundingClientRect();
+ const upward=st?((st.startY??y)-y):0;
+
+ if(hr&&y>hr.top+24&&upward<20)return false;
+ if(r&&pointInsideRect(x,y,r,20))return true;
+ if(zr&&pointInsideRect(x,y,zr,16))return true;
+ if(fr&&pointInsideRect(x,y,fr,10)&&(upward>=14||(hr&&y<=hr.top+10)))return true;
+ if(st?.proxy){
+  const pr=st.proxy.getBoundingClientRect();
+  if(r&&rectOverlapRatio(pr,r)>=0.12)return true;
+  if(zr&&rectOverlapRatio(pr,zr)>=0.12)return true;
+  if(fr&&rectOverlapRatio(pr,fr)>=0.15&&(upward>=12||(hr&&y<=hr.top+14)))return true;
+ }
+ return false;
+}
 function creatureDragDropAccepted(st,x,y){
  if(!st||!creatureDragPlayStillLegal(st.uid))return false;
- const r=refreshHandDropRect(st,creatureDropRect,'.creature-drop-surface-cue');
- if(!r)return false;
+ const hand=document.querySelector('#app .hand-area')||document.querySelector('#app .hand-scroll');
+ const hr=hand?.getBoundingClientRect();
+ const upward=(st.startY!=null)?(st.startY-y):0;
 
- const upward=(st.startY??y)-y;
- if(upward<24)return false;
- /* The release finger must be on the live player-side cue. Visual overlap and
-    a previously hot frame are not consent to play somewhere else. */
- return pointInsideRect(x,y,r,8);
+ /* Explicit cancellation: dragging card back down into the hand area */
+ if(hr&&y>hr.top+24&&upward<20)return false;
+
+ /* 1. Released directly over drop zone cue, player row, or battlefield */
+ if(isPointOverCreatureDropZone(x,y,st))return true;
+
+ /* 2. Released while drop zone was hot and not dragged back down */
+ if(st.hot&&(upward>=10||(hr&&y<=hr.top+16)))return true;
+
+ /* 3. Fast upward swipe / flick gesture towards battlefield */
+ const field=document.querySelector('#app .battlefield');
+ const fr=field?.getBoundingClientRect();
+ if(upward>=30&&(hr?y<=hr.top+24:y<=(st.startY-30))){
+  if(!fr||(x>=fr.left-32&&x<=fr.right+32))return true;
+ }
+
+ return false;
 }
 function creatureDragSetHot(hot){
  const zone=creatureDropZone();
@@ -30763,42 +30863,88 @@ function creatureDragCreateProxy(st,x,y){
 function creatureDragActivate(ev){
  const st=creatureDragState;if(!st||st.active)return;
  st.active=true;
+ if(mobileHandFocusUid!==null&&Number(mobileHandFocusUid)!==Number(st.uid)){
+  mobileHandFocusUid=null;
+  setupTacticalFanHand();
+ }
  try{st.source.setPointerCapture?.(st.pointerId)}catch{}
  creatureDragCreateProxy(st,ev.clientX,ev.clientY);
 }
-function creatureDragCleanup({keepProxy=false}={}){
+function creatureDragCleanup({keepProxy=false,keepSourceHidden=false}={}){
  const st=creatureDragState;if(!st)return;
  const zone=creatureDropZone();
  zone?.classList.remove('creature-drop-zone','creature-drop-hot');
- document.querySelector('.creature-drop-surface-cue')?.remove();
+ document.querySelectorAll('.creature-drop-surface-cue').forEach(el=>el.remove());
  document.querySelector('#app')?.classList.remove('creature-drag-active');
- st.source?.classList.remove('creature-drag-source');
- st.source?.removeAttribute('aria-grabbed');
+ if(!keepSourceHidden){
+  st.source?.classList.remove('creature-drag-source','mobile-touch-owned');
+  st.source?.removeAttribute('aria-grabbed');
+  const live=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+  live?.classList.remove('creature-drag-source','mobile-touch-owned');
+  live?.removeAttribute('aria-grabbed');
+ }
  if(!keepProxy)st.proxy?.remove();
  creatureDragState=null;
+ window.__RESONANCE_D52_SYNC__?.();
 }
 function creatureDragSnapBack(st){
  if(!st?.proxy){creatureDragCleanup();return}
- const r=st.source.getBoundingClientRect();
- st.proxy.classList.remove('desktop-mouse-drag','mobile-touch-drag');
- st.proxy.classList.add('creature-drag-snapback');
- st.proxy.style.left=`${r.left+r.width/2}px`;
- st.proxy.style.top=`${r.top+r.height/2}px`;
- st.source.classList.remove('creature-drag-source');
- st.source.removeAttribute('aria-grabbed');
  const proxy=st.proxy;
- creatureDragCleanup({keepProxy:true});
- setTimeout(()=>proxy.remove(),190);
+ const liveSource=(st.source?.isConnected?st.source:null)||
+  document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+ const sr=liveSource?.getBoundingClientRect();
+ const rail=document.querySelector('#app .hand-scroll')||document.querySelector('#app .hand-area');
+ const rr=rail?.getBoundingClientRect();
+ const fallbackHandRect=(rr&&rr.width>0&&rr.height>0)?{left:rr.left+rr.width/2-74,top:rr.top+8,width:148,height:216}:null;
+ const r=(sr&&sr.width>0&&sr.height>0)?sr:(st.sourceRect||fallbackHandRect);
+ if(r){
+  const curLeft=parseFloat(proxy.style.left)||(st.lastX-(st.grabX||0));
+  const curTop=parseFloat(proxy.style.top)||(st.lastY-(st.grabY||0));
+  const pw=proxy.offsetWidth||r.width||140;
+  const ph=proxy.offsetHeight||r.height||200;
+  const wasGrabOffset=proxy.classList.contains('desktop-mouse-drag')||proxy.classList.contains('mobile-touch-drag');
+  if(wasGrabOffset){
+   proxy.style.left=`${curLeft+pw/2}px`;
+   proxy.style.top=`${curTop+ph/2}px`;
+  }
+  proxy.classList.remove('desktop-mouse-drag','mobile-touch-drag');
+  proxy.classList.add('creature-drag-snapback');
+  void proxy.offsetWidth;
+  proxy.style.left=`${r.left+r.width/2}px`;
+  proxy.style.top=`${r.top+r.height/2}px`;
+  creatureDragCleanup({keepProxy:true,keepSourceHidden:true});
+  setTimeout(()=>{
+   proxy.remove();
+   liveSource?.classList.remove('creature-drag-source','mobile-touch-owned');
+   liveSource?.removeAttribute('aria-grabbed');
+   st.source?.classList.remove('creature-drag-source','mobile-touch-owned');
+   st.source?.removeAttribute('aria-grabbed');
+   setupTacticalFanHand();
+  },190);
+ }else{
+  proxy.remove();
+  creatureDragCleanup();
+  setupTacticalFanHand();
+ }
 }
 function creatureDragAccept(st){
  const proxy=st?.proxy;
- st?.source?.classList.remove('creature-drag-source');
+ if(mobileHandFocusUid!==null){
+  mobileHandFocusUid=null;
+  setupTacticalFanHand();
+ }
+ st?.source?.classList.remove('creature-drag-source','mobile-touch-owned');
  st?.source?.removeAttribute('aria-grabbed');
+ const liveSource=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st?.uid)}"][data-zone="hand"][data-owner="0"]`);
+ liveSource?.classList.remove('creature-drag-source','mobile-touch-owned');
+ liveSource?.removeAttribute('aria-grabbed');
  const uid=st?.uid;
  if(proxy)dragHandoffStage(st);
  creatureDragCleanup({keepProxy:!!proxy});
  dragSuppressClickUntil=Date.now()+420;
- if(uid!=null)setTimeout(()=>beginHandPlay(uid),90);
+ if(uid!=null)setTimeout(()=>{
+  beginHandPlay(uid);
+ },90);
 }
 
 document.addEventListener('dragstart',ev=>{
@@ -30813,6 +30959,7 @@ document.addEventListener('pointerdown',ev=>{
  const rect=el.getBoundingClientRect();
  creatureDragState={
   uid:eligible.uid,source:el,pointerId:ev.pointerId,
+  sourceRect:{left:rect.left,top:rect.top,width:rect.width,height:rect.height},
   startX:ev.clientX,startY:ev.clientY,lastX:ev.clientX,lastY:ev.clientY,
   grabX:ev.clientX-rect.left,grabY:ev.clientY-rect.top,
   active:false,cancelled:false,hot:false,proxy:null
@@ -30833,8 +30980,7 @@ document.addEventListener('pointermove',ev=>{
  }
  if(ev.cancelable)ev.preventDefault();
  creatureDragPositionProxy(ev.clientX,ev.clientY);
- const r=refreshHandDropRect(st,creatureDropRect,'.creature-drop-surface-cue');
- creatureDragSetHot(pointInsideRect(ev.clientX,ev.clientY,r,4));
+ creatureDragSetHot(isPointOverCreatureDropZone(ev.clientX,ev.clientY,st));
 },{passive:false});
 
 document.addEventListener('pointerup',ev=>{
@@ -30843,9 +30989,9 @@ document.addEventListener('pointerup',ev=>{
  if(!st.active){try{st.source?.releasePointerCapture?.(st.pointerId)}catch{} creatureDragState=null;return}
  if(ev.cancelable)ev.preventDefault();
  try{st.source?.releasePointerCapture?.(st.pointerId)}catch{}
- const valid=mobileTacticalFanActive()
-  ?creatureDragDropAccepted(st,ev.clientX,ev.clientY)
-  :(pointInsideRect(ev.clientX,ev.clientY,st.dropRect||creatureDropRect(),4)&&creatureDragPlayStillLegal(st.uid));
+ st.lastX=ev.clientX;st.lastY=ev.clientY;
+ creatureDragPositionProxy(ev.clientX,ev.clientY);
+ const valid=creatureDragDropAccepted(st,ev.clientX,ev.clientY);
  dragSuppressClickUntil=Date.now()+420;
  if(valid)creatureDragAccept(st);else creatureDragSnapBack(st);
 },{passive:false});
@@ -30854,6 +31000,7 @@ document.addEventListener('pointercancel',ev=>{
  if(mobileTacticalFanActive()&&ev.pointerType==='touch')return;
  const st=creatureDragState;if(!st||st.pointerId!==ev.pointerId)return;
  try{st.source?.releasePointerCapture?.(st.pointerId)}catch{}
+ dragSuppressClickUntil=Date.now()+420;
  if(st.active)creatureDragSnapBack(st);else creatureDragState=null;
 },{passive:true});
 
@@ -30867,6 +31014,10 @@ function mobileTouchById(list,id){
 function mobileOwnedTouchReset(){
  const st=creatureDragState;
  if(st?.source)st.source.classList.remove('mobile-touch-owned');
+ if(st?.uid!=null){
+  const live=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+  live?.classList.remove('mobile-touch-owned');
+ }
 }
 function mobileOwnedTapFocusOrDetail(st){
  if(!st?.source?.isConnected)return;
@@ -30889,9 +31040,6 @@ document.addEventListener('touchstart',ev=>{
  const eligible=creatureDragEligibleCard(el);
  if(!eligible)return;
 
- /* Playable Creature owns the gesture immediately: no prior Focus tap required. */
- if(ev.cancelable)ev.preventDefault();
-
  const t=ev.touches[0],rect=el.getBoundingClientRect();
  creatureDragState={
   uid:eligible.uid,source:el,pointerId:'touch',touchId:t.identifier,
@@ -30906,27 +31054,32 @@ document.addEventListener('touchstart',ev=>{
 
 document.addEventListener('touchmove',ev=>{
  const st=creatureDragState;if(!st||st.pointerId!=='touch'||st.cancelled)return;
- const t=mobileTouchById(ev.touches,st.touchId);if(!t)return;
-
- if(ev.cancelable)ev.preventDefault();
+ const t=mobileTouchById(ev.touches,st.touchId)||(ev.touches?.length===1?ev.touches[0]:null);if(!t)return;
 
  st.lastX=t.clientX;st.lastY=t.clientY;
  const dx=t.clientX-st.startX,dy=t.clientY-st.startY;
  const dist=Math.hypot(dx,dy);
 
- /* Playable Creature movement means Drag immediately.
-    Tiny movement remains a tap so Focus → Detail still works. */
  if(!st.active){
-  if(dist<6)return;
+  if(dist<8)return;
+  /* Gesture arbitration: horizontal movement remains Hand scrolling */
+  if(Math.abs(dx)>Math.abs(dy)*1.15){
+   mobileOwnedTouchReset();
+   creatureDragState=null;
+   return;
+  }
+  if(mobileHandFocusUid!==null&&Number(mobileHandFocusUid)!==Number(st.uid)){
+   mobileHandFocusUid=null;
+   setupTacticalFanHand();
+  }
   st.gestureMode='drag';
   st.active=true;
   creatureDragCreateProxy(st,t.clientX,t.clientY);
  }
 
+ if(ev.cancelable)ev.preventDefault();
  creatureDragPositionProxy(t.clientX,t.clientY);
- const r=refreshHandDropRect(st,creatureDropRect,'.creature-drop-surface-cue');
- const upward=st.startY-t.clientY;
- creatureDragSetHot(upward>=24&&pointInsideRect(t.clientX,t.clientY,r,8));
+ creatureDragSetHot(isPointOverCreatureDropZone(t.clientX,t.clientY,st));
 },{passive:false,capture:true});
 
 
@@ -30945,6 +31098,9 @@ function mobileFinalizeCreatureDrag(st,x,y,{cancelled=false}={}){
   return shouldOpenDetail;
  }
 
+ st.lastX=finalX;st.lastY=finalY;
+ if(st.proxy)creatureDragPositionProxy(finalX,finalY);
+
  /* A cancelled gesture must never spend a card. */
  const accept=!cancelled&&creatureDragDropAccepted(st,finalX,finalY);
 
@@ -30962,7 +31118,7 @@ function mobileFinalizeCreatureDrag(st,x,y,{cancelled=false}={}){
 
 document.addEventListener('touchend',ev=>{
  const st=creatureDragState;if(!st||st.pointerId!=='touch')return;
- const t=mobileTouchById(ev.changedTouches,st.touchId);
+ const t=mobileTouchById(ev.changedTouches,st.touchId)||(ev.changedTouches?.length===1?ev.changedTouches[0]:null);
 
  if(ev.cancelable)ev.preventDefault();
 
@@ -31072,9 +31228,16 @@ function artifactDragDropAccepted(st,x,y){
  if(!st||!artifactDragPlayStillLegal(st.uid))return false;
  const r=refreshHandDropRect(st,artifactDropRect,'.artifact-drop-surface-cue');
  if(!r)return false;
- /* Artifact accepts anywhere on the visible battlefield, at the release
-    finger. Card overlap or a previously highlighted frame cannot play it. */
- return pointInsideRect(x,y,r,4);
+ const hand=document.querySelector('#app .hand-area')||document.querySelector('#app .hand-scroll');
+ const hr=hand?.getBoundingClientRect();
+ const upward=(st.startY!=null)?(st.startY-y):0;
+ if(hr&&y>hr.top+24&&upward<20)return false;
+ if(pointInsideRect(x,y,r,10))return true;
+ if(st?.proxy){
+  const pr=st.proxy.getBoundingClientRect();
+  if(rectOverlapRatio(pr,r)>=0.15&&(upward>=14||(hr&&y<=hr.top+10)))return true;
+ }
+ return false;
 }
 function artifactDragSetHot(hot){
  const zone=artifactDropZone();
@@ -31125,31 +31288,70 @@ function artifactDragCreateProxy(st,x,y){
  artifactDropCueCreate(st.dropRect);
  artifactDragPositionProxy(x,y);
 }
-function artifactDragCleanup({keepProxy=false}={}){
+function artifactDragCleanup({keepProxy=false,keepSourceHidden=false}={}){
  const st=artifactDragState;if(!st)return;
  const zone=artifactDropZone();
  zone?.classList.remove('artifact-drop-zone','artifact-drop-hot');
  document.querySelector('.artifact-drop-surface-cue')?.remove();
  document.querySelector('#app')?.classList.remove('artifact-drag-active');
- st.source?.classList.remove('creature-drag-source','artifact-touch-owned');
- st.source?.removeAttribute('aria-grabbed');
+ if(!keepSourceHidden){
+  st.source?.classList.remove('creature-drag-source','artifact-touch-owned');
+  st.source?.removeAttribute('aria-grabbed');
+  const live=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+  live?.classList.remove('creature-drag-source','artifact-touch-owned');
+  live?.removeAttribute('aria-grabbed');
+ }
  if(!keepProxy)st.proxy?.remove();
  artifactDragState=null;
+ window.__RESONANCE_D52_SYNC__?.();
 }
 function artifactDragSnapBack(st){
- if(!st?.proxy){artifactDragCleanup();return}
- const r=st.source.getBoundingClientRect();
- st.proxy.classList.remove('desktop-mouse-drag','mobile-touch-drag');
- st.proxy.classList.add('creature-drag-snapback');
- st.proxy.style.left=`${r.left+r.width/2}px`;
- st.proxy.style.top=`${r.top+r.height/2}px`;
+ if(!st?.proxy){artifactDragCleanup();setupTacticalFanHand();return}
  const proxy=st.proxy;
- artifactDragCleanup({keepProxy:true});
- setTimeout(()=>proxy.remove(),190);
+ const liveSource=(st.source?.isConnected?st.source:null)||
+  document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+ const sr=liveSource?.getBoundingClientRect();
+ const rail=document.querySelector('#app .hand-scroll')||document.querySelector('#app .hand-area');
+ const rr=rail?.getBoundingClientRect();
+ const fallbackHandRect=(rr&&rr.width>0&&rr.height>0)?{left:rr.left+rr.width/2-74,top:rr.top+8,width:148,height:216}:null;
+ const r=(sr&&sr.width>0&&sr.height>0)?sr:(st.sourceRect||fallbackHandRect);
+ if(r){
+  const curLeft=parseFloat(proxy.style.left)||(st.lastX-(st.grabX||0));
+  const curTop=parseFloat(proxy.style.top)||(st.lastY-(st.grabY||0));
+  const pw=proxy.offsetWidth||r.width||140;
+  const ph=proxy.offsetHeight||r.height||200;
+  const wasGrabOffset=proxy.classList.contains('desktop-mouse-drag')||proxy.classList.contains('mobile-touch-drag');
+  if(wasGrabOffset){
+   proxy.style.left=`${curLeft+pw/2}px`;
+   proxy.style.top=`${curTop+ph/2}px`;
+  }
+  proxy.classList.remove('desktop-mouse-drag','mobile-touch-drag');
+  proxy.classList.add('creature-drag-snapback');
+  void proxy.offsetWidth;
+  proxy.style.left=`${r.left+r.width/2}px`;
+  proxy.style.top=`${r.top+r.height/2}px`;
+  artifactDragCleanup({keepProxy:true,keepSourceHidden:true});
+  setTimeout(()=>{
+   proxy.remove();
+   liveSource?.classList.remove('creature-drag-source','artifact-touch-owned');
+   liveSource?.removeAttribute('aria-grabbed');
+   st.source?.classList.remove('creature-drag-source','artifact-touch-owned');
+   st.source?.removeAttribute('aria-grabbed');
+   setupTacticalFanHand();
+  },190);
+ }else{
+  proxy.remove();
+  artifactDragCleanup();
+  setupTacticalFanHand();
+ }
 }
 function artifactDragAccept(st){
  const proxy=st?.proxy,uid=st?.uid;
  if(uid==null){artifactDragCleanup();return}
+ if(mobileHandFocusUid!==null){
+  mobileHandFocusUid=null;
+  setupTacticalFanHand();
+ }
 
  const sourceRect=st.source?.getBoundingClientRect?.();
  const dest=artifactDestinationRect();
@@ -31227,6 +31429,10 @@ document.addEventListener('pointermove',ev=>{
  st.lastX=ev.clientX;st.lastY=ev.clientY;
  if(!st.active){
   if(Math.hypot(ev.clientX-st.startX,ev.clientY-st.startY)<5)return;
+  if(mobileHandFocusUid!==null&&Number(mobileHandFocusUid)!==Number(st.uid)){
+   mobileHandFocusUid=null;
+   setupTacticalFanHand();
+  }
   st.active=true;
   artifactDragCreateProxy(st,ev.clientX,ev.clientY);
  }
@@ -31237,31 +31443,40 @@ document.addEventListener('pointermove',ev=>{
 },{passive:false});
 
 document.addEventListener('pointerup',ev=>{
- const st=artifactDragState;if(!st||st.pointerId!==ev.pointerId)return;
  if(mobileTacticalFanActive()&&ev.pointerType==='touch')return;
- if(!st.active){artifactDragState=null;return}
+ const st=artifactDragState;if(!st||st.pointerId!==ev.pointerId)return;
+ if(!st.active){try{st.source?.releasePointerCapture?.(st.pointerId)}catch{} artifactDragState=null;return}
  if(ev.cancelable)ev.preventDefault();
+ try{st.source?.releasePointerCapture?.(st.pointerId)}catch{}
+ st.lastX=ev.clientX;st.lastY=ev.clientY;
+ artifactDragPositionProxy(ev.clientX,ev.clientY);
  const valid=artifactDragDropAccepted(st,ev.clientX,ev.clientY);
+ dragSuppressClickUntil=Date.now()+420;
  if(valid)artifactDragAccept(st);else artifactDragSnapBack(st);
 },{passive:false});
 
 document.addEventListener('pointercancel',ev=>{
+ if(mobileTacticalFanActive()&&ev.pointerType==='touch')return;
  const st=artifactDragState;if(!st||st.pointerId!==ev.pointerId)return;
+ try{st.source?.releasePointerCapture?.(st.pointerId)}catch{}
+ dragSuppressClickUntil=Date.now()+420;
  if(st.active)artifactDragSnapBack(st);else artifactDragState=null;
 },{passive:true});
 
 /* Mobile direct Artifact Drag — no Focus prerequisite. */
 function artifactTouchReset(){
  const st=artifactDragState;
- st?.source?.classList.remove('artifact-touch-owned');
+ if(st?.source)st.source.classList.remove('artifact-touch-owned');
+ if(st?.uid!=null){
+  const live=document.querySelector(`#app .hand-scroll>.card[data-card="${Number(st.uid)}"][data-zone="hand"][data-owner="0"]`);
+  live?.classList.remove('artifact-touch-owned');
+ }
 }
 document.addEventListener('touchstart',ev=>{
  if(!mobileTacticalFanActive()||ev.touches.length!==1)return;
  const el=ev.target.closest?.('#app .hand-scroll>.card[data-card-type="artifact"].playable');
  const eligible=artifactDragEligibleCard(el);
  if(!eligible)return;
-
- if(ev.cancelable)ev.preventDefault();
 
  const t=ev.touches[0],rect=el.getBoundingClientRect();
  artifactDragState={
@@ -31276,22 +31491,34 @@ document.addEventListener('touchstart',ev=>{
 
 document.addEventListener('touchmove',ev=>{
  const st=artifactDragState;if(!st||st.pointerId!=='artifact-touch'||st.cancelled)return;
- const t=mobileTouchById(ev.touches,st.touchId);if(!t)return;
- if(ev.cancelable)ev.preventDefault();
+ const t=mobileTouchById(ev.touches,st.touchId)||(ev.touches?.length===1?ev.touches[0]:null);if(!t)return;
 
  st.lastX=t.clientX;st.lastY=t.clientY;
+ const dx=t.clientX-st.startX,dy=t.clientY-st.startY;
+ const dist=Math.hypot(dx,dy);
  if(!st.active){
-  if(Math.hypot(t.clientX-st.startX,t.clientY-st.startY)<6)return;
+  if(dist<8)return;
+  /* Gesture arbitration: horizontal movement remains Hand scrolling */
+  if(Math.abs(dx)>Math.abs(dy)*1.15){
+   artifactTouchReset();
+   artifactDragState=null;
+   return;
+  }
+  if(mobileHandFocusUid!==null&&Number(mobileHandFocusUid)!==Number(st.uid)){
+   mobileHandFocusUid=null;
+   setupTacticalFanHand();
+  }
   st.active=true;
   artifactDragCreateProxy(st,t.clientX,t.clientY);
  }
+ if(ev.cancelable)ev.preventDefault();
  artifactDragPositionProxy(t.clientX,t.clientY);
  artifactDragSetHot(artifactDragDropAccepted(st,t.clientX,t.clientY));
 },{passive:false,capture:true});
 
 document.addEventListener('touchend',ev=>{
  const st=artifactDragState;if(!st||st.pointerId!=='artifact-touch')return;
- const t=mobileTouchById(ev.changedTouches,st.touchId);
+ const t=mobileTouchById(ev.changedTouches,st.touchId)||(ev.changedTouches?.length===1?ev.changedTouches[0]:null);
  if(ev.cancelable)ev.preventDefault();
  const x=t?.clientX??st.lastX,y=t?.clientY??st.lastY;
 
@@ -31304,18 +31531,46 @@ document.addEventListener('touchend',ev=>{
   return;
  }
 
+ st.lastX=x;st.lastY=y;
+ if(st.proxy)artifactDragPositionProxy(x,y);
  const valid=artifactDragDropAccepted(st,x,y);
+ dragSuppressClickUntil=Date.now()+650;
  artifactTouchReset();
  if(valid)artifactDragAccept(st);else artifactDragSnapBack(st);
 },{passive:false,capture:true});
 
 document.addEventListener('touchcancel',()=>{
  const st=artifactDragState;if(!st||st.pointerId!=='artifact-touch')return;
+ dragSuppressClickUntil=Date.now()+650;
  artifactTouchReset();
- if(st.active&&artifactDragDropAccepted(st,st.lastX,st.lastY)&&st.hot)artifactDragAccept(st);
- else if(st.active)artifactDragSnapBack(st);
- else artifactDragState=null;
+ if(st.active)artifactDragSnapBack(st);
+ else artifactDragCleanup();
 },{passive:true,capture:true});
+
+function abortHandCardDrags(){
+ if(creatureDragState){
+  dragSuppressClickUntil=Date.now()+500;
+  try{creatureDragState.source?.releasePointerCapture?.(creatureDragState.pointerId)}catch{}
+  if(creatureDragState.pointerId==='touch'){
+   mobileFinalizeCreatureDrag(creatureDragState,creatureDragState.lastX,creatureDragState.lastY,{cancelled:true});
+  }else{
+   if(creatureDragState.active)creatureDragSnapBack(creatureDragState);
+   else creatureDragCleanup();
+  }
+ }
+ if(artifactDragState){
+  dragSuppressClickUntil=Date.now()+500;
+  try{artifactDragState.source?.releasePointerCapture?.(artifactDragState.pointerId)}catch{}
+  artifactTouchReset();
+  if(artifactDragState.active)artifactDragSnapBack(artifactDragState);
+  else artifactDragCleanup();
+ }
+ window.__RESONANCE_D34_DIRECT__?.abort?.();
+}
+window.addEventListener('blur',abortHandCardDrags);
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState==='hidden')abortHandCardDrags();
+});
 
 
 function mulliganCardRules(c){
@@ -31385,6 +31640,7 @@ function fitCardDetailViewport(){
 
 
 function applyResolvingInputLock(){
+ syncLockedControls();
  try{if(document.activeElement&&document.activeElement!==document.body)document.activeElement.blur();}catch{}
  const gEl=document.querySelector('.game');
  gEl?.classList.add('resolving-input-lock');
@@ -31402,12 +31658,13 @@ function applyResolvingInputLock(){
  window.__RESONANCE_D41_SYNC__?.();
 }
 function clearResolvingInputLock(){
+ syncLockedControls();
  const gEl=document.querySelector('.game');
  gEl?.classList.remove('resolving-input-lock');
  gEl?.removeAttribute('aria-busy');
  document.querySelectorAll('[data-action="next"],.desktop-bf-cta.primary,.mobile-primary-cta').forEach(b=>{
   b.removeAttribute('aria-disabled');
-  b.disabled=(!started||game.active!==0||game.winner!==null||resolutionState||fxLock);
+  b.disabled=gameplayControlBlocked(b)||uiInputLocked();
  });
  document.querySelectorAll('.hand-scroll .card[data-zone="hand"][data-wb-was-playable="true"]').forEach(c=>{
   c.classList.add('playable');
@@ -31418,6 +31675,60 @@ function clearResolvingInputLock(){
 function isFxPlaying(){return !!(fxLock||resolutionState||window.__WB_CAST_TRANSITION_ACTIVE__)}
 window.isFxPlaying=isFxPlaying;
 function uiInputLocked(){return !!(resolutionState||fxLock||window.__WB_CAST_TRANSITION_ACTIVE__)}
+
+// Bounded button hardening: safe information controls never mutate duel state.
+function handleSafeUtility(el){
+ const close=el.dataset.close;
+ if(['rules','graveyard','detail'].includes(close)&&!(close==='detail'&&pendingPayment)){
+  document.getElementById(close)?.close();return true;
+ }
+ switch(el.dataset.action){
+  case 'rules':showRules();return true;
+  case 'fullscreen':toggleFullscreen();return true;
+  case 'menu':
+   if(started){rules.innerHTML='<button class="close" data-close="rules" aria-label="ปิด">×</button><div class="rules-content"><h2>พักการเดินทาง</h2><p>เลือก Deck ใหม่จะเริ่ม Duel ใหม่</p><button class="primary" data-close="rules">กลับสู่ Duel</button><button class="secondary" data-action="choose-deck">เลือก Deck ใหม่</button></div>';rules.showModal();syncLockedControls();}
+   return true;
+ }
+ return false;
+}
+function gameplayControlBlocked(el){
+ const d=el.dataset;
+ const gameplay=d.action==='next'||d.play!==undefined||d.attack!==undefined||d.activate!==undefined||d.attune!==undefined;
+ if(!gameplay)return false;
+ if(!started||game.active!==0||game.winner!==null||mulliganOpen||pendingPayment||game.pendingChoice||selected)return true;
+ if(d.attack!==undefined){const unit=game.players[0].board.find(x=>x.uid===Number(d.attack));return !unit||!!detailAttackBlockReason(unit);}
+ if(d.activate!==undefined){const unit=game.players[0].board.find(x=>x.uid===Number(d.activate));return !unit||!!game.abilityReason(unit,game.players[0]);}
+ return false;
+}
+const buttonLockSelector='[data-action="history"],[data-action="graveyard"],[data-action="landmark"],[data-action="choose-deck"],[data-action="restart"],[data-action="start"],[data-action="deck-builder"],[data-action="next"],[data-action="cancel"],[data-grave-owner],[data-play],[data-attack],[data-activate],[data-attune],[data-card],[data-keeper],[data-adv],[data-adv-entry],[data-adv-stage],[data-p23-skip],[data-p3d-choice],[data-pay-key],[data-pay-auto],[data-pay-confirm],[data-pay-cancel]';
+const buttonLockPrevious=new Map();
+function syncLockedControls(){
+ const locked=uiInputLocked();
+ {
+  for(const [el,old] of buttonLockPrevious){
+   if(locked||gameplayControlBlocked(el))continue;
+   if(el.isConnected){el.disabled=old.disabled;if(old.aria===null)el.removeAttribute('aria-disabled');else el.setAttribute('aria-disabled',old.aria);if(old.title===null)el.removeAttribute('title');else el.setAttribute('title',old.title);el.classList.remove('wb-input-disabled');}
+   buttonLockPrevious.delete(el);
+  }
+ }
+ for(const el of document.querySelectorAll(buttonLockSelector)){
+  if(!locked&&!gameplayControlBlocked(el))continue;
+  if(!buttonLockPrevious.has(el))buttonLockPrevious.set(el,{disabled:el.disabled,aria:el.getAttribute('aria-disabled'),title:el.getAttribute('title')});
+  if('disabled' in el&&!el.disabled)el.disabled=true;
+  if(el.getAttribute('aria-disabled')!=='true')el.setAttribute('aria-disabled','true');
+  if(!el.classList.contains('wb-input-disabled'))el.classList.add('wb-input-disabled');
+  const note=locked?'กำลัง Resolve · กรุณารอ':'ไม่พร้อมใช้งานในสถานะปัจจุบัน';
+  if(el.title!==note)el.title=note;
+ }
+ for(const el of buttonLockPrevious.keys())if(!el.isConnected)buttonLockPrevious.delete(el);
+}
+// Capture protects independently registered Adventure/P3D controls too.
+document.addEventListener('click',ev=>{
+ const el=ev.target.closest?.(buttonLockSelector);if(!el)return;
+ if(uiInputLocked()||gameplayControlBlocked(el)||el.disabled||el.getAttribute('aria-disabled')==='true'){ev.preventDefault();ev.stopImmediatePropagation();}
+},true);
+new MutationObserver(syncLockedControls).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','disabled','aria-disabled']});
+
 function beginFxLock(kind,data={}){m12115ClearCausalReadout();fxLock=true;resolutionState={kind,...data};applyResolvingInputLock()}
 function endFxLock(renderNow=true){fxLock=false;resolutionState=null;m12115ClearCausalReadout();clearResolvingInputLock();if(renderNow)render()}
 function fxCard(uid,owner){return document.querySelector(`.card.board[data-card="${uid}"][data-owner="${owner}"]`)}
@@ -32029,12 +32340,16 @@ async function presentPlayerActionReport(report){
  render();
  if(dragPlayHandoff?.state==='committed')dragHandoffClear(true);
 }
-async function resolvePlayerPlayWithFx(uid,targetUid=null,spend=null){
- if(uiInputLocked())return false;const played=game.players[0].hand.find(x=>x.uid===uid);if(!played)return false;
- const beforeSeq=game.eventSeq||0,beforeSnapshot=game.presentationSnapshot();game._presentationCapture=[];deferResultPresentation=true;beginFxLock('play',{sourceUid:uid,targetUid});
- const ok=game.play(uid,targetUid,spend);const captures=game._presentationCapture||[];delete game._presentationCapture;
- if(!ok){deferResultPresentation=false;fxLock=false;resolutionState=null;render();requestAnimationFrame(()=>dragHandoffCancel(uid));return false}
- const finalSnapshot=game.presentationSnapshot(),report=playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,'play');detail.close();selected=null;await presentPlayerActionReport(report);return true;
+async function resolvePlayerPlayWithFx(uid,targetUid=null,spend=null,castLayout=null){
+ try{
+  if(uiInputLocked())return false;const played=game.players[0].hand.find(x=>x.uid===uid);if(!played)return false;
+  const beforeSeq=game.eventSeq||0,beforeSnapshot=game.presentationSnapshot();game._presentationCapture=[];deferResultPresentation=true;beginFxLock('play',{sourceUid:uid,targetUid});
+  const ok=game.play(uid,targetUid,spend);const captures=game._presentationCapture||[];delete game._presentationCapture;
+  if(!ok){deferResultPresentation=false;fxLock=false;resolutionState=null;render();requestAnimationFrame(()=>dragHandoffCancel(uid));return false}
+  const finalSnapshot=game.presentationSnapshot(),report=playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,'play');detail.close();selected=null;await presentPlayerActionReport(report);return true;
+ }finally{
+  if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
+ }
 }
 async function resolveReturnChoiceFx(targetUid=null){
  if(uiInputLocked())return;const ch=game.pendingChoice;if(!ch||ch.type!=='return_enemy_bounce')return;const owner=ch.owner,target=targetUid===null?null:game.players[1-owner].board.find(x=>x.uid===targetUid),el=target?fxCard(target.uid,1-owner):null;beginFxLock('return-choice',{targetUid});
@@ -32241,6 +32556,7 @@ document.getElementById('landscapeButton')?.addEventListener('click',requestLand
 
 async function handleCommitControl(el){
  if(!el||!el.closest?.('.commit-detail-modal'))return false;
+ if(uiInputLocked()||el.disabled||el.getAttribute('aria-disabled')==='true')return true;
 
  if(el.dataset.payKey!==undefined){
   const s=paymentStatus();if(!s)return true;
@@ -32254,8 +32570,9 @@ async function handleCommitControl(el){
   pendingPayment.spend={...game.suggestSpend(s.p,s.c)};updatePaymentDialogState();return true;
  }
  if(el.dataset.payCancel!==undefined){
-  const cancelUid=pendingPayment?.uid;
+  const cancelUid=pendingPayment?.uid,castLayout=pendingPayment?.castLayout;
   pendingPayment=null;selected=null;detail.close();render();
+  if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
   if(cancelUid!=null)requestAnimationFrame(()=>dragHandoffCancel(cancelUid));
   return true;
  }
@@ -32264,8 +32581,8 @@ async function handleCommitControl(el){
   if(!ps||!ps.valid||uiInputLocked())return true;
   const pp={...pendingPayment,spend:{...pendingPayment.spend}};pendingPayment=null;
   dragHandoffCommit(pp.uid);
-  const ok=await resolvePlayerPlayWithFx(pp.uid,pp.targetUid,pp.spend);
-  if(!ok){pendingPayment=pp;renderPaymentDialog()}
+  const ok=await resolvePlayerPlayWithFx(pp.uid,pp.targetUid,pp.spend,pp.castLayout);
+  if(!ok){delete pp.castLayout;pendingPayment=pp;renderPaymentDialog()}
   return true;
  }
  return false;
@@ -32305,8 +32622,11 @@ document.addEventListener('touchend',ev=>{
 document.addEventListener('touchcancel',()=>{commitTouchState=null},{passive:true,capture:true});
 
 document.addEventListener('click',async ev=>{const el=ev.target.closest('button,a.wordmark');if(!el)return;
-if(Date.now()<dragSuppressClickUntil&&el.closest?.('.hand-scroll>.card')){ev.preventDefault();return;}
+if(Date.now()<dragSuppressClickUntil&&el.closest?.('#app .game .card,#app .game .keeper')){ev.preventDefault();return;}
 if(Date.now()<commitTouchSuppressUntil&&el.closest?.('.commit-detail-modal')){ev.preventDefault();return;}
+if(el.disabled||el.getAttribute('aria-disabled')==='true'){ev.preventDefault();return;}
+if(handleSafeUtility(el)){ev.preventDefault();return;}
+if(gameplayControlBlocked(el)){ev.preventDefault();return;}
 if(await handleCommitControl(el)){ev.preventDefault();return;}
 if(uiInputLocked()){ev.preventDefault();return;}
 if(el.dataset.mulliganCard!==undefined){if(!mulliganOpen)return;const uid=Number(el.dataset.mulliganCard);if(mulliganSelected.has(uid))mulliganSelected.delete(uid);else if(mulliganSelected.size<2)mulliganSelected.add(uid);render();return}
@@ -32317,7 +32637,7 @@ if(el.dataset.cartBottom!==undefined){if(game.resolveCartographerBottom(Number(e
 if(el.dataset.scoutBottom!==undefined){if(game.resolveScoutFilter(Number(el.dataset.scoutBottom))){render();if(game.active===1)runAI()}return}
 if(el.dataset.returnBounce!==undefined){await resolveReturnChoiceFx(Number(el.dataset.returnBounce));return}
 if(el.dataset.returnBounceSkip!==undefined){await resolveReturnChoiceFx(null);return}
-if(el.dataset.lioraReady!==undefined){await resolveLioraChoiceFx(Number(el.dataset.lioraReady));return}if(el.dataset.graveOwner!==undefined){showGraveyard(Number(el.dataset.graveOwner));return}if(el.dataset.close){document.querySelector('#'+el.dataset.close).close();return}
+if(el.dataset.lioraReady!==undefined){await resolveLioraChoiceFx(Number(el.dataset.lioraReady));return}if(el.dataset.graveOwner!==undefined){showGraveyard(Number(el.dataset.graveOwner));return}if(el.dataset.close)return;
 if(el.dataset.builderKeeper!==undefined){const k=Number(el.dataset.builderKeeper);builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__?window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__(k):makeBuilderState(k);builderFilter='all';render();return}
 if(el.dataset.builderPrimary!==undefined){builderState=normalizeBuilderState({...builderState,primary:el.dataset.builderPrimary});builderFilter='all';render();return}
 if(el.dataset.builderSecondary!==undefined){builderState=normalizeBuilderState({...builderState,secondary:el.dataset.builderSecondary});builderFilter='all';render();return}
@@ -32336,7 +32656,7 @@ if(el.dataset.deck!==undefined){chosenDeck=el.dataset.deck==='custom'?'custom':N
 case'graveyard':showGraveyard(0);break;
 case'mulligan-clear':if(mulliganOpen){mulliganSelected.clear();render()}break;
 case'mulligan-confirm':if(mulliganOpen){const human=[...mulliganSelected];game.mulligan(game.players[0],human);game.aiMulligan(game.players[1]);mulliganSelected.clear();mulliganOpen=false;game.note('Opening Mulligan เสร็จสิ้น · เริ่ม Turn แรก');render()}break;
-case'deck-builder':deckBuilderOpen=true;if(customDeckProfile&&chosenDeck==='custom')builderState=normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))});else if(window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__)builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__(Number.isInteger(Number(chosenDeck))?Number(chosenDeck):0);render();break;case'builder-back':deckBuilderOpen=false;render();break;case'builder-clear':builderState.counts={};render();break;case'builder-starter':builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__?window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__(builderState.keeper,builderState.primary):makeBuilderState(builderState.keeper);builderFilter='all';render();break;case'builder-save':if(builderValid(builderState)){customDeckProfile=builderProfile(builderState);saveCustomDeckProfile(customDeckProfile);chosenDeck='custom';deckBuilderOpen=false;render()}break;case'start':mobileHandFocusUid=null;started=true;fresh(true);break;case'restart':mobileHandFocusUid=null;started=true;fresh(true);break;case'next':if(started&&game.active===0){selected=null;game.next();render();runAI()}break;case'cancel':selected=null;render();break;case'history':historyOpen=!historyOpen;render();if(historyOpen)requestAnimationFrame(()=>{const log=document.querySelector('#battleHistoryLog.expanded');if(log)log.scrollTop=0});break;case'fullscreen':toggleFullscreen();break;case'rules':showRules();break;case'landmark':showRules(true);break;case'menu':if(!started)return;rules.innerHTML=`<button class="close" data-close="rules" aria-label="ปิด">×</button><div class="rules-content"><h2>พักการเดินทาง</h2><p>เลือก Deck ใหม่จะเริ่ม Duel ใหม่</p><button class="primary" data-close="rules">กลับสู่ Duel</button><button class="secondary" data-action="choose-deck">เลือก Deck ใหม่</button></div>`;rules.showModal();break;case'choose-deck':cancelAIQueue();rules.close();started=false;deckBuilderOpen=false;fresh(false);break}});
+case'deck-builder':deckBuilderOpen=true;if(customDeckProfile&&chosenDeck==='custom')builderState=normalizeBuilderState({keeper:customDeckProfile.keeper,primary:customDeckProfile.primary,secondary:customDeckProfile.secondary,splash:customDeckProfile.splash,counts:Object.fromEntries(customDeckProfile.cards.map(x=>[x.key,x.count]))});else if(window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__)builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_STATE__(Number.isInteger(Number(chosenDeck))?Number(chosenDeck):0);render();break;case'builder-back':deckBuilderOpen=false;render();break;case'builder-clear':builderState.counts={};render();break;case'builder-starter':builderState=window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__?window.__RESONANCE_C8_4C_STARTER_BUILDER_FOR_KEEPER__(builderState.keeper,builderState.primary):makeBuilderState(builderState.keeper);builderFilter='all';render();break;case'builder-save':if(builderValid(builderState)){customDeckProfile=builderProfile(builderState);saveCustomDeckProfile(customDeckProfile);chosenDeck='custom';deckBuilderOpen=false;render()}break;case'start':mobileHandFocusUid=null;started=true;fresh(true);break;case'restart':mobileHandFocusUid=null;started=true;fresh(true);break;case'next':if(started&&game.active===0){selected=null;game.next();render();runAI()}break;case'cancel':selected=null;render();break;case'history':historyOpen=!historyOpen;render();if(historyOpen)requestAnimationFrame(()=>{const log=document.querySelector('#battleHistoryLog.expanded');if(log)log.scrollTop=0});break;case'landmark':showRules(true);break;case'choose-deck':cancelAIQueue();rules.close();started=false;deckBuilderOpen=false;fresh(false);break}});
 document.addEventListener('keydown',e=>{if(uiInputLocked())return;if(e.key==='Escape'&&selected){selected=null;render()}});
 render();
 const publicState=()=>({started,mulliganOpen,mulliganSelected:[...mulliganSelected],turn:game.round,phase:game.phase,uiActionState:resolutionState?'RESOLVING':aiPacingState?'AI_RESOLVING':selected?'TARGETING':null,aiPacing:aiPacingState?{...aiPacingState}:null,active:game.active===0?'player':'opponent',winner:game.winner,landmarkOwner:game.landmark,landmark:{current:game.currentLandmark?.id||null,name:game.currentLandmark?.name||null,next:game.landmarkDeck[game.landmarkStep+1]?.id||null,nextName:game.landmarkDeck[game.landmarkStep+1]?.name||null,index:game.landmarkStep+1,total:game.landmarkDeck.length,claimed:game.landmarkClaimed,pendingReveal:game.pendingLandmarkReveal,history:game.landmarkHistory,pendingChoice:game.pendingChoice?.type||null},combat:{playerProtectors:game.protectors(game.players[0]).map(x=>x.uid),opponentProtectors:game.protectors(game.players[1]).map(x=>x.uid)},player:{spirit:game.players[0].spirit,stones:game.players[0].stones,readyStones:game.players[0].readyStones,dormantStones:game.players[0].dormantStones,committedStones:game.players[0].committedStones,hand:game.players[0].hand.map(x=>({...x,...C[x.key],blocked:game.active!==0?'Opponent turn':game.reason(x)})),board:game.players[0].board.map(x=>({...x,activated:C[x.key].activated||null,activatedName:C[x.key].activatedName||null,activatedCost:C[x.key].activatedCost||null,abilityUsed:!!x.abilityUsed,abilityBlocked:C[x.key].activated?game.abilityReason(x,game.players[0]):null})),artifacts:game.players[0].artifacts,restore:game.players[0].restore,boons:game.players[0].boons,abilityStats:game.players[0].abilityStats},opponent:{spirit:game.players[1].spirit,handCount:game.players[1].hand.length,stones:game.players[1].stones,readyStones:game.players[1].readyStones,dormantStones:game.players[1].dormantStones,committedStones:game.players[1].committedStones,board:game.players[1].board,artifacts:game.players[1].artifacts,restore:game.players[1].restore,boons:game.players[1].boons,abilityStats:game.players[1].abilityStats}});
@@ -32380,7 +32700,7 @@ detail.addEventListener('touchend',ev=>{
 },{passive:false,capture:true});
 detail.addEventListener('touchcancel',()=>{cardDetailCloseTouch=null},{passive:true,capture:true});
 detail.addEventListener('click',closeCardDetailControl,true);
-detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid;pendingPayment=null;if(cancelledUid!=null&&dragPlayHandoff?.state==='staging')requestAnimationFrame(()=>dragHandoffCancel(cancelledUid));runAI()});rules.addEventListener('close',()=>runAI());graveyard.addEventListener('close',()=>runAI());
+detail.addEventListener('close',()=>{const cancelledUid=pendingPayment?.uid,castLayout=pendingPayment?.castLayout;pendingPayment=null;if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);if(cancelledUid!=null&&dragPlayHandoff?.state==='staging')requestAnimationFrame(()=>dragHandoffCancel(cancelledUid));runAI()});rules.addEventListener('close',()=>runAI());graveyard.addEventListener('close',()=>runAI());
 </script>
 <!-- M12.11.2D: STEP 2.5B Hand Rule Density Polish; canonical wording/gameplay unchanged. -->
 <!-- M12.11.2E: STEP 2.5C Hand Card Notation & Internal Compression; Hand-only presentation. -->
@@ -32821,7 +33141,7 @@ Game.prototype.aiStep=function(){if(this.pendingChoice||this.active!==1||this.wi
 
 // Payment UI consumes G09's physical-card discount without mutating printed Cost.
 paymentStatus=function(){const pp=pendingPayment;if(!pp)return null;const p=game.players[0],card=p.hand.find(x=>x.uid===pp.uid);if(!card)return null;const c=game.p3cCardDef(card),spend=pp.spend||{},total=p.keys.reduce((s,k)=>s+(Number(spend[k])||0),0);let error='';if(total!==c.cost)error=`เลือก Resonance ให้ครบ Cost ${c.cost} · ตอนนี้ ${total}/${c.cost}`;else for(const [k,n]of Object.entries(c.req||{}))if((spend[k]||0)<n){error=`ต้อง Commit ${R[k].name} อย่างน้อย ${n}`;break}if(!error)for(const k of p.keys)if((spend[k]||0)>(p.readyStones[k]||0)){error=`${R[k].name} READY ไม่พอ`;break}return {p,card,c,spend,total,error,valid:!error&&game.validateSpend(p,c,spend)};};
-startPayment=function(uid,targetUid=null){const p=game.players[0],card=p.hand.find(x=>x.uid===uid);if(!card||game.reason(card))return false;const c=game.p3cCardDef(card),suggested=game.suggestSpend(p,c);if(!suggested)return false;pendingPayment={uid,targetUid,spend:{...suggested}};renderPaymentDialog(true);return true;};
+startPayment=function(uid,targetUid=null,castLayout=null){if(mobileHandFocusUid!==null){mobileHandFocusUid=null;setupTacticalFanHand();}const p=game.players[0],card=p.hand.find(x=>x.uid===uid);if(!card||game.reason(card))return false;const c=game.p3cCardDef(card),suggested=game.suggestSpend(p,c);if(!suggested)return false;pendingPayment={uid,targetUid,spend:{...suggested},castLayout};renderPaymentDialog(true);return true;};
 
 // Canon target routing: G06 can target either player's Creature.
 
@@ -33798,6 +34118,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
 
   function syncCastTransitionFlag(active){
     window.__WB_CAST_TRANSITION_ACTIVE__=!!active;
+    syncLockedControls();
     const app=document.getElementById('app');
     app?.classList.toggle('d39-cast-transition',!!active);
   }
@@ -33807,6 +34128,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     current.cancelled=true;
     clearTimeout(current.timer);clearTimeout(current.watchdog);
     if(removeIntent)current.intent?.remove();
+    if(current.castLayout&&reason!=='payment-handoff'&&reason!=='choice-handoff'){
+      window.__RESONANCE_D52_END_CAST__?.(current.castLayout);
+      current.castLayout=null;
+    }
     castTransition=null;syncCastTransitionFlag(false);
     current.endReason=reason;
     return true;
@@ -33816,7 +34141,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     const tx={
       id:++castTransitionSeq,gameRef:game,uid:Number(st.uid),cardKey:st.card?.key||'',
       targetUid:Number(target?.targetUid),targetOwner:Number(target?.targetOwner??target?.el?.dataset?.owner??0),
-      mode:st.contract?.mode||'single',intent,startedAt:performance.now(),cancelled:false,timer:null,watchdog:null
+      mode:st.contract?.mode||'single',intent,startedAt:performance.now(),cancelled:false,timer:null,watchdog:null,castLayout:null
     };
     castTransition=tx;syncCastTransitionFlag(true);
     tx.watchdog=setTimeout(()=>{
@@ -34045,7 +34370,15 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     cue.className='d34-command-cue'+(hot?' is-hot':'');
     cue.dataset.kind=st.kind;
     cue.innerHTML=`<i>${st.kind==='attack'?'⚔':isEquipment?'◇':'✦'}</i><span class="d34-command-copy"><b>${verb} · ${esc(name)}</b><small>${esc(detail)}</small></span><strong>${hot?(isSpell?'ปล่อยเพื่อ LOCK เป้า':'ปล่อยเพื่อยืนยัน'):(isSpell?'CAST → เป้าหมาย':'ลาก → เป้าหมาย')}</strong>`;
-    host.appendChild(cue);
+    if(mobile){
+      host.appendChild(cue);
+    }else{
+      const r=host.getBoundingClientRect();
+      cue.classList.add('d34-command-cue-desktop');
+      cue.style.setProperty('left',`${r.left}px`,'important');cue.style.setProperty('top',`${r.top}px`,'important');
+      cue.style.width=`${r.width}px`;cue.style.height=`${r.height}px`;
+      document.body.appendChild(cue);
+    }
   }
 
   function markTargets(st){
@@ -34117,6 +34450,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     if(app)delete app.dataset.d34Kind;
     st?.source?.classList.remove('d34-drag-source','d34-touch-owned','d38-spell-cast-source');
     st?.source?.removeAttribute('aria-grabbed');
+    if(st?.uid!=null){
+      const live=document.querySelector(`#app .game .card[data-card="${Number(st.uid)}"]`);
+      live?.classList.remove('d34-drag-source','d34-touch-owned','d38-spell-cast-source');
+    }
     for(const t of st?.targets||[]){
       t.el?.classList.remove('d34-drop-legal','d34-drop-hot');
       if(t.el)delete t.el.dataset.d34Label;
@@ -34126,6 +34463,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
     if(!keepProxy)st?.proxy?.remove();
     if(!keepIntent)st?.intent?.remove();
     if(dm===st)dm=null;
+    if(st?.kind!=='attack'&&mobileTacticalFanActive()){
+      setupTacticalFanHand();
+    }
+    window.__RESONANCE_D52_SYNC__?.();
   }
 
   function snapBack(st){
@@ -34150,6 +34491,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   function acceptHandTarget(st,target){
     const contract=st.contract||directTargetContract(st.card,st.c);
     const uid=st.uid,targetUid=target.targetUid;
+    if(mobileHandFocusUid!==null){
+      mobileHandFocusUid=null;
+      setupTacticalFanHand();
+    }
 
     /* V38 — Sorcery is CAST AT TARGET, never PLACE CARD ON TARGET.
        No physical card proxy is staged over a Creature. The spell intent locks,
@@ -34162,7 +34507,9 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
       }
       intent?.classList.add('is-accepted');
       window.__WB_AUDIO__?.cue('lock');
+      const castLayout=window.__RESONANCE_D52_BEGIN_CAST__?.();
       const tx=beginCastTransition(st,target,intent);
+      if(tx)tx.castLayout=castLayout;
       cleanup(st,{keepIntent:!!intent});
       suppressClickUntil=Date.now()+700;dragSuppressClickUntil=Date.now()+700;
 
@@ -34179,14 +34526,15 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
             const queued=game.p3dQueueChoice?.({
               type:'p3d_prepare_play',kind:'dual',stage:'enemy',sourceUid:uid,
               title:C[check.card.key].name,prompt:'เลือก Creature ศัตรู 1 ใบที่จะรับ Damage 20',
-              options:enemyOptions,targetOwner:1,zone:'board',allyUid:targetUid
+              options:enemyOptions,targetOwner:1,zone:'board',allyUid:targetUid,
+              castLayout:tx.castLayout
             });
             if(!queued){abortCastTransition(tx,'secondary-target-unavailable');return}
             render();
             clearCastTransition(tx,'choice-handoff',{removeIntent:false});
             return;
           }
-          if(!startPayment(uid,targetUid)){abortCastTransition(tx,'payment-handoff-failed');return}
+          if(!startPayment(uid,targetUid,tx.castLayout)){abortCastTransition(tx,'payment-handoff-failed');return}
           clearCastTransition(tx,'payment-handoff',{removeIntent:false});
         }catch(error){
           console.error('[V39] Sorcery cast handoff failed',error);
@@ -34256,6 +34604,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   function begin(st,x,y){
     if(st.active)return;
     st.active=true;
+    if(mobileHandFocusUid!==null&&Number(mobileHandFocusUid)!==Number(st.uid)){
+      mobileHandFocusUid=null;
+      setupTacticalFanHand();
+    }
     createProxy(st,x,y);
     markTargets(st);
   }
@@ -34409,8 +34761,18 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   detailObserver.observe(detail,{subtree:true,childList:true});
   detail.addEventListener('toggle',decorateDetail);
 
+  window.addEventListener('blur',()=>{if(dm){if(dm.active)snapBack(dm);else cleanup(dm);}});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&dm){if(dm.active)snapBack(dm);else cleanup(dm);}});
+
   window.__RESONANCE_D34_DIRECT__={
     version:'D5.1/V39',
+    abort(){
+      if(!dm)return false;
+      const st=dm;
+      if(st.active)snapBack(st);
+      else cleanup(st);
+      return true;
+    },
     get state(){return dm?{kind:dm.kind,uid:dm.uid,active:dm.active,targets:dm.targets.map(x=>({targetUid:x.targetUid,label:x.label}))}:null},
     get castTransition(){return castTransition?{id:castTransition.id,uid:castTransition.uid,cardKey:castTransition.cardKey,targetUid:castTransition.targetUid,targetOwner:castTransition.targetOwner,mode:castTransition.mode,ageMs:Math.round(performance.now()-castTransition.startedAt)}:null},
     attackEligible,
@@ -35124,24 +35486,34 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  #app.d52-mobile .hand-area>.hand-scroll>.card{transition:none!important}
 }
 </style><script id="d5-2-mobile-controller">(()=>{
- const state={raf:0,manualTucked:false,tucked:false,focusUid:null,signature:'',attackLayout:null};
+ const state={raf:0,manualTucked:false,tucked:false,autoTuckReason:null,focusUid:null,signature:'',attackLayout:null,castLayout:null};
  const clamp=(lo,n,hi)=>Math.max(lo,Math.min(n,hi));
  const imp=(el,k,v)=>el?.style.setProperty(k,v,'important');
  const rect=el=>{if(!el)return null;const r=el.getBoundingClientRect();return {left:+r.left.toFixed(1),top:+r.top.toFixed(1),right:+r.right.toFixed(1),bottom:+r.bottom.toFixed(1),width:+r.width.toFixed(1),height:+r.height.toFixed(1)}};
  const vp=()=>({width:Math.round(window.visualViewport?.width||innerWidth),height:Math.round(window.visualViewport?.height||innerHeight)});
  const active=()=>matchMedia('(orientation:landscape) and (max-width:1180px)').matches;
+ function interactionAutoTuckReason(app){
+  if(!app)return null;
+  if(app.classList.contains('creature-drag-active'))return 'creature-drag';
+  if(app.classList.contains('artifact-drag-active'))return 'artifact-drag';
+  if(app.classList.contains('d34-direct-active')&&app.dataset.d34Kind==='attack')return 'attack';
+  if(app.querySelector('.battlefield.targeting-ability'))return 'ability';
+  return null;
+ }
  function layout(app,game,field,turn,hand,rail,cards){
   const v=vp(),small=v.height<=430||v.width<=700;
-  const handHeight=state.tucked?46:(small?clamp(126,Math.round(v.height*.36),144):clamp(148,Math.round(v.height*.26),195));
+  const expandedHandHeight=small?clamp(126,Math.round(v.height*.36),144):clamp(148,Math.round(v.height*.26),195);
+  const handHeight=state.tucked?46:expandedHandHeight;
   const turnHeight=small?clamp(42,Math.round(v.height*.11),48):clamp(48,Math.round(v.height*.085),62);
-  const cardHeight=small?handHeight-12:handHeight-14;
+  const expandedCardHeight=small?expandedHandHeight-12:expandedHandHeight-14;
+  const cardHeight=state.tucked?114:expandedCardHeight;
   const cardWidth=small?clamp(142,Math.round(v.width*.19),164):clamp(162,Math.round(v.width*.17),210);
-  const artHeight=small?28:clamp(32,Math.round(cardHeight*.24),44);
+  const artHeight=state.tucked?(small?28:32):(small?28:clamp(32,Math.round(cardHeight*.24),44));
   app.classList.add('d52-mobile');
   app.classList.toggle('d52-tucked',state.tucked);
   app.style.setProperty('--d52-hand',handHeight+'px');
   app.style.setProperty('--d52-turn',turnHeight+'px');
-  app.style.setProperty('--d52-card-h',(state.tucked?114:cardHeight)+'px');
+  app.style.setProperty('--d52-card-h',cardHeight+'px');
   app.style.setProperty('--d52-card-w',cardWidth+'px');
   app.style.setProperty('--d52-art-h',artHeight+'px');
   document.documentElement.style.setProperty('--wb-mobile-vh',v.height+'px','important');
@@ -35160,8 +35532,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  }
  function ensureTools(game){
   let toggle=game.querySelector(':scope>.d52-toggle');
-  if(!toggle){toggle=document.createElement('button');toggle.className='d52-toggle';toggle.type='button';toggle.addEventListener('click',()=>{state.manualTucked=!state.tucked;if(state.manualTucked)mobileHandFocusUid=null;schedule()});game.appendChild(toggle)}
-  const label=state.tucked?'▲ เปิดมือ':'▼ พับมือ';if(toggle.textContent!==label)toggle.textContent=label;
+  if(!toggle){toggle=document.createElement('button');toggle.className='d52-toggle';toggle.type='button';toggle.addEventListener('click',()=>{state.manualTucked=!state.manualTucked;if(state.manualTucked)mobileHandFocusUid=null;schedule()});game.appendChild(toggle)}
+  const autoTucking=!!state.autoTuckReason&&!state.manualTucked;
+  const label=autoTucking?'AUTO · พับมือ':state.manualTucked?'▲ เปิดมือ':'▼ พับมือ';if(toggle.textContent!==label)toggle.textContent=label;
+  toggle.disabled=autoTucking;
   toggle.setAttribute('aria-expanded',String(!state.tucked));
   let inspector=game.querySelector(':scope>.d52-inspector');
   if(!inspector){inspector=document.createElement('aside');inspector.className='d52-inspector';inspector.setAttribute('role','region');inspector.setAttribute('aria-label','รายละเอียดการ์ดที่เลือก');game.appendChild(inspector)}
@@ -35197,8 +35571,11 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  function resetAttackLayout(){
   if(state.attackLayout&&(!started||!document.querySelector('#app>.game')||state.attackLayout.gameRef!==game))state.attackLayout=null;
  }
+ function resetCastLayout(){
+  if(state.castLayout&&(!started||!document.querySelector('#app>.game')||state.castLayout.gameRef!==game))state.castLayout=null;
+ }
  function sync(){
-  resetAttackLayout();state.raf=0;const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),field=game?.querySelector(':scope>.battlefield'),turn=game?.querySelector(':scope>.turn-panel.phase3-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll');
+  resetCastLayout();resetAttackLayout();state.raf=0;const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),field=game?.querySelector(':scope>.battlefield'),turn=game?.querySelector(':scope>.turn-panel.phase3-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll');
   if(!active()||!app||!game||!field||!turn||!hand||!rail||!started){
    if(app?.classList.contains('d52-mobile')){
     for(const [el,keys] of [[game,['display','grid-template-rows','grid-template-columns','gap','overflow']],[field,['grid-row','height','min-height','max-height']],[turn,['grid-row','height','min-height','max-height']],[hand,['grid-row','height','min-height','max-height']],[rail,['height','min-height']]])for(const key of keys)el?.style.removeProperty(key);
@@ -35209,8 +35586,8 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   const cards=[...rail.querySelectorAll(':scope>.card[data-zone="hand"][data-owner="0"]')];
   state.focusUid=mobileHandFocusUid===null?null:Number(mobileHandFocusUid);
   if(state.focusUid!==null)state.manualTucked=false;
-  const targeting=!!app.querySelector('.targeting-mode')||app.classList.contains('creature-drag-active')||app.classList.contains('artifact-drag-active')||app.classList.contains('d34-direct-active');
-  state.tucked=state.attackLayout?state.attackLayout.tucked:state.manualTucked||targeting;
+  state.autoTuckReason=interactionAutoTuckReason(app);
+  state.tucked=state.attackLayout?state.attackLayout.tucked:state.castLayout?state.castLayout.tucked:(state.manualTucked||!!state.autoTuckReason);
   const metrics=layout(app,game,field,turn,hand,rail,cards),inspector=ensureTools(game);
   inspect(inspector,cards,app);
   window.__RESONANCE_D52_METRICS__=metrics;
@@ -35233,11 +35610,22 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   if(!token||state.attackLayout!==token)return;
   state.attackLayout=null;schedule();
  };
+ window.__RESONANCE_D52_BEGIN_CAST__=()=>{
+  resetCastLayout();
+  if(state.castLayout)return state.castLayout;
+  if(!active()||!started||!document.querySelector('#app>.game'))return null;
+  sync();state.castLayout={gameRef:game,tucked:state.tucked};return state.castLayout;
+ };
+ window.__RESONANCE_D52_END_CAST__=token=>{
+  resetCastLayout();
+  if(!token||state.castLayout!==token)return;
+  state.castLayout=null;schedule();
+ };
  window.__RESONANCE_D52_SYNC__=()=>{sync();return window.__RESONANCE_D52_QA__()};
  window.__RESONANCE_D52_QA__=()=>{
   const app=document.querySelector('#app'),game=app?.querySelector(':scope>.game'),turn=game?.querySelector(':scope>.turn-panel'),hand=game?.querySelector(':scope>.hand-area'),rail=hand?.querySelector(':scope>.hand-scroll'),inspector=game?.querySelector(':scope>.d52-inspector'),v=vp(),tr=rect(turn),hr=rect(hand),cards=[...(rail?.querySelectorAll(':scope>.card[data-zone="hand"]')||[])],creatures=cards.filter(x=>x.dataset.cardType==='creature').map(x=>({uid:Number(x.dataset.card),card:rect(x),stats:rect(x.querySelector('.stats'))}));
   const creatureStatsVisible=!state.tucked&&creatures.every(x=>!!x.stats&&!!x.card&&!!hr&&x.stats.top>=x.card.top-1&&x.stats.bottom<=x.card.bottom+1&&x.stats.bottom<=hr.bottom+1);
-  return {version:'D5.2',viewport:v,active:!!app?.classList.contains('d52-mobile'),tucked:state.tucked,focusUid:state.focusUid,metrics:window.__RESONANCE_D52_METRICS__,turn:tr,hand:hr,inspector:rect(inspector),inspectorVisible:!!inspector?.classList.contains('is-visible'),handCount:cards.length,creatures,creatureStatsVisible,turnHandOverlapPx:tr&&hr?Math.max(0,Math.min(tr.bottom,hr.bottom)-Math.max(tr.top,hr.top)):null,handInsideViewport:!!hr&&hr.top>=-1&&hr.bottom<=v.height+1,pageOverflowX:Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth),pageOverflowY:Math.max(0,document.documentElement.scrollHeight-document.documentElement.clientHeight)};
+  return {version:'D5.2',viewport:v,active:!!app?.classList.contains('d52-mobile'),tucked:state.tucked,manualTucked:state.manualTucked,autoTuckReason:state.autoTuckReason,focusUid:state.focusUid,metrics:window.__RESONANCE_D52_METRICS__,turn:tr,hand:hr,inspector:rect(inspector),inspectorVisible:!!inspector?.classList.contains('is-visible'),handCount:cards.length,creatures,creatureStatsVisible,turnHandOverlapPx:tr&&hr?Math.max(0,Math.min(tr.bottom,hr.bottom)-Math.max(tr.top,hr.top)):null,handInsideViewport:!!hr&&hr.top>=-1&&hr.bottom<=v.height+1,pageOverflowX:Math.max(0,document.documentElement.scrollWidth-document.documentElement.clientWidth),pageOverflowY:Math.max(0,document.documentElement.scrollHeight-document.documentElement.clientHeight)};
  };
  schedule();
 })();
@@ -35593,8 +35981,9 @@ if(typeof card==='function'){
 
 document.addEventListener('click',e=>{
  const btn=e.target.closest?.('[data-p3d-choice]');if(!btn)return;e.preventDefault();e.stopPropagation();
+ const castLayout=game.pendingChoice?.castLayout;
  const result=game.resolveP3dChoice(Number(btn.dataset.p3dChoice));render();
- if(result&&typeof result==='object'&&result.paymentUid!=null)requestAnimationFrame(()=>startPayment(result.paymentUid));
+ if(result&&typeof result==='object'&&result.paymentUid!=null)requestAnimationFrame(()=>startPayment(result.paymentUid,null,castLayout));
  else if(result&&game.active===1&&!game.pendingChoice&&game.winner===null)runAI();
 },true);
 
@@ -37475,6 +37864,7 @@ Game.prototype.reason=function(card,p=this.p){
 
 const p23BeginHandBase=beginHandPlay;
 beginHandPlay=function(uid){
+  if(mobileHandFocusUid!==null){mobileHandFocusUid=null;setupTacticalFanHand();}
   const card=game.players[0].hand.find(x=>x.uid===Number(uid));
   if(card&&['returnGlass','omenCollapse','breakVessel'].includes(card.key)){
     if(game.active!==0||game.reason(card))return false;
@@ -39825,4 +40215,186 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
 }
 
 </style>
+
+<style id="v45-layout-hardening-pass">
+/* V45 — interaction-safe Hand + responsive Battlefield density hardening.
+   Presentation only: no gameplay, targeting legality, payment, combat math or card data changes. */
+
+/* Short desktop: preserve a stable two-lane Battlefield before spending height on the Hand.
+   The Hand remains usable as a compact scan surface and Card Detail stays the full-reading surface. */
+@media (min-width:1181px) and (max-height:760px){
+  body.battlefield-first-desktop-active{
+    --c2-hand-area-h:clamp(156px,calc(100vh - 440px),276px)!important;
+    --c2-command-rail-h:46px!important;
+    --c2-hand-card-h:clamp(92px,calc(var(--c2-hand-area-h) - var(--c2-command-rail-h) - 26px),198px)!important;
+    --c2-hand-card-w:clamp(150px,calc(var(--c2-hand-card-h) * 1.04),198px)!important;
+    --c2-hand-art-h:clamp(30px,calc(var(--c2-hand-card-h) * .27),52px)!important;
+    --m12k13c-impact-h:34px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .battlefield{
+    grid-template-rows:minmax(128px,1fr) var(--m12k13c-impact-h) minmax(128px,1fr)!important;
+  }
+  body.battlefield-first-desktop-active{
+    --v45-board-h:clamp(132px,calc(50vh - 218px),166px)!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .enemy-row,
+  body.battlefield-first-desktop-active #app.duel-viewport .player-row{
+    padding-top:1px!important;
+    padding-bottom:1px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-1 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-2 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-3 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-4 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-5 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-6 .card.board{
+    height:var(--v45-board-h)!important;min-height:var(--v45-board-h)!important;max-height:var(--v45-board-h)!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-1 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-2 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-3 .card.board{
+    flex:0 0 calc(var(--v45-board-h) * 1.06)!important;
+    flex-basis:calc(var(--v45-board-h) * 1.06)!important;
+    width:calc(var(--v45-board-h) * 1.06)!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .card-name{
+    font-size:clamp(12px,2.2vh,16px)!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .hand-core-text,
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .hand-ability-effect{
+    font-size:clamp(9px,1.65vh,11.5px)!important;
+    line-height:1.18!important;
+  }
+}
+@media (min-width:1181px) and (max-height:640px){
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .hand-rule-stack{
+    max-height:2.55em!important;
+    overflow:hidden!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .card-type{font-size:8.5px!important}
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .stats{
+    height:22px!important;min-height:22px!important;max-height:22px!important;flex-basis:22px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .hand-scroll>.card .stats b{font-size:16px!important}
+}
+
+/* Dense desktop Creature rows: fit the playable center column and never trespass into Artifact docks. */
+@media (min-width:1241px) and (max-width:1365px){
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-5 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-6 .card.board{
+    flex:0 0 126px!important;flex-basis:126px!important;width:126px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-5,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-6{
+    gap:4px!important;padding-inline:4px!important;
+  }
+}
+@media (min-width:1181px) and (max-width:1240px){
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-4 .card.board{
+    flex:0 0 132px!important;flex-basis:132px!important;width:132px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-5 .card.board,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-6 .card.board{
+    flex:0 0 112px!important;flex-basis:112px!important;width:112px!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-4,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-5,
+  body.battlefield-first-desktop-active #app.duel-viewport .arena-row.count-6{
+    gap:3px!important;padding-inline:3px!important;
+  }
+}
+
+/* Artifact docks: density is contained by the dock itself; content scrolls inside the dock instead of escaping it. */
+@media (min-width:1181px){
+  body.battlefield-first-desktop-active #app.duel-viewport .opponent-permanents,
+  body.battlefield-first-desktop-active #app.duel-viewport .player-permanents{
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  body.battlefield-first-desktop-active #app.duel-viewport .permanents.artifact-count-3 .permanent,
+  body.battlefield-first-desktop-active #app.duel-viewport .permanents.artifact-count-4 .permanent,
+  body.battlefield-first-desktop-active #app.duel-viewport .permanents.artifact-count-5 .permanent,
+  body.battlefield-first-desktop-active #app.duel-viewport .permanents.artifact-count-6 .permanent{
+    max-width:100%!important;
+  }
+}
+
+/* Mobile/Fold Artifact columns are intentionally vertical. 3–6 artifacts must remain inside
+   the dock at all supported landscape heights; scrolling is internal and never expands the Battlefield. */
+@media (orientation:landscape) and (max-width:1180px){
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.opponent-permanents.has-artifacts,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.player-permanents.has-artifacts{
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    contain:layout paint!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.opponent-permanents.artifact-count-3,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.opponent-permanents.artifact-count-4,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.opponent-permanents.artifact-count-5,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.opponent-permanents.artifact-count-6,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.player-permanents.artifact-count-3,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.player-permanents.artifact-count-4,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.player-permanents.artifact-count-5,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.player-permanents.artifact-count-6{
+    padding-top:3px!important;
+    gap:2px!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.permanents.artifact-count-3 .permanent,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.permanents.artifact-count-4 .permanent,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.permanents.artifact-count-5 .permanent,
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .battlefield>.permanents.artifact-count-6 .permanent{
+    flex:0 0 22px!important;
+    height:22px!important;min-height:22px!important;max-height:22px!important;
+    padding:1px 2px!important;gap:3px!important;
+  }
+}
+</style>
+<style id="r4-landscape-only-lock">
+/* R4 FINAL PRODUCT LOCK — Mobile/Fold portrait is not an application mode.
+   The gate itself is a modal top-layer dialog so an already-open Card Detail,
+   Rules, Graveyard, Payment, or Choice dialog cannot appear above it.
+   No game state is reset: rotating back to landscape simply closes this gate. */
+#orientationGate:not([open]){display:none!important}
+@media (orientation:portrait) and (max-width:1180px){
+  html,body{overflow:hidden!important;overscroll-behavior:none!important}
+  #orientationGate[open]{
+    position:fixed!important;inset:0!important;z-index:2147483647!important;
+    display:grid!important;place-items:center!important;
+    width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;
+    margin:0!important;padding:clamp(24px,5vw,52px)!important;border:0!important;
+    background:radial-gradient(circle at 50% 30%,#123b46 0,#07191f 58%,#041116 100%)!important;
+    color:#edf4ee!important;text-align:center!important;box-sizing:border-box!important;
+  }
+  #orientationGate[open]::backdrop{background:#041116!important}
+}
+</style>
+<script id="r4-landscape-only-controller">(()=>{
+  const gate=document.getElementById('orientationGate');
+  if(!gate||typeof gate.showModal!=='function')return;
+  const viewport=()=>({
+    width:Math.round(window.visualViewport?.width||window.innerWidth||document.documentElement.clientWidth||0),
+    height:Math.round(window.visualViewport?.height||window.innerHeight||document.documentElement.clientHeight||0)
+  });
+  const portraitBlocked=()=>{const v=viewport();return v.width>0&&v.height>v.width&&v.width<=1180};
+  let raf=0;
+  const sync=()=>{
+    raf=0;
+    const blocked=portraitBlocked();
+    if(blocked){
+      if(!gate.open){try{gate.showModal()}catch{gate.setAttribute('open','')}}
+    }else if(gate.open){
+      try{gate.close()}catch{gate.removeAttribute('open')}
+    }
+  };
+  const schedule=()=>{if(!raf)raf=requestAnimationFrame(sync)};
+  gate.addEventListener('cancel',e=>{if(portraitBlocked())e.preventDefault()});
+  gate.addEventListener('close',()=>{if(portraitBlocked())schedule()});
+  addEventListener('resize',schedule,{passive:true});
+  addEventListener('orientationchange',schedule,{passive:true});
+  window.visualViewport?.addEventListener('resize',schedule,{passive:true});
+  sync();
+})();</script>
+
 </body></html>
