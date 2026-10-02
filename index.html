@@ -28659,8 +28659,9 @@ html,body{max-width:100%;overflow-x:clip}
 #app .game.resolving-input-lock :is([data-action="rules"],[data-action="fullscreen"],[data-action="menu"],[data-audio-toggle]){cursor:pointer!important;}
 #app .game.resolving-input-lock .wb-input-disabled{cursor:not-allowed!important;}
 </style>
+<style id="wb-startup-visibility">#app[data-wb-booting]{visibility:hidden;opacity:0!important;pointer-events:none!important}</style>
 </head>
-<body class="wb-body"><div class="wb-shell"><div id="app"></div><dialog aria-label="รายละเอียดการ์ด" id="detail"></dialog><dialog aria-label="วิธีเล่น" id="rules"></dialog><dialog aria-label="สุสาน" id="graveyard"></dialog><dialog aria-labelledby="orientationTitle" class="orientation-gate" id="orientationGate"><div class="orientation-card"><span aria-hidden="true" class="orientation-mark">↻</span><span class="eyebrow">LANDSCAPE REQUIRED</span><h2 id="orientationTitle">เล่นในแนวนอน</h2><p>WONDERBOUND: RESONANCE บนมือถือและอุปกรณ์พับรองรับการใช้งานเฉพาะ Landscape เพื่อให้เห็นสนาม การ์ด และทรัพยากรพร้อมกัน</p><button id="landscapeButton" type="button">เข้าสู่โหมดแนวนอน</button><span class="orientation-status" id="orientationStatus">หมุนอุปกรณ์เป็นแนวนอนเพื่อเล่นเกม · Portrait จะไม่เปิด Battle, Adventure หรือ Deck Builder</span></div></dialog></div>
+<body class="wb-body"><div class="wb-shell"><div id="app" data-wb-booting></div><dialog aria-label="รายละเอียดการ์ด" id="detail"></dialog><dialog aria-label="วิธีเล่น" id="rules"></dialog><dialog aria-label="สุสาน" id="graveyard"></dialog><dialog aria-labelledby="orientationTitle" class="orientation-gate" id="orientationGate"><div class="orientation-card"><span aria-hidden="true" class="orientation-mark">↻</span><span class="eyebrow">LANDSCAPE REQUIRED</span><h2 id="orientationTitle">เล่นในแนวนอน</h2><p>WONDERBOUND: RESONANCE บนมือถือและอุปกรณ์พับรองรับการใช้งานเฉพาะ Landscape เพื่อให้เห็นสนาม การ์ด และทรัพยากรพร้อมกัน</p><button id="landscapeButton" type="button">เข้าสู่โหมดแนวนอน</button><span class="orientation-status" id="orientationStatus">หมุนอุปกรณ์เป็นแนวนอนเพื่อเล่นเกม · Portrait จะไม่เปิด Battle, Adventure หรือ Deck Builder</span></div></dialog></div>
 <!-- Phase 4.2R3B: Adds Thornseed Beast Death → Restore 1 to the R3 landmark parity package. -->
 <!-- Phase 4.2R3: Landmark parity candidate — Rootkeeper Wildroot 2; Splinter kill Restore 1; Wildroot Rebirth Restore 1. -->
 <!-- Phase 3.6: READY Creature protects Keeper; GUARDIAN protects while Exhausted; RIFTSTRIKE bypasses protection. -->
@@ -40403,4 +40404,11 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
   sync();
 })();</script>
 
+<script id="wb-startup-ready">
+// Reveal the first screen after all presentation runtimes have initialized.
+(()=>{const reveal=()=>document.getElementById('app')?.removeAttribute('data-wb-booting');
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',reveal,{once:true});
+ else reveal();
+})();
+</script>
 </body></html>
