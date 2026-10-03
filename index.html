@@ -37137,30 +37137,6 @@ window.__RESONANCE_PHASE3D__={phase:'3D',authority:'PHASE2I',status:'CHOICE_TARG
   #app.mobile-duel-viewport .battlefield .arena-row.count-5 .card.board,
   #app.mobile-duel-viewport .battlefield .arena-row.count-6 .card.board{height:94px!important;min-height:94px!important;max-height:94px!important}
 
-  /* Player-only surgical compact tactical proportion fix (Revision R2) */
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board,
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board.ready,
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board.exhausted,
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board.summon-guard,
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board.selected,
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row .card.board.target{
-    aspect-ratio:106 / 78!important;
-    height:min(var(--player-card-target-h, 78px), calc(100% - 6px))!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:none!important;
-    flex-basis:auto!important;
-    min-height:0!important;
-    max-height:none!important;
-    align-self:center!important;
-  }
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-1 .card.board{--player-card-target-h:83.88px}
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-2 .card.board{--player-card-target-h:78px}
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-3 .card.board{--player-card-target-h:73.6px}
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-4 .card.board{--player-card-target-h:70.6px}
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-5 .card.board{--player-card-target-h:66.2px}
-  #app.mobile-duel-viewport .battlefield .arena-row.player-row.count-6 .card.board{--player-card-target-h:63.3px}
-
   /* A restrained summon pedestal. It supports the unit without becoming the unit. */
   #app.mobile-duel-viewport .battlefield .arena-row .card.board::before{
     content:''!important;
