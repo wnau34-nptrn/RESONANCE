@@ -39700,10 +39700,77 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
 .adv-lore-gate span{flex:0 0 auto;font:850 9px/1 system-ui,sans-serif;letter-spacing:1.05px;color:#e9cf83}
 .adv-lore-gate b{font:650 11px/1.35 system-ui,sans-serif;color:#c9dcda}
 </style>
+<style id="wb-adventure-tutorial-style">
+/* Overlay and preview only. The iframe uses the unmodified battle renderer. */
+#wb-adventure[data-adv-view="tutorial"]{background:transparent}
+#wb-adventure .adv-tutorial{position:fixed;inset:0;isolation:isolate;color:#eaf3ec}
+#wb-adventure .adv-tut-battle{position:absolute;inset:0;z-index:-2;background:#071820;overflow:hidden}
+#wb-adventure .adv-tut-frame{position:absolute;inset:0;border:0;width:100%;height:100%;pointer-events:none;transform-origin:top left}
+#wb-adventure .adv-tut-shade{position:absolute;inset:0;background:#03101761;pointer-events:none;z-index:-1}
+#wb-adventure .adv-tutorial.has-target .adv-tut-shade{background:transparent}
+#wb-adventure .adv-tut-spotlight{position:absolute;border:2px solid #ead193;border-radius:10px;box-shadow:0 0 0 9999px #03101761,0 0 16px #f3d69444;pointer-events:none;z-index:-1}
+#wb-adventure .adv-tut-spotlight[hidden]{display:none}
+#wb-adventure .adv-tut-panel-host{position:absolute;left:16px;right:16px;bottom:max(12px,env(safe-area-inset-bottom));max-width:560px;margin:auto}
+#wb-adventure .adv-tut-pointer{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+#wb-adventure .adv-tut-pointer[hidden]{display:none}
+#wb-adventure .adv-tut-pointer path{fill:none;stroke:#efd393;stroke-width:2.5;filter:drop-shadow(0 1px 2px #071820)}
+#wb-adventure .adv-tut-pointer marker path{fill:#efd393;stroke:none;filter:none}
+#wb-adventure .adv-tut-panel-host.is-coach{max-width:none;margin:0;z-index:1}
+#wb-adventure .is-coach .adv-tut-panel{padding:8px 14px;border-radius:10px}
+#wb-adventure .is-coach .adv-tut-head{font-size:10px;gap:6px}
+#wb-adventure .is-coach .adv-tut-head button{min-height:24px;font-size:11px;padding:3px 8px}
+#wb-adventure .is-coach .adv-tut-scroll{padding:3px 0}
+#wb-adventure .is-coach .adv-tut-scroll h1{font-size:20px;margin-bottom:5px}
+#wb-adventure .is-coach .adv-tut-scroll p{font-size:14px;line-height:1.5}
+#wb-adventure .is-coach .adv-tut-footer{padding-top:4px}
+#wb-adventure .is-coach .adv-tut-footer button{min-height:32px;padding:5px 12px;font-size:13px}
+#wb-adventure .adv-tut-panel{display:flex;flex-direction:column;max-height:calc(100dvh - 24px);border:1px solid #d9c086;border-radius:14px;padding:16px 20px;background:linear-gradient(135deg,#17313bf5,#081c25fc);box-shadow:0 12px 45px #0009}
+#wb-adventure .adv-tut-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;color:#e2c98b;font-size:12px;letter-spacing:.07em}
+#wb-adventure .adv-tutorial button{min-height:44px;border:1px solid #8ba99b88;border-radius:9px;padding:8px 14px;background:#17313b;color:#edf4e9;font:600 14px/1.3 system-ui,sans-serif;cursor:pointer}
+#wb-adventure .adv-tutorial button:focus-visible{outline:3px solid #f4d28a;outline-offset:3px}
+#wb-adventure .adv-tutorial button:disabled{opacity:.45;cursor:default}
+#wb-adventure .adv-tut-head button{font-size:12px;padding:5px 10px}
+#wb-adventure .adv-tut-scroll{overflow:auto;overscroll-behavior:contain;min-height:0;padding:8px 0}
+#wb-adventure .adv-tut-scroll h1{font:500 25px/1.3 Georgia,"Noto Serif Thai",serif;color:#f4dfa8;margin:0 0 8px}
+#wb-adventure .adv-tut-scroll p{font-size:15px;line-height:1.6;color:#d9e5df;margin:0;white-space:pre-line}
+#wb-adventure .adv-tut-footer{display:flex;justify-content:space-between;gap:12px;padding-top:8px;flex:none}
+#wb-adventure .adv-tut-footer .adv-tut-primary{background:linear-gradient(135deg,#eed19b,#c4a363);color:#142528;border-color:#f6dfa9;font-weight:750}
+#wb-adventure .adv-tut-keywords{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+#wb-adventure .adv-tut-keywords article{display:flex;gap:10px;border:1px solid #9eaf9d66;border-radius:10px;padding:12px;background:#1c3c4266}
+#wb-adventure .adv-tut-keywords h2{font-size:17px;color:#f2dca9;margin:0 0 5px}
+#wb-adventure .adv-tut-keywords p{font-size:14px;line-height:1.5}
+#wb-adventure .adv-tut-symbol{color:#e1c78c;font-size:22px}
+#wb-adventure .adv-tut-route{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0;color:#f2dba6;font-size:14px;line-height:1.6}
+#wb-adventure .adv-tut-route span{padding:5px 9px;border:1px solid #bda97677;border-radius:7px;background:#26463c}
+#wb-adventure .adv-tut-note{margin-top:12px!important;padding:10px;border-left:3px solid #acccb0;background:#23433b66;font-size:13px!important}
+#wb-adventure .adv-tut-panel-host.is-reading,#wb-adventure .adv-tut-panel-host.is-intro{max-width:720px;top:12px;bottom:12px;display:flex;align-items:center}
+#wb-adventure .adv-tut-panel-host.is-reading .adv-tut-panel,#wb-adventure .adv-tut-panel-host.is-intro .adv-tut-panel{width:100%;max-height:100%}
+#wb-adventure .adv-tut-portrait-note{position:absolute;bottom:8px;left:16px;right:16px;text-align:center;font-size:12px;color:#e6d5ac;display:none;pointer-events:none}
+@media(max-width:620px) and (orientation:portrait){
+ #wb-adventure .adv-tut-portrait-note{display:block}
+ #wb-adventure .adv-tut-panel-host{left:12px;right:12px;bottom:12px}
+ #wb-adventure .adv-tut-panel{padding:14px;max-height:calc(100dvh - 48px)}
+ #wb-adventure .adv-tut-panel-host.is-reading .adv-tut-panel{max-height:100%}
+ #wb-adventure .adv-tut-keywords{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-height:480px) and (orientation:landscape){
+ #wb-adventure .adv-tut-panel{padding:8px 14px}
+ #wb-adventure .adv-tut-head{font-size:11px}
+ #wb-adventure .adv-tut-head button{min-height:32px}
+ #wb-adventure .adv-tut-scroll{padding:4px 0}
+ #wb-adventure .adv-tut-scroll h1{font-size:20px;margin-bottom:4px}
+ #wb-adventure .adv-tut-scroll p{font-size:14px;line-height:1.45}
+ #wb-adventure .adv-tut-footer{padding-top:4px}
+ #wb-adventure .adv-tut-keywords{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ #wb-adventure .adv-tut-keywords article{padding:10px;gap:7px}
+}
+@media(prefers-reduced-motion:reduce){#wb-adventure .adv-tut-spotlight{transition:none}}
+</style>
 <script id="wb-adventure-runtime-v2">
 /* WONDERBOUND Adventure: The Waking of the Six — isolated campaign orchestration. */
 (() => {
   const STORE = 'wonderbound_adventure_v1';
+  const tutorialPreview=window.parent!==window&&(window.name==='wb-adventure-preview'||new URLSearchParams(location.search).get('wb-adventure-preview')==='1');
   const order = ['beacon','glass','fracture','root'];
   const labels = {beacon:'Beacon',glass:'Glasswind',fracture:'Fracture',root:'Wildroot'};
   const groups = [
@@ -39741,6 +39808,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   const initial = () => ({version:1,completed:{},mastery:{},achievements:{},owned:Object.fromEntries((window.__RESONANCE_C8_4C_STARTERS__?.[3]?.cards||[]).map(x=>[x.key,x.count])),echoes:0});
   let progress = load()||initial();
   let active = null, view = null, selected = null, achievedInDuel = new Set(), lastReward = null, tutorialOpen = true, resultFirst = false, resultTimer = null;
+  let lesson = 0, tutorialStage = null, tutorialReturn = 'map';
   const persist = () => {try{localStorage.setItem(STORE,JSON.stringify(progress))}catch{}};
   const unlocked = s => {
     if(s.group==='prologue'){const index=stages.findIndex(x=>x.id===s.id);return index===0||!!progress.completed[stages[index-1].id]}
@@ -39808,12 +39876,141 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     const next=won?nextStage(s):null;
     return `<main class="adv-shell adv-end"><div class="adv-end-art" style="background-image:linear-gradient(0deg,#07131e,transparent),url('${artwork(s)}')"></div><div class="adv-end-copy"><small>${won?'THE JOURNEY REMEMBERS':'THE PATH REMAINS'}</small><h1>${won?'ชัยชนะ · '+safe(s.title):'เส้นทางยังไม่สิ้นสุด'}</h1><p>${safe(won?s.after:'Liora ถอยกลับไปตั้งหลัก ความทรงจำของสถานที่นี้ยังรอให้ค้นพบ')}</p>${won?`<div class="adv-award">${first?(lastReward==='echo'?'การ์ดครบจำนวน · ได้ Echo 1 แทน':'ได้รับการ์ดใหม่: '):'เล่นซ้ำสำเร็จ: '}<strong>${safe(stageCard(s))}</strong>${progress.mastery[s.id]?'<span>★ สำเร็จเป้าหมาย Mastery</span>':''}</div>`:''}<div class="adv-actions">${next?button('next-stage','เปิด Lore ด่านถัดไป → '+safe(next.title),`data-adv-stage-id="${next.id}"`):''}${button('map','กลับแผนที่')}${button('retry',won?'เล่นด่านนี้อีกครั้ง':'ลองอีกครั้ง')}</div></div></main>`;
   }
+  const tutorialLessons = [
+    ['รู้จักสนามต่อสู้','ก่อนเริ่ม Adventure ลองดูส่วนสำคัญของสนามกันก่อน\nใช้เวลาไม่นาน แล้วคุณจะพร้อมสำหรับด่านแรก',null],
+    ['สนามต่อสู้','ด้านบนคือสนามของคู่ต่อสู้\nด้านล่างคือสนามของคุณ','.battlefield',null,'bottom'],
+    ['Keeper ของคุณ','Keeper คือหัวใจของฝ่ายคุณ\nตัวเลขใหญ่คือ Spirit ที่เหลืออยู่','.keeper.player',null,'right'],
+    ['Creature ของคุณ','Creature คือกำลังหลักบนสนาม\nใช้โจมตี ป้องกัน และสร้าง Combo กับการ์ดอื่น','.player-row .card.board',null,'right'],
+    ['AT และ HP','AT คือพลังโจมตี\nHP คือพลังชีวิตของ Creature','.player-row .card.board .stats>span',null,'right'],
+    ['READY / EXHAUSTED','READY หมายถึง Creature พร้อมใช้งาน\nหลังจากใช้งานแล้ว Creature อาจกลายเป็น EXHAUSTED','.player-row .card.board .unit-state','.player-row .card.board.ready','right'],
+    ['การ์ดในมือ','นี่คือการ์ดในมือของคุณ\nแตะการ์ดเพื่อดูรายละเอียดและเลือกการ์ดที่จะเล่น','.hand-scroll',null,'top'],
+    ['Resonance','Resonance คือทรัพยากรหลักในการเล่นการ์ด\nจำนวน READY คือส่วนที่ยังใช้ได้ในเทิร์นนี้','.resonance-pool','.desktop-bf-resource-pool','top'],
+    ['Turn และ Phase','ตรงนี้บอก Turn และ Phase ปัจจุบันของคุณ','.turn-panel','.desktop-bf-phase','top'],
+    ['ไปยัง Phase ถัดไป','เมื่อทำสิ่งที่ต้องการใน Phase นี้เสร็จแล้ว\nกดปุ่มนี้เพื่อดำเนินเกมต่อ','[data-action="next"]','.desktop-bf-cta[data-bf-proxy="primary"]','top'],
+    ['Landmark','Landmark คือเป้าหมายพิเศษของ Adventure\nทำเงื่อนไขเพื่อเพิ่ม Progress และแข่งกับคู่ต่อสู้เพื่อ Claim','[data-action="landmark"]',null,'bottom'],
+    ['Journey','เมื่อ Claim Landmark ปัจจุบัน\nLandmark ถัดไปจะเปิดต้นเทิร์นถัดไป','.journey-preview',null,'bottom'],
+    ['อ่านการ์ดหนึ่งใบ','Cost คือ Resonance ที่ต้องจ่าย · Name คือชื่อ · Type คือชนิด\nAbility คือข้อความความสามารถ · AT คือพลังโจมตี · HP คือพลังชีวิต'],
+    ['COMBAT','สถานะที่ต้องดูก่อนเลือกโจมตี'],
+    ['RESONANCE','รู้จักพลังทั้งสี่ และแนวทางของแต่ละ Deck'],
+    ['LANDMARK','สะสม Restore เพื่อ Claim และรับ Reward'],
+    ['พร้อมออกเดินทางแล้ว','ตอนนี้คุณรู้จักสนาม การ์ด Resonance และ Landmark แล้ว\nไม่จำเป็นต้องจำทุกอย่างตั้งแต่ครั้งแรก\nคุณสามารถเปิด Tutorial นี้ดูซ้ำได้จาก Adventure Map']
+  ];
+  function lessonTerms(items){return `<div class="adv-tut-keywords">${items.map(([icon,title,text])=>`<article><span class="adv-tut-symbol" aria-hidden="true">${icon}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join('')}</div>`}
+  function tutorialContent(){
+    if(lesson===12)return lessonTerms([['◆','COST','จำนวน Resonance ที่ต้องจ่ายเพื่อเล่นการ์ด'],['✦','NAME','ชื่อการ์ด ใช้ระบุการ์ดที่คุณกำลังเลือก'],['◇','CARD TYPE','ชนิดการ์ด เช่น Creature, Sorcery หรือ Equipment'],['★','ABILITY','ข้อความอธิบายผลและเงื่อนไขความสามารถ'],['⚔','AT','พลังโจมตีของ Creature'],['♥','HP','พลังชีวิตของ Creature']]);
+    if(lesson===13)return lessonTerms([['●','READY','Creature พร้อมโจมตีหรือใช้ Action ที่ต้องการความพร้อม'],['◐','EXHAUSTED','Creature ถูกใช้งานแล้ว และยังไม่สามารถใช้บาง Action ได้จนกว่าจะกลับมา READY'],['⛨','GUARD / SUMMON GUARD','Creature ช่วยป้องกัน Keeper ตามกติกา · Creature ใหม่ปกติยังโจมตีไม่ได้ แต่มี Summon Guard · GUARDIAN ป้องกันได้แม้ EXHAUSTED']]);
+    if(lesson===14)return lessonTerms([['◆','RESONANCE','พลังหลักที่ใช้เล่นการ์ดและกำหนดแนวทางของ Deck'],['✦','BEACON','เน้นความมั่นคง การสนับสนุน และการยืนสนาม'],['◇','GLASSWIND','เน้นจังหวะ การเคลื่อนเกม และการวางแผน'],['✧','FRACTURE','ใช้ความสูญเสียและการแลกเปลี่ยนเพื่อสร้างผลตอบแทน'],['↟','WILDROOT','เน้นการเติบโต การฟื้นตัว และคุณค่าระยะยาว']]);
+    if(lesson===15)return lessonTerms([['◎','LANDMARK','สถานที่สำคัญ มี Reward เฉพาะตัว · อ่าน CURRENT เพื่อดูรายละเอียด'],['+','RESTORE','Progress ที่ได้รับจากการทำเงื่อนไข Journey ของ Resonance ในเด็ค'],['✦','CLAIM','เมื่อสะสม Restore ครบ 3 ก่อนคู่ต่อสู้ คุณจะ Claim Landmark'],['★','REWARD','ผลประโยชน์ครั้งเดียวที่ได้รับหลัง Claim Landmark']])+`<div class="adv-tut-route"><span>Condition</span>→<span>Restore +1</span>→<span>3/3</span>→<span>Claim</span>→<span>Reward</span></div>`;
+    if(lesson===16)return `<div class="adv-tut-route"><span>เล่นการ์ด</span>→<span>สร้าง Creature และ Combo</span>→<span>ต่อสู้</span>→<span>ทำเงื่อนไข Journey</span>→<span>Restore</span>→<span>Claim</span>→<span>Reward</span></div><p class="adv-tut-note">ด่าน 1 เตรียม ACTION ให้แล้ว: แตะ Relay Lightbearer ที่ READY แล้วโจมตี Keeper ศัตรูเพื่อเปิดทาง</p>`;
+    return '';
+  }
+  function tutorialPanel(){
+    const [title,copy]=tutorialLessons[lesson],last=lesson===tutorialLessons.length-1;
+    const rotate=tutorialStage&&window.innerHeight>window.innerWidth&&window.innerWidth<=1180;
+    const label=lesson<12?`STEP ${lesson+1} / 12`:lesson===12?'GUIDE · CARD ANATOMY':lesson<16?`KEYWORDS ${lesson-12} / 3`:'READY · ADVENTURE';
+    return `<section class="adv-tut-panel"><header class="adv-tut-head"><span>${label}</span>${button('lesson-exit','พักไว้ก่อน ×')}</header><div class="adv-tut-scroll"><h1 id="adv-tut-title" tabindex="-1">${title}</h1><p>${copy}</p>${tutorialContent()}<p class="adv-tut-note" data-tutorial-loading>กำลังเตรียมสนามตัวอย่าง…</p></div><footer class="adv-tut-footer">${button('lesson-back','ย้อนกลับ',lesson===0?'disabled':'')}${button(last?'lesson-finish':'lesson-next',last?(tutorialStage?(rotate?'หมุนแนวนอนเพื่อเริ่ม':'เริ่ม Adventure'):'กลับแผนที่'):lesson===0?'เริ่มดูสนาม':'ถัดไป',`class="adv-tut-primary"`)}</footer></section>`;
+  }
+  function tutorialMarkup(){return `<main class="adv-tutorial" role="dialog" aria-modal="true" aria-labelledby="adv-tut-title" lang="th"><div class="adv-tut-battle"></div><div class="adv-tut-shade"></div><div class="adv-tut-spotlight" hidden></div><svg class="adv-tut-pointer" aria-hidden="true" hidden><defs><marker id="adv-tut-arrow" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z"/></marker></defs><path data-coach-line marker-end="url(#adv-tut-arrow)"/></svg><p class="adv-tut-portrait-note">ภาพสนามจริงในแนวนอน · หมุนหน้าจอเพื่อดูขนาดเต็ม</p><div class="adv-tut-panel-host">${tutorialPanel()}</div></main>`}
+  let tutorialTrack=0;
+  function tutorialTarget(doc,selector){
+    if(!selector)return null;
+    const rects=[...doc.querySelectorAll(selector)].map(el=>el.getBoundingClientRect()).filter(r=>r.width>0&&r.height>0&&r.bottom>0&&r.right>0&&r.top<doc.defaultView.innerHeight&&r.left<doc.defaultView.innerWidth);
+    if(!rects.length)return null;
+    const x=Math.min(...rects.map(r=>r.left)),y=Math.min(...rects.map(r=>r.top));
+    return {x,y,width:Math.max(...rects.map(r=>r.right))-x,height:Math.max(...rects.map(r=>r.bottom))-y};
+  }
+  function placeCoachMark(host,pointer,target,preferred){
+    const margin=12,gap=22,clamp=(v,min,max)=>Math.max(min,Math.min(v,max));
+    const width=Math.min(340,innerWidth-margin*2);
+    host.style.width=width+'px';
+    const height=host.offsetHeight,cx=target.x+target.width/2,cy=target.y+target.height/2;
+    const sides=[preferred,...['bottom','top','right','left'].filter(side=>side!==preferred)];
+    const overlap=p=>Math.max(0,Math.min(p.x+width,target.x+target.width)-Math.max(p.x,target.x))*Math.max(0,Math.min(p.y+height,target.y+target.height)-Math.max(p.y,target.y));
+    const candidates=sides.map((side,index)=>{
+      const raw={side,x:side==='right'?target.x+target.width+gap:side==='left'?target.x-width-gap:cx-width/2,y:side==='bottom'?target.y+target.height+gap:side==='top'?target.y-height-gap:cy-height/2};
+      const p={...raw,x:clamp(raw.x,margin,innerWidth-width-margin),y:clamp(raw.y,margin,innerHeight-height-margin)};
+      const separation=side==='right'?p.x-target.x-target.width:side==='left'?target.x-p.x-width:side==='bottom'?p.y-target.y-target.height:target.y-p.y-height;
+      p.score=overlap(p)*1000+Math.max(0,12-separation)*10000+(Math.abs(raw.x-p.x)+Math.abs(raw.y-p.y))*10+index;
+      return p;
+    });
+    const best=candidates.reduce((a,b)=>b.score<a.score?b:a);
+    Object.assign(host.style,{left:best.x+'px',right:'auto',top:best.y+'px',bottom:'auto',margin:'0'});
+    host.dataset.placement=best.side;
+    const vertical=best.side==='top'||best.side==='bottom';
+    const start=vertical?{x:clamp(cx,best.x+18,best.x+width-18),y:best.side==='top'?best.y+height:best.y}:{x:best.side==='left'?best.x+width:best.x,y:clamp(cy,best.y+18,best.y+height-18)};
+    const end=vertical?{x:clamp(start.x,target.x,target.x+target.width),y:best.side==='top'?target.y-3:target.y+target.height+3}:{x:best.side==='left'?target.x-3:target.x+target.width+3,y:clamp(start.y,target.y,target.y+target.height)};
+    const middle=vertical?`L ${start.x} ${(start.y+end.y)/2} L ${end.x} ${(start.y+end.y)/2}`:`L ${(start.x+end.x)/2} ${start.y} L ${(start.x+end.x)/2} ${end.y}`;
+    pointer.querySelector('[data-coach-line]').setAttribute('d',`M ${start.x} ${start.y} ${middle} L ${end.x} ${end.y}`);
+  }
+  function positionTutorial(){
+    if(view!=='tutorial')return;
+    const el=layer(),frame=el.querySelector('.adv-tut-frame'),main=el.querySelector('.adv-tutorial'),host=el.querySelector('.adv-tut-panel-host'),spot=el.querySelector('.adv-tut-spotlight'),pointer=el.querySelector('.adv-tut-pointer');
+    const preview=frame?.contentWindow?.__WB_TUTORIAL_PREVIEW__;
+    if(!preview)return;
+    const portrait=innerHeight>innerWidth&&innerWidth<=1180;
+    frame.style.width=portrait?'844px':'100%';frame.style.height=portrait?'390px':'100%';frame.style.transform=portrait?`scale(${Math.min(1,innerWidth/844)})`:'none';
+    const inspection=`${lesson}:${frame.contentWindow.innerWidth>1180?'desktop':'mobile'}`;
+    if(frame.dataset.lesson!==inspection){preview.inspect(lesson);frame.dataset.lesson=inspection}
+    const data=tutorialLessons[lesson],doc=frame.contentDocument;
+    const primary=tutorialTarget(doc,data[2]),rect=primary||tutorialTarget(doc,data[3]);
+    const status=el.querySelector('[data-tutorial-loading]');
+    status.hidden=!data[2]||!!rect;
+    if(data[2]&&!rect)status.textContent='พื้นที่นี้ยังไม่พร้อมแสดง ลองย้อนกลับแล้วเปิดขั้นตอนนี้อีกครั้ง';
+    host.classList.toggle('is-reading',lesson>=12);
+    host.classList.toggle('is-intro',lesson===0);
+    host.classList.toggle('is-coach',lesson>0&&lesson<12);
+    pointer.toggleAttribute('hidden',!rect);
+    main.classList.toggle('has-target',!!rect);spot.hidden=!rect;
+    if(rect){
+      const bounds=frame.getBoundingClientRect(),scale=bounds.width/frame.contentWindow.innerWidth;
+      const x=Math.max(0,bounds.left+rect.x*scale-5),y=Math.max(0,bounds.top+rect.y*scale-5);
+      const w=Math.min(innerWidth-x,rect.width*scale+10),h=Math.min(innerHeight-y,rect.height*scale+10);
+      Object.assign(spot.style,{left:x+'px',top:y+'px',width:w+'px',height:h+'px'});
+      main.dataset.tutorialTarget=primary?data[2]:data[3];
+      placeCoachMark(host,pointer,{x,y,width:w,height:h},data[4]||'bottom');
+    }else delete main.dataset.tutorialTarget;
+    if(!rect){host.removeAttribute('style');delete host.dataset.placement}
+  }
+  function trackTutorial(){positionTutorial();if(view==='tutorial')tutorialTrack=requestAnimationFrame(trackTutorial)}
+  function mountTutorial(){
+    const frame=document.createElement('iframe'),source=document.documentElement.cloneNode(true);
+    source.querySelector('#wb-adventure')?.remove();
+    frame.className='adv-tut-frame';frame.title='สนามตัวอย่างสำหรับ Tutorial';frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');frame.inert=true;
+    // srcdoc inherits the parent's origin, including when opened from file://.
+    frame.name='wb-adventure-preview';frame.srcdoc='<!doctype html>'+source.outerHTML;frame.addEventListener('load',positionTutorial);
+    layer().querySelector('.adv-tut-battle').appendChild(frame);
+    cancelAnimationFrame(tutorialTrack);tutorialTrack=requestAnimationFrame(trackTutorial);
+  }
+  function drawTutorial(focus=true){drawLayer();if(focus)layer().querySelector('#adv-tut-title')?.focus({preventScroll:true})}
+  function openTutorial(s){tutorialReturn=view==='brief'?'brief':'map';tutorialStage=s;lesson=0;view='tutorial';drawTutorial()}
+  function closeTutorial(){cancelAnimationFrame(tutorialTrack);view=tutorialReturn;tutorialStage=null;drawLayer();layer().querySelector('[data-adv="begin"],[data-adv="learn"]')?.focus()}
+  document.addEventListener('keydown',e=>{
+    if(view!=='tutorial')return;
+    if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeTutorial();return}
+    if(e.key!=='Tab')return;
+    const buttons=[...layer().querySelectorAll('button:not(:disabled)')],first=buttons[0],last=buttons[buttons.length-1];
+    if(e.shiftKey&&(document.activeElement===first||document.activeElement?.id==='adv-tut-title')){e.preventDefault();last?.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}
+  },true);
+  addEventListener('resize',()=>{if(view==='tutorial')drawTutorial(false)},{passive:true});
   function drawLayer(){
     const el=layer();
+    if(tutorialPreview){el.hidden=true;document.body.setAttribute('data-adv-learning','');return}
+    document.body.toggleAttribute('data-adv-learning',view==='tutorial');
+    document.getElementById('app').inert=view==='tutorial';
+    document.dispatchEvent(new Event('wb-adventure-view'));
+    if(view==='tutorial'){
+      const mounted=!!el.querySelector('.adv-tutorial');
+      el.hidden=false;el.dataset.advView=view;el.dataset.advStage='';
+      if(mounted)el.querySelector('.adv-tut-panel-host').innerHTML=tutorialPanel();
+      else {el.innerHTML=tutorialMarkup();mountTutorial()}
+      positionTutorial();return;
+    }
     if(!view){el.hidden=true;el.innerHTML='';el.dataset.advView='';el.dataset.advStage='';return}
     if(view==='result'&&el.dataset.advView==='result'&&el.dataset.advStage===active?.id)return;
     el.hidden=false;
     el.innerHTML=view==='map'?mapMarkup():view==='brief'&&selected?briefMarkup(selected):view==='result'&&active?resultMarkup(active,game.winner===0,resultFirst):'';
+    if(view==='map')el.querySelector('.adv-head').insertAdjacentHTML('beforeend',button('learn','คู่มือก่อนต่อสู้'));
     el.dataset.advView=view;el.dataset.advStage=active?.id||'';
   }
   function completeResult(){
@@ -39925,6 +40122,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   function begin(s,useCustom=false){
     if(!s||!unlocked(s))return;
     if(useCustom&&!canUseCustom(s))return;
+    if(s.id==='p1'&&!progress.tutorialCompleted){openTutorial(s);return}
     if(started&&view===null&&active===s)return;
     if(resultTimer){clearTimeout(resultTimer);resultTimer=null}
     selected=s;active=s;achievedInDuel=new Set();tutorialOpen=true;resultFirst=false;
@@ -39960,8 +40158,20 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     }
     e.preventDefault();e.stopImmediatePropagation();
     if(entry){window.__WB_AUDIO__?.cue('ui');view='map';drawLayer();return}
-    if(node){openStageLore(byId[node.dataset.advStage]);return}
+    if(node&&!b?.dataset.adv?.startsWith('lesson-')&&b?.dataset.adv!=='learn'){openStageLore(byId[node.dataset.advStage]);return}
     switch(b.dataset.adv){
+      case'learn':openTutorial(null);break;
+      case'lesson-back':if(lesson>0){lesson--;drawTutorial()}break;
+      case'lesson-next':if(lesson<tutorialLessons.length-1){lesson++;drawTutorial()}break;
+      case'lesson-exit':closeTutorial();break;
+      case'lesson-finish':{
+        if(view!=='tutorial'||lesson!==tutorialLessons.length-1)return;
+        const target=tutorialStage;
+        if(target&&window.innerHeight>window.innerWidth&&window.innerWidth<=1180)return;
+        progress.tutorialCompleted=true;persist();closeTutorial();
+        if(target)begin(target);
+        break;
+      }
       case'close':view=null;drawLayer();break;
       case'map':returnMap();break;
       case'begin':begin(byId[b.dataset.advStageId]||selected);break;
@@ -39981,7 +40191,20 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     }
   },true);
   window.__WB_ADVENTURE__={stages,progress:()=>JSON.parse(JSON.stringify(progress)),unlocked:id=>!!byId[id]&&unlocked(byId[id]),open:()=>{view='map';drawLayer()},openLore:id=>openStageLore(byId[id]),begin:id=>begin(byId[id]),active:()=>active?.id||null};
-  render();
+  if(tutorialPreview){
+    // A separate document owns this read-only example. No parent Game, campaign
+    // state, completion flag, or AI queue is touched by walkthrough navigation.
+    const previewProfile=s=>({custom:true,version:DECK_PROFILE_VERSION,deckRule:'30/2/1',keeper:s.keeper,name:s.name,primary:s.primary,secondary:s.secondary,splash:s.splash,cards:s.cards.map(x=>({...x}))});
+    game=new Game(previewProfile(window.__RESONANCE_C8_4C_STARTERS__[0]));
+    game.players[1]=game.player(previewProfile(window.__RESONANCE_C8_4C_STARTERS__[byId.p1.foe]));
+    for(let i=0;i<5;i++)game.draw(game.players[1]);
+    started=true;deckBuilderOpen=false;mulliganOpen=false;
+    seedStage(byId.p1);delete game.adventureStage;
+    window.__WB_TUTORIAL_PREVIEW__={inspect(step){
+      for(const dialog of [detail,rules,graveyard])if(dialog.open)dialog.close();
+    }};
+    render();app.inert=true;
+  }else render();
 })();
 
 </script>
@@ -40470,14 +40693,19 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
 <script id="r4-landscape-only-controller">(()=>{
   const gate=document.getElementById('orientationGate');
   if(!gate||typeof gate.showModal!=='function')return;
+  // The pre-battle reading flow supports portrait; live play keeps the R4 lock.
+  const learn=document.createElement('button');
+  learn.type='button';learn.dataset.adv='learn';learn.textContent='อ่านคู่มือก่อนต่อสู้';
+  gate.querySelector('.orientation-card')?.appendChild(learn);
   const viewport=()=>({
     width:Math.round(window.visualViewport?.width||window.innerWidth||document.documentElement.clientWidth||0),
     height:Math.round(window.visualViewport?.height||window.innerHeight||document.documentElement.clientHeight||0)
   });
-  const portraitBlocked=()=>{const v=viewport();return v.width>0&&v.height>v.width&&v.width<=1180};
+  const portraitBlocked=()=>{const v=viewport();return !document.body.hasAttribute('data-adv-learning')&&v.width>0&&v.height>v.width&&v.width<=1180};
   let raf=0;
   const sync=()=>{
     raf=0;
+    learn.hidden=started;
     const blocked=portraitBlocked();
     if(blocked){
       if(!gate.open){try{gate.showModal()}catch{gate.setAttribute('open','')}}
@@ -40491,6 +40719,7 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
   addEventListener('resize',schedule,{passive:true});
   addEventListener('orientationchange',schedule,{passive:true});
   window.visualViewport?.addEventListener('resize',schedule,{passive:true});
+  document.addEventListener('wb-adventure-view',sync);
   sync();
 })();</script>
 
