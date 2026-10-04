@@ -30509,15 +30509,14 @@ function handRuleSections(c,key=null){
 }
 function enforceHandRuleFit(){
  if(window.innerWidth<=1000)return;
- const cards=[...document.querySelectorAll('#app.duel-viewport .hand-scroll>.card')];
- for(const el of cards){
-  const stack=el.querySelector('.hand-rule-stack');if(!stack)continue;
-  el.classList.remove('hand-fit-tight');el.removeAttribute('data-hand-fit');
-  if(stack.scrollHeight>stack.clientHeight+1){
-   el.classList.add('hand-fit-tight');
-   void stack.offsetHeight;
-  }
-  const overflow=stack.scrollHeight>stack.clientHeight+1;
+ const entries=[...document.querySelectorAll('#app.duel-viewport .hand-scroll>.card')]
+  .map(el=>({el,stack:el.querySelector('.hand-rule-stack')})).filter(x=>x.stack);
+ // Batch style writes and layout reads so each card does not force a new layout.
+ for(const {el} of entries){el.classList.remove('hand-fit-tight');el.removeAttribute('data-hand-fit');}
+ const tight=entries.filter(({stack})=>stack.scrollHeight>stack.clientHeight+1);
+ for(const {el} of tight)el.classList.add('hand-fit-tight');
+ const results=entries.map(({el,stack})=>({el,overflow:stack.scrollHeight>stack.clientHeight+1}));
+ for(const {el,overflow} of results){
   el.dataset.handFit=overflow?'fail':'pass';
   if(overflow)console.warn('[RESONANCE][HAND FIT]',el.getAttribute('aria-label')||'card','rule content still exceeds fixed Hand well');
  }
@@ -31964,7 +31963,7 @@ function m12115BeatSummary(beat,label){
 
 // M12.11.5A — minimum causal read time. This changes presentation dwell only; event order remains owned by P2/P3/P4/P5.
 const M12115A_COMBAT_PACING={
- SOURCE:140,TARGET:140,IMPACT:200,BLOCKED:400,BARRIER:320,DAMAGE:420
+ SOURCE:80,TARGET:80,IMPACT:140,BLOCKED:400,BARRIER:240,DAMAGE:260
 };
 const M12115A_MIN_READ={
  REFILL:360,ATTUNE:460,PLAY:240,SUMMON:620,ENTRY:240,COMBAT:480,
@@ -32179,7 +32178,7 @@ async function presentCombatFx(meta,commit=null,checkpoint=null){
 async function presentPlayerFollowupBeats(report,skipLabels=[],baseSnapshot=null){
  const skip=new Set(skipLabels),baseBeat=[...report.beats].reverse().find(b=>skip.has(aiCanonicalBeat(b.label))&&b.snapshot),followups=report.beats.filter(b=>!skip.has(aiCanonicalBeat(b.label)));
  let presentedSnapshot=baseSnapshot||baseBeat?.snapshot||report.beforeSnapshot;if(presentedSnapshot)renderPresentationSnapshot(presentedSnapshot);
- for(const beat of followups){const nextSnapshot=beat.snapshot||report.finalSnapshot,label=aiCanonicalBeat(beat.label),transition=p4PrepareAITransition(presentedSnapshot,nextSnapshot,label,'death');renderPresentationSnapshot(nextSnapshot);presentCausalBeatFx(beat,report,0,transition,presentedSnapshot,nextSnapshot);presentedSnapshot=nextSnapshot;await aiWait(playerBeatDelay(beat))}
+ for(const beat of followups){const nextSnapshot=beat.snapshot||report.finalSnapshot,label=aiCanonicalBeat(beat.label),transition=p4PrepareAITransition(presentedSnapshot,nextSnapshot,label,'death');renderPresentationSnapshot(nextSnapshot);presentCausalBeatFx(beat,report,0,transition,presentedSnapshot,nextSnapshot);presentedSnapshot=nextSnapshot;await waitForCausalBeat(beat,playerBeatDelay(beat,report))}
  renderPresentationSnapshot(report.finalSnapshot);
 }
 async function resolveAttackFx(attackerUid,targetUid=null,opts={}){
@@ -32426,9 +32425,31 @@ function presentCausalBeatFx(beat,report,actorOwner,transition=null,prevSnapshot
  }
 }
 function presentAIBeatFx(beat,report,transition=null,prevSnapshot=null,nextSnapshot=null){presentCausalBeatFx(beat,report,1,transition,prevSnapshot,nextSnapshot)}
-function playerBeatDelay(value){const p=m12115aBeatParts(value);return m12115aReadDelay(value,AI_PACING[p.label]||FX_TIMING.TRIGGER)+(signaturePlayBeat(value)?520:0)}
+// Player pacing is separate from AI reading time. Keep entry/exit animations complete.
+const PLAYER_BEAT_PACING={PLAY:140,SUMMON:620,DEATH:440,TOKEN:700,DAMAGE:260,
+ BARRIER:240,TRIGGER:680,HEAL:300,RETURN:430,BUFF:320};
+function playerBeatDelay(value,report=null){
+ const p=m12115aBeatParts(value);
+ if(signaturePlayBeat(value))return m12115aReadDelay(value,AI_PACING.PLAY)+520;
+ if(report?.equipmentPlay&&['PLAY','BUFF','DAMAGE'].includes(p.label))return {PLAY:80,BUFF:180,DAMAGE:180}[p.label];
+ return PLAYER_BEAT_PACING[p.label]??m12115aReadDelay(value,AI_PACING[p.label]||FX_TIMING.TRIGGER);
+}
+async function waitForCausalBeat(beat,delay){
+ if(aiCanonicalBeat(beat.label)!=='TOKEN'){await aiWait(delay);return;}
+ const animations=[...document.querySelectorAll('.card.board.fx-p4-token-born')]
+  .flatMap(el=>el.getAnimations?.()||[]).filter(animation=>animation.animationName==='wbP4Token');
+ if(!animations.length){await aiWait(delay);return;}
+ // Timers start before the first painted animation frame. Keep the Token cue
+ // mounted until its actual animation finishes; a timeout covers stalled browsers.
+ const finished=new Promise(resolve=>{
+  const timeout=setTimeout(resolve,1500);
+  Promise.all(animations.map(animation=>animation.finished.catch(()=>{})))
+   .then(()=>{clearTimeout(timeout);resolve()});
+ });
+ await Promise.all([aiWait(delay),finished]);
+}
 function playerActionReport(beforeSeq,beforeSnapshot,captures,finalSnapshot,kind='play'){
- const events=(game.eventTrail||[]).filter(e=>e.id>beforeSeq),winner=game.winner;return {ok:true,kind,events,beats:aiPresentationBeats(events,kind,winner,captures,finalSnapshot),winner,beforeSnapshot,finalSnapshot};
+ const events=(game.eventTrail||[]).filter(e=>e.id>beforeSeq),winner=game.winner;return {ok:true,kind,equipmentPlay:kind==='play'&&events.some(e=>e.fxKind==='PLAY'&&C[e.sourceKey]?.type==='Equipment'),events,beats:aiPresentationBeats(events,kind,winner,captures,finalSnapshot),winner,beforeSnapshot,finalSnapshot};
 }
 async function presentPlayerActionReport(report){
  const ownsLayoutFreeze=!m13I2CombatLayoutFreeze?.active&&m13I2ReportNeedsLayoutFreeze(report);
@@ -32438,9 +32459,9 @@ async function presentPlayerActionReport(report){
   const beat=report.beats[i],nextSnapshot=beat.snapshot||report.finalSnapshot,label=aiCanonicalBeat(beat.label),transition=p4PrepareAITransition(presentedSnapshot,nextSnapshot,label,'death');
   renderPresentationSnapshot(nextSnapshot);
   if(label==='SUMMON'&&dragPlayHandoff?.state==='committed')dragHandoffMeetSummon(dragPlayHandoff.uid);
-  presentCausalBeatFx(beat,report,0,transition,presentedSnapshot,nextSnapshot);presentedSnapshot=nextSnapshot;await aiWait(playerBeatDelay(beat));
+  presentCausalBeatFx(beat,report,0,transition,presentedSnapshot,nextSnapshot);presentedSnapshot=nextSnapshot;await waitForCausalBeat(beat,playerBeatDelay(beat,report));
  }
- renderPresentationSnapshot(report.finalSnapshot);await aiWait(180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();
+ renderPresentationSnapshot(report.finalSnapshot);await aiWait(report.equipmentPlay?100:180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();
  if(ownsLayoutFreeze)m13I3HoldCombatGeometry(`player-${report.kind||'action'}-settled`);
  render();
  if(dragPlayHandoff?.state==='committed')dragHandoffClear(true);
@@ -32499,7 +32520,7 @@ async function drainAIQueue(generation){
     renderPresentationSnapshot(nextSnapshot);
     presentAIBeatFx(beats[i],report,transition,presentedSnapshot,nextSnapshot);
     presentedSnapshot=nextSnapshot;
-    await aiWait(aiBeatDelay(beats[i]));
+    await waitForCausalBeat(beats[i],aiBeatDelay(beats[i]));
    }
    aiPacingState=null;
    renderPresentationSnapshot(report.finalSnapshot);
