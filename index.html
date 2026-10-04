@@ -32133,11 +32133,11 @@ async function presentCombatFx(meta,commit=null,checkpoint=null){
   /* V36: the drag already communicated SOURCE + TARGET. Preserve a short visible
      travel beat on the existing intent line before contact; never replay a second beam. */
   premiumCombatReleaseFx(source,target);
-  window.__WB_AUDIO__?.cue('release');
+  window.__WB_AUDIO__?.cue('attack-release');
   m12115SetCausalReadout('IMPACT','โจมตี');
   await aiWait(110);
  }else{
-  window.__WB_AUDIO__?.cue('prepare');
+  window.__WB_AUDIO__?.cue('attack-prepare');
   m12115SetCausalReadout('SOURCE',`${m12115NodeName(source,'Creature')} → ${m12115NodeName(target,'Target')}`);
   await aiWait(combatDwell('SOURCE'));
   target.classList.add('fx-target-cue');
@@ -32145,13 +32145,13 @@ async function presentCombatFx(meta,commit=null,checkpoint=null){
   m12115SetCausalReadout('TARGET',m12115NodeName(target,'Target'));
   await aiWait(combatDwell('TARGET'));
   fxBeam(source,target,'attack');
-  window.__WB_AUDIO__?.cue('release');
+  window.__WB_AUDIO__?.cue('attack-release');
   m12115SetCausalReadout('IMPACT','กำลัง Resolve การปะทะ');
   await aiWait(combatDwell('IMPACT'));
  }
  const resolved=commit?commit():meta;
  if(!resolved?.ok){
-  window.__WB_AUDIO__?.cue('block');
+  window.__WB_AUDIO__?.cue('attack-block');
   target.classList.add('fx-block-impact');
   document.querySelectorAll('.card.board.protecting').forEach(el=>el.classList.add('fx-block-impact'));
   fxFloat(target,'🛡 PROTECTED','block');
@@ -32161,10 +32161,11 @@ async function presentCombatFx(meta,commit=null,checkpoint=null){
  }
  if(resolved.targetWasKeeper)target.classList.add('fx-keeper-impact');
  else{target.classList.add('fx-impact');source.classList.add('fx-impact')}
- window.__WB_AUDIO__?.cue(resolved.targetWasKeeper?'keeper':'impact');
+ window.__WB_AUDIO__?.cue(resolved.targetWasKeeper?'attack-keeper':'attack-impact');
  await premiumCombatHitStop(source,target,!!resolved.targetWasKeeper);
  combatBarrierFloats(resolved,source,target);
  if((resolved.barrierReducedTarget||0)>0||(resolved.barrierReducedSource||0)>0){
+  window.__WB_AUDIO__?.cue('attack-block');
   m12115SetCausalReadout('BARRIER','Barrier ลด Damage ก่อนคำนวณผลการปะทะ');
   await aiWait(directIntent?185:combatDwell('BARRIER'));
  }
@@ -32383,7 +32384,7 @@ async function presentAINonCombatPrelude(report){
 }
 function presentCausalBeatFx(beat,report,actorOwner,transition=null,prevSnapshot=null,nextSnapshot=null){
  const label=aiCanonicalBeat(beat.label),ev=beat.event||{},source=p4SourceFromEvent(ev),target=p4TargetFromEvent(ev),ownKeeper=fxKeeper(actorOwner),enemyKeeper=fxKeeper(1-actorOwner);
- window.__WB_AUDIO__?.beat(label,report?.kind);
+ window.__WB_AUDIO__?.beat(label,report?.kind,ev,report?.events);
  if(signaturePlayBeat(beat))window.__WB_SIGNATURE__?.reveal(ev.sourceKey,actorOwner);
  m12115SetCausalReadout(label,m12115BeatSummary(beat,label));
  if(label==='SUMMON'){
@@ -39316,11 +39317,91 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     g.gain.exponentialRampToValueAtTime(.0001,now+duration);
     source.connect(filter).connect(g).connect(sfxBus);source.start(now,Math.random()*.3,duration);source.stop(now+duration+.01);
   }
+  let combatBus=null;
+  function combatOutput(){
+    if(combatBus)return combatBus;
+    combatBus=context.createGain();combatBus.gain.value=.78;combatBus.connect(sfxBus);
+    const reverb=context.createConvolver(),send=context.createGain();send.gain.value=.16;
+    const impulse=context.createBuffer(2,Math.round(context.sampleRate*.42),context.sampleRate);
+    for(let channel=0;channel<2;channel++){
+      const data=impulse.getChannelData(channel);
+      for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/data.length,3.5);
+    }
+    reverb.buffer=impulse;combatBus.connect(send).connect(reverb).connect(sfxBus);
+    return combatBus;
+  }
+  function combatTone(frequency,endFrequency,duration,level,delay=0,type='sine'){
+    const now=context.currentTime+delay,source=context.createOscillator(),gain=context.createGain();
+    source.type=type;source.frequency.setValueAtTime(frequency,now);
+    source.frequency.exponentialRampToValueAtTime(endFrequency,now+duration);
+    gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(level,now+.006);
+    gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+    source.connect(gain).connect(combatOutput());source.start(now);source.stop(now+duration+.01);
+    source.onended=()=>{source.disconnect();gain.disconnect()};
+  }
+  function combatNoise(duration,level,frequency,endFrequency,delay=0,attack=.008){
+    const now=context.currentTime+delay,source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();
+    source.buffer=noiseBuffer;filter.type='bandpass';filter.Q.value=.8;
+    filter.frequency.setValueAtTime(frequency,now);filter.frequency.exponentialRampToValueAtTime(endFrequency,now+duration);
+    gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(level,now+attack);
+    gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+    source.connect(filter).connect(gain).connect(combatOutput());
+    source.start(now,Math.random()*Math.max(0,noiseBuffer.duration-duration),duration);source.stop(now+duration+.01);
+    source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect()};
+  }
+  function combatSound(kind){
+    if(kind==='prepare'){
+      combatNoise(.12,.025,650,1800,0,.035);combatTone(150,240,.12,.018);
+    }else if(kind==='release'){
+      combatNoise(.19,.10,850,3600,0,.022);combatNoise(.13,.035,2800,650,.035,.018);
+    }else if(kind==='impact'||kind==='keeper'){
+      const heavy=kind==='keeper',weight=heavy?1.12:1;
+      combatTone(heavy?112:145,heavy?42:58,heavy?.40:.29,.15*weight);
+      combatTone(heavy?225:290,heavy?96:125,.19,.07*weight,.008,'triangle');
+      combatNoise(.10,.14*weight,2100,850);combatNoise(heavy?.34:.25,.075,620,240,.018,.016);
+      for(const [i,frequency] of [510,893,1470].entries())combatTone(frequency,frequency*.88,.18+i*.055,.019/(i+1),.012+i*.007);
+      if(heavy)combatTone(76,38,.46,.035,.025);
+    }else if(kind==='block'){
+      combatNoise(.13,.085,3800,1600);
+      for(const [i,frequency] of [620,1013,1660].entries())combatTone(frequency,frequency*.97,.25+i*.06,.040/(i+1),i*.005);
+      combatTone(190,110,.16,.035);
+    }
+  }
+  function eventSound(kind){
+    if(kind==='damage'){
+      combatNoise(.13,.13,2500,650);combatTone(210,85,.23,.105,0,'triangle');
+      combatTone(740,370,.27,.028,.018);combatNoise(.25,.05,1200,320,.025,.02);
+    }else if(kind==='death'||kind==='sacrifice'){
+      const sacrifice=kind==='sacrifice';
+      combatNoise(.36,.095,1500,180,0,sacrifice?.08:.012);
+      combatTone(sacrifice?190:150,38,.40,.095,.012,'triangle');
+      combatTone(440,160,.24,.025,.025);combatNoise(.28,.025,3200,500,.10,.04);
+    }else if(kind==='summon'){
+      combatNoise(.32,.05,450,1600,0,.11);combatTone(110,220,.32,.075);
+      combatTone(330,490,.35,.05,.035);combatTone(660,740,.40,.028,.07);
+    }else if(kind==='token'){
+      combatNoise(.13,.025,2800,1000);combatTone(740,880,.24,.035);
+      combatTone(1110,1320,.28,.015,.045);
+    }else if(kind==='buff'){
+      combatTone(190,330,.20,.05,0,'triangle');combatTone(440,660,.20,.028,.025);
+      combatNoise(.14,.04,1600,2800,.015,.025);
+    }else if(kind==='ability'){
+      combatTone(250,390,.23,.065,0,'triangle');combatNoise(.20,.055,1100,2200,0,.03);
+      combatTone(880,1174,.23,.02,.04);
+    }else if(kind==='equip'){
+      combatNoise(.10,.07,2200,900);combatTone(175,120,.15,.065);
+      for(const [i,frequency] of [480,793,1290].entries())combatTone(frequency,frequency*.98,.18+i*.04,.04/(i+1),.045);
+    }else if(kind==='return'){
+      combatNoise(.28,.045,2700,400,0,.08);combatTone(600,240,.30,.035);
+      combatTone(920,390,.24,.018,.035);
+    }
+  }
   function cue(kind){
     if(!context||context.state!=='running'||settings.muted||settings.sfx<=0)return;
-    const now=performance.now(),cooldown={lock:220,ui:75,impact:110,block:150,heal:180,trigger:160,landmark:300}[kind]||90;
+    const now=performance.now(),cooldown={lock:220,ui:75,impact:110,block:150,'attack-impact':110,'attack-block':150,heal:180,trigger:160,landmark:300}[kind]||90;
     if(now-(lastCue.get(kind)||-1e6)<cooldown)return;
     lastCue.set(kind,now);
+    if(kind.startsWith('attack-')){combatSound(kind.slice(7));return;}
     switch(kind){
       case 'ui':osc(710,.09,.025,'sine',870);break;
       case 'aim':noise(.14,.035,1700);osc(185,.18,.035,'triangle',310);break;
@@ -39328,31 +39409,39 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
       case 'release':noise(.18,.065,2400);osc(330,.17,.042,'sawtooth',105);break;
       case 'cancel':osc(390,.12,.022,'sine',210);break;
       case 'prepare':osc(270,.16,.028,'triangle',370);break;
-      case 'impact':noise(.21,.12,950);osc(116,.25,.11,'triangle',49);osc(580,.10,.038,'square',280);break;
+      case 'impact':eventSound('damage');break;
       case 'keeper':noise(.26,.15,700);osc(88,.34,.14,'triangle',39);osc(350,.20,.037,'sawtooth',120);break;
       case 'block':noise(.18,.08,3100);osc(680,.25,.065,'triangle',420);osc(1010,.15,.033,'sine',760);break;
-      case 'summon':osc(330,.27,.055,'sine',490);osc(660,.33,.032,'sine',740,.06);break;
+      case 'summon':eventSound('summon');break;
+      case 'token':case 'buff':case 'ability':case 'equip':case 'return':case 'sacrifice':eventSound(kind);break;
       case 'attune':osc(260,.20,.04,'sine',390);osc(520,.28,.05,'sine',650,.10);break;
       case 'heal':osc(490,.28,.035,'sine',610);osc(730,.33,.027,'sine',840,.08);break;
       case 'restore':osc(390,.26,.065,'sine',520);osc(585,.32,.055,'sine',780,.10);osc(880,.40,.04,'sine',1100,.22);break;
       case 'signature':noise(.52,.09,1800);osc(98,.70,.09,'triangle',74);for(const [i,f] of [294,440,587,880].entries())osc(f,.72,.07,'sine',f,i*.095);break;
       case 'landmark':osc(294,.36,.065,'triangle',294);osc(440,.46,.05,'sine',440,.12);osc(587,.60,.045,'sine',587,.25);break;
-      case 'death':osc(270,.31,.08,'triangle',105);noise(.17,.05,650,.08);break;
+      case 'death':eventSound('death');break;
       case 'trigger':osc(790,.14,.036,'sine',1050);break;
       case 'victory':for(const [i,f] of [294,440,587,880].entries())osc(f,.65,.075,'sine',f,i*.15);break;
       case 'defeat':for(const [i,f] of [392,294,220,147].entries())osc(f,.56,.06,'triangle',f,i*.16);break;
     }
   }
-  function beat(label,reportKind=''){
+  function beat(label,reportKind='',event=null,events=[]){
     const kind=String(label).split(' ')[0];
-    if(kind==='SUMMON'||kind==='TOKEN')cue('summon');
+    const sourceKey=event?.sourceKey||events?.find(e=>e.fxKind==='PLAY'&&e.sourceUid===event?.sourceUid)?.sourceKey;
+    const equipmentAttach=kind==='BUFF'&&C[sourceKey]?.type==='Equipment'&&!events?.some(e=>e.fxKind==='BUFF'&&e.sourceUid===event?.sourceUid&&e.id<event?.id);
+    if(kind==='SUMMON')cue('summon');
+    else if(kind==='TOKEN')cue('token');
+    else if(kind==='RETURN')cue('return');
     else if(kind==='ATTUNE')cue('attune');
     else if(kind==='LANDMARK')cue('landmark');
-    else if(kind==='DEATH'||kind==='SACRIFICE')cue('death');
-    else if(kind==='HEAL'||kind==='BUFF')cue('heal');
+    else if(kind==='DEATH')cue('death');
+    else if(kind==='SACRIFICE')cue('sacrifice');
+    else if(kind==='HEAL')cue('heal');
+    else if(kind==='BUFF')cue(equipmentAttach?'equip':'buff');
     else if(kind==='RESTORE')cue('restore');
     else if(kind==='BARRIER')cue('block');
-    else if(kind==='TRIGGER'||kind==='ABILITY')cue('trigger');
+    else if(kind==='TRIGGER')cue('trigger');
+    else if(kind==='ABILITY')cue('ability');
     else if(kind==='DAMAGE'&&reportKind!=='combat')cue('impact');
     else if(kind==='RESULT'&&!resultPlayed){resultPlayed=true;cue(game.winner===0?'victory':'defeat')}
   }
