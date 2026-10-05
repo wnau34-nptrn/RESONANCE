@@ -39755,6 +39755,9 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
 .adv-hint-body{margin-top:5px;border-top:1px solid #e1d7ae44;padding-top:6px}
 .adv-hint-body strong{display:block;color:#f5d895;font-size:12px;line-height:1.3}
 .adv-hint-body p{margin:4px 0 0;white-space:normal;line-height:1.45}
+.adv-puzzle-hint .adv-hint-head{gap:6px;flex-wrap:wrap}
+.adv-puzzle-hint button{min-height:32px}
+.adv-puzzle-hint .adv-hint-body button{margin-top:6px;border:1px solid #b3caaf80;border-radius:6px;padding:3px 10px}
 .adv-duel-hint.is-collapsed{width:max-content;max-width:calc(100vw - 32px);padding:4px 9px;overflow:hidden}
 .adv-duel-hint.is-collapsed .adv-hint-body,.adv-duel-hint.is-collapsed .adv-hint-map{display:none}
 @media(max-width:750px){
@@ -39961,7 +39964,8 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     ['glass','Glasswind · เส้นทางที่หวนคืน'],
     ['fracture','Fracture · ราคาแห่งวันพรุ่งนี้'],
     ['root','Wildroot · ความทรงจำใต้ผืนดิน'],
-    ['convergence','บทบรรจบ · เสียงสะท้อนทั้งสี่']
+    ['convergence','บทบรรจบ · เสียงสะท้อนทั้งสี่'],
+    ['puzzles','Echo Trials · ปริศนา 1 เทิร์น']
   ];
   const stages = [
     {id:'p1',group:'prologue',title:'ชิ้นส่วนที่ตื่นขึ้น',place:'Shattered Meridian',site:'moonbridge',deck:0,foe:2,hp:10,focus:null,reward:'light',setup:{phase:'ACTION',board:['light'],hand:['conductor'],ready:{beacon:2,glass:1}},lines:['Liora พบชิ้นส่วน Living Atlas ในซาก Concordance แล้ว Echo ที่ไม่ควรตื่นกลับพุ่งเข้าหาเธอ','ผู้ส่งสารเปิดช่องว่างให้โจมตีเพียงครั้งเดียว ก่อนเส้นทางจะปิดลง'],goal:'ใช้ Creature ที่ READY โจมตี Keeper เพื่อเปิดทางหนี',after:'สัญญาณจาก Atlas ชี้ไปยัง Azure Gate แต่มีใครบางคนรับรู้ตำแหน่งของ Liora แล้ว'},
@@ -39985,6 +39989,12 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     {id:'c1',group:'convergence',title:'สี่ทาง ณ Meridian',place:'Shattered Meridian',site:'observatory',deck:5,foe:4,hp:95,focus:null,reward:'atlas',setup:{board:['scout'],enemy:['beast'],hand:['echoStep','fractureling']},lines:['ข้อมูลจากสี่เส้นทางมาบรรจบที่ Shattered Meridian','Liora พบว่าการกระทำของ Creature ไม่จำเป็นต้องตรงกับ Resonance ที่มันถือกำเนิด'],goal:'ใช้เด็คผสมสอง Resonance เพื่อเอาชนะคู่แข่ง',after:'Living Atlas วาดเส้นทางที่เชื่อม Landmark ทั้งหก'},
     {id:'c2',group:'convergence',title:'การตื่นของทั้งหก',place:'Starfall Observatory',site:'observatory',deck:4,foe:7,hp:100,focus:null,reward:'citadel',setup:{hand:['conductor','light','dawnshield']},lines:['Landmark ทั้งหกเต้นเป็นจังหวะเดียวกัน และ Fractured Host ปรากฏพร้อมแผนที่อีกฉบับ','ทั้งสอง Keeper แย่งชิงความทรงจำ ไม่ใช่เพื่อครองดินแดน แต่เพื่อถามว่าใครควรได้รู้ความจริง'],goal:'ชนะ Duel เต็มรูปแบบ โดยใช้ Journey และ Landmark ให้เป็นประโยชน์',after:'Atlas เผยตำแหน่งแห่งที่เจ็ดซึ่งไม่มีสัญญาณของ Resonance ใดเลย'}
   ];
+  stages.push(
+    {id:'et1',group:'puzzles',puzzle:true,title:'ผ่านแนวป้องกัน',place:'Azure Gate',site:'sanctuary',deck:0,foe:0,hp:10,topic:'RIFTSTRIKE',setup:{board:['light'],enemy:['azurewarden'],hand:['mirrorCloak'],ready:{glass:3}},lines:['แนว GUARDIAN ปิดทางเข้า Azure Gate แต่ Keeper เหลือ Spirit เพียง 10','ใช้สนามและมือที่เตรียมไว้เพื่อชนะก่อนกดจบเทิร์น'],goal:'ชนะภายในเทิร์นนี้ · Keeper ศัตรู 10 Spirit',hints:['คุณต้องชนะ Keeper ไม่จำเป็นต้องกำจัด Creature ทุกตัว','Mirrorwake Cloak ให้ RIFTSTRIKE แก่ Creature ที่ติดตั้ง','ติด Mirrorwake Cloak ให้ Relay Lightbearer แล้วโจมตี Keeper โดยตรง'],after:'Mirrorwake Cloak ให้ RIFTSTRIKE จึงผ่าน GUARDIAN ไปโจมตี Keeper ได้โดยตรง · Lightbearer ทำ Damage 10 พอดี'},
+    {id:'et2',group:'puzzles',puzzle:true,title:'ราคาของชัยชนะ',place:'Ashen Marches',site:'forge',deck:2,foe:0,hp:20,topic:'DEATH · SACRIFICE',setup:{board:['fractureling'],exhausted:['fractureling'],artifacts:['idol'],enemy:['azurewarden'],hand:['omenCollapse'],ready:{fracture:3}},lines:['Fractureling หมดแรงโจมตี แต่รอยแยกยังตอบรับความสูญเสีย','Fractured Idol ยังไม่ได้ใช้ผลครั้งแรกของเทิร์นนี้'],goal:'ชนะภายในเทิร์นนี้ · Keeper ศัตรู 20 Spirit',hints:['ลองนับผลทั้งหมดเมื่อ Creature ฝ่ายเราตาย','Sacrifice ทำให้ Fractureling ตาย และปลุกผลของ Fractured Idol','ใช้ Omen of Collapse สังเวย Fractureling: Death 10 + Idol 10'],after:'Omen of Collapse สังเวย Fractureling · ศัตรูเสีย Spirit 10 จาก Fractureling และ 10 จาก Fractured Idol รวม 20'},
+    {id:'et3',group:'puzzles',puzzle:true,title:'ถอยเพื่อเปิดทาง',place:'Whisperglass Relay',site:'relay',deck:1,foe:3,hp:10,topic:'RETURN',setup:{board:['cartographer'],enemy:['rootkeeper'],hand:['returnGlass'],ready:{glass:2}},lines:['Rootkeeper เป็นผู้ป้องกันเพียงตัวเดียว แต่ Keeper เหลือ Spirit เพียง 10','Cartographer ยัง READY · Return Through Glass ใช้กับ Creature ได้ทั้งสองฝ่าย'],goal:'ชนะภายในเทิร์นนี้ · Keeper ศัตรู 10 Spirit',hints:['ลองเปิดทางไปยัง Keeper โดยไม่ต่อสู้กับผู้ป้องกัน','Return Through Glass สามารถ RETURN Creature ศัตรูกลับมือได้','RETURN Rootkeeper → ใช้ Cartographer โจมตี Keeper 10'],after:'Return Through Glass คืน Rootkeeper กลับมือศัตรู · เมื่อไม่มีผู้ป้องกัน Cartographer จึงโจมตี Keeper ได้ 10'},
+    {id:'et4',group:'puzzles',puzzle:true,title:'อีกหนึ่งก้าว',place:'Forge of Echoes',site:'forge',deck:0,foe:2,hp:10,topic:'JOURNEY · CLAIM',setup:{board:['light'],enemy:['fractureling'],hand:[],ready:{},restore:2},lines:['ไม่มีการ์ดในมือ แต่ Landmark ฝ่ายเรามี Restore อยู่แล้ว 2/3','Beacon Journey ของเทิร์นนี้ยังไม่ได้ใช้ · Keeper ฝ่ายเราเริ่มที่ 100 Spirit'],goal:'ชนะภายในเทิร์นนี้ · Keeper ศัตรู 10 Spirit',hints:['ดูสิ่งที่จะได้รับหลัง Combat ไม่ใช่แค่ Damage','Lightbearer รอดจาก Combat ได้ และ Beacon Journey ให้ Restore อีก 1','ใช้ Lightbearer โจมตี Fractureling → รอด → Restore 3/3 → Claim ลด Spirit ศัตรู 10'],after:'Lightbearer กำจัด Fractureling และยังรอด · Beacon Journey ให้ Restore ครบ 3/3 จึง Claim Landmark และสร้าง Pressure 10 แก่ Keeper ศัตรู'}
+  );
   const byId = Object.fromEntries(stages.map(s=>[s.id,s]));
   const load = () => {try {const v=JSON.parse(localStorage.getItem(STORE)||'null');return v?.version===1&&v.completed&&typeof v.completed==='object'?v:null;}catch{return null}};
   const initial = () => ({version:1,completed:{},mastery:{},achievements:{},owned:Object.fromEntries((window.__RESONANCE_C8_4C_STARTERS__?.[3]?.cards||[]).map(x=>[x.key,x.count])),echoes:0});
@@ -39993,6 +40003,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   let lesson = 0, tutorialStage = null, tutorialReturn = 'map';
   const persist = () => {try{localStorage.setItem(STORE,JSON.stringify(progress))}catch{}};
   const unlocked = s => {
+    if(s.puzzle)return true;
     if(s.group==='prologue'){const index=stages.findIndex(x=>x.id===s.id);return index===0||!!progress.completed[stages[index-1].id]}
     if(s.group==='convergence')return s.id==='c1'?['b3','g3','f3','w3'].every(id=>progress.completed[id]):!!progress.completed.c1;
     const chain=stages.filter(x=>x.group===s.group),index=chain.indexOf(s);
@@ -40000,11 +40011,19 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   };
   const artwork = s => {const lm=LANDMARKS.find(x=>x.id===s.site);return lm?landmarkArt(lm):WORLD_ART.world};
   const safe = text => esc(String(text??''));
-  const canUseCustom = s => !!s&&s.group!=='prologue'&&!!customDeckProfile&&customDeckProfile.cards.every(x=>(progress.owned[x.key]||0)>=x.count)&&[...(s.setup.hand||[]),...(s.setup.board||[])].every(k=>customDeckProfile.cards.some(x=>x.key===k));
-  const stageCard = s => C[s.reward]?.name||'';
-  const nextStage = s => {const next=stages[stages.indexOf(s)+1];return next&&unlocked(next)?next:null};
+  const canUseCustom = s => !!s&&!s.puzzle&&s.group!=='prologue'&&!!customDeckProfile&&customDeckProfile.cards.every(x=>(progress.owned[x.key]||0)>=x.count)&&[...(s.setup.hand||[]),...(s.setup.board||[])].every(k=>customDeckProfile.cards.some(x=>x.key===k));
+  const stageCard = s => s.puzzle?s.topic:C[s.reward]?.name||'';
+  const stageDone = s => s.puzzle?!!progress.puzzles?.[s.id]?.completed:!!progress.completed[s.id];
+  const nextStage = s => {const chain=stages.filter(x=>!!x.puzzle===!!s.puzzle),next=chain[chain.indexOf(s)+1];return next&&unlocked(next)?next:null};
+  let puzzleHintLevel=0,puzzleFailed=false;
   const mark = (s,win) => {
     if(!win)return false;
+    if(s.puzzle){
+      progress.puzzles=progress.puzzles||{};
+      const previous=progress.puzzles[s.id],first=!previous?.completed;
+      progress.puzzles[s.id]={completed:previous?.completed||Date.now(),unaided:!!previous?.unaided||puzzleHintLevel===0};
+      persist();return first;
+    }
     const first=!progress.completed[s.id];
     if(first){progress.completed[s.id]=Date.now();if(s.reward){const owned=progress.owned[s.reward]||0,cap=cardCopyLimit(s.reward);if(owned<cap){progress.owned[s.reward]=owned+1;lastReward='card'}else{progress.echoes=(progress.echoes||0)+1;lastReward='echo'}}}
     if(s.focus&&achievedInDuel.has(s.focus))progress.mastery[s.id]=true;
@@ -40048,14 +40067,16 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   }
   function mapMarkup(){
     const count=Object.keys(progress.completed).length,marks=order.filter(k=>progress.achievements[k]);
-    return `<main class="adv-shell"><header class="adv-head"><div><span class="adv-eyebrow">THE CHRONICLES OF CALDRIS · 317 AS</span><h1>การตื่นของทั้งหก</h1><p>ติดตามชิ้นส่วน Atlas ผ่านสี่เส้นทาง Resonance</p></div>${button('close','กลับหน้าเลือก Deck ×')}</header><div class="adv-scroll"><div class="adv-stat">ผ่านแล้ว <b>${count}/20</b> ด่าน · ความชำนาญ <b>${marks.length}/4</b> Resonance · เด็คทดลองยืมได้ทุกสาย</div>${groups.map(([group,name])=>`<section class="adv-chapter"><h2>${name}</h2><div class="adv-nodes">${stages.filter(s=>s.group===group).map(s=>{const done=!!progress.completed[s.id],open=unlocked(s);return `<button type="button" class="adv-node ${done?'done':''} ${open?'':'locked'}" data-adv-stage="${s.id}" ${open?'':'disabled'}><img src="${artwork(s)}" alt=""><span class="adv-node-copy"><small>${safe(s.place)} · ${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}</small><strong>${safe(s.title)}</strong><em>${safe(s.goal)}</em><span>✦ ${safe(stageCard(s))}${progress.mastery[s.id]?' · ★ Mastery':''}</span></span></button>`}).join('')}</div></section>`).join('')}<section class="adv-collection"><h2>บันทึกการเดินทาง</h2><p>การ์ดสะสม ${Object.values(progress.owned).reduce((a,b)=>a+b,0)} ใบ · Echoes ${progress.echoes||0} · ใช้เด็คยืมได้ทุกเส้นทาง · เด็ค Custom ใช้ใน Adventure ได้เมื่อมีการ์ดครบตามจำนวนจริง</p><p>Achievement: ${order.map(k=>`${progress.achievements[k]?'✦':'◇'} ${labels[k]}`).join(' · ')}</p></section></div></main>`;
+    return `<main class="adv-shell"><header class="adv-head"><div><span class="adv-eyebrow">THE CHRONICLES OF CALDRIS · 317 AS</span><h1>การตื่นของทั้งหก</h1><p>ติดตามชิ้นส่วน Atlas ผ่านสี่เส้นทาง Resonance</p></div>${button('close','กลับหน้าเลือก Deck ×')}</header><div class="adv-scroll"><div class="adv-stat">ผ่านแล้ว <b>${count}/20</b> ด่าน · ความชำนาญ <b>${marks.length}/4</b> Resonance · เด็คทดลองยืมได้ทุกสาย · ปริศนา <b>${Object.values(progress.puzzles||{}).filter(x=>x.completed).length}/4</b></div>${groups.map(([group,name])=>`<section class="adv-chapter"><h2>${name}</h2><div class="adv-nodes">${stages.filter(s=>s.group===group).map(s=>{const done=stageDone(s),open=unlocked(s);return `<button type="button" class="adv-node ${done?'done':''} ${open?'':'locked'}" data-adv-stage="${s.id}" ${open?'':'disabled'}><img src="${artwork(s)}" alt=""><span class="adv-node-copy"><small>${safe(s.place)} · ${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}</small><strong>${safe(s.title)}</strong><em>${safe(s.goal)}</em><span>✦ ${safe(stageCard(s))}${s.puzzle?(progress.puzzles?.[s.id]?.unaided?' · ★ ไม่ใช้คำใบ้':''):(progress.mastery[s.id]?' · ★ Mastery':'')}</span></span></button>`}).join('')}</div></section>`).join('')}<section class="adv-collection"><h2>บันทึกการเดินทาง</h2><p>การ์ดสะสม ${Object.values(progress.owned).reduce((a,b)=>a+b,0)} ใบ · Echoes ${progress.echoes||0} · ใช้เด็คยืมได้ทุกเส้นทาง · เด็ค Custom ใช้ใน Adventure ได้เมื่อมีการ์ดครบตามจำนวนจริง</p><p>Achievement: ${order.map(k=>`${progress.achievements[k]?'✦':'◇'} ${labels[k]}`).join(' · ')}</p></section></div></main>`;
   }
   function briefMarkup(s){
+    if(s.puzzle)return `<main class="adv-shell adv-brief"><div class="adv-hero" style="background-image:linear-gradient(0deg,#07131e 5%,transparent 100%),url('${artwork(s)}')"><div class="adv-hero-top">${button('map','← แผนที่')}<span>Echo Trials · ${safe(s.topic)}</span></div><div class="adv-hero-title"><small>ปริศนา 1 เทิร์น</small><h1>${safe(s.title)}</h1></div></div><div class="adv-story"><p>${safe(s.lines[0])}</p><p>${safe(s.lines[1])}</p><div class="adv-mission"><small>สนามและมือแน่นอน · ไม่มีจับเวลา</small><strong>${safe(s.goal)}</strong><span>เริ่มใน ACTION · อ่านการ์ดได้ · เริ่มใหม่ได้ทุกครั้ง · มีคำใบ้ 3 ระดับ</span></div><p class="adv-reward">${stageDone(s)?progress.puzzles[s.id].unaided?'ผ่านโดยไม่ใช้คำใบ้แล้ว':'ผ่านแล้ว':'ยังไม่ผ่าน'} · ปริศนาไม่ใช้เด็ค Custom และไม่แจกรางวัลการ์ด</p><div class="adv-actions">${button('begin','เริ่มปริศนา →',`data-adv-stage-id="${s.id}"`)}</div></div></main>`;
     const custom=canUseCustom(s),done=!!progress.completed[s.id];
     return `<main class="adv-shell adv-brief"><div class="adv-hero" style="background-image:linear-gradient(0deg,#07131e 5%,transparent 100%),url('${artwork(s)}')"><div class="adv-hero-top">${button('map','← แผนที่')}<span>${safe(s.place)}</span></div><div class="adv-hero-title"><small>${safe(groups.find(x=>x[0]===s.group)[1])}</small><h1>${safe(s.title)}</h1></div></div><div class="adv-story"><p>${safe(s.lines[0])}</p><p>${safe(s.lines[1])}</p><div class="adv-lore-gate"><span>STAGE LORE</span><b>อ่านเรื่องราวและภารกิจของด่านนี้ก่อนเข้าสู่ Battle</b></div><div class="adv-mission"><small>คอมโบแนะนำ · ชนะ Duel เพื่อผ่าน</small><strong>${safe(s.goal)}</strong><span>คู่ต่อสู้เริ่มที่ ${s.hp} Spirit · ${s.setup.enemy?.length?'มี Creature บนสนาม · ':''}เด็คทดลอง: ${safe(window.__RESONANCE_C8_4C_STARTERS__?.[s.deck]?.name||'Starter')}</span></div><p class="adv-reward">รางวัลครั้งแรก: ${safe(stageCard(s))}${done?' · รับแล้ว':(progress.owned[s.reward]||0)>=cardCopyLimit(s.reward)?' · หากมีครบแล้วจะได้ Echo 1':''}</p><div class="adv-actions">${button('begin','เข้าสู่ Battle →',`data-adv-stage-id="${s.id}"`)}${custom?button('begin-custom','ใช้เด็ค Custom ที่สะสมครบ',`data-adv-stage-id="${s.id}"`):''}</div></div></main>`;
   }
   function resultMarkup(s,won,first){
     const next=won?nextStage(s):null;
+    if(s.puzzle)return `<main class="adv-shell adv-end"><div class="adv-end-art" style="background-image:linear-gradient(0deg,#07131e,transparent),url('${artwork(s)}')"></div><div class="adv-end-copy"><small>ECHO TRIALS · ปริศนา 1 เทิร์น</small><h1>${won?'ผ่านปริศนา · '+safe(s.title):'ลองหาทางใหม่'}</h1><p>${safe(won?s.after:'ยังไม่ชนะภายในเทิร์นนี้ · เริ่มใหม่เพื่อกลับสู่สนาม มือ และ Resonance เดิม')}</p>${won?`<div class="adv-award"><strong>${puzzleHintLevel===0?'ผ่านโดยไม่ใช้คำใบ้':'ผ่านแล้ว · ใช้คำใบ้ '+puzzleHintLevel+'/3'}</strong></div>`:''}<div class="adv-actions">${next?button('next-stage','ปริศนาถัดไป → '+safe(next.title),`data-adv-stage-id="${next.id}"`):''}${button('retry','เริ่มใหม่')}${button('map','กลับแผนที่')}</div></div></main>`;
     return `<main class="adv-shell adv-end"><div class="adv-end-art" style="background-image:linear-gradient(0deg,#07131e,transparent),url('${artwork(s)}')"></div><div class="adv-end-copy"><small>${won?'THE JOURNEY REMEMBERS':'THE PATH REMAINS'}</small><h1>${won?'ชัยชนะ · '+safe(s.title):'เส้นทางยังไม่สิ้นสุด'}</h1><p>${safe(won?s.after:'Liora ถอยกลับไปตั้งหลัก ความทรงจำของสถานที่นี้ยังรอให้ค้นพบ')}</p>${won?`<div class="adv-award">${first?(lastReward==='echo'?'การ์ดครบจำนวน · ได้ Echo 1 แทน':'ได้รับการ์ดใหม่: '):'เล่นซ้ำสำเร็จ: '}<strong>${safe(stageCard(s))}</strong>${progress.mastery[s.id]?'<span>★ สำเร็จเป้าหมาย Mastery</span>':''}</div>`:''}<div class="adv-actions">${next?button('next-stage','เปิด Lore ด่านถัดไป → '+safe(next.title),`data-adv-stage-id="${next.id}"`):''}${button('map','กลับแผนที่')}${button('retry',won?'เล่นด่านนี้อีกครั้ง':'ลองอีกครั้ง')}</div></div></main>`;
   }
   const tutorialLessons = [
@@ -40192,13 +40213,14 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     if(view==='result'&&el.dataset.advView==='result'&&el.dataset.advStage===active?.id)return;
     el.hidden=false;
     el.innerHTML=view==='map'?mapMarkup():view==='brief'&&selected?briefMarkup(selected):view==='result'&&active?resultMarkup(active,game.winner===0,resultFirst):'';
-    if(view==='map')el.querySelector('.adv-head').insertAdjacentHTML('beforeend',button('learn','คู่มือก่อนต่อสู้'));
+    if(view==='map')el.querySelector('.adv-head').insertAdjacentHTML('beforeend',button('learn','คู่มือก่อนต่อสู้')+button('puzzles','ปริศนา 1 เทิร์น'));
     el.dataset.advView=view;el.dataset.advStage=active?.id||'';
   }
   function completeResult(){
-    if(!active||!started||game.winner===null||view==='result')return;
+    if(!active||!started||(game.winner===null&&!puzzleFailed)||view==='result')return;
     if(resultTimer){clearTimeout(resultTimer);resultTimer=null}
     resultFirst=mark(active,game.winner===0);
+    if(active.puzzle)document.getElementById('wb-adventure-hint')?.remove();
     view='result';drawLayer();
   }
   function seedHand(owner,keys){
@@ -40229,6 +40251,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   }
   function seedStage(s){
     game.adventureStage=s.id;
+    if(s.puzzle){seedPuzzle(s);return}
     const p=game.players[0],foe=game.players[1];
     p.name=s.deck===2||s.deck===3?'Liora · ตามรอย Atlas':'Liora · ตามรอย Atlas';
     foe.name='Echo · '+s.place;foe.spirit=s.hp;
@@ -40243,6 +40266,30 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     }
     if(s.setup.phase){game.phase=s.setup.phase;p.firstAttuneUsed=true}
     game.note('ADVENTURE · '+s.title+' · '+s.goal);
+  }
+  function seedPuzzle(s){
+    puzzleHintLevel=0;puzzleFailed=false;
+    const foe=window.__RESONANCE_C8_4C_STARTERS__[s.foe];
+    game.players[1]=game.player({...foe,custom:true});
+    game.p3cInit();game.p3dInit();game.active=0;game.phase='ACTION';game.round=4;
+    for(const [owner,p] of game.players.entries()){
+      const profile=window.__RESONANCE_C8_4C_STARTERS__[owner?s.foe:s.deck];
+      p.deck=profile.cards.flatMap(x=>Array(x.count).fill(x.key));
+      p.hand=[];p.board=[];p.artifacts=[];p.grave=[];p.phaseZone=[];p.restore=0;
+      p.spirit=owner?s.hp:100;p.firstAttuneUsed=true;
+      p.name=owner?'Echo · '+s.place:'Liora · Echo Trials';
+    for(const k of p.keys){p.stones[k]=owner?0:s.setup.ready[k]||0;p.readyStones[k]=p.stones[k];p.dormantStones[k]=0;p.committedStones[k]=0}
+    }
+    const lm=LANDMARKS.find(x=>x.id===s.site);
+    game.landmarkDeck=[lm,...LANDMARKS.filter(x=>x!==lm).slice(0,2)];
+    game.currentLandmark=lm;game.landmarkStep=0;game.landmarkHistory=[];game.landmarkClaimed=false;
+    board(0,s.setup.board);board(1,s.setup.enemy);
+    const p=game.players[0];
+    for(const key of s.setup.hand){const c=takeCard(0,key);if(c){c.zone='HAND';p.hand.push(c)}}
+    for(const key of s.setup.artifacts||[]){const c=takeCard(0,key);if(c){c.zone='ARTIFACT';p.artifacts.push(c)}}
+    for(const c of p.board)if(s.setup.exhausted?.includes(c.key))c.ready=false;
+    p.restore=s.setup.restore||0;
+    game.note('ECHO TRIALS · '+s.title+' · '+s.goal);
   }
   function coach(s){
     if(!s||s.group!=='prologue')return s?.goal||'';
@@ -40272,7 +40319,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
         host.prepend(b);host.classList.add('has-adventure');
       }
     }
-    if(active&&started&&game.winner===null){
+    if(active&&started&&game.winner===null&&!puzzleFailed){
       let hint=document.getElementById('wb-adventure-hint');
       if(!hint){
         hint=document.createElement('aside');
@@ -40280,8 +40327,11 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
         hint.setAttribute('aria-label','คำแนะนำด่าน Adventure');
         (document.querySelector('.wb-shell')||document.body).appendChild(hint);
       }
-      hint.className='adv-duel-hint'+(tutorialOpen?'':' is-collapsed');
+      hint.className='adv-duel-hint'+(active.puzzle?' adv-puzzle-hint':'')+(tutorialOpen?'':' is-collapsed');
       hint.innerHTML='<div class="adv-hint-head"><button type="button" class="adv-hint-toggle" data-adv="toggle-hint" aria-expanded="'+tutorialOpen+'">✦ '+(tutorialOpen?'คำแนะนำด่าน':'เปิดคำแนะนำด่าน')+' <span aria-hidden="true">'+(tutorialOpen?'▴':'▾')+'</span></button><button type="button" class="adv-hint-map" data-adv="leave">แผนที่</button></div><div class="adv-hint-body"><strong>'+safe(active.title)+'</strong><p>'+safe(coach(active))+'</p></div>';
+      if(active.puzzle){
+        hint.innerHTML='<div class="adv-hint-head"><button type="button" class="adv-hint-toggle" data-adv="toggle-hint" aria-expanded="'+tutorialOpen+'">✦ ปริศนา 1 เทิร์น '+(tutorialOpen?'▴':'▾')+'</button>'+button('puzzle-restart','เริ่มใหม่')+button('leave','แผนที่')+'</div><div class="adv-hint-body"><strong>'+safe(active.title)+'</strong><p>'+safe(active.goal)+'</p><p>ชนะก่อนกดจบเทิร์น · ไม่มีจับเวลา</p>'+(puzzleHintLevel?'<p>'+safe(active.hints[puzzleHintLevel-1])+'</p>':'')+button('puzzle-hint',puzzleHintLevel===3?'เปิดคำใบ้ครบแล้ว':'คำใบ้ '+(puzzleHintLevel+1)+'/3',puzzleHintLevel===3?'disabled':'')+'</div>';
+      }
     } else document.getElementById('wb-adventure-hint')?.remove();
     if(active&&started&&game.winner!==null&&view!=='result'){
       if(typeof deferResultPresentation==='undefined'||!deferResultPresentation)completeResult();
@@ -40301,13 +40351,22 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     if(ok&&this===game&&active&&owner===0)achievedInDuel.add(resonance);
     return ok;
   };
-  function begin(s,useCustom=false){
+  const baseNext=Game.prototype.next;
+  Game.prototype.next=function(...args){
+    if(this===game&&active?.puzzle&&started&&this.winner===null&&this.active===0&&this.phase==='ACTION'&&!this.pendingChoice){
+      puzzleFailed=true;cancelAIQueue();completeResult();return false;
+    }
+    return baseNext.apply(this,args);
+  };
+  function begin(s,useCustom=false,restart=false){
     if(!s||!unlocked(s))return;
     if(useCustom&&!canUseCustom(s))return;
     if(s.id==='p1'&&!progress.tutorialCompleted){openTutorial(s);return}
-    if(started&&view===null&&active===s)return;
+    if(started&&view===null&&active===s&&!restart)return;
     if(resultTimer){clearTimeout(resultTimer);resultTimer=null}
     selected=s;active=s;achievedInDuel=new Set();tutorialOpen=true;resultFirst=false;
+    puzzleFailed=false;puzzleHintLevel=0;
+    if(s.puzzle)tutorialOpen=false;
     const previousDeck=chosenDeck;
     if(useCustom)chosenDeck='custom';else chosenDeck=s.deck;
     view=null;started=true;deckBuilderOpen=false;
@@ -40333,7 +40392,10 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   }
   document.addEventListener('click',e=>{
     const entry=e.target.closest?.('[data-adv-entry]');
-    const b=e.target.closest?.('[data-adv]'),node=e.target.closest?.('[data-adv-stage]');
+    const b=e.target.closest?.('[data-adv]');
+    let node=e.target.closest?.('[data-adv-stage]');
+    // Overlay stage metadata must not turn map navigation into stage selection.
+    if((active?.puzzle||selected?.puzzle||b?.dataset.adv==='puzzles'||b?.dataset.adv==='map')&&node?.id==='wb-adventure')node=null;
     if(!entry&&!b&&!node){
       if(active&&e.target.closest?.('[data-action="choose-deck"]')){e.preventDefault();e.stopImmediatePropagation();rules.close();returnMap()}
       return;
@@ -40342,6 +40404,9 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     if(entry){window.__WB_AUDIO__?.cue('ui');view='map';drawLayer();return}
     if(node&&!b?.dataset.adv?.startsWith('lesson-')&&b?.dataset.adv!=='learn'){openStageLore(byId[node.dataset.advStage]);return}
     switch(b.dataset.adv){
+      case'puzzles':view='map';drawLayer();layer().querySelector('[data-adv-stage="et1"]')?.scrollIntoView({block:'center'});break;
+      case'puzzle-restart':if(active?.puzzle&&!uiInputLocked()){for(const d of [detail,rules,graveyard])if(d.open)d.close();begin(active,false,true)}break;
+      case'puzzle-hint':if(active?.puzzle&&puzzleHintLevel<3&&!uiInputLocked()){puzzleHintLevel++;tutorialOpen=true;render()}break;
       case'learn':openTutorial(null);break;
       case'lesson-back':if(lesson>0){lesson--;drawTutorial()}break;
       case'lesson-next':if(lesson<tutorialLessons.length-1){lesson++;drawTutorial()}break;
@@ -40365,7 +40430,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
         const hint=b.closest('.adv-duel-hint');
         hint?.classList.toggle('is-collapsed',!tutorialOpen);
         b.setAttribute('aria-expanded',String(tutorialOpen));
-        b.innerHTML='✦ '+(tutorialOpen?'คำแนะนำด่าน':'เปิดคำแนะนำด่าน')+' <span aria-hidden="true">'+(tutorialOpen?'▴':'▾')+'</span>';
+        b.innerHTML='✦ '+(active?.puzzle?'ปริศนา 1 เทิร์น':tutorialOpen?'คำแนะนำด่าน':'เปิดคำแนะนำด่าน')+' <span aria-hidden="true">'+(tutorialOpen?'▴':'▾')+'</span>';
         break;
       }
       case'leave':rules.innerHTML='<button class="close" data-close="rules">×</button><div class="rules-content"><h2>กลับสู่แผนที่?</h2><p>ด่านนี้ยังไม่สำเร็จ</p><button data-adv="confirm-leave">กลับแผนที่</button><button data-close="rules">เล่นต่อ</button></div>';rules.showModal();break;
