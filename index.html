@@ -37609,6 +37609,18 @@ html.wb-iphone-landscape .wb-shell #app>.topbar{
  padding-right:max(10px,env(safe-area-inset-right,0px))!important;
  box-sizing:border-box!important;
 }
+/* Extend only installed iPhone battle controls upward; preserve their visible boxes. */
+html.wb-iphone-landscape body.wb-webapp-mode[data-wb-viewport-mode="mobile"] #app.d52-mobile>.topbar .top-actions>button{
+ position:relative!important;
+ inset:auto!important;
+ z-index:auto;
+}
+html.wb-iphone-landscape body.wb-webapp-mode[data-wb-viewport-mode="mobile"] #app.d52-mobile>.topbar .top-actions>button::before{
+ content:"";
+ position:absolute;
+ top:-50%;bottom:-1px;left:-1px;right:-1px;
+ pointer-events:auto;
+}
 html.wb-iphone-landscape .wb-shell #app.d52-mobile .hand-area>.hand-scroll{
  padding-left:12px!important;
  padding-right:12px!important;
