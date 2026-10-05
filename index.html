@@ -28990,7 +28990,16 @@ presentationSnapshot(){const data={};for(const [k,v]of Object.entries(this))if(k
 check(){if(!this.players)return;const dead=this.players.map(p=>p.spirit<=0);if(dead.some(Boolean))this.winner=dead.every(Boolean)?'draw':dead[0]?1:0;}
 attune(key){if(this.pendingChoice||this.phase!=='ATTUNE'||this.winner!==null||!this.p.keys.includes(key))return false;const openingComp=this.active===1&&!this.p.firstAttuneUsed&&(key===this.p.primary||key===this.p.secondary);this.p.stones[key]++;this.p.firstAttuneUsed=true;if(openingComp){this.p.readyStones[key]=(this.p.readyStones[key]||0)+1;this.note(`${this.p.name} · Opening Home Attune ${R[key].name} +1 · READY ทันที (Second Player Compensation)`)}else{this.p.dormantStones[key]=(this.p.dormantStones[key]||0)+1;this.note(`${this.p.name} · Attune ${R[key].name} +1 · DORMANT จนถึง Refill`)}this.phase='ACTION';return true;}
 reason(card,p=this.p){const c=C[card.key];if(this.pendingChoice)return 'เลือก Reward ของ Landmark ก่อน';if(this.winner!==null)return 'Duel จบแล้ว';if(this.phase!=='ACTION')return 'เล่นได้ใน ACTION';if(this.readyCapacity(p)<c.cost)return `ต้อง Commit ${c.cost} Resonance · READY ${this.readyCapacity(p)}`;for(const [k,n]of Object.entries(c.req))if((p.readyStones[k]||0)<n)return `ต้องการ ${R[k].name} READY ${n}`;if(c.target==='ally'&&!p.board.length)return 'ต้องมี Creature ฝ่ายเรา';if(c.target==='enemy'&&!this.players[1-this.players.indexOf(p)].board.length)return 'ต้องมี Creature ศัตรู';if(c.effect==='rebirth'&&!p.grave.some(x=>C[x.key].type==='Creature'))return 'ยังไม่มี Creature ใน Grave';return '';}
-suggestSpend(p,c){let remaining=c.cost;const spend={};for(const k of p.keys)spend[k]=0;for(const [k,n]of Object.entries(c.req)){const take=Math.min(n,p.readyStones[k]||0);spend[k]=(spend[k]||0)+take;remaining-=take;}const reqKeys=new Set(Object.keys(c.req));for(const k of p.keys.filter(k=>!reqKeys.has(k))){if(remaining<=0)break;const take=Math.min(remaining,p.readyStones[k]||0);spend[k]=(spend[k]||0)+take;remaining-=take;}for(const k of p.keys.filter(k=>reqKeys.has(k))){if(remaining<=0)break;const free=(p.readyStones[k]||0)-(spend[k]||0);const take=Math.min(remaining,Math.max(0,free));spend[k]=(spend[k]||0)+take;remaining-=take;}return remaining===0?spend:false;}
+suggestSpend(p,c,ownColorFirst=false){
+ let remaining=c.cost;const spend={};for(const k of p.keys)spend[k]=0;
+ for(const [k,n]of Object.entries(c.req)){const take=Math.min(n,p.readyStones[k]||0);spend[k]=(spend[k]||0)+take;remaining-=take;}
+ const reqKeys=new Set(Object.keys(c.req)),ownKeys=p.keys.filter(k=>reqKeys.has(k)),otherKeys=p.keys.filter(k=>!reqKeys.has(k));
+ for(const k of ownColorFirst?[...ownKeys,...otherKeys]:[...otherKeys,...ownKeys]){
+  if(remaining<=0)break;const free=(p.readyStones[k]||0)-(spend[k]||0),take=Math.min(remaining,Math.max(0,free));
+  spend[k]=(spend[k]||0)+take;remaining-=take;
+ }
+ return remaining===0?spend:false;
+}
 validateSpend(p,c,spend){if(!spend||typeof spend!=='object')return false;let total=0;for(const k of p.keys){const n=Number(spend[k]||0);if(!Number.isInteger(n)||n<0||n>(p.readyStones[k]||0))return false;total+=n;}if(total!==c.cost)return false;for(const [k,n]of Object.entries(c.req))if((spend[k]||0)<n)return false;return true;}
 commitCost(p,c,chosenSpend=null){const spend=chosenSpend?Object.fromEntries(p.keys.map(k=>[k,Number(chosenSpend[k]||0)])):this.suggestSpend(p,c);if(!this.validateSpend(p,c,spend))return false;for(const [k,n]of Object.entries(spend)){if(!n)continue;p.readyStones[k]-=n;p.committedStones[k]=(p.committedStones[k]||0)+n;}return spend;}
 refundSpend(p,spend,n=2){let left=n;const order=[...p.keys].sort((a,b)=>(spend[b]||0)-(spend[a]||0));for(const k of order){if(left<=0)break;const can=Math.min(left,spend[k]||0,p.committedStones[k]||0);if(can>0){p.committedStones[k]-=can;p.readyStones[k]=(p.readyStones[k]||0)+can;left-=can}}const got=n-left;if(got)this.note(`${p.name} · Resonant Passage · READY Resonance ${got}`);return got;}
@@ -30254,7 +30263,7 @@ function renderPaymentDialog(animateEntry=false){
   const minusDisabled=chosen<=min?'disabled':'',plusDisabled=(chosen>=ready||total>=c.cost)?'disabled':'';
   return `<div class="commit-row" data-pay-row="${k}" style="--stone:${R[k].color}"><div class="commit-resonance"><i>${R[k].icon}</i><span><strong>${R[k].name}</strong><small>READY ${ready}${min?` · ต้องใช้ขั้นต่ำ ${min}`:''}</small></span></div><div class="commit-stepper"><button type="button" data-pay-key="${k}" data-pay-delta="-1" ${minusDisabled} aria-label="ลด ${R[k].name}">−</button><b>${chosen}</b><button type="button" data-pay-key="${k}" data-pay-delta="1" ${plusDisabled} aria-label="เพิ่ม ${R[k].name}">+</button></div><div class="commit-after"><span>เหลือ</span><b>${after} READY</b></div></div>`}).join('');
  const paymentState=error?`<p class="commit-status is-error">${esc(error)}</p>`:`<p class="commit-status is-valid">พร้อมยืนยันการจ่าย</p>`;
- detail.innerHTML=`<button class="close" data-pay-cancel="1" aria-label="ยกเลิก">×</button><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">RESONANCE COMMIT</span><h2>${esc(c.name)}</h2><div class="commit-picker"><div class="commit-summary"><span><b>เลือก Resonance</b><small>ปรับจำนวนแต่ละสีให้ครบ Cost</small></span><strong>${total} / ${c.cost}</strong></div><div class="commit-rows">${rows}</div><div class="commit-status-slot">${paymentState}</div><p class="commit-tip"><b>Requirement</b> = จำนวนขั้นต่ำของ Resonance สีนั้นที่ต้องใช้ · <b>AUTO SUGGEST</b> เลือกการจ่ายให้อัตโนมัติ โดยเติม Requirement ให้ครบก่อน</p><div class="commit-actions"><button class="secondary commit-auto" type="button" data-pay-auto="1">AUTO SUGGEST</button><button class="secondary commit-cancel" type="button" data-pay-cancel="1">ยกเลิก</button><button class="primary" type="button" data-pay-confirm="1" ${valid?'':'disabled'}>ยืนยัน COMMIT ${c.cost} →</button></div></div></div>`;
+ detail.innerHTML=`<button class="close" data-pay-cancel="1" aria-label="ยกเลิก">×</button><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">RESONANCE COMMIT</span><h2>${esc(c.name)}</h2><div class="commit-picker"><div class="commit-summary"><span><b>เลือก Resonance</b><small>ปรับจำนวนแต่ละสีให้ครบ Cost</small></span><strong>${total} / ${c.cost}</strong></div><div class="commit-rows">${rows}</div><div class="commit-status-slot">${paymentState}</div><p class="commit-tip"><b>Requirement</b> = จำนวนขั้นต่ำของ Resonance สีนั้นที่ต้องใช้ · <b>AUTO SUGGEST</b> เติม Requirement ให้ครบ แล้วใช้สีของการ์ดก่อนสีอื่น</p><div class="commit-actions"><button class="secondary commit-auto" type="button" data-pay-auto="1">AUTO SUGGEST</button><button class="secondary commit-cancel" type="button" data-pay-cancel="1">ยกเลิก</button><button class="primary" type="button" data-pay-confirm="1" ${valid?'':'disabled'}>ยืนยัน COMMIT ${c.cost} →</button></div></div></div>`;
  if(!detail.open)detail.showModal();
  if(animateEntry&&dragPlayHandoff&&Number(dragPlayHandoff.uid)===Number(card.uid))requestAnimationFrame(()=>dragHandoffApplyCommitOrigin(card.uid));
  syncLockedControls();
@@ -30266,7 +30275,7 @@ function startPayment(uid,targetUid=null,castLayout=null){
   if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
   return false;
  }
- const c=C[card.key],suggested=game.suggestSpend(p,c);
+ const c=C[card.key],suggested=game.suggestSpend(p,c,true);
  if(!suggested){
   if(castLayout)window.__RESONANCE_D52_END_CAST__?.(castLayout);
   return false;
@@ -32694,7 +32703,7 @@ async function handleCommitControl(el){
  }
  if(el.dataset.payAuto!==undefined){
   const s=paymentStatus();if(!s)return true;
-  pendingPayment.spend={...game.suggestSpend(s.p,s.c)};updatePaymentDialogState();return true;
+  pendingPayment.spend={...game.suggestSpend(s.p,s.c,true)};updatePaymentDialogState();return true;
  }
  if(el.dataset.payCancel!==undefined){
   const cancelUid=pendingPayment?.uid,castLayout=pendingPayment?.castLayout;
@@ -33298,7 +33307,7 @@ Game.prototype.aiStep=function(){if(this.pendingChoice||this.active!==1||this.wi
 
 // Payment UI consumes G09's physical-card discount without mutating printed Cost.
 paymentStatus=function(){const pp=pendingPayment;if(!pp)return null;const p=game.players[0],card=p.hand.find(x=>x.uid===pp.uid);if(!card)return null;const c=game.p3cCardDef(card),spend=pp.spend||{},total=p.keys.reduce((s,k)=>s+(Number(spend[k])||0),0);let error='';if(total!==c.cost)error=`เลือก Resonance ให้ครบ Cost ${c.cost} · ตอนนี้ ${total}/${c.cost}`;else for(const [k,n]of Object.entries(c.req||{}))if((spend[k]||0)<n){error=`ต้อง Commit ${R[k].name} อย่างน้อย ${n}`;break}if(!error)for(const k of p.keys)if((spend[k]||0)>(p.readyStones[k]||0)){error=`${R[k].name} READY ไม่พอ`;break}return {p,card,c,spend,total,error,valid:!error&&game.validateSpend(p,c,spend)};};
-startPayment=function(uid,targetUid=null,castLayout=null){if(mobileHandFocusUid!==null){mobileHandFocusUid=null;setupTacticalFanHand();}const p=game.players[0],card=p.hand.find(x=>x.uid===uid);if(!card||game.reason(card))return false;const c=game.p3cCardDef(card),suggested=game.suggestSpend(p,c);if(!suggested)return false;pendingPayment={uid,targetUid,spend:{...suggested},castLayout};renderPaymentDialog(true);return true;};
+startPayment=function(uid,targetUid=null,castLayout=null){if(mobileHandFocusUid!==null){mobileHandFocusUid=null;setupTacticalFanHand();}const p=game.players[0],card=p.hand.find(x=>x.uid===uid);if(!card||game.reason(card))return false;const c=game.p3cCardDef(card),suggested=game.suggestSpend(p,c,true);if(!suggested)return false;pendingPayment={uid,targetUid,spend:{...suggested},castLayout};renderPaymentDialog(true);return true;};
 
 // Canon target routing: G06 can target either player's Creature.
 
@@ -40407,48 +40416,16 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
 }
 </style>
 <style id="wb-commit-art-framing-v30">
-/* The Commit surface is a shallow, variable-ratio viewport for a 16:9 master.
-   Keep the master legible; use its atmosphere only as the edge fill. */
-.wb-shell dialog.commit-detail-modal > .detail-art {
-  position:relative!important;isolation:isolate!important;overflow:hidden!important;
-  background:#081b23!important;
+/* Resource selection uses its full width without card artwork. */
+.wb-shell dialog.commit-detail-modal[open] {
+  grid-template-columns:minmax(0,1fr)!important;
 }
-.wb-shell dialog.commit-detail-modal > .detail-art::before {
-  content:"";position:absolute;inset:-12%;z-index:0;pointer-events:none;
-  background-image:var(--detail-art);background-position:center 32%;background-size:cover;
-  filter:blur(24px) saturate(.86) brightness(.54);transform:scale(1.08);
+.wb-shell dialog.commit-detail-modal[open] > .detail-art {
+  display:none!important;
 }
-.wb-shell dialog.commit-detail-modal > .detail-art::after {
-  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:linear-gradient(90deg,#06192155,transparent 23%,transparent 77%,#06192155),
-             linear-gradient(180deg,#0619211c,transparent 70%,#06192160);
-}
-.wb-shell dialog.commit-detail-modal > .detail-art .art {
-  position:relative!important;z-index:1!important;display:block!important;
-  width:100%!important;height:100%!important;background:transparent!important;
-}
-.wb-shell dialog.commit-detail-modal > .detail-art .art img {
-  position:absolute!important;inset:0!important;display:block!important;
-  width:100%!important;height:100%!important;padding:0!important;
-  object-fit:contain!important;object-position:center center!important;
-  transform:none!important;filter:drop-shadow(0 8px 20px #06131acc);
-}
-.wb-shell dialog.commit-detail-modal > .detail-body {
+.wb-shell dialog.commit-detail-modal[open] > .detail-body {
+  grid-column:1!important;grid-row:1!important;
   overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;
-}
-@media (min-width:1181px) {
-  .wb-shell dialog.commit-detail-modal[open] > .detail-art {
-    height:clamp(220px,30dvh,300px)!important;
-    min-height:clamp(220px,30dvh,300px)!important;
-    max-height:clamp(220px,30dvh,300px)!important;
-  }
-}
-@media (min-width:1181px) and (max-height:740px) {
-  .wb-shell dialog.commit-detail-modal[open] > .detail-art {
-    height:clamp(165px,26dvh,195px)!important;
-    min-height:clamp(165px,26dvh,195px)!important;
-    max-height:clamp(165px,26dvh,195px)!important;
-  }
 }
 
 @media (max-width:720px){
