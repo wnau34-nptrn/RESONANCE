@@ -35441,6 +35441,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  #app.d52-mobile>.game>.battlefield{
   grid-column:1!important;grid-row:1!important;height:100%!important;min-height:0!important;max-height:100%!important;overflow:hidden!important;
  }
+ /* Expanded hands shorten both lanes; allow their Creature cards to fit. */
+ body[data-wb-viewport-mode="mobile"] #app.d52-mobile:not(.d52-tucked) .battlefield .arena-row .card.board{
+  min-height:0!important;max-height:100%!important;
+ }
  #app.d52-mobile>.game>.turn-panel.phase3-panel{
   grid-column:1!important;grid-row:2!important;position:relative!important;inset:auto!important;
   transform:none!important;margin:0!important;height:var(--d52-turn)!important;
