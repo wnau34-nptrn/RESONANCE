@@ -37676,6 +37676,14 @@ html.wb-iphone-landscape .wb-shell dialog.landmark-guide-modal[open]{
   max-width:42px!important;max-height:54px!important;
  }
 }
+/* Expanded mobile hands reduce the portrait track; let portraits shrink to it. */
+@media (orientation:landscape) and (max-width:1180px){
+ body[data-wb-viewport-mode="mobile"] #app#app.d52-mobile:not(.d52-tucked) .game .battlefield .keeper.enemy>.portrait,
+ body[data-wb-viewport-mode="mobile"] #app#app.d52-mobile:not(.d52-tucked) .game .battlefield .keeper.player>.portrait.profile-art-trigger{
+  width:auto!important;min-width:0!important;
+  min-height:0!important;max-height:100%!important;
+ }
+}
 #app .keeper.player>.portrait.profile-art-trigger:focus-visible{outline:2px solid #ffe092!important;outline-offset:2px!important}
 #app .keeper.player:has(>.portrait.profile-art-trigger){cursor:pointer!important}
 .wb-shell dialog.wb-avatar-picker{
