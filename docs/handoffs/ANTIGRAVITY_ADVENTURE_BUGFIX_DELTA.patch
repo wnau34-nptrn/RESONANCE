@@ -1,0 +1,23 @@
+diff --git a/index.html b/index.html
+--- a/index.html
++++ b/index.html
+@@ -38063,7 +38063,9 @@ beginHandPlay=function(uid){
+     else if(card.key==='returnGlass'){opts=[...p.board,...foe.board].map(x=>x.uid);prompt='เลือก Creature 1 ใบเพื่อ RETURN';}
+     else{opts=[...p.board,...foe.board].map(x=>x.uid);prompt='เลือก Creature 1 ใบให้รับ Damage 20';}
+     if(detail?.open)detail.close();
+-    return game.p3dQueueChoice({type:'p23_prepare_play',p3d:true,p3dBlocksEvents:true,owner:0,sourceUid:card.uid,title:C[card.key].name,prompt,options:opts,targetOwner:0,zone:'board'});
++    const p23Queued=game.p3dQueueChoice({type:'p23_prepare_play',p3d:true,p3dBlocksEvents:true,owner:0,sourceUid:card.uid,title:C[card.key].name,prompt,options:opts,targetOwner:0,zone:'board'});
++    if(p23Queued)render();
++    return p23Queued;
+   }
+   return p23BeginHandBase(uid);
+ };
+@@ -40044,7 +40046,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
+     {id:'et4',group:'puzzles',puzzle:true,title:'อีกหนึ่งก้าว',place:'Forge of Echoes',site:'forge',deck:0,foe:2,hp:10,topic:'JOURNEY · CLAIM',setup:{board:['light'],enemy:['fractureling'],hand:[],ready:{},restore:2},lines:['ไม่มีการ์ดในมือ แต่ Landmark ฝ่ายเรามี Restore อยู่แล้ว 2/3','Beacon Journey ของเทิร์นนี้ยังไม่ได้ใช้ · Keeper ฝ่ายเราเริ่มที่ 100 Spirit'],goal:'ชนะภายในเทิร์นนี้ · Keeper ศัตรู 10 Spirit',hints:['ดูสิ่งที่จะได้รับหลัง Combat ไม่ใช่แค่ Damage','Lightbearer รอดจาก Combat ได้ และ Beacon Journey ให้ Restore อีก 1','ใช้ Lightbearer โจมตี Fractureling → รอด → Restore 3/3 → Claim ลด Spirit ศัตรู 10'],after:'Lightbearer กำจัด Fractureling และยังรอด · Beacon Journey ให้ Restore ครบ 3/3 จึง Claim Landmark และสร้าง Pressure 10 แก่ Keeper ศัตรู'}
+   );
+   const byId = Object.fromEntries(stages.map(s=>[s.id,s]));
+-  const load = () => {try {const v=JSON.parse(localStorage.getItem(STORE)||'null');return v?.version===1&&v.completed&&typeof v.completed==='object'?v:null;}catch{return null}};
++  const load = () => {try {const v=JSON.parse(localStorage.getItem(STORE)||'null');if(!(v?.version===1&&v.completed&&typeof v.completed==='object'&&!Array.isArray(v.completed)))return null;const d=initial(),obj=x=>x&&typeof x==='object'&&!Array.isArray(x);const n={...v,completed:v.completed,mastery:obj(v.mastery)?v.mastery:d.mastery,achievements:obj(v.achievements)?v.achievements:d.achievements,owned:obj(v.owned)?v.owned:d.owned,echoes:Number.isFinite(v.echoes)&&v.echoes>=0?v.echoes:d.echoes};if('puzzles'in n&&!obj(n.puzzles))delete n.puzzles;if('tutorialCompleted'in n&&n.tutorialCompleted!==true)delete n.tutorialCompleted;return n;}catch{return null}};
+   const initial = () => ({version:1,completed:{},mastery:{},achievements:{},owned:Object.fromEntries((window.__RESONANCE_C8_4C_STARTERS__?.[3]?.cards||[]).map(x=>[x.key,x.count])),echoes:0});
+   let progress = load()||initial();
+   let active = null, view = null, selected = null, achievedInDuel = new Set(), lastReward = null, tutorialOpen = true, resultFirst = false, resultTimer = null;

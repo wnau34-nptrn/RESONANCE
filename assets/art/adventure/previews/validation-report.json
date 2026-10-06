@@ -15,16 +15,19 @@
     "new_card_artwork": false,
     "new_currency": false,
     "stage_ids": "Exact existing 24 IDs",
-    "pending_face_icons": 8
+    "pending_face_icons": 0
   },
   "summary": {
     "ready_svg": 21,
     "ready_stage_thumbnails": 24,
-    "candidate_primary_artworks": 1,
-    "blocked_primary_artworks": 13,
+    "ready_primary_artworks": 11,
+    "candidate_primary_artworks": 3,
+    "blocked_primary_artworks": 0,
     "target_primary_artworks": 14,
-    "blocked_derived_face_icons": 8,
-    "checks": "46/46 file/metadata checks pass; candidate map is not promoted to ready"
+    "ready_derived_face_icons": 6,
+    "candidate_derived_face_icons": 2,
+    "blocked_derived_face_icons": 0,
+    "checks": "67/67 delivered asset paths and SHA-256 hashes verified in follow-up audit; candidates remain subject to documented review"
   },
   "previous_delivery_checks": [
     {
