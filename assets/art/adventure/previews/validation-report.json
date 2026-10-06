@@ -1,559 +1,13 @@
 {
   "base_commit": "a58ba782a53ec307da214d55e0afda228bc78681",
   "visual_review": {
-    "reviewed": "Every produced map, SVG render and thumbnail inspected in this chat through actual images/contact sheets",
-    "svg": "21/21 visually inspected at large and small sizes",
-    "thumbnails": "24/24 visually inspected at 144px and 64px; identity survives the recorded crop",
-    "map": "Candidate: no text, watermark, UI markers or unlock states in production image; density/native-detail limitation documented",
-    "character_alpha": "Not applicable: zero character artwork files produced",
-    "canon": "No candidate promoted to canonical"
+    "primary": "14 actual selected exports inspected; 3 remain candidate with documented limitations",
+    "characters": "8 RGBA sources and padded exports; full silhouettes reviewed on light/dark backgrounds",
+    "icons": "8 source-derived crops; small-size review recorded separately",
+    "map": "Preview overlay only; runtime layout not implemented or verified",
+    "canon": "No candidate promoted to canonical",
+    "generation_in_this_audit": 0
   },
-  "checks": [
-    {
-      "asset_id": "stage-medal-bronze",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "stage-medal-silver",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "stage-medal-gold",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "act1-medal",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "miniboss-badge-beacon",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "miniboss-badge-glasswind",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "miniboss-badge-fracture",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "miniboss-badge-wildroot",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-combat",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-puzzle",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-miniboss",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-boss",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-event",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-deck-adjust",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-frame-available",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-frame-selected",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-frame-completed",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "node-frame-locked",
-      "dimensions": [
-        128,
-        128
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "reward-frame-normal",
-      "dimensions": [
-        512,
-        720
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "reward-frame-selected",
-      "dimensions": [
-        512,
-        720
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "reward-frame-received",
-      "dimensions": [
-        512,
-        720
-      ],
-      "xml": "pass",
-      "external_dependency": "none",
-      "render": "pass",
-      "alpha_range": [
-        0,
-        255
-      ]
-    },
-    {
-      "asset_id": "stage-p1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 70490
-    },
-    {
-      "asset_id": "stage-p2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 65058
-    },
-    {
-      "asset_id": "stage-p3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 79150
-    },
-    {
-      "asset_id": "stage-p4",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 64484
-    },
-    {
-      "asset_id": "stage-p5",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 62044
-    },
-    {
-      "asset_id": "stage-p6",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 88604
-    },
-    {
-      "asset_id": "stage-b1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 80172
-    },
-    {
-      "asset_id": "stage-b2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 65358
-    },
-    {
-      "asset_id": "stage-b3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 67870
-    },
-    {
-      "asset_id": "stage-g1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 79300
-    },
-    {
-      "asset_id": "stage-g2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 89740
-    },
-    {
-      "asset_id": "stage-g3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 81190
-    },
-    {
-      "asset_id": "stage-f1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 72700
-    },
-    {
-      "asset_id": "stage-f2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 62044
-    },
-    {
-      "asset_id": "stage-f3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 62044
-    },
-    {
-      "asset_id": "stage-w1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 71652
-    },
-    {
-      "asset_id": "stage-w2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 59992
-    },
-    {
-      "asset_id": "stage-w3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 90378
-    },
-    {
-      "asset_id": "stage-c1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 50466
-    },
-    {
-      "asset_id": "stage-c2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 73348
-    },
-    {
-      "asset_id": "stage-et1",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 80568
-    },
-    {
-      "asset_id": "stage-et2",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 50992
-    },
-    {
-      "asset_id": "stage-et3",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 79300
-    },
-    {
-      "asset_id": "stage-et4",
-      "dimensions": [
-        512,
-        512
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 68884
-    },
-    {
-      "asset_id": "living-atlas",
-      "dimensions": [
-        2048,
-        4096
-      ],
-      "mode": "RGB",
-      "sha256": "pass",
-      "file_bytes": 636474
-    }
-  ],
   "scope": {
     "tracked_game_files_changed": false,
     "integration": false,
@@ -571,5 +25,721 @@
     "target_primary_artworks": 14,
     "blocked_derived_face_icons": 8,
     "checks": "46/46 file/metadata checks pass; candidate map is not promoted to ready"
-  }
+  },
+  "previous_delivery_checks": [
+    {
+      "asset_id": "living-atlas",
+      "native_dimensions": [
+        887,
+        1774
+      ],
+      "export_dimensions": [
+        2048,
+        4096
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Native detail is 887x1774; 2048x4096 delivery is an upscale. Final runtime label/route layout remains untested."
+      ]
+    },
+    {
+      "asset_id": "liora",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        86,
+        150,
+        937,
+        1401
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-beacon",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        108,
+        952,
+        1418
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-glasswind",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        140,
+        952,
+        1399
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-fracture",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        108,
+        952,
+        1414
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-wildroot",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        140,
+        942,
+        1428
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "act1-boss",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Gold seams and floating fragments need human continuity approval against F03; no new power is canonized."
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        86,
+        121,
+        952,
+        1428
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "npc-seris",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        135,
+        952,
+        1411
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "npc-eira",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Proposed face remains Candidate; no locked face reference exists. User approved this proposal as Candidate only."
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        95,
+        113,
+        909,
+        1414
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "mode-basic",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "mode-story",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "mode-expedition",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "act1-opening",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "act1-ending",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    }
+  ],
+  "preserved_delivery_01": {
+    "files": 45,
+    "all_hashes_unchanged": true,
+    "checks": {
+      "assets/art/adventure/nodes/node-boss.svg": true,
+      "assets/art/adventure/nodes/node-combat.svg": true,
+      "assets/art/adventure/nodes/node-deck-adjust.svg": true,
+      "assets/art/adventure/nodes/node-event.svg": true,
+      "assets/art/adventure/nodes/node-frame-available.svg": true,
+      "assets/art/adventure/nodes/node-frame-completed.svg": true,
+      "assets/art/adventure/nodes/node-frame-locked.svg": true,
+      "assets/art/adventure/nodes/node-frame-selected.svg": true,
+      "assets/art/adventure/nodes/node-miniboss.svg": true,
+      "assets/art/adventure/nodes/node-puzzle.svg": true,
+      "assets/art/adventure/nodes/stage-b1.webp": true,
+      "assets/art/adventure/nodes/stage-b2.webp": true,
+      "assets/art/adventure/nodes/stage-b3.webp": true,
+      "assets/art/adventure/nodes/stage-c1.webp": true,
+      "assets/art/adventure/nodes/stage-c2.webp": true,
+      "assets/art/adventure/nodes/stage-et1.webp": true,
+      "assets/art/adventure/nodes/stage-et2.webp": true,
+      "assets/art/adventure/nodes/stage-et3.webp": true,
+      "assets/art/adventure/nodes/stage-et4.webp": true,
+      "assets/art/adventure/nodes/stage-f1.webp": true,
+      "assets/art/adventure/nodes/stage-f2.webp": true,
+      "assets/art/adventure/nodes/stage-f3.webp": true,
+      "assets/art/adventure/nodes/stage-g1.webp": true,
+      "assets/art/adventure/nodes/stage-g2.webp": true,
+      "assets/art/adventure/nodes/stage-g3.webp": true,
+      "assets/art/adventure/nodes/stage-p1.webp": true,
+      "assets/art/adventure/nodes/stage-p2.webp": true,
+      "assets/art/adventure/nodes/stage-p3.webp": true,
+      "assets/art/adventure/nodes/stage-p4.webp": true,
+      "assets/art/adventure/nodes/stage-p5.webp": true,
+      "assets/art/adventure/nodes/stage-p6.webp": true,
+      "assets/art/adventure/nodes/stage-w1.webp": true,
+      "assets/art/adventure/nodes/stage-w2.webp": true,
+      "assets/art/adventure/nodes/stage-w3.webp": true,
+      "assets/art/adventure/rewards/act1-medal.svg": true,
+      "assets/art/adventure/rewards/miniboss-badge-beacon.svg": true,
+      "assets/art/adventure/rewards/miniboss-badge-fracture.svg": true,
+      "assets/art/adventure/rewards/miniboss-badge-glasswind.svg": true,
+      "assets/art/adventure/rewards/miniboss-badge-wildroot.svg": true,
+      "assets/art/adventure/rewards/reward-frame-normal.svg": true,
+      "assets/art/adventure/rewards/reward-frame-received.svg": true,
+      "assets/art/adventure/rewards/reward-frame-selected.svg": true,
+      "assets/art/adventure/rewards/stage-medal-bronze.svg": true,
+      "assets/art/adventure/rewards/stage-medal-gold.svg": true,
+      "assets/art/adventure/rewards/stage-medal-silver.svg": true
+    }
+  },
+  "runtime_tests": "Not run: no gameplay/runtime files changed; asset preparation only.",
+  "checks": [
+    {
+      "asset_id": "living-atlas",
+      "native_dimensions": [
+        887,
+        1774
+      ],
+      "export_dimensions": [
+        2048,
+        4096
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Native detail is 887x1774; 2048x4096 delivery is an upscale. Lower prologue/puzzle placements overlap detailed relic imagery in the review overlay. Final runtime label/route layout remains untested."
+      ]
+    },
+    {
+      "asset_id": "liora",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        86,
+        150,
+        937,
+        1401
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-beacon",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        108,
+        952,
+        1418
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-glasswind",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        140,
+        952,
+        1399
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-fracture",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        108,
+        952,
+        1414
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "miniboss-wildroot",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        140,
+        942,
+        1428
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "act1-boss",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Gold seams and floating fragments need human continuity approval against F03; no new power is canonized."
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        86,
+        121,
+        952,
+        1428
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "npc-seris",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": [],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        72,
+        135,
+        952,
+        1411
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "npc-eira",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "export_dimensions": [
+        1024,
+        1536
+      ],
+      "source_preserved": true,
+      "visual_review": "pass with candidate limitation",
+      "defects": [
+        "Proposed face remains Candidate; no locked face reference exists. User approved this proposal as Candidate only."
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_bbox": [
+        95,
+        113,
+        909,
+        1414
+      ],
+      "edge_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "asset_id": "mode-basic",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "mode-story",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "mode-expedition",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "act1-opening",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    },
+    {
+      "asset_id": "act1-ending",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "export_dimensions": [
+        1920,
+        1080
+      ],
+      "source_preserved": true,
+      "visual_review": "pass",
+      "defects": []
+    }
+  ]
 }

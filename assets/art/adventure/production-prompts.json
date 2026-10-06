@@ -1,5 +1,15 @@
 {
   "tool": "built-in image_gen",
+  "generation_policy": {
+    "current_gate": "STOP_GENERATION_REVIEW_EXISTING_FILES",
+    "handoff": "assets/art/adventure/HANDOFF.md",
+    "preflight": "Check asset ID against actual files, manifest, generation log and pending requests. Existing files or in-flight requests prohibit duplicate generation; stale blocked entries do not authorize generation.",
+    "sequence": "One asset, one generation request, then inspect the returned image before any next asset. No variants or parallel generation before review.",
+    "review": "Record reference continuity, silhouette and frame edges, background/alpha, native/export dimensions, UI safe space, prohibited content, preview evidence and pass/fail.",
+    "failure": "Keep failed output as candidate with specific defects. No automatic retry, regeneration or image edit. Obtain explicit user approval for that asset's correction first.",
+    "reuse": "Reuse approved sources. Crops, face icons and exports derive from existing files without imagegen; source and export are not separate generated artworks.",
+    "history": "Preserve attempt history, original outputs, prompts, references and pending/completed status. Do not overwrite history or infer missing artwork from an outdated manifest."
+  },
   "prompts": [
     {
       "asset_id": "living-atlas",

@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "base_commit": "a58ba782a53ec307da214d55e0afda228bc78681",
   "scope": "Preparation only; no gameplay/UI integration",
   "reference_status": {
@@ -1927,7 +1927,7 @@
     },
     {
       "asset_id": "living-atlas",
-      "path": "assets/art/adventure/maps/living-atlas-style-proof.webp",
+      "path": "assets/art/adventure/maps/living-atlas-v2.webp",
       "dimensions": [
         2048,
         4096
@@ -1973,8 +1973,8 @@
         "all_nodes_and_routes": "UI overlays only"
       },
       "status": "candidate",
-      "bytes": 636474,
-      "sha256": "4484022c528d41d283361847cedab563cc98bc1f04b4d6eb3ee6d78d96e64b13",
+      "bytes": 563256,
+      "sha256": "7b10d473d33bb6fb1dd5fcd4363a689e81a3c11716a18b91dbb4f38957d3813e",
       "primary_artwork": true,
       "source_dimensions": [
         887,
@@ -1982,12 +1982,40 @@
       ],
       "source_path": "assets/art/adventure/maps/living-atlas-style-proof-source.png",
       "delivery_resize": "uniform 2.309x upscale; not a native 2048x4096 master",
-      "review": "style proof pending user visual review; composition and density pending 24-node overlay review"
+      "review": "style proof pending user visual review; composition and density pending 24-node overlay review",
+      "native_source": {
+        "path": "assets/art/adventure/maps/living-atlas-v2-source.png",
+        "bytes": 2436492,
+        "sha256": "8137a9f3f04b2ae8eaf70d5d6ed7a2fbd680094fb7b49ad8d87400c88c41e5e1",
+        "format": "png",
+        "dimensions": [
+          887,
+          1774
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          2048,
+          4096
+        ],
+        "native_to_export_scale": 2.3089064261555805,
+        "upscale": true
+      },
+      "defects": [
+        "Native detail is 887x1774; 2048x4096 delivery is an upscale. Lower prologue/puzzle placements overlap detailed relic imagery in the review overlay. Final runtime label/route layout remains untested."
+      ],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "liora",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/liora.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2006,15 +2034,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 1630237,
+      "sha256": "5e44e71aa4fd0749a9b07ba75a3dffd4d8cf440a07660d6ef727602e2123abea",
+      "native_source": {
+        "path": "assets/art/adventure/characters/liora-source.png",
+        "bytes": 2607936,
+        "sha256": "a0d4ad66fc47bcd5799e8532dec288a0faace78c453d365eab7cfd01e04f1c98",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "miniboss-beacon",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/aurel-veyr.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2033,15 +2095,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1256382,
+      "sha256": "cf6f61ce5c83385d2c8052dbe5411811441d641d37169f6ff228a02507fe99b3",
+      "native_source": {
+        "path": "assets/art/adventure/characters/aurel-veyr-source.png",
+        "bytes": 2260011,
+        "sha256": "16e66574e955f380101bc5bf065b45fec743684bb26085f2e23f6af6f0cc5a12",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "miniboss-glasswind",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/nym-avar.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2060,15 +2156,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1322990,
+      "sha256": "3cd42de6d088757426f3f62b805c1aeeeb3f64f72dc106c96c12c309898e889e",
+      "native_source": {
+        "path": "assets/art/adventure/characters/nym-avar-source.png",
+        "bytes": 2316974,
+        "sha256": "f812b4d26b9c4f724c34675461af30375f762804eaa0ff1dc1c290d7e8b091bf",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "miniboss-fracture",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/varkesh-thane.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2087,15 +2217,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1610069,
+      "sha256": "2e130c355b45c80230da91d75dafea0c39bae50a3a92a9ffbb7a7d522cba368e",
+      "native_source": {
+        "path": "assets/art/adventure/characters/varkesh-thane-source.png",
+        "bytes": 2654740,
+        "sha256": "d65233392e81d68681f9dc64061808c12e302477043f1aadae617df7fe981151",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "miniboss-wildroot",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/orun-kael.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2114,15 +2278,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 2294932,
+      "sha256": "1529d188e8b1cdc00fb07fa4a34043f41e92b93c0e0d298363a9122f60b35625",
+      "native_source": {
+        "path": "assets/art/adventure/characters/orun-kael-source.png",
+        "bytes": 3404582,
+        "sha256": "189b2ded6a59b3caae0a4a7e6c6abee31b46498a5f2d6242d4133ffec96f883d",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "act1-boss",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/fractured-host.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2141,15 +2339,51 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "candidate",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1608272,
+      "sha256": "2ed36d5e79daa19a4dedceae1676d6d8928f9709fdea6eb898f280b89edff4a8",
+      "native_source": {
+        "path": "assets/art/adventure/characters/fractured-host-source.png",
+        "bytes": 2659822,
+        "sha256": "3cfad998e83e5f42c5cca0a962fdc5bef0191ee3c9f9f9f7c5205f5431786cbc",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [
+        "Gold seams and floating fragments need human continuity approval against F03; no new power is canonized."
+      ],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "npc-seris",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/seris-vale.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2168,15 +2402,49 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1374076,
+      "sha256": "d546cea0e1184d20a6588c1de8db86619a7ee78e1d535f9e2f26bfafb86704a8",
+      "native_source": {
+        "path": "assets/art/adventure/characters/seris-vale-source.png",
+        "bytes": 2427144,
+        "sha256": "03514b491dcd8bb770bac2981ea7aa6d0261fba15978e224bacc7f3928700e8f",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "npc-eira",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/eira-mossborn.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
       "target_dimensions": [
         1024,
         1536
@@ -2195,15 +2463,51 @@
       ],
       "focal_point": null,
       "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
-      "status": "blocked",
+      "status": "candidate",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+      "role_authorization": "User confirmed Adventure role; not a canon promotion",
+      "bytes": 1592573,
+      "sha256": "68689d237555e9696ec94687deedf6015c98c4fb63339f8eef1337d40ab8ce84",
+      "native_source": {
+        "path": "assets/art/adventure/characters/eira-mossborn-source.png",
+        "bytes": 2690514,
+        "sha256": "985c8ee161f0e4641ecb8655d9c4147215af3321d2b107ef58a09853c7165a16",
+        "format": "png",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "transparency": true
+      },
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      },
+      "defects": [
+        "Proposed face remains Candidate; no locked face reference exists. User approved this proposal as Candidate only."
+      ],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "mode-basic",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/modes/basic.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
       "target_dimensions": [
         1920,
         1080
@@ -2219,15 +2523,42 @@
       ],
       "focal_point": null,
       "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 243578,
+      "sha256": "1b402d739cc91b0463f4ffbfad394a758b662772b06f786e2599f856248da7cf",
+      "native_source": {
+        "path": "assets/art/adventure/modes/basic-source.png",
+        "bytes": 2321493,
+        "sha256": "cc5461b1f7b282a1c3de468365d1c6ccc5cbd6341e8dda09108ee8e26f05e572",
+        "format": "png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "mode-story",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/modes/story.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
       "target_dimensions": [
         1920,
         1080
@@ -2243,15 +2574,42 @@
       ],
       "focal_point": null,
       "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 281630,
+      "sha256": "dec7d162a4d0aa586854f179c14ac20928f39236fcb9806eabfd4929699a77a7",
+      "native_source": {
+        "path": "assets/art/adventure/modes/story-source.png",
+        "bytes": 2479995,
+        "sha256": "bfa9da7100c9b4100932ccf8e2b09aff11fc531e15251ececc63964f29817a5e",
+        "format": "png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "mode-expedition",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/modes/expedition.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
       "target_dimensions": [
         1920,
         1080
@@ -2267,15 +2625,42 @@
       ],
       "focal_point": null,
       "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 298844,
+      "sha256": "ba9208df19071cc4891c1e637467313e9e90e353bcb379fd73289da45b96fef8",
+      "native_source": {
+        "path": "assets/art/adventure/modes/expedition-source.png",
+        "bytes": 2566615,
+        "sha256": "7f377efe3ac1a70187797cc15d64d3d2af9fd3d106da011718bcafeccb4f7327",
+        "format": "png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "act1-opening",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/scenes/act1-opening.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
       "target_dimensions": [
         1920,
         1080
@@ -2291,15 +2676,42 @@
       ],
       "focal_point": null,
       "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 276396,
+      "sha256": "86e75a51bf47dd85d911f3a5789600ccafd5637bb0814b79323a154abd6215a8",
+      "native_source": {
+        "path": "assets/art/adventure/scenes/act1-opening-source.png",
+        "bytes": 2347168,
+        "sha256": "b138ec90b08acc0decaa1edbba76626a6258450d6024c9e2e609a8df5797652b",
+        "format": "png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     },
     {
       "asset_id": "act1-ending",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/scenes/act1-ending.webp",
+      "dimensions": [
+        1920,
+        1080
+      ],
       "target_dimensions": [
         1920,
         1080
@@ -2315,24 +2727,56 @@
       ],
       "focal_point": null,
       "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
-      "status": "blocked",
+      "status": "ready",
       "primary_artwork": true,
-      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
-      "role_authorization": null
+      "role_authorization": null,
+      "bytes": 346722,
+      "sha256": "666796dfae0ed7254abc8c052c8ce34eea57c55e832fbd30313d67adadf31617",
+      "native_source": {
+        "path": "assets/art/adventure/scenes/act1-ending-source.png",
+        "bytes": 2613019,
+        "sha256": "2751dad5dd4dcdbbaad7b101536a59d9c42f1844c5c1cb53206ca09ca6fe179a",
+        "format": "png",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "transparency": false
+      },
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      },
+      "defects": [],
+      "validation": "Existing output inspected in current-primary-review.jpg; no generation in this audit. Ready means usable asset preparation, not canonical approval or runtime integration.",
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg"
     }
   ],
   "counts": {
-    "primary_artwork_produced": 1,
+    "ready": 56,
+    "candidate": 3,
+    "primary_artwork_produced": 14,
     "primary_artwork_target": 14,
-    "ready": 45,
-    "candidate": 1,
-    "blocked": 13
+    "derived_face_icons_produced": 8,
+    "derived_face_icon_statuses": {
+      "ready": 6,
+      "candidate": 2
+    },
+    "blocked": 0
   },
   "derived_face_icons": [
     {
       "asset_id": "face-liora",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/liora.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2342,14 +2786,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "liora",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          420,
+          20,
+          800,
+          400
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 30084,
+      "sha256": "1e02d1c18afae1f10178cba0bfb9ce79f08c4163f8ef2f48ceaab1ef0e12cd11",
+      "source_path": "assets/art/adventure/characters/liora-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-miniboss-beacon",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/miniboss-beacon.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2359,14 +2823,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "miniboss-beacon",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          370,
+          150,
+          700,
+          480
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 24214,
+      "sha256": "19e6c0e5fc7b6dae1fe0356d87a19a80e193051087bf06c01827bc38c6a5dd30",
+      "source_path": "assets/art/adventure/characters/aurel-veyr-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-miniboss-glasswind",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/miniboss-glasswind.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2376,14 +2860,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "miniboss-glasswind",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          440,
+          35,
+          760,
+          355
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 25490,
+      "sha256": "df5d927c9d826954b8c8e375d20cf973eaf53f7836c56825c6881e494936ff9a",
+      "source_path": "assets/art/adventure/characters/nym-avar-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-miniboss-fracture",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/miniboss-fracture.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2393,14 +2897,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "miniboss-fracture",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          400,
+          220,
+          760,
+          580
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 29450,
+      "sha256": "b4311aa00761befe2f72c2ded1cbae04cde72c3ec6616afc8b1bea1e95d429f4",
+      "source_path": "assets/art/adventure/characters/varkesh-thane-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-miniboss-wildroot",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/miniboss-wildroot.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2410,14 +2934,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "miniboss-wildroot",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          350,
+          470,
+          750,
+          870
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 43970,
+      "sha256": "4222767ffb7c6710cb5d64fd7c2698999e1be9a8790eb9348dec41d990b60817",
+      "source_path": "assets/art/adventure/characters/orun-kael-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-act1-boss",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/act1-boss.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2427,14 +2971,36 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "act1-boss",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          450,
+          0,
+          810,
+          360
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "candidate",
+      "bytes": 33228,
+      "sha256": "e71857a663a54150cd8011b9e239a1f451ec88f9327ee452444e4f47f2fe35ca",
+      "source_path": "assets/art/adventure/characters/fractured-host-source.png",
+      "defects": [
+        "Gold seams and floating fragments need human continuity approval against F03; no new power is canonized."
+      ],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-npc-seris",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/npc-seris.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2444,14 +3010,34 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "npc-seris",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          460,
+          70,
+          800,
+          410
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "ready",
+      "bytes": 33106,
+      "sha256": "f007561b5cc63347b7c1c5dab5db40f9914b58edd99989540253b0d8b5c0d237",
+      "source_path": "assets/art/adventure/characters/seris-vale-source.png",
+      "defects": [],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     },
     {
       "asset_id": "face-npc-eira",
-      "path": null,
-      "dimensions": null,
+      "path": "assets/art/adventure/characters/icons/npc-eira.webp",
+      "dimensions": [
+        256,
+        256
+      ],
       "target_dimensions": [
         256,
         256
@@ -2461,689 +3047,977 @@
       "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
       "source_reference": "npc-eira",
       "focal_point": null,
-      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
-      "status": "blocked",
-      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+      "crop_guidance": {
+        "source_pixel_rectangle": [
+          440,
+          30,
+          800,
+          390
+        ],
+        "resize": [
+          256,
+          256
+        ],
+        "method": "square crop and Lanczos; preserve alpha"
+      },
+      "status": "candidate",
+      "bytes": 26482,
+      "sha256": "079de059005b5144141474e579a1de19308a640581043eccbe7d67fa4da65d65",
+      "source_path": "assets/art/adventure/characters/eira-mossborn-source.png",
+      "defects": [
+        "Proposed face remains Candidate; no locked face reference exists. User approved this proposal as Candidate only."
+      ],
+      "validation": "Derived from technically passed existing source; reviewed at 256, 96 and 64px. Parent candidate status is inherited.",
+      "review_evidence": "assets/art/adventure/previews/face-icons-review.jpg"
     }
   ],
   "supporting_artifacts": [
     {
-      "path": "assets/art/adventure/maps/living-atlas-style-proof-source.png",
+      "path": "assets/art/adventure/characters/aurel-veyr-source.png",
+      "bytes": 2260011,
+      "sha256": "16e66574e955f380101bc5bf065b45fec743684bb26085f2e23f6af6f0cc5a12",
       "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/eira-mossborn-source.png",
+      "bytes": 2690514,
+      "sha256": "985c8ee161f0e4641ecb8655d9c4147215af3321d2b107ef58a09853c7165a16",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/fractured-host-source.png",
+      "bytes": 2659822,
+      "sha256": "3cfad998e83e5f42c5cca0a962fdc5bef0191ee3c9f9f9f7c5205f5431786cbc",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/liora-source.png",
+      "bytes": 2607936,
+      "sha256": "a0d4ad66fc47bcd5799e8532dec288a0faace78c453d365eab7cfd01e04f1c98",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/nym-avar-source.png",
+      "bytes": 2316974,
+      "sha256": "f812b4d26b9c4f724c34675461af30375f762804eaa0ff1dc1c290d7e8b091bf",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/orun-kael-source.png",
+      "bytes": 3404582,
+      "sha256": "189b2ded6a59b3caae0a4a7e6c6abee31b46498a5f2d6242d4133ffec96f883d",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/seris-vale-source.png",
+      "bytes": 2427144,
+      "sha256": "03514b491dcd8bb770bac2981ea7aa6d0261fba15978e224bacc7f3928700e8f",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/characters/varkesh-thane-source.png",
+      "bytes": 2654740,
+      "sha256": "d65233392e81d68681f9dc64061808c12e302477043f1aadae617df7fe981151",
+      "format": "png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/HANDOFF.md",
+      "bytes": 3586,
+      "sha256": "66643ec812d79a0816ed93807963c48e765797a8ddeafe94ae68615bc004f380",
+      "format": "md",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/maps/living-atlas-style-proof-source.png",
       "bytes": 2488853,
       "sha256": "9b8edf7da68c79c912384f903d96d0ef78e6828795a90d07e9fdd84fc6c5ee9e",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         887,
         1774
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/maps/living-atlas-style-proof.webp",
+      "bytes": 636474,
+      "sha256": "4484022c528d41d283361847cedab563cc98bc1f04b4d6eb3ee6d78d96e64b13",
+      "format": "webp",
+      "dimensions": [
+        2048,
+        4096
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/maps/living-atlas-v2-source.png",
+      "bytes": 2436492,
+      "sha256": "8137a9f3f04b2ae8eaf70d5d6ed7a2fbd680094fb7b49ad8d87400c88c41e5e1",
+      "format": "png",
+      "dimensions": [
+        887,
+        1774
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/modes/basic-source.png",
+      "bytes": 2321493,
+      "sha256": "cc5461b1f7b282a1c3de468365d1c6ccc5cbd6341e8dda09108ee8e26f05e572",
+      "format": "png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/modes/expedition-source.png",
+      "bytes": 2566615,
+      "sha256": "7f377efe3ac1a70187797cc15d64d3d2af9fd3d106da011718bcafeccb4f7327",
+      "format": "png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/modes/story-source.png",
+      "bytes": 2479995,
+      "sha256": "bfa9da7100c9b4100932ccf8e2b09aff11fc531e15251ececc63964f29817a5e",
+      "format": "png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/act1-medal-render.png",
-      "format": "png",
       "bytes": 6329,
       "sha256": "27f6f1d45900165b9b08f2eacdb8089c14f8785a48fd97a6ae0a568cf7f3abd9",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/alpha-review.jpg",
+      "bytes": 254905,
+      "sha256": "16a8dcb996d5195f930aa55b9d55b48e13217ed94a8d6c00507009ef0f43d2ff",
+      "format": "jpg",
+      "dimensions": [
+        1280,
+        550
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/artwork-contact-sheet.jpg",
+      "bytes": 382107,
+      "sha256": "7e91b01aef31341f42bd7486a94476bd2e445756889c33cf84ffe1edfaeef6f9",
       "format": "jpg",
-      "bytes": 101390,
-      "sha256": "d6f61a99c962cb8317db35f2a312d8eb8d278c9b703101a81eb52b2e8b760cee",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
       "dimensions": [
-        1400,
-        760
+        1600,
+        1400
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/atlas-24-node-layout-review.jpg",
-      "format": "jpg",
       "bytes": 346313,
       "sha256": "d88cd3f1cca6acb85ae9857e48c3a1cf0304f5a552bdc9d1b06626cab3b899d2",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "jpg",
       "dimensions": [
         768,
         1536
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/atlas-v2-24-node-review.jpg",
+      "bytes": 329270,
+      "sha256": "5f17d26a2a4306a0fcdd178a108599dcc0d2c2797b76b7efe1c87e4c7f0ee5d5",
+      "format": "jpg",
+      "dimensions": [
+        768,
+        1536
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/audit-existing.py",
+      "bytes": 7219,
+      "sha256": "332a52aeab1d5d46e924439cf885696c5d3906c20c0e1e35cb9260e70a321dca",
+      "format": "py",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/character-alpha-review.jpg",
+      "bytes": 317297,
+      "sha256": "1f3ec1b200b4b704089e5d98cd71a094ce68525ae20862772c40e6e389cc6d76",
+      "format": "jpg",
+      "dimensions": [
+        1600,
+        1000
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/character-contact-sheet.jpg",
+      "bytes": 317297,
+      "sha256": "1f3ec1b200b4b704089e5d98cd71a094ce68525ae20862772c40e6e389cc6d76",
       "format": "jpg",
-      "bytes": 281699,
-      "sha256": "4da212465b4981d134900a5f898b4bf8b5c06f70e0df8a396dbff3c66d32c3c5",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
       "dimensions": [
-        1280,
-        810
+        1600,
+        1000
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/current-primary-review.jpg",
+      "bytes": 382107,
+      "sha256": "7e91b01aef31341f42bd7486a94476bd2e445756889c33cf84ffe1edfaeef6f9",
+      "format": "jpg",
+      "dimensions": [
+        1600,
+        1400
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/existing-reference-sheet.jpg",
-      "format": "jpg",
       "bytes": 669204,
       "sha256": "b3594291b5bd84439fd8f00800963263609cd924460a80c8a018024be5b78ef4",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "jpg",
       "dimensions": [
         1200,
         1660
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/face-icons-review.jpg",
+      "bytes": 339672,
+      "sha256": "d44759ead3a3cde9ac6207564d486009d227c5dcd35e168b85cf3345e78641cb",
+      "format": "jpg",
+      "dimensions": [
+        1200,
+        800
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/finalize-audit.py",
+      "bytes": 11262,
+      "sha256": "f9d6b4e0e0a6c6da0f562eac28eb76901fb46338eb3c70f51873d4a6b711d8b7",
+      "format": "py",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/previews/generation-log.json",
+      "bytes": 60397,
+      "sha256": "315bdbb59fb72a30ce292ea7983231d086be3d248a2b056fe466d41335369f28",
+      "format": "json",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/index.html",
+      "bytes": 1292,
+      "sha256": "73f15b996fba6161804ee6d12994c9863fc5b31fe2b6e8f969340dc455ffc5a3",
       "format": "html",
-      "bytes": 1847,
-      "sha256": "71b4cfa2205db2b86049071453f3e1e0fdf95d276a64fc9c82e6fb4dbe4dc62c",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/layout-review.json",
-      "format": "json",
       "bytes": 2084,
       "sha256": "c8551f8e550e617e71e18cc11c3c6442bbc6fba7c1b6141f5f9234536e1bce01",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "format": "json",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/miniboss-badge-beacon-render.png",
-      "format": "png",
       "bytes": 5644,
       "sha256": "9c69fc90f659d12d20bd6760b6181d8692c9f616a37734f23d26086cc9448c78",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/miniboss-badge-fracture-render.png",
-      "format": "png",
       "bytes": 6036,
       "sha256": "265e357ae5032cbe74fc3261f198e488a1c1d67ccb40058fe1a575d95a752495",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/miniboss-badge-glasswind-render.png",
-      "format": "png",
       "bytes": 6300,
       "sha256": "5487a2a3dcf32f48ff177cfd55d7976b8a723dc61d9c6f31641e07fe440ffa6d",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/miniboss-badge-wildroot-render.png",
-      "format": "png",
       "bytes": 6535,
       "sha256": "c878b7da5f8fb9ed98205a4b6758f4bfcdafba47318a25823721e2c61b4eb383",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-boss-render.png",
-      "format": "png",
       "bytes": 1659,
       "sha256": "45b5fcbf3ef287df88d472881db8493010e6d01440d2c295f184917cd2631c04",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-combat-render.png",
-      "format": "png",
       "bytes": 2010,
       "sha256": "b73a3ccdf415a241b9334a2df7cdcc79d6b598ca8240083454c3084bc9f942ba",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-deck-adjust-render.png",
-      "format": "png",
       "bytes": 962,
       "sha256": "eb1690a4895852d4eaca4bda7b33600724d5fffdd36155e73e38b17229ea84cb",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-event-render.png",
-      "format": "png",
       "bytes": 792,
       "sha256": "1d4f4b362dbc0a03d42b04a1fd240c056e3fddb6e00e55a87e12ac3409369d00",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-frame-available-render.png",
-      "format": "png",
       "bytes": 4376,
       "sha256": "619faa4acfa56315cf7a9235417df61f2b88742e507a490a1e5d7ca7944c7d06",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-frame-completed-render.png",
-      "format": "png",
       "bytes": 4928,
       "sha256": "1eb2089c96b3a5ba0c1d8ef432f117e036515593f9d21a88cfefbfebbc7cea8e",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-frame-locked-render.png",
-      "format": "png",
       "bytes": 3206,
       "sha256": "b53d2d71c32023652be07bbd14608aed1847c2bc4e291c176f1cdabfce09c4ba",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-frame-selected-render.png",
-      "format": "png",
       "bytes": 4594,
       "sha256": "4eb049632735da01f3ea38b7abfa872fbe06cba9b8d3be67c90b8176c067c546",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-miniboss-render.png",
-      "format": "png",
       "bytes": 1527,
       "sha256": "1e61f2b4470aae69b524676939c1f87323639cb70949dd610e2e4a9900d52e28",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/node-puzzle-render.png",
-      "format": "png",
       "bytes": 1500,
       "sha256": "a23c753293c847cf84f2535a79df580ba94c08b036aca7d9f924b62a3084ccc2",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/reference-inventory.json",
-      "format": "json",
       "bytes": 8662,
       "sha256": "08839b67e30825b070dc5f4a928a352e843a00dd4bad0f5e2e2bed671f814e19",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "format": "json",
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
-      "format": "webp",
       "bytes": 174526,
       "sha256": "4eca0ae75204384ad39750954f071f961a70dc6e7119600f615bfebf6ea57087",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B02.webp",
-      "format": "webp",
       "bytes": 234816,
       "sha256": "3799e6384eae3df5199e642d4239582e8408bcd61a6e4f6f4e43d7329b0f0470",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B03.webp",
-      "format": "webp",
       "bytes": 198622,
       "sha256": "de16da9c8acd067875c7b2be2a4843ecf7b3d1da5c8a31946d7d0d730483e053",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B05.webp",
-      "format": "webp",
       "bytes": 160562,
       "sha256": "b859dbef83754709abdc19efc3722b8a773f4d8a213007c4a085e1312faf913a",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B06.webp",
-      "format": "webp",
       "bytes": 240766,
       "sha256": "a4a61039b79515d32bcffcdb2b50a03266a8f0df017c35528f9b379a25b4c1ea",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B07.webp",
-      "format": "webp",
       "bytes": 200662,
       "sha256": "679eb0ff2986c1a5546fd1f1263e2e2ec729676c5708304944bea5c832dc421c",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp",
-      "format": "webp",
       "bytes": 188946,
       "sha256": "89a7d6c8d395f90de44bbfd96b8f540e28870ad21b2d0b0305e7dc4b18e7b56f",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS2.webp",
-      "format": "webp",
       "bytes": 246888,
       "sha256": "5ace949da2d7d6ca5fdc05e2fb8c63a4c575d45b410d78ae298ac3fd10d818a6",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F02.webp",
-      "format": "webp",
       "bytes": 139296,
       "sha256": "de778745b00be6e4a4020fb3a0107348c950265c9fada60af0101d7f279efc09",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F03.webp",
-      "format": "webp",
       "bytes": 196908,
       "sha256": "e9c9a9c6628b41477cade0ca4b7b08f32d2772226bcb90b7b83b6fb8dbf99678",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F04.webp",
-      "format": "webp",
       "bytes": 214008,
       "sha256": "8c43d6e38efc31e76c6e9de003b00b527dfb6b8f2552ee39bff70063239cac6d",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
-      "format": "webp",
       "bytes": 192436,
       "sha256": "8772322ab49a84cdc238d19b4032083bb7326ad95cfaed35c99c283b60071862",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G03.webp",
-      "format": "webp",
       "bytes": 210644,
       "sha256": "9194ec34458369bf8bfdad1a4effbdf6afa93410a60ec76c731fa949bf0c9881",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G04.webp",
-      "format": "webp",
       "bytes": 227190,
       "sha256": "f7f7f1456d036ce13789649a33e7f0ad963e180a3853ea3fd29f312b3a42c207",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G07.webp",
-      "format": "webp",
       "bytes": 264530,
       "sha256": "77c91d0e11ee432380e4407615a397167225548de8d5d576dcde55b142bdcf5d",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS1.webp",
-      "format": "webp",
       "bytes": 236334,
       "sha256": "69b75426084cff54a89deee581502b13efbbed9e8cd675266c846b3151b70c35",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS2.webp",
-      "format": "webp",
       "bytes": 256418,
       "sha256": "8504caa52b20acaa76fad985825a0eeb4b7bbf2088a83982cbdf852b5910f7a1",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp",
-      "format": "webp",
       "bytes": 186234,
       "sha256": "3c2c7cf44862b4f5db17915520ffbbc954083f8df82c48f61ecc723ab6456bac",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W09.webp",
-      "format": "webp",
       "bytes": 160012,
       "sha256": "97a19cca18138c0b4e4f2f90d10a216415e314fe76ef62004c43f277e3dd1ab9",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp",
-      "format": "webp",
       "bytes": 275116,
       "sha256": "406afcb97f427f4f44af1e91e32dbd8648a6df3f02885c404f27f4149021ecda",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/KEEPER_ART-liora.webp",
-      "format": "webp",
       "bytes": 240306,
       "sha256": "f32733e5f317164d3f8153421cd77d43ea92b3050e3731317ec59d03b6f98474",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1280,
         720
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp",
-      "format": "webp",
       "bytes": 264886,
       "sha256": "73927264e9611ff1ff74d124668b46f24e110405fdfcd81b10343dd9b3753c38",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1672,
         941
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-observatory.webp",
-      "format": "webp",
       "bytes": 329834,
       "sha256": "49cd20a4b3a0857bdece6baa908f4184c0295b39860f54b0f974571dfd6a0c09",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1672,
         941
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
-      "format": "webp",
       "bytes": 244272,
       "sha256": "cc53e9cd1f7c5339a2284774b155456f47de74c01a46e0cc892f788d895896a0",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1672,
         941
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-sanctuary.webp",
-      "format": "webp",
       "bytes": 442144,
       "sha256": "358b51412f226ccbf845f1260484df771ca8268df9e96930989d961f1a27cd60",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "webp",
       "dimensions": [
         1672,
         941
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/reward-frame-normal-render.png",
-      "format": "png",
       "bytes": 5643,
       "sha256": "f8817c262590679e6a64ac18380341108c8a30d9279456c32325e0382bc029fb",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         512,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/reward-frame-received-render.png",
-      "format": "png",
       "bytes": 8070,
       "sha256": "722a929298c0589efda852bfcc081700ee7652dfdcd536e978ff25211c429ffd",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         512,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/reward-frame-selected-render.png",
-      "format": "png",
       "bytes": 5331,
       "sha256": "d63f88c67e3acde24090bb85767ac9e731d3395aca8174d8bbf09c9d5ea20afe",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         512,
         720
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/stage-contact-sheet.jpg",
-      "format": "jpg",
       "bytes": 377734,
       "sha256": "96e67e042288a4cc9d3a94ded367d7d8fe6368517782002d5eef95fef743a518",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "jpg",
       "dimensions": [
         1000,
         1050
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/stage-medal-bronze-render.png",
-      "format": "png",
       "bytes": 5777,
       "sha256": "4fe02e4aecbd35dd428796215aedef22390c1d8832c0d4281365545d7a98b5b8",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/stage-medal-gold-render.png",
-      "format": "png",
       "bytes": 5889,
       "sha256": "c21dc649f56f339f2b7a1c1a028a0ea4bf4d9f61f24371f0d73746efaf5b9404",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/stage-medal-silver-render.png",
-      "format": "png",
       "bytes": 5917,
       "sha256": "15d58ed1c352733a9528ed92d061baf417150bceb336593102f74bde8682aa67",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "png",
       "dimensions": [
         128,
         128
       ],
-      "transparency": true
+      "transparency": true,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/ui-contact-sheet.jpg",
-      "format": "jpg",
       "bytes": 167434,
       "sha256": "f805bd72560b327be971e296b3b7435f32f243b10992f5483637cec442b97afc",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "format": "jpg",
       "dimensions": [
         1200,
         840
       ],
-      "transparency": false
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/previews/validation-report.json",
+      "bytes": 16482,
+      "sha256": "6bf1d0249652e7445ae0ee8fa9b043deb5723a0288326d137809c87c22f1d8c8",
       "format": "json",
-      "bytes": 11174,
-      "sha256": "7f38241222c3f5504a29fc07e03f11a4dfda636f147270df1cc5a95d274fad15",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/production-prompts.json",
+      "bytes": 3321,
+      "sha256": "e9bc074033848d8922f69ad471dce646ed4457de3b44085bca42b1f8b4bfa8a6",
       "format": "json",
-      "bytes": 2069,
-      "sha256": "7cb954daec60730767f9fa74f5a252918ae3f099b53a7733397feb34a6676613",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     },
     {
       "path": "assets/art/adventure/README.md",
+      "bytes": 4539,
+      "sha256": "7a8006227f2a470b47c8a992cf8f6c3790e96e28f088cdeb9c5824cf7824dc54",
       "format": "md",
-      "bytes": 9680,
-      "sha256": "2e57d37bf754060071c44f646773c66df0ec80221949d22fb1d290ba502a0971",
-      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/scenes/act1-ending-source.png",
+      "bytes": 2613019,
+      "sha256": "2751dad5dd4dcdbbaad7b101536a59d9c42f1844c5c1cb53206ca09ca6fe179a",
+      "format": "png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
+    },
+    {
+      "path": "assets/art/adventure/scenes/act1-opening-source.png",
+      "bytes": 2347168,
+      "sha256": "b138ec90b08acc0decaa1edbba76626a6258450d6024c9e2e609a8df5797652b",
+      "format": "png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false,
+      "purpose": "Source, reference, history or review evidence; not another generated asset"
     }
-  ]
+  ],
+  "current_gate": "STOP_GENERATION_REVIEW_EXISTING_FILES"
 }

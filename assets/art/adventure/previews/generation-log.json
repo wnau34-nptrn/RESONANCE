@@ -1,0 +1,947 @@
+{
+  "schema_version": 2,
+  "current_gate": "STOP_GENERATION_REVIEW_EXISTING_FILES",
+  "generation_calls_in_current_audit": 0,
+  "in_flight_requests": [],
+  "request_start_metadata_gap": "Historical calls were not recorded before submission. This log is reconstructed from existing outputs and retained selected prompts, not fabricated request-start records.",
+  "generation_calls_historical": 21,
+  "historical_breakdown": "1 first Atlas proof + 14 selected outputs in continuation + 6 historical corrections; exports and 8 crops are not generations.",
+  "selected_outputs": [
+    {
+      "id": "living-atlas",
+      "file": "maps/living-atlas-v2",
+      "refs": [
+        "assets/art/adventure/maps/living-atlas-style-proof-source.png"
+      ],
+      "alpha": false,
+      "prompt": "Use case: precise-object-edit. Revise the supplied Living Atlas background only, preserving the approved dark painterly pale stone, black glass, aged brass material and symbolic four-theme composition. Tall 1:2 portrait, request native 2048x4096 detail if possible. This is a symbolic memory surface, NOT new canonical Caldris geography. CRITICAL CHANGE: remove the dense towers/bridges from the middle and upper usable areas and move small silhouettes to outermost margins; 80 percent of central image must be very calm softly mottled dark slate-teal mist and faint worn mineral surface, no sharp details there. Reserve quiet upper20% convergence, middle55% four spacious vertical columns, lower25% prologue/puzzle space. Four theme hints at perimeter only: pale stone warm brass far left; smoked glass silver second-left; restrained obsidian ember scar second-right; mossed bark amber far right. Nothing connects these hints. No scenic pathways or bridges traversing the central usable surface. Preserve the ancient fractured relic pedestal only in bottommost 8% and weathered structure only within left/right 8% margins. No nodes, circles, dotted lines, connectors, routes, unlock states, nameplates, text, writing, icons, logos, buttons or UI of any kind. No characters, bosses, new geographic landmarks. Do not blur everything: peripheral material detail remains crisp; central calm negative space intentionally painted for overlay readability.",
+      "native_dimensions": [
+        887,
+        1774
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/maps/living-atlas-v2-source.png",
+      "delivery_path": "assets/art/adventure/maps/living-atlas-v2.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          2048,
+          4096
+        ],
+        "native_to_export_scale": 2.3089064261555805,
+        "upscale": true
+      }
+    },
+    {
+      "id": "liora",
+      "file": "characters/liora",
+      "refs": [
+        "assets/art/adventure/previews/references/KEEPER_ART-liora.webp"
+      ],
+      "alpha": true,
+      "prompt": "Use case: identity-preserve. WONDERBOUND: RESONANCE Adventure dialogue/encounter asset. One isolated full-body subject on genuinely transparent PNG background, portrait 2:3 target 1024x1536. Match the supplied existing reference exactly in identity, proportions, materials, clothing, hair, armor and signature object; this is a clean readable presentation of that existing design, NOT a redesign. Preserve painterly high-fantasy texture, restrained lighting, archaeological worn material. Entire silhouette, feet, cloth, signature object and head inside frame with 7% clear transparent outer margin. Head centered near x50% y20% for half-body/face crop; readable at 96px. No scene, ground plate, background scenery, other people, duplicate bodies, text, UI, letters, logo, watermark, new powers or new lore. Subject: Liora from this reference, long warm brown braided/wavy hair, ivory flowing garment, teal mantle embroidered aged gold, brass belt ornaments and hanging lightglass lantern. Keep her existing face, costume and lantern. Adapt to a calm standing dialogue pose, three-quarter gaze, raised lantern hand relaxed enough not to obscure face; no crown, no expedition-coat replacement.",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/liora-source.png",
+      "delivery_path": "assets/art/adventure/characters/liora.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "miniboss-beacon",
+      "file": "characters/aurel-veyr",
+      "refs": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp"
+      ],
+      "alpha": true,
+      "prompt": "Use case: identity-preserve. WONDERBOUND: RESONANCE Adventure dialogue/encounter asset. One isolated full-body subject on genuinely transparent PNG background, portrait 2:3 target 1024x1536. Match the supplied existing reference exactly in identity, proportions, materials, clothing, hair, armor and signature object; this is a clean readable presentation of that existing design, NOT a redesign. Preserve painterly high-fantasy texture, restrained lighting, archaeological worn material. Entire silhouette, feet, cloth, signature object and head inside frame with 7% clear transparent outer margin. Head centered near x50% y20% for half-body/face crop; readable at 96px. No scene, ground plate, background scenery, other people, duplicate bodies, text, UI, letters, logo, watermark, new powers or new lore. Subject: the single foreground Aurel Veyr, existing swept brown hair, rugged short stubble, worn ivory/steel armor with gold trims, deep blue half-cloak and narrow tall command spear. Keep face and spear. Calm braced standing pose, spear kept inside frame. No troops. User-approved Adventure role is an Echo of Aurel; do not imply resurrection or a new canonical history.",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/aurel-veyr-source.png",
+      "delivery_path": "assets/art/adventure/characters/aurel-veyr.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "miniboss-glasswind",
+      "file": "characters/nym-avar",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-978cd0dd-b31c-4ec4-b013-4fc675477c5d.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "BACKGROUND EXTRACTION EDIT. Remove the ENTIRE scene and ALL background. Keep ONLY the single dark-haired navigator with his blue/charcoal coat, boots and glass-ended staff, exactly as shown. No bridges, floor, sky, towers, ground shadow, haze, scenery or background after extraction. Place complete isolated full-body character centered on a 1024x1536 portrait canvas. Preserve body proportions, face, outfit and staff. Fit all feet/coat/staff with transparent margin. All pixels outside character and staff must have alpha=0, genuine transparent PNG. Do not retain original landscape canvas. No new objects, no text.",
+      "revision_reason": "Initial output retained scenery/landscape; rejected.",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/nym-avar-source.png",
+      "delivery_path": "assets/art/adventure/characters/nym-avar.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "miniboss-fracture",
+      "file": "characters/varkesh-thane",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-d604aafa-5f04-4f0e-9bb8-c375d1624add.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "BACKGROUND EXTRACTION EDIT. Remove ENTIRE background: all towers, floor, sky, smoke and ruins. Keep ONLY foreground armored Varkesh Thane, closed cracked helmet, red cloak, inherited faded-blue armor stripe and long glaive unchanged. Do not invent an exposed face. Extend the existing design down to complete armored legs and boots. Output a full-body 1024x1536 PORTRAIT PNG: helmet, boots, entire glaive and torn cape centered inside clear 6% transparent margin. Outside the single character/weapon alpha=0. NO scenery, floor, shadow, opaque glow, lettering or UI. This is an isolated character cutout, not a landscape scene.",
+      "revision_reason": "Initial output retained scenery/landscape; rejected.",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/varkesh-thane-source.png",
+      "delivery_path": "assets/art/adventure/characters/varkesh-thane.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "miniboss-wildroot",
+      "file": "characters/orun-kael",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-34f485e2-54c5-47bf-b1ad-dc41e49d5db8.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "Edit ONLY framing of this isolated Orun-Kael tree: zoom OUT enough that the COMPLETE canopy, all outer branches and heavy root/attached-ruin silhouette are visible with at least7% empty transparent margin on every side. Portrait1024x1536 PNG alpha=0 background. Preserve existing giant ancient pale bark, green-gold canopy, amber knots, star-scar pattern, attached miniature ruins and nonhumanoid awareness exactly. Fill missing clipped outer leaf/root edges consistently with the same tree. No background scenery, no ground plane, no humans or companions, no tree-man face, no new props, no text. Keep lighting and painterly material, reduce subject size in canvas instead of cutting canopy.",
+      "revision_reason": "Complete canopy/framing correction",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/orun-kael-source.png",
+      "delivery_path": "assets/art/adventure/characters/orun-kael.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "act1-boss",
+      "file": "characters/fractured-host",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-00eee2ef-691d-4b4b-b48a-835212a5722f.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "BACKGROUND EXTRACTION EDIT. Remove ALL scene/background, including sky, walls, bridges, stairs, rubble and floor. Retain ONLY the faceless pale fractured figure with its existing dark joints, small adjacent body fragments, frayed pale cloth and hands. Preserve the faceless head plate; no eyes/human face or added ornaments. Portrait 1024x1536 full-body PNG, all head, hands and trailing cloth inside clear transparent margins. All background pixels alpha=0, no ground plane, scenery or mist. No text or UI.",
+      "revision_reason": "Initial output retained scenery/landscape; rejected.",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/fractured-host-source.png",
+      "delivery_path": "assets/art/adventure/characters/fractured-host.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "npc-seris",
+      "file": "characters/seris-vale",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-f32b4b76-5d03-4303-b688-f120644fba2b.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "BACKGROUND EXTRACTION EDIT. Remove ALL background and scene: towers, sea, walls, floor, soldiers, flags, sky and mist. Keep ONLY the single foreground black-haired woman with silver hair streak, translucent scarf, armor, blue coat and curved blade. Preserve her face and outfit exactly. Continue her existing armored legs down to boots, full-body upright pose. Portrait1024x1536 PNG, complete blade, scarf, boots and hands inside 7% transparent margins. Outside character and blade alpha=0. No floor, scene, shadow, duplicate body or opaque glow. This is a clean isolated dialogue character, not a landscape.",
+      "revision_reason": "Background/full-body correction",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/seris-vale-source.png",
+      "delivery_path": "assets/art/adventure/characters/seris-vale.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "npc-eira",
+      "file": "characters/eira-mossborn",
+      "refs": [
+        {
+          "imagegen_edit_input": "exec-09bf3a57-8884-4483-96c0-9f4eda3ba93d.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "alpha": true,
+      "prompt": "Edit this user-approved CANDIDATE Eira portrait. Change ONLY the visible skin on face, ears, neck and hands to natural DEEP BROWN complexion, richly brown and visibly elderly with detailed age wrinkles. Maintain the elderly woman, gray braids with seed husks, barkcloth robe, small mossed-stone talismans, amber sap vial, living-wood staff, pose and full-body silhouette. Do not lighten skin to match the W02 reference. Transparent PNG portrait1024x1536, maintain clean alpha=0 background, no opaque backdrop or halo, full staff and feet inside clear margins. This is a candidate appearance proposal, not canonical. No text or new props.",
+      "revision_reason": "Skin complexion correction to user-approved candidate proposal",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "native_mode": "RGBA",
+      "native_source_path": "assets/art/adventure/characters/eira-mossborn-source.png",
+      "delivery_path": "assets/art/adventure/characters/eira-mossborn.png",
+      "export_transform": {
+        "type": "uniform contain + transparent padding",
+        "content_dimensions": [
+          880,
+          1320
+        ],
+        "offset": [
+          72,
+          108
+        ],
+        "canvas": [
+          1024,
+          1536
+        ],
+        "native_to_content_scale": 0.859375
+      }
+    },
+    {
+      "id": "mode-basic",
+      "file": "modes/basic",
+      "refs": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "alpha": false,
+      "prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Textless concept image for BASIC: discovery and learning, not a literal new campaign event. Close intimate still-life of an existing chipped pale-stone/black-glass Living Atlas fragment on an ancient worn Asteri excavation ledge, matching reference material and brass relief details. A small portion of its relief catches warm low dawn light, other layers remain quietly unresolved; readable clear focal relic around x65% y48%. No characters or invented teaching devices. Quiet left35% dark slate negative space for future mode copy, atmospheric dust and ruin arches far behind, no readable glyphs, no currency, no UI.",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/modes/basic-source.png",
+      "delivery_path": "assets/art/adventure/modes/basic.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      }
+    },
+    {
+      "id": "mode-story",
+      "file": "modes/story",
+      "refs": [
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp"
+      ],
+      "alpha": false,
+      "prompt": "WONDERBOUND: RESONANCE textless STORY mode concept artwork. Landscape16:9 target1920x1080. Recompose the supplied existing Moonbridge Crossing into a cinematic dark painterly view along the weathered near approach toward its existing missing-span bridge and moonlit continuation; preserve the known Landmark silhouette and materials. The journey and forthcoming confrontation are conveyed by the vast broken crossing and tension of light/shadow, not a new character or event. Strong depth, ancient worn pale stone, smoked glass and restrained silver light, wide clear path in lower right. Keep left30% dark quiet mist for future mode label as a separate UI overlay. No characters, enemies, new locations, treasure types, text, glyph writing, UI, route connectors, map pins, logos or watermark. Concept only, no new canonical geography.",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/modes/story-source.png",
+      "delivery_path": "assets/art/adventure/modes/story.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      }
+    },
+    {
+      "id": "mode-expedition",
+      "file": "modes/expedition",
+      "refs": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp"
+      ],
+      "alpha": false,
+      "prompt": "WONDERBOUND: RESONANCE textless EXPEDITION mode concept artwork, landscape16:9 target1920x1080. Symbolic choices and discovery inside an abstract Asteri ruin memory, not a map or new canonical region. Foreground: two weathered pale-stone approaches diverge around a black-glass relief fragment, restrained aged brass traces from existing Atlas reference1, one approach toward softly silvered old arch silhouettes based on reference2, the other fading into deep mist with a small existing chipped Atlas fragment caught by dawnlight suggesting discovery/treasure. No treasure chest, currency, new relic name or invented artifact. Painterly ancient material, slate-teal shadows, subtle warm light on existing stone fragment. Preserve left30% low-detail negative space; fork and physical fragment occupy right two thirds. No subjects, text, labels, buttons, UI connector lines, icons, new geographic names, logos or watermark. This is a mode metaphor, not a campaign event.",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/modes/expedition-source.png",
+      "delivery_path": "assets/art/adventure/modes/expedition.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      }
+    },
+    {
+      "id": "act1-opening",
+      "file": "scenes/act1-opening",
+      "refs": [
+        "assets/art/adventure/characters/liora-source.png",
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "alpha": false,
+      "prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Scene: the source-supported moment of Liora discovering a Living Atlas Fragment inside unnamed existing Asteri ruins. Preserve her exact long brown hair, ivory clothes, embroidered teal mantle, aged gold belt ornaments and lantern from reference1, no costume redesign. Relic material/design derives from reference2: a small chipped fragment of the same pale stone and black glass map relief with aged brass tracery, physically present on a worn excavation ledge, NOT paper or a holographic map. Liora at right third leaning forward and cautiously touching the shard with one clearly drawn hand, subtle contradictory relief layers catching restrained light, thoughtful discovery not chosen-one aura. One subject only. Leave left30% as quiet shadowed worn wall/mist and lower18% quiet for later dialogue overlay; no text. Clear face in right upper-middle, intimate medium-wide composition.",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/scenes/act1-opening-source.png",
+      "delivery_path": "assets/art/adventure/scenes/act1-opening.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      }
+    },
+    {
+      "id": "act1-ending",
+      "file": "scenes/act1-ending",
+      "refs": [
+        "assets/art/adventure/characters/liora-source.png",
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "alpha": false,
+      "prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Candidate Act I transition: Living Atlas identifies an already-known awakening Landmark, WHISPERGLASS RELAY, user authorized agent selection. Preserve Liora's reference1 identity, long brown hair, ivory clothing, ornate teal/gold mantle and lantern. Place her at left third in three-quarter back/side view, face still lightly visible, studying the same small pale stone/black-glass Atlas fragment material from reference3; she looks toward reference2's exact existing smoked-glass relay pylons and weathered brass bridge silhouettes in distant right third. Restrained silver-violet relay response, not a large energy beam. Imply a future journey through gaze and lighting, no projected route, no map lines. Reserve lower25% and center20% as calm dark mist for later dialogue. No companions, no seventh site, no ZERO symbol, no new landmark, no battle, no invented victory or lore revelation. Landmark silhouette must match supplied existing relay rather than new geometry.",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "native_mode": "RGB",
+      "native_source_path": "assets/art/adventure/scenes/act1-ending-source.png",
+      "delivery_path": "assets/art/adventure/scenes/act1-ending.webp",
+      "export_transform": {
+        "type": "uniform cover + centered aspect trim",
+        "canvas": [
+          1920,
+          1080
+        ],
+        "native_to_export_scale": 1.1483253588516746,
+        "upscale": true
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "asset_id": "living-atlas",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Earlier style proof: overly dense central architecture; user requested quieter Atlas.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-312a2c7f-51e7-4958-ac92-dede6fcc5f01.png",
+      "references": [
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "sections": [
+            "2",
+            "3",
+            "4"
+          ],
+          "status": "candidate"
+        },
+        {
+          "path": "index.html",
+          "owners": [
+            "WORLD_ART.landmarks.relay",
+            "FINAL_CARD_ART.B01"
+          ]
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 2562273,
+      "sha256": "f05e62f8862e615b500be0c3103dc1e12cf3754c7e4497f205934e77d540df7b",
+      "native_dimensions": [
+        887,
+        1774
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "living-atlas",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-1d9ec95b-089a-4da9-9dac-8765fb828b7b.png",
+      "repository_source_path": "assets/art/adventure/maps/living-atlas-v2-source.png",
+      "delivery_path": "assets/art/adventure/maps/living-atlas-v2.webp",
+      "sha256": "8137a9f3f04b2ae8eaf70d5d6ed7a2fbd680094fb7b49ad8d87400c88c41e5e1",
+      "exact_prompt": "Use case: precise-object-edit. Revise the supplied Living Atlas background only, preserving the approved dark painterly pale stone, black glass, aged brass material and symbolic four-theme composition. Tall 1:2 portrait, request native 2048x4096 detail if possible. This is a symbolic memory surface, NOT new canonical Caldris geography. CRITICAL CHANGE: remove the dense towers/bridges from the middle and upper usable areas and move small silhouettes to outermost margins; 80 percent of central image must be very calm softly mottled dark slate-teal mist and faint worn mineral surface, no sharp details there. Reserve quiet upper20% convergence, middle55% four spacious vertical columns, lower25% prologue/puzzle space. Four theme hints at perimeter only: pale stone warm brass far left; smoked glass silver second-left; restrained obsidian ember scar second-right; mossed bark amber far right. Nothing connects these hints. No scenic pathways or bridges traversing the central usable surface. Preserve the ancient fractured relic pedestal only in bottommost 8% and weathered structure only within left/right 8% margins. No nodes, circles, dotted lines, connectors, routes, unlock states, nameplates, text, writing, icons, logos, buttons or UI of any kind. No characters, bosses, new geographic landmarks. Do not blur everything: peripheral material detail remains crisp; central calm negative space intentionally painted for overlay readability.",
+      "references": [
+        "assets/art/adventure/maps/living-atlas-style-proof-source.png"
+      ],
+      "native_dimensions": [
+        887,
+        1774
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "liora",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-fa0fd1a5-8e8c-442c-b01f-142c2fe28b36.png",
+      "repository_source_path": "assets/art/adventure/characters/liora-source.png",
+      "delivery_path": "assets/art/adventure/characters/liora.png",
+      "sha256": "a0d4ad66fc47bcd5799e8532dec288a0faace78c453d365eab7cfd01e04f1c98",
+      "exact_prompt": "Use case: identity-preserve. WONDERBOUND: RESONANCE Adventure dialogue/encounter asset. One isolated full-body subject on genuinely transparent PNG background, portrait 2:3 target 1024x1536. Match the supplied existing reference exactly in identity, proportions, materials, clothing, hair, armor and signature object; this is a clean readable presentation of that existing design, NOT a redesign. Preserve painterly high-fantasy texture, restrained lighting, archaeological worn material. Entire silhouette, feet, cloth, signature object and head inside frame with 7% clear transparent outer margin. Head centered near x50% y20% for half-body/face crop; readable at 96px. No scene, ground plate, background scenery, other people, duplicate bodies, text, UI, letters, logo, watermark, new powers or new lore. Subject: Liora from this reference, long warm brown braided/wavy hair, ivory flowing garment, teal mantle embroidered aged gold, brass belt ornaments and hanging lightglass lantern. Keep her existing face, costume and lantern. Adapt to a calm standing dialogue pose, three-quarter gaze, raised lantern hand relaxed enough not to obscure face; no crown, no expedition-coat replacement.",
+      "references": [
+        "assets/art/adventure/previews/references/KEEPER_ART-liora.webp"
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "miniboss-beacon",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-6b7f2bf7-2f36-4a8e-a019-ef3455dd1b2f.png",
+      "repository_source_path": "assets/art/adventure/characters/aurel-veyr-source.png",
+      "delivery_path": "assets/art/adventure/characters/aurel-veyr.png",
+      "sha256": "16e66574e955f380101bc5bf065b45fec743684bb26085f2e23f6af6f0cc5a12",
+      "exact_prompt": "Use case: identity-preserve. WONDERBOUND: RESONANCE Adventure dialogue/encounter asset. One isolated full-body subject on genuinely transparent PNG background, portrait 2:3 target 1024x1536. Match the supplied existing reference exactly in identity, proportions, materials, clothing, hair, armor and signature object; this is a clean readable presentation of that existing design, NOT a redesign. Preserve painterly high-fantasy texture, restrained lighting, archaeological worn material. Entire silhouette, feet, cloth, signature object and head inside frame with 7% clear transparent outer margin. Head centered near x50% y20% for half-body/face crop; readable at 96px. No scene, ground plate, background scenery, other people, duplicate bodies, text, UI, letters, logo, watermark, new powers or new lore. Subject: the single foreground Aurel Veyr, existing swept brown hair, rugged short stubble, worn ivory/steel armor with gold trims, deep blue half-cloak and narrow tall command spear. Keep face and spear. Calm braced standing pose, spear kept inside frame. No troops. User-approved Adventure role is an Echo of Aurel; do not imply resurrection or a new canonical history.",
+      "references": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp"
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "miniboss-glasswind",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Landscape/scenery persisted instead of isolated transparent portrait.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-978cd0dd-b31c-4ec4-b013-4fc675477c5d.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS2.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 2987662,
+      "sha256": "1c5d0442fd203d4767adb9dfa1e0f06c25ff62d19d6d8007fdc76c70cd7af04a",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "miniboss-glasswind",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-44276135-195c-4f4d-895f-2c2690e1551a.png",
+      "repository_source_path": "assets/art/adventure/characters/nym-avar-source.png",
+      "delivery_path": "assets/art/adventure/characters/nym-avar.png",
+      "sha256": "f812b4d26b9c4f724c34675461af30375f762804eaa0ff1dc1c290d7e8b091bf",
+      "exact_prompt": "BACKGROUND EXTRACTION EDIT. Remove the ENTIRE scene and ALL background. Keep ONLY the single dark-haired navigator with his blue/charcoal coat, boots and glass-ended staff, exactly as shown. No bridges, floor, sky, towers, ground shadow, haze, scenery or background after extraction. Place complete isolated full-body character centered on a 1024x1536 portrait canvas. Preserve body proportions, face, outfit and staff. Fit all feet/coat/staff with transparent margin. All pixels outside character and staff must have alpha=0, genuine transparent PNG. Do not retain original landscape canvas. No new objects, no text.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-978cd0dd-b31c-4ec4-b013-4fc675477c5d.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "miniboss-fracture",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Landscape/scenery persisted instead of isolated transparent portrait.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-d604aafa-5f04-4f0e-9bb8-c375d1624add.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 2936470,
+      "sha256": "1957ed077cd89bb4e5b11dc1471d9f6f0c237ef182f497a6d35a8c111efd17fc",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "miniboss-fracture",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-2aa89d76-bfa8-41f6-ad0d-949e38e2d193.png",
+      "repository_source_path": "assets/art/adventure/characters/varkesh-thane-source.png",
+      "delivery_path": "assets/art/adventure/characters/varkesh-thane.png",
+      "sha256": "d65233392e81d68681f9dc64061808c12e302477043f1aadae617df7fe981151",
+      "exact_prompt": "BACKGROUND EXTRACTION EDIT. Remove ENTIRE background: all towers, floor, sky, smoke and ruins. Keep ONLY foreground armored Varkesh Thane, closed cracked helmet, red cloak, inherited faded-blue armor stripe and long glaive unchanged. Do not invent an exposed face. Extend the existing design down to complete armored legs and boots. Output a full-body 1024x1536 PORTRAIT PNG: helmet, boots, entire glaive and torn cape centered inside clear 6% transparent margin. Outside the single character/weapon alpha=0. NO scenery, floor, shadow, opaque glow, lettering or UI. This is an isolated character cutout, not a landscape scene.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-d604aafa-5f04-4f0e-9bb8-c375d1624add.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "miniboss-wildroot",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Canopy clipping in initial isolated output.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-34f485e2-54c5-47bf-b1ad-dc41e49d5db8.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 3826560,
+      "sha256": "80727991415cab05981c1af2cbeda6a7c0e702a98b6cc91d3a504ab2c8831551",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "miniboss-wildroot",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-3cf712c8-fcbd-4b03-b7fb-996e8e5ca996.png",
+      "repository_source_path": "assets/art/adventure/characters/orun-kael-source.png",
+      "delivery_path": "assets/art/adventure/characters/orun-kael.png",
+      "sha256": "189b2ded6a59b3caae0a4a7e6c6abee31b46498a5f2d6242d4133ffec96f883d",
+      "exact_prompt": "Edit ONLY framing of this isolated Orun-Kael tree: zoom OUT enough that the COMPLETE canopy, all outer branches and heavy root/attached-ruin silhouette are visible with at least7% empty transparent margin on every side. Portrait1024x1536 PNG alpha=0 background. Preserve existing giant ancient pale bark, green-gold canopy, amber knots, star-scar pattern, attached miniature ruins and nonhumanoid awareness exactly. Fill missing clipped outer leaf/root edges consistently with the same tree. No background scenery, no ground plane, no humans or companions, no tree-man face, no new props, no text. Keep lighting and painterly material, reduce subject size in canvas instead of cutting canopy.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-34f485e2-54c5-47bf-b1ad-dc41e49d5db8.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "act1-boss",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Landscape/scenery persisted instead of isolated transparent portrait.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-00eee2ef-691d-4b4b-b48a-835212a5722f.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F03.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 3124886,
+      "sha256": "ab5bdcab3fb1ad2faa95efe077cb8ce0cdfbe5709fb221083ff83e8b4cf0d732",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "act1-boss",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-4890e6b5-2ec4-41c7-8d24-42eb35334a60.png",
+      "repository_source_path": "assets/art/adventure/characters/fractured-host-source.png",
+      "delivery_path": "assets/art/adventure/characters/fractured-host.png",
+      "sha256": "3cfad998e83e5f42c5cca0a962fdc5bef0191ee3c9f9f9f7c5205f5431786cbc",
+      "exact_prompt": "BACKGROUND EXTRACTION EDIT. Remove ALL scene/background, including sky, walls, bridges, stairs, rubble and floor. Retain ONLY the faceless pale fractured figure with its existing dark joints, small adjacent body fragments, frayed pale cloth and hands. Preserve the faceless head plate; no eyes/human face or added ornaments. Portrait 1024x1536 full-body PNG, all head, hands and trailing cloth inside clear transparent margins. All background pixels alpha=0, no ground plane, scenery or mist. No text or UI.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-00eee2ef-691d-4b4b-b48a-835212a5722f.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "npc-seris",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Landscape/scenery persisted instead of isolated transparent portrait.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-f32b4b76-5d03-4303-b688-f120644fba2b.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G03.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 3385529,
+      "sha256": "355a96125c6f28193b687b16b1641e78f3818ffbceca118ef7b882978fb9634f",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "npc-seris",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-0f1af8ed-beb0-4708-8ace-467ab6ec8cbe.png",
+      "repository_source_path": "assets/art/adventure/characters/seris-vale-source.png",
+      "delivery_path": "assets/art/adventure/characters/seris-vale.png",
+      "sha256": "03514b491dcd8bb770bac2981ea7aa6d0261fba15978e224bacc7f3928700e8f",
+      "exact_prompt": "BACKGROUND EXTRACTION EDIT. Remove ALL background and scene: towers, sea, walls, floor, soldiers, flags, sky and mist. Keep ONLY the single foreground black-haired woman with silver hair streak, translucent scarf, armor, blue coat and curved blade. Preserve her face and outfit exactly. Continue her existing armored legs down to boots, full-body upright pose. Portrait1024x1536 PNG, complete blade, scarf, boots and hands inside 7% transparent margins. Outside character and blade alpha=0. No floor, scene, shadow, duplicate body or opaque glow. This is a clean isolated dialogue character, not a landscape.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-f32b4b76-5d03-4303-b688-f120644fba2b.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "npc-eira",
+      "attempt": 1,
+      "status": "candidate-superseded",
+      "selected": false,
+      "defect": "Skin tone did not match approved deep-brown proposal.",
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-09bf3a57-8884-4483-96c0-9f4eda3ba93d.png",
+      "references": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp"
+        }
+      ],
+      "exact_prompt": null,
+      "prompt_recovery_status": "Exact initial prompt not retained in repository; do not invent or regenerate it.",
+      "historical_note": "Preceded current no-retry gate; no per-asset correction approval is inferred.",
+      "bytes": 2748996,
+      "sha256": "bd012fc56c7653bfbce61dadf3ce7fc66fe48c59f6949045f852afa39b5483e7",
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "source_available_at_audit": true
+    },
+    {
+      "asset_id": "npc-eira",
+      "attempt": 2,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-4c149380-d49d-4be4-a429-77d8f7036e0f.png",
+      "repository_source_path": "assets/art/adventure/characters/eira-mossborn-source.png",
+      "delivery_path": "assets/art/adventure/characters/eira-mossborn.png",
+      "sha256": "985c8ee161f0e4641ecb8655d9c4147215af3321d2b107ef58a09853c7165a16",
+      "exact_prompt": "Edit this user-approved CANDIDATE Eira portrait. Change ONLY the visible skin on face, ears, neck and hands to natural DEEP BROWN complexion, richly brown and visibly elderly with detailed age wrinkles. Maintain the elderly woman, gray braids with seed husks, barkcloth robe, small mossed-stone talismans, amber sap vial, living-wood staff, pose and full-body silhouette. Do not lighten skin to match the W02 reference. Transparent PNG portrait1024x1536, maintain clean alpha=0 background, no opaque backdrop or halo, full staff and feet inside clear margins. This is a candidate appearance proposal, not canonical. No text or new props.",
+      "references": [
+        {
+          "imagegen_edit_input": "exec-09bf3a57-8884-4483-96c0-9f4eda3ba93d.png",
+          "retained_as_runtime_dependency": false
+        }
+      ],
+      "native_dimensions": [
+        1024,
+        1536
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "mode-basic",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-e5c612a5-5683-4454-8151-69b2e6fcb38b.png",
+      "repository_source_path": "assets/art/adventure/modes/basic-source.png",
+      "delivery_path": "assets/art/adventure/modes/basic.webp",
+      "sha256": "cc5461b1f7b282a1c3de468365d1c6ccc5cbd6341e8dda09108ee8e26f05e572",
+      "exact_prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Textless concept image for BASIC: discovery and learning, not a literal new campaign event. Close intimate still-life of an existing chipped pale-stone/black-glass Living Atlas fragment on an ancient worn Asteri excavation ledge, matching reference material and brass relief details. A small portion of its relief catches warm low dawn light, other layers remain quietly unresolved; readable clear focal relic around x65% y48%. No characters or invented teaching devices. Quiet left35% dark slate negative space for future mode copy, atmospheric dust and ruin arches far behind, no readable glyphs, no currency, no UI.",
+      "references": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "mode-story",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-59f4033c-b167-4cbe-a18d-7acf5777460c.png",
+      "repository_source_path": "assets/art/adventure/modes/story-source.png",
+      "delivery_path": "assets/art/adventure/modes/story.webp",
+      "sha256": "bfa9da7100c9b4100932ccf8e2b09aff11fc531e15251ececc63964f29817a5e",
+      "exact_prompt": "WONDERBOUND: RESONANCE textless STORY mode concept artwork. Landscape16:9 target1920x1080. Recompose the supplied existing Moonbridge Crossing into a cinematic dark painterly view along the weathered near approach toward its existing missing-span bridge and moonlit continuation; preserve the known Landmark silhouette and materials. The journey and forthcoming confrontation are conveyed by the vast broken crossing and tension of light/shadow, not a new character or event. Strong depth, ancient worn pale stone, smoked glass and restrained silver light, wide clear path in lower right. Keep left30% dark quiet mist for future mode label as a separate UI overlay. No characters, enemies, new locations, treasure types, text, glyph writing, UI, route connectors, map pins, logos or watermark. Concept only, no new canonical geography.",
+      "references": [
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp"
+      ],
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "mode-expedition",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-0206a8c2-99d8-4514-9c95-4b17da8a9efd.png",
+      "repository_source_path": "assets/art/adventure/modes/expedition-source.png",
+      "delivery_path": "assets/art/adventure/modes/expedition.webp",
+      "sha256": "7f377efe3ac1a70187797cc15d64d3d2af9fd3d106da011718bcafeccb4f7327",
+      "exact_prompt": "WONDERBOUND: RESONANCE textless EXPEDITION mode concept artwork, landscape16:9 target1920x1080. Symbolic choices and discovery inside an abstract Asteri ruin memory, not a map or new canonical region. Foreground: two weathered pale-stone approaches diverge around a black-glass relief fragment, restrained aged brass traces from existing Atlas reference1, one approach toward softly silvered old arch silhouettes based on reference2, the other fading into deep mist with a small existing chipped Atlas fragment caught by dawnlight suggesting discovery/treasure. No treasure chest, currency, new relic name or invented artifact. Painterly ancient material, slate-teal shadows, subtle warm light on existing stone fragment. Preserve left30% low-detail negative space; fork and physical fragment occupy right two thirds. No subjects, text, labels, buttons, UI connector lines, icons, new geographic names, logos or watermark. This is a mode metaphor, not a campaign event.",
+      "references": [
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp"
+      ],
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "act1-opening",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-e60b7532-9ea1-4037-a116-4d20ef02fd96.png",
+      "repository_source_path": "assets/art/adventure/scenes/act1-opening-source.png",
+      "delivery_path": "assets/art/adventure/scenes/act1-opening.webp",
+      "sha256": "b138ec90b08acc0decaa1edbba76626a6258450d6024c9e2e609a8df5797652b",
+      "exact_prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Scene: the source-supported moment of Liora discovering a Living Atlas Fragment inside unnamed existing Asteri ruins. Preserve her exact long brown hair, ivory clothes, embroidered teal mantle, aged gold belt ornaments and lantern from reference1, no costume redesign. Relic material/design derives from reference2: a small chipped fragment of the same pale stone and black glass map relief with aged brass tracery, physically present on a worn excavation ledge, NOT paper or a holographic map. Liora at right third leaning forward and cautiously touching the shard with one clearly drawn hand, subtle contradictory relief layers catching restrained light, thoughtful discovery not chosen-one aura. One subject only. Leave left30% as quiet shadowed worn wall/mist and lower18% quiet for later dialogue overlay; no text. Clear face in right upper-middle, intimate medium-wide composition.",
+      "references": [
+        "assets/art/adventure/characters/liora-source.png",
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    },
+    {
+      "asset_id": "act1-ending",
+      "attempt": 1,
+      "status": "completed-reviewed",
+      "selected": true,
+      "source_path": "C:\\Users\\Warunyu.N\\.codex\\generated_images\\01a10f7b-5165-79d3-bd61-65cce8b5613b\\exec-4e9307ae-a8f1-4019-af24-bbabf0370a62.png",
+      "repository_source_path": "assets/art/adventure/scenes/act1-ending-source.png",
+      "delivery_path": "assets/art/adventure/scenes/act1-ending.webp",
+      "sha256": "2751dad5dd4dcdbbaad7b101536a59d9c42f1844c5c1cb53206ca09ca6fe179a",
+      "exact_prompt": "Use case: illustration-story. WONDERBOUND: RESONANCE Adventure scene, cinematic dark high fantasy painterly realism consistent with references; ancient pale mineral stone, black glass and aged brass, restrained physical resonance light. Landscape16:9 target native1920x1080, no stretching. No text, writing, logos, watermark, UI, buttons, card frames, icons, map route connectors, new named places, new boss identities, or lore revelations.  Candidate Act I transition: Living Atlas identifies an already-known awakening Landmark, WHISPERGLASS RELAY, user authorized agent selection. Preserve Liora's reference1 identity, long brown hair, ivory clothing, ornate teal/gold mantle and lantern. Place her at left third in three-quarter back/side view, face still lightly visible, studying the same small pale stone/black-glass Atlas fragment material from reference3; she looks toward reference2's exact existing smoked-glass relay pylons and weathered brass bridge silhouettes in distant right third. Restrained silver-violet relay response, not a large energy beam. Imply a future journey through gaze and lighting, no projected route, no map lines. Reserve lower25% and center20% as calm dark mist for later dialogue. No companions, no seventh site, no ZERO symbol, no new landmark, no battle, no invented victory or lore revelation. Landmark silhouette must match supplied existing relay rather than new geometry.",
+      "references": [
+        "assets/art/adventure/characters/liora-source.png",
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "review_evidence": "assets/art/adventure/previews/current-primary-review.jpg",
+      "audit_verified_original_matches_repository": true
+    }
+  ]
+}
