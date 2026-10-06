@@ -1,0 +1,3149 @@
+{
+  "schema_version": 1,
+  "base_commit": "a58ba782a53ec307da214d55e0afda228bc78681",
+  "scope": "Preparation only; no gameplay/UI integration",
+  "reference_status": {
+    "artwork_bible": "Visual Production Candidate V1.0",
+    "lore_bible": "Lore Canon Candidate V1.2",
+    "card_visual": "CORE LOCK V2.0; applies to card artwork only"
+  },
+  "assets": [
+    {
+      "asset_id": "stage-medal-bronze",
+      "path": "assets/art/adventure/rewards/stage-medal-bronze.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Stage completion medal; rank assignment is future UI policy",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 408,
+      "sha256": "548a257156e06a7f0f3a95f89ce75087c1ce3011cc21ba62ce04423577fa5e9a",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-medal-silver",
+      "path": "assets/art/adventure/rewards/stage-medal-silver.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Stage completion medal; rank assignment is future UI policy",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 408,
+      "sha256": "aaee526f94e33a9b41fb6b23caadc7b84c7ded7e7d2c9e15421c79e941e8696c",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-medal-gold",
+      "path": "assets/art/adventure/rewards/stage-medal-gold.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Stage completion medal; rank assignment is future UI policy",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 408,
+      "sha256": "4bd85c0f584b9011b99365697415da113820de6e77cb0c5a9b4071e1a17f3772",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "act1-medal",
+      "path": "assets/art/adventure/rewards/act1-medal.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Act I completion badge; no currency role",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 396,
+      "sha256": "5cab0dc8e0625540a8f4ce2b210609c5ee11a49fb3ad2f1874c0123e6175aa2d",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "miniboss-badge-beacon",
+      "path": "assets/art/adventure/rewards/miniboss-badge-beacon.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "beacon miniboss completion UI badge",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 354,
+      "sha256": "43c1a1f7c4f60de2fabdb9e1c2d5d1da65c02553b715ae079ab56c002b5595aa",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "miniboss-badge-glasswind",
+      "path": "assets/art/adventure/rewards/miniboss-badge-glasswind.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "glasswind miniboss completion UI badge",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 424,
+      "sha256": "688655bad1402b9c7d24d69781cfcc3da613162313fe46ce0ee7341e621cc9a3",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "miniboss-badge-fracture",
+      "path": "assets/art/adventure/rewards/miniboss-badge-fracture.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "fracture miniboss completion UI badge",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 410,
+      "sha256": "1dcea54342b18bbe5ae6e3fe4f23d6029e26a10a3e5756740be8c61ef9642a92",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "miniboss-badge-wildroot",
+      "path": "assets/art/adventure/rewards/miniboss-badge-wildroot.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "wildroot miniboss completion UI badge",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 452,
+      "sha256": "9fd39fab51f27c09590eb397a8eda3a9b07e7a003406c40402dc505be8a3c27e",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-combat",
+      "path": "assets/art/adventure/nodes/node-combat.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "combat stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 295,
+      "sha256": "277274868aca174e24a2eb24a81896c2576ce05f0fd16422ff94e62fc5002b92",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-puzzle",
+      "path": "assets/art/adventure/nodes/node-puzzle.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "puzzle stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 310,
+      "sha256": "2f976752f45e5bc896d798b78fc494278ef80ef9ea59e938c904e3dfc9d91e9d",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-miniboss",
+      "path": "assets/art/adventure/nodes/node-miniboss.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "miniboss stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 267,
+      "sha256": "9f09f3394128f474cbf32fa1b517e4f5d9ff4b266fad6e5abbd51bed05e7eb91",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-boss",
+      "path": "assets/art/adventure/nodes/node-boss.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "boss stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 274,
+      "sha256": "4e02b94c4b93110c87831632cf6d9d59a1c429923277939103f039dcee1f8673",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-event",
+      "path": "assets/art/adventure/nodes/node-event.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "event stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 263,
+      "sha256": "e46809b2c1671a1442dbb1d35117e9ef4d0bf95d617208df1d7db03214235673",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-deck-adjust",
+      "path": "assets/art/adventure/nodes/node-deck-adjust.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "deck-adjust stage-type icon; no state embedded",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 334,
+      "sha256": "3279a66b210384c173ca7607fe4ab3043cce40820be2d4561e8652359e7911c6",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-frame-available",
+      "path": "assets/art/adventure/nodes/node-frame-available.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Separate available state overlay; never bake onto map",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 274,
+      "sha256": "2ea85b4ccce9f3a52c0463cb49d2a35764f4cb0e1dcba6462a07b80deae5ba1d",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-frame-selected",
+      "path": "assets/art/adventure/nodes/node-frame-selected.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Separate selected state overlay; never bake onto map",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 338,
+      "sha256": "0129b480218e21951afdcd5aff1a5d40cca6ba1d1a0088a88953aab18314aa0b",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-frame-completed",
+      "path": "assets/art/adventure/nodes/node-frame-completed.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Separate completed state overlay; never bake onto map",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 349,
+      "sha256": "6f0e3825adce4ac7cb88176c4c46cd6da42f1a29db6f82b492bce686ed05c67c",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "node-frame-locked",
+      "path": "assets/art/adventure/nodes/node-frame-locked.svg",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Separate locked state overlay; never bake onto map",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 32,
+        "use_at_px": 48
+      },
+      "status": "ready",
+      "bytes": 355,
+      "sha256": "5cf1cd0ff288d9aa7dbd057ddc73a1b288d9455f00b5b96cab2515eb5c16ee02",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "reward-frame-normal",
+      "path": "assets/art/adventure/rewards/reward-frame-normal.svg",
+      "dimensions": [
+        512,
+        720
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Reward card normal overlay; center stays transparent",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 220,
+        "use_at_px": 260
+      },
+      "status": "ready",
+      "bytes": 316,
+      "sha256": "21ff8a95514bef20ea7b5dc08cbe5a1e84d957fdc594d2e2cc7135440bb14c3a",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "reward-frame-selected",
+      "path": "assets/art/adventure/rewards/reward-frame-selected.svg",
+      "dimensions": [
+        512,
+        720
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Reward card selected overlay; center stays transparent",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 220,
+        "use_at_px": 260
+      },
+      "status": "ready",
+      "bytes": 397,
+      "sha256": "3137f53b785ad89d8d5ebcfef77d22d6409ceba129f8612fc8cb71b1e69ff635",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "reward-frame-received",
+      "path": "assets/art/adventure/rewards/reward-frame-received.svg",
+      "dimensions": [
+        512,
+        720
+      ],
+      "format": "svg",
+      "transparency": true,
+      "intended_use": "Reward card received overlay; center stays transparent",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "R palette/symbols; existing dark slate UI and aged brass motif"
+        },
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "section": "3",
+          "status": "visual-production-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": {
+        "preserve_full_viewBox": true,
+        "minimum_size_px": 220,
+        "use_at_px": 260
+      },
+      "status": "ready",
+      "bytes": 412,
+      "sha256": "8ff49a87d8457c0c16880d7ca7af306baf87119e216441ea827c511bf7978561",
+      "design_status": "candidate; does not define reward thresholds or unlock rules",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p1",
+      "path": "assets/art/adventure/nodes/stage-p1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p1 / ชิ้นส่วนที่ตื่นขึ้น",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B01",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          280,
+          0,
+          1000,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 70490,
+      "sha256": "f1905d1b70877b26ed98da55d9c97de6140b783f665bc0bf1bd7406f5ebc1ecc",
+      "stage_id": "p1",
+      "stage_title": "ชิ้นส่วนที่ตื่นขึ้น",
+      "runtime_place": "Shattered Meridian",
+      "runtime_site": "moonbridge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p2",
+      "path": "assets/art/adventure/nodes/stage-p2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p2 / แนวป้องกันแห่งรุ่งอรุณ",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B05",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B05.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.6,
+        "y": 0.46
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          408,
+          0,
+          1128,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 65058,
+      "sha256": "ad4ee65f86a4daa1416cb33085562c69dcee04cf9a104134ce8e1a39c0dd1635",
+      "stage_id": "p2",
+      "stage_title": "แนวป้องกันแห่งรุ่งอรุณ",
+      "runtime_place": "Azure Gate",
+      "runtime_site": "sanctuary",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p3",
+      "path": "assets/art/adventure/nodes/stage-p3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p3 / เสียงที่เลือกตอบ",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B06",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B06.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.34,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          75,
+          0,
+          795,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 79150,
+      "sha256": "a960ff20c7208608fb764a5ab6f56c058797b804c19663277a5fcebea899a66c",
+      "stage_id": "p3",
+      "stage_title": "เสียงที่เลือกตอบ",
+      "runtime_place": "Dawn Crown",
+      "runtime_site": "relay",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p4",
+      "path": "assets/art/adventure/nodes/stage-p4.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p4 / เส้นทางที่กลับมา",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "WORLD_ART.landmarks.relay",
+          "reference_export": "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.38,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          165,
+          0,
+          1106,
+          941
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 64484,
+      "sha256": "5fc88353418edabd4307040871a4f1a1b47a746ba0350fb22dc8ee16841a554b",
+      "stage_id": "p4",
+      "stage_title": "เส้นทางที่กลับมา",
+      "runtime_place": "Whisperglass Relay",
+      "runtime_site": "relay",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p5",
+      "path": "assets/art/adventure/nodes/stage-p5.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p5 / ราคาแห่งการเปิดทาง",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.FS1",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.39,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          139,
+          0,
+          859,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 62044,
+      "sha256": "5f01f1e773489dd9279c7fefb50be99b1971c9eef7f111bfc3c0d08ac3ec87e5",
+      "stage_id": "p5",
+      "stage_title": "ราคาแห่งการเปิดทาง",
+      "runtime_place": "Ashen Marches",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-p6",
+      "path": "assets/art/adventure/nodes/stage-p6.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "prologue stage thumbnail: p6 / ความทรงจำของ Relay",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "WORLD_ART.landmarks.sanctuary",
+          "reference_export": "assets/art/adventure/previews/references/WORLD_ART-landmarks-sanctuary.webp",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          366,
+          0,
+          1307,
+          941
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 88604,
+      "sha256": "9c4a5544cc635ff0d9095d43eb59e180587169867331a8c107e0bfb17b01f237",
+      "stage_id": "p6",
+      "stage_title": "ความทรงจำของ Relay",
+      "runtime_place": "Whisperglass Relay",
+      "runtime_site": "relay",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-b1",
+      "path": "assets/art/adventure/nodes/stage-b1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "beacon stage thumbnail: b1 / ผู้ที่ยังยืนอยู่",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.BS2",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS2.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          280,
+          0,
+          1000,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 80172,
+      "sha256": "dcd9a6096645e19565c33ef303fe383beba297699033ed658578dbc63241d4e9",
+      "stage_id": "b1",
+      "stage_title": "ผู้ที่ยังยืนอยู่",
+      "runtime_place": "Dawnline Citadel",
+      "runtime_site": "sanctuary",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-b2",
+      "path": "assets/art/adventure/nodes/stage-b2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "beacon stage thumbnail: b2 / คำสั่งเหนือกำแพง",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B07",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B07.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.35,
+        "y": 0.45
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          88,
+          0,
+          808,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 65358,
+      "sha256": "89672f85e59f9caa4f9a2861fb3f44148caaf9006bf56a6956a31d1fb9a00668",
+      "stage_id": "b2",
+      "stage_title": "คำสั่งเหนือกำแพง",
+      "runtime_place": "Sunspire",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-b3",
+      "path": "assets/art/adventure/nodes/stage-b3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "beacon stage thumbnail: b3 / เส้นแบ่งแห่งอรุณ",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.BS1",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.29,
+        "y": 0.43
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          11,
+          0,
+          731,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 67870,
+      "sha256": "4e7bd844e3a92e94a5dc82cf3b40fbf4b46463b634d8abab2b71c49cd7eff031",
+      "stage_id": "b3",
+      "stage_title": "เส้นแบ่งแห่งอรุณ",
+      "runtime_place": "Dawn Crown",
+      "runtime_site": "relay",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-g1",
+      "path": "assets/art/adventure/nodes/stage-g1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "glass stage thumbnail: g1 / แผนที่ของทางที่ไม่มี",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.G04",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-G04.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.38,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          126,
+          0,
+          846,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 79300,
+      "sha256": "14886319be267c63a677a19722a7d621e3d27c9bfbf79675855845d2635029a8",
+      "stage_id": "g1",
+      "stage_title": "แผนที่ของทางที่ไม่มี",
+      "runtime_place": "Glassward Coast",
+      "runtime_site": "moonbridge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-g2",
+      "path": "assets/art/adventure/nodes/stage-g2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "glass stage thumbnail: g2 / เงาที่เลือกอีกทาง",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.G07",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-G07.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.42,
+        "y": 0.46
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          178,
+          0,
+          898,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 89740,
+      "sha256": "e502fcf0ba14f510501986f1235d899cb1c8807887e12be1b5fd3ce0c091eba9",
+      "stage_id": "g2",
+      "stage_title": "เงาที่เลือกอีกทาง",
+      "runtime_place": "Rift Sea",
+      "runtime_site": "observatory",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-g3",
+      "path": "assets/art/adventure/nodes/stage-g3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "glass stage thumbnail: g3 / บันไดหวนคืน",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.GS1",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS1.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.51,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          293,
+          0,
+          1013,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 81190,
+      "sha256": "8cdb84f4d8004c5532e13fce6bb7a5b6d8ee7a5d0d876edbd4e14e2d2404c7c5",
+      "stage_id": "g3",
+      "stage_title": "บันไดหวนคืน",
+      "runtime_place": "Hall of Returning Stars",
+      "runtime_site": "hall",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-f1",
+      "path": "assets/art/adventure/nodes/stage-f1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "fracture stage thumbnail: f1 / รอยแยกที่ยังหายใจ",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.F04",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-F04.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.55,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          344,
+          0,
+          1064,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 72700,
+      "sha256": "b2daa26999435ea963fa9acf2137e9b49979b046233fc225fe2f9610668cc93c",
+      "stage_id": "f1",
+      "stage_title": "รอยแยกที่ยังหายใจ",
+      "runtime_place": "Ashen Marches",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-f2",
+      "path": "assets/art/adventure/nodes/stage-f2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "fracture stage thumbnail: f2 / ผู้จ่ายราคา",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.FS1",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.39,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          139,
+          0,
+          859,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 62044,
+      "sha256": "5f01f1e773489dd9279c7fefb50be99b1971c9eef7f111bfc3c0d08ac3ec87e5",
+      "stage_id": "f2",
+      "stage_title": "ผู้จ่ายราคา",
+      "runtime_place": "Kharad Vale",
+      "runtime_site": "moonbridge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-f3",
+      "path": "assets/art/adventure/nodes/stage-f3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "fracture stage thumbnail: f3 / ข้อตกลงของ Bloodwake",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.FS1",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.39,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          139,
+          0,
+          859,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 62044,
+      "sha256": "5f01f1e773489dd9279c7fefb50be99b1971c9eef7f111bfc3c0d08ac3ec87e5",
+      "stage_id": "f3",
+      "stage_title": "ข้อตกลงของ Bloodwake",
+      "runtime_place": "Vhal-Turog",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-w1",
+      "path": "assets/art/adventure/nodes/stage-w1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "root stage thumbnail: w1 / รากที่จำชื่อได้",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.W02",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.4,
+        "y": 0.45
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          152,
+          0,
+          872,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 71652,
+      "sha256": "101835f923792b644ac34a43cd461b8dbc11ea7be1d3095817ab5b59cad4296f",
+      "stage_id": "w1",
+      "stage_title": "รากที่จำชื่อได้",
+      "runtime_place": "First Grove",
+      "runtime_site": "sanctuary",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-w2",
+      "path": "assets/art/adventure/nodes/stage-w2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "root stage thumbnail: w2 / สิ่งที่งอกจากเถ้าถ่าน",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.W09",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-W09.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          280,
+          0,
+          1000,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 59992,
+      "sha256": "f5b72c02115b760807d47a50d83e3c7e335a831b398368c465d116f229b43000",
+      "stage_id": "w2",
+      "stage_title": "สิ่งที่งอกจากเถ้าถ่าน",
+      "runtime_place": "Verdant Deep",
+      "runtime_site": "sanctuary",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-w3",
+      "path": "assets/art/adventure/nodes/stage-w3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "root stage thumbnail: w3 / เสียงใต้เปลือกโลก",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.WS2",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.45
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          280,
+          0,
+          1000,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 90378,
+      "sha256": "1d5dcb93298ab60686b349afe68a9d5c16bf138f7d6c3eac1290f0d784a4c5e4",
+      "stage_id": "w3",
+      "stage_title": "เสียงใต้เปลือกโลก",
+      "runtime_place": "Worldroot Basin",
+      "runtime_site": "hall",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-c1",
+      "path": "assets/art/adventure/nodes/stage-c1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "convergence stage thumbnail: c1 / สี่ทาง ณ Meridian",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "WORLD_ART.landmarks.moonbridge",
+          "reference_export": "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          366,
+          0,
+          1307,
+          941
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 50466,
+      "sha256": "aedebf2c47f3e00fba926e8d5dcdc373308b362a0964abc90bef62f2855a7b8f",
+      "stage_id": "c1",
+      "stage_title": "สี่ทาง ณ Meridian",
+      "runtime_place": "Shattered Meridian",
+      "runtime_site": "observatory",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-c2",
+      "path": "assets/art/adventure/nodes/stage-c2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "convergence stage thumbnail: c2 / การตื่นของทั้งหก",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "WORLD_ART.landmarks.observatory",
+          "reference_export": "assets/art/adventure/previews/references/WORLD_ART-landmarks-observatory.webp",
+          "dimensions": [
+            1672,
+            941
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.48,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          332,
+          0,
+          1273,
+          941
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 73348,
+      "sha256": "fe326954740cdb7789187888a27c8a34c8b96b975ab46d05a16fb54fff1f39bc",
+      "stage_id": "c2",
+      "stage_title": "การตื่นของทั้งหก",
+      "runtime_place": "Starfall Observatory",
+      "runtime_site": "observatory",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-et1",
+      "path": "assets/art/adventure/nodes/stage-et1.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "puzzles stage thumbnail: et1 / ผ่านแนวป้องกัน",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B02",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B02.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.47,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          242,
+          0,
+          962,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 80568,
+      "sha256": "1f9b6f9333e35c7fff4ecc493a36d2eaf2a7b96a0591d422eca8adfe0422c3a7",
+      "stage_id": "et1",
+      "stage_title": "ผ่านแนวป้องกัน",
+      "runtime_place": "Azure Gate",
+      "runtime_site": "sanctuary",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-et2",
+      "path": "assets/art/adventure/nodes/stage-et2.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "puzzles stage thumbnail: et2 / ราคาของชัยชนะ",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.F02",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-F02.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          280,
+          0,
+          1000,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 50992,
+      "sha256": "94f30fb2b29053bf4ad7351f3bdcb40bd2109b962a15d55d190c826bb268dfcb",
+      "stage_id": "et2",
+      "stage_title": "ราคาของชัยชนะ",
+      "runtime_place": "Ashen Marches",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-et3",
+      "path": "assets/art/adventure/nodes/stage-et3.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "puzzles stage thumbnail: et3 / ถอยเพื่อเปิดทาง",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.G04",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-G04.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.38,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          126,
+          0,
+          846,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 79300,
+      "sha256": "14886319be267c63a677a19722a7d621e3d27c9bfbf79675855845d2635029a8",
+      "stage_id": "et3",
+      "stage_title": "ถอยเพื่อเปิดทาง",
+      "runtime_place": "Whisperglass Relay",
+      "runtime_site": "relay",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "stage-et4",
+      "path": "assets/art/adventure/nodes/stage-et4.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "puzzles stage thumbnail: et4 / อีกหนึ่งก้าว",
+      "source_reference": [
+        {
+          "path": "index.html",
+          "owner": "FINAL_CARD_ART.B03",
+          "reference_export": "assets/art/adventure/previews/references/FINAL_CARD_ART-B03.webp",
+          "dimensions": [
+            1280,
+            720
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.38,
+        "y": 0.44
+      },
+      "crop_guidance": {
+        "source_pixel_box": [
+          126,
+          0,
+          846,
+          720
+        ],
+        "coordinate_origin": "top-left",
+        "resize": "uniform Lanczos",
+        "small_preview_px": [
+          64,
+          96
+        ],
+        "illustrates": "existing visual association; not a new geographic claim"
+      },
+      "status": "ready",
+      "bytes": 68884,
+      "sha256": "05dcf36d9736e06931484948342761637baf53e5e8b4a1fd28f65dd5be76852c",
+      "stage_id": "et4",
+      "stage_title": "อีกหนึ่งก้าว",
+      "runtime_place": "Forge of Echoes",
+      "runtime_site": "forge",
+      "derived_from_existing": true,
+      "approval": "thumbnail association candidate; original artwork unchanged",
+      "validation": "Rendered and visually reviewed at large and small sizes; standalone files usable for integration review. This does not canonize design or define reward policy."
+    },
+    {
+      "asset_id": "living-atlas",
+      "path": "assets/art/adventure/maps/living-atlas-style-proof.webp",
+      "dimensions": [
+        2048,
+        4096
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Symbolic adventure tree",
+      "source_reference": [
+        {
+          "path": "docs/art/WONDERBOUND_RESONANCE_ARTWORK_BIBLE_V1_0.md",
+          "sections": [
+            "2",
+            "3",
+            "4"
+          ],
+          "status": "candidate"
+        },
+        {
+          "path": "index.html",
+          "owners": [
+            "WORLD_ART.landmarks.relay",
+            "FINAL_CARD_ART.B01"
+          ]
+        }
+      ],
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "crop_guidance": {
+        "prologue_band_y": [
+          0.75,
+          1
+        ],
+        "resonance_band_y": [
+          0.2,
+          0.75
+        ],
+        "convergence_band_y": [
+          0,
+          0.2
+        ],
+        "all_nodes_and_routes": "UI overlays only"
+      },
+      "status": "candidate",
+      "bytes": 636474,
+      "sha256": "4484022c528d41d283361847cedab563cc98bc1f04b4d6eb3ee6d78d96e64b13",
+      "primary_artwork": true,
+      "source_dimensions": [
+        887,
+        1774
+      ],
+      "source_path": "assets/art/adventure/maps/living-atlas-style-proof-source.png",
+      "delivery_resize": "uniform 2.309x upscale; not a native 2048x4096 master",
+      "review": "style proof pending user visual review; composition and density pending 24-node overlay review"
+    },
+    {
+      "asset_id": "liora",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Transparent dialogue portrait",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/KEEPER_ART-liora.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    },
+    {
+      "asset_id": "miniboss-beacon",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Echo of Aurel Veyr",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "miniboss-glasswind",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Echo of Nym Avar",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS2.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "miniboss-fracture",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Varkesh Thane",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "miniboss-wildroot",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Orun-Kael; colossal nonhumanoid identity",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "act1-boss",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "The Fractured Host",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F03.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "npc-seris",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Seris Vale; route guidance",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G03.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "npc-eira",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1024,
+        1536
+      ],
+      "format": "png",
+      "transparency": true,
+      "intended_use": "Eira Mossborn; information / deck-adjust dialogue",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        },
+        {
+          "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Face identity must survive 96px icon; full silhouette within transparent margins",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": "User confirmed Adventure role; not a canon promotion"
+    },
+    {
+      "asset_id": "mode-basic",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1920,
+        1080
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Discovery / learning concept",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    },
+    {
+      "asset_id": "mode-story",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1920,
+        1080
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Journey / encounter concept",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    },
+    {
+      "asset_id": "mode-expedition",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1920,
+        1080
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Branch choice / treasure concept; no new currency",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    },
+    {
+      "asset_id": "act1-opening",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1920,
+        1080
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Liora discovers Atlas Fragment; lore section 17",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    },
+    {
+      "asset_id": "act1-ending",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        1920,
+        1080
+      ],
+      "format": "webp",
+      "transparency": false,
+      "intended_use": "Atlas reveals route to an existing Landmark; user confirmed, no seventh site",
+      "source_reference": [
+        {
+          "path": "docs/lore/WONDERBOUND_RESONANCE_COMPLETE_LORE_BIBLE_V1_2.md",
+          "status": "lore-canon-candidate"
+        }
+      ],
+      "focal_point": null,
+      "crop_guidance": "Reserve dialogue copy in a separate UI overlay",
+      "status": "blocked",
+      "primary_artwork": true,
+      "blocked_reason": "Awaiting approval of first visual-language style proof before repeated raster production",
+      "role_authorization": null
+    }
+  ],
+  "counts": {
+    "primary_artwork_produced": 1,
+    "primary_artwork_target": 14,
+    "ready": 45,
+    "candidate": 1,
+    "blocked": 13
+  },
+  "derived_face_icons": [
+    {
+      "asset_id": "face-liora",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "liora",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-miniboss-beacon",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "miniboss-beacon",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-miniboss-glasswind",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "miniboss-glasswind",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-miniboss-fracture",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "miniboss-fracture",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-miniboss-wildroot",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "miniboss-wildroot",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-act1-boss",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "act1-boss",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-npc-seris",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "npc-seris",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    },
+    {
+      "asset_id": "face-npc-eira",
+      "path": null,
+      "dimensions": null,
+      "target_dimensions": [
+        256,
+        256
+      ],
+      "format": "webp",
+      "transparency": true,
+      "intended_use": "Dialogue/encounter face icon; review at 64 and 96px",
+      "source_reference": "npc-eira",
+      "focal_point": null,
+      "crop_guidance": "Record exact source-pixel crop after transparent portrait exists; Orun-Kael uses nonhuman awareness detail",
+      "status": "blocked",
+      "blocked_reason": "Character artwork not produced; do not invent a crop or identity"
+    }
+  ],
+  "supporting_artifacts": [
+    {
+      "path": "assets/art/adventure/maps/living-atlas-style-proof-source.png",
+      "format": "png",
+      "bytes": 2488853,
+      "sha256": "9b8edf7da68c79c912384f903d96d0ef78e6828795a90d07e9fdd84fc6c5ee9e",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        887,
+        1774
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/act1-medal-render.png",
+      "format": "png",
+      "bytes": 6329,
+      "sha256": "27f6f1d45900165b9b08f2eacdb8089c14f8785a48fd97a6ae0a568cf7f3abd9",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/artwork-contact-sheet.jpg",
+      "format": "jpg",
+      "bytes": 101390,
+      "sha256": "d6f61a99c962cb8317db35f2a312d8eb8d278c9b703101a81eb52b2e8b760cee",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1400,
+        760
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/atlas-24-node-layout-review.jpg",
+      "format": "jpg",
+      "bytes": 346313,
+      "sha256": "d88cd3f1cca6acb85ae9857e48c3a1cf0304f5a552bdc9d1b06626cab3b899d2",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        768,
+        1536
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/character-contact-sheet.jpg",
+      "format": "jpg",
+      "bytes": 281699,
+      "sha256": "4da212465b4981d134900a5f898b4bf8b5c06f70e0df8a396dbff3c66d32c3c5",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        810
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/existing-reference-sheet.jpg",
+      "format": "jpg",
+      "bytes": 669204,
+      "sha256": "b3594291b5bd84439fd8f00800963263609cd924460a80c8a018024be5b78ef4",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1200,
+        1660
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/index.html",
+      "format": "html",
+      "bytes": 1847,
+      "sha256": "71b4cfa2205db2b86049071453f3e1e0fdf95d276a64fc9c82e6fb4dbe4dc62c",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    },
+    {
+      "path": "assets/art/adventure/previews/layout-review.json",
+      "format": "json",
+      "bytes": 2084,
+      "sha256": "c8551f8e550e617e71e18cc11c3c6442bbc6fba7c1b6141f5f9234536e1bce01",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    },
+    {
+      "path": "assets/art/adventure/previews/miniboss-badge-beacon-render.png",
+      "format": "png",
+      "bytes": 5644,
+      "sha256": "9c69fc90f659d12d20bd6760b6181d8692c9f616a37734f23d26086cc9448c78",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/miniboss-badge-fracture-render.png",
+      "format": "png",
+      "bytes": 6036,
+      "sha256": "265e357ae5032cbe74fc3261f198e488a1c1d67ccb40058fe1a575d95a752495",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/miniboss-badge-glasswind-render.png",
+      "format": "png",
+      "bytes": 6300,
+      "sha256": "5487a2a3dcf32f48ff177cfd55d7976b8a723dc61d9c6f31641e07fe440ffa6d",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/miniboss-badge-wildroot-render.png",
+      "format": "png",
+      "bytes": 6535,
+      "sha256": "c878b7da5f8fb9ed98205a4b6758f4bfcdafba47318a25823721e2c61b4eb383",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-boss-render.png",
+      "format": "png",
+      "bytes": 1659,
+      "sha256": "45b5fcbf3ef287df88d472881db8493010e6d01440d2c295f184917cd2631c04",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-combat-render.png",
+      "format": "png",
+      "bytes": 2010,
+      "sha256": "b73a3ccdf415a241b9334a2df7cdcc79d6b598ca8240083454c3084bc9f942ba",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-deck-adjust-render.png",
+      "format": "png",
+      "bytes": 962,
+      "sha256": "eb1690a4895852d4eaca4bda7b33600724d5fffdd36155e73e38b17229ea84cb",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-event-render.png",
+      "format": "png",
+      "bytes": 792,
+      "sha256": "1d4f4b362dbc0a03d42b04a1fd240c056e3fddb6e00e55a87e12ac3409369d00",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-frame-available-render.png",
+      "format": "png",
+      "bytes": 4376,
+      "sha256": "619faa4acfa56315cf7a9235417df61f2b88742e507a490a1e5d7ca7944c7d06",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-frame-completed-render.png",
+      "format": "png",
+      "bytes": 4928,
+      "sha256": "1eb2089c96b3a5ba0c1d8ef432f117e036515593f9d21a88cfefbfebbc7cea8e",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-frame-locked-render.png",
+      "format": "png",
+      "bytes": 3206,
+      "sha256": "b53d2d71c32023652be07bbd14608aed1847c2bc4e291c176f1cdabfce09c4ba",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-frame-selected-render.png",
+      "format": "png",
+      "bytes": 4594,
+      "sha256": "4eb049632735da01f3ea38b7abfa872fbe06cba9b8d3be67c90b8176c067c546",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-miniboss-render.png",
+      "format": "png",
+      "bytes": 1527,
+      "sha256": "1e61f2b4470aae69b524676939c1f87323639cb70949dd610e2e4a9900d52e28",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/node-puzzle-render.png",
+      "format": "png",
+      "bytes": 1500,
+      "sha256": "a23c753293c847cf84f2535a79df580ba94c08b036aca7d9f924b62a3084ccc2",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/reference-inventory.json",
+      "format": "json",
+      "bytes": 8662,
+      "sha256": "08839b67e30825b070dc5f4a928a352e843a00dd4bad0f5e2e2bed671f814e19",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
+      "format": "webp",
+      "bytes": 174526,
+      "sha256": "4eca0ae75204384ad39750954f071f961a70dc6e7119600f615bfebf6ea57087",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B02.webp",
+      "format": "webp",
+      "bytes": 234816,
+      "sha256": "3799e6384eae3df5199e642d4239582e8408bcd61a6e4f6f4e43d7329b0f0470",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B03.webp",
+      "format": "webp",
+      "bytes": 198622,
+      "sha256": "de16da9c8acd067875c7b2be2a4843ecf7b3d1da5c8a31946d7d0d730483e053",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B05.webp",
+      "format": "webp",
+      "bytes": 160562,
+      "sha256": "b859dbef83754709abdc19efc3722b8a773f4d8a213007c4a085e1312faf913a",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B06.webp",
+      "format": "webp",
+      "bytes": 240766,
+      "sha256": "a4a61039b79515d32bcffcdb2b50a03266a8f0df017c35528f9b379a25b4c1ea",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B07.webp",
+      "format": "webp",
+      "bytes": 200662,
+      "sha256": "679eb0ff2986c1a5546fd1f1263e2e2ec729676c5708304944bea5c832dc421c",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp",
+      "format": "webp",
+      "bytes": 188946,
+      "sha256": "89a7d6c8d395f90de44bbfd96b8f540e28870ad21b2d0b0305e7dc4b18e7b56f",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS2.webp",
+      "format": "webp",
+      "bytes": 246888,
+      "sha256": "5ace949da2d7d6ca5fdc05e2fb8c63a4c575d45b410d78ae298ac3fd10d818a6",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F02.webp",
+      "format": "webp",
+      "bytes": 139296,
+      "sha256": "de778745b00be6e4a4020fb3a0107348c950265c9fada60af0101d7f279efc09",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F03.webp",
+      "format": "webp",
+      "bytes": 196908,
+      "sha256": "e9c9a9c6628b41477cade0ca4b7b08f32d2772226bcb90b7b83b6fb8dbf99678",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F04.webp",
+      "format": "webp",
+      "bytes": 214008,
+      "sha256": "8c43d6e38efc31e76c6e9de003b00b527dfb6b8f2552ee39bff70063239cac6d",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
+      "format": "webp",
+      "bytes": 192436,
+      "sha256": "8772322ab49a84cdc238d19b4032083bb7326ad95cfaed35c99c283b60071862",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G03.webp",
+      "format": "webp",
+      "bytes": 210644,
+      "sha256": "9194ec34458369bf8bfdad1a4effbdf6afa93410a60ec76c731fa949bf0c9881",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G04.webp",
+      "format": "webp",
+      "bytes": 227190,
+      "sha256": "f7f7f1456d036ce13789649a33e7f0ad963e180a3853ea3fd29f312b3a42c207",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G07.webp",
+      "format": "webp",
+      "bytes": 264530,
+      "sha256": "77c91d0e11ee432380e4407615a397167225548de8d5d576dcde55b142bdcf5d",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS1.webp",
+      "format": "webp",
+      "bytes": 236334,
+      "sha256": "69b75426084cff54a89deee581502b13efbbed9e8cd675266c846b3151b70c35",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS2.webp",
+      "format": "webp",
+      "bytes": 256418,
+      "sha256": "8504caa52b20acaa76fad985825a0eeb4b7bbf2088a83982cbdf852b5910f7a1",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp",
+      "format": "webp",
+      "bytes": 186234,
+      "sha256": "3c2c7cf44862b4f5db17915520ffbbc954083f8df82c48f61ecc723ab6456bac",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W09.webp",
+      "format": "webp",
+      "bytes": 160012,
+      "sha256": "97a19cca18138c0b4e4f2f90d10a216415e314fe76ef62004c43f277e3dd1ab9",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp",
+      "format": "webp",
+      "bytes": 275116,
+      "sha256": "406afcb97f427f4f44af1e91e32dbd8648a6df3f02885c404f27f4149021ecda",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/KEEPER_ART-liora.webp",
+      "format": "webp",
+      "bytes": 240306,
+      "sha256": "f32733e5f317164d3f8153421cd77d43ea92b3050e3731317ec59d03b6f98474",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp",
+      "format": "webp",
+      "bytes": 264886,
+      "sha256": "73927264e9611ff1ff74d124668b46f24e110405fdfcd81b10343dd9b3753c38",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-observatory.webp",
+      "format": "webp",
+      "bytes": 329834,
+      "sha256": "49cd20a4b3a0857bdece6baa908f4184c0295b39860f54b0f974571dfd6a0c09",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+      "format": "webp",
+      "bytes": 244272,
+      "sha256": "cc53e9cd1f7c5339a2284774b155456f47de74c01a46e0cc892f788d895896a0",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-sanctuary.webp",
+      "format": "webp",
+      "bytes": 442144,
+      "sha256": "358b51412f226ccbf845f1260484df771ca8268df9e96930989d961f1a27cd60",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/reward-frame-normal-render.png",
+      "format": "png",
+      "bytes": 5643,
+      "sha256": "f8817c262590679e6a64ac18380341108c8a30d9279456c32325e0382bc029fb",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        512,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/reward-frame-received-render.png",
+      "format": "png",
+      "bytes": 8070,
+      "sha256": "722a929298c0589efda852bfcc081700ee7652dfdcd536e978ff25211c429ffd",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        512,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/reward-frame-selected-render.png",
+      "format": "png",
+      "bytes": 5331,
+      "sha256": "d63f88c67e3acde24090bb85767ac9e731d3395aca8174d8bbf09c9d5ea20afe",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        512,
+        720
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/stage-contact-sheet.jpg",
+      "format": "jpg",
+      "bytes": 377734,
+      "sha256": "96e67e042288a4cc9d3a94ded367d7d8fe6368517782002d5eef95fef743a518",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1000,
+        1050
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/stage-medal-bronze-render.png",
+      "format": "png",
+      "bytes": 5777,
+      "sha256": "4fe02e4aecbd35dd428796215aedef22390c1d8832c0d4281365545d7a98b5b8",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/stage-medal-gold-render.png",
+      "format": "png",
+      "bytes": 5889,
+      "sha256": "c21dc649f56f339f2b7a1c1a028a0ea4bf4d9f61f24371f0d73746efaf5b9404",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/stage-medal-silver-render.png",
+      "format": "png",
+      "bytes": 5917,
+      "sha256": "15d58ed1c352733a9528ed92d061baf417150bceb336593102f74bde8682aa67",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        128,
+        128
+      ],
+      "transparency": true
+    },
+    {
+      "path": "assets/art/adventure/previews/ui-contact-sheet.jpg",
+      "format": "jpg",
+      "bytes": 167434,
+      "sha256": "f805bd72560b327be971e296b3b7435f32f243b10992f5483637cec442b97afc",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork",
+      "dimensions": [
+        1200,
+        840
+      ],
+      "transparency": false
+    },
+    {
+      "path": "assets/art/adventure/previews/validation-report.json",
+      "format": "json",
+      "bytes": 11174,
+      "sha256": "7f38241222c3f5504a29fc07e03f11a4dfda636f147270df1cc5a95d274fad15",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    },
+    {
+      "path": "assets/art/adventure/production-prompts.json",
+      "format": "json",
+      "bytes": 2069,
+      "sha256": "7cb954daec60730767f9fa74f5a252918ae3f099b53a7733397feb34a6676613",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    },
+    {
+      "path": "assets/art/adventure/README.md",
+      "format": "md",
+      "bytes": 9680,
+      "sha256": "2e57d37bf754060071c44f646773c66df0ec80221949d22fb1d290ba502a0971",
+      "purpose": "Reference/review/delivery documentation; not counted as primary artwork"
+    }
+  ]
+}

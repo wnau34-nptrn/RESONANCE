@@ -1,0 +1,575 @@
+{
+  "base_commit": "a58ba782a53ec307da214d55e0afda228bc78681",
+  "visual_review": {
+    "reviewed": "Every produced map, SVG render and thumbnail inspected in this chat through actual images/contact sheets",
+    "svg": "21/21 visually inspected at large and small sizes",
+    "thumbnails": "24/24 visually inspected at 144px and 64px; identity survives the recorded crop",
+    "map": "Candidate: no text, watermark, UI markers or unlock states in production image; density/native-detail limitation documented",
+    "character_alpha": "Not applicable: zero character artwork files produced",
+    "canon": "No candidate promoted to canonical"
+  },
+  "checks": [
+    {
+      "asset_id": "stage-medal-bronze",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "stage-medal-silver",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "stage-medal-gold",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "act1-medal",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "miniboss-badge-beacon",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "miniboss-badge-glasswind",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "miniboss-badge-fracture",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "miniboss-badge-wildroot",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-combat",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-puzzle",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-miniboss",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-boss",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-event",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-deck-adjust",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-frame-available",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-frame-selected",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-frame-completed",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "node-frame-locked",
+      "dimensions": [
+        128,
+        128
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "reward-frame-normal",
+      "dimensions": [
+        512,
+        720
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "reward-frame-selected",
+      "dimensions": [
+        512,
+        720
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "reward-frame-received",
+      "dimensions": [
+        512,
+        720
+      ],
+      "xml": "pass",
+      "external_dependency": "none",
+      "render": "pass",
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "asset_id": "stage-p1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 70490
+    },
+    {
+      "asset_id": "stage-p2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 65058
+    },
+    {
+      "asset_id": "stage-p3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 79150
+    },
+    {
+      "asset_id": "stage-p4",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 64484
+    },
+    {
+      "asset_id": "stage-p5",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 62044
+    },
+    {
+      "asset_id": "stage-p6",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 88604
+    },
+    {
+      "asset_id": "stage-b1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 80172
+    },
+    {
+      "asset_id": "stage-b2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 65358
+    },
+    {
+      "asset_id": "stage-b3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 67870
+    },
+    {
+      "asset_id": "stage-g1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 79300
+    },
+    {
+      "asset_id": "stage-g2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 89740
+    },
+    {
+      "asset_id": "stage-g3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 81190
+    },
+    {
+      "asset_id": "stage-f1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 72700
+    },
+    {
+      "asset_id": "stage-f2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 62044
+    },
+    {
+      "asset_id": "stage-f3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 62044
+    },
+    {
+      "asset_id": "stage-w1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 71652
+    },
+    {
+      "asset_id": "stage-w2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 59992
+    },
+    {
+      "asset_id": "stage-w3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 90378
+    },
+    {
+      "asset_id": "stage-c1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 50466
+    },
+    {
+      "asset_id": "stage-c2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 73348
+    },
+    {
+      "asset_id": "stage-et1",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 80568
+    },
+    {
+      "asset_id": "stage-et2",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 50992
+    },
+    {
+      "asset_id": "stage-et3",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 79300
+    },
+    {
+      "asset_id": "stage-et4",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 68884
+    },
+    {
+      "asset_id": "living-atlas",
+      "dimensions": [
+        2048,
+        4096
+      ],
+      "mode": "RGB",
+      "sha256": "pass",
+      "file_bytes": 636474
+    }
+  ],
+  "scope": {
+    "tracked_game_files_changed": false,
+    "integration": false,
+    "deployment": false,
+    "new_card_artwork": false,
+    "new_currency": false,
+    "stage_ids": "Exact existing 24 IDs",
+    "pending_face_icons": 8
+  },
+  "summary": {
+    "ready_svg": 21,
+    "ready_stage_thumbnails": 24,
+    "candidate_primary_artworks": 1,
+    "blocked_primary_artworks": 13,
+    "target_primary_artworks": 14,
+    "blocked_derived_face_icons": 8,
+    "checks": "46/46 file/metadata checks pass; candidate map is not promoted to ready"
+  }
+}

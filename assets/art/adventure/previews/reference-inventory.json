@@ -1,0 +1,252 @@
+[
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B01",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "4eca0ae75204384ad39750954f071f961a70dc6e7119600f615bfebf6ea57087",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B02.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B02",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "3799e6384eae3df5199e642d4239582e8408bcd61a6e4f6f4e43d7329b0f0470",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B03.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B03",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "de16da9c8acd067875c7b2be2a4843ecf7b3d1da5c8a31946d7d0d730483e053",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B05.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B05",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "b859dbef83754709abdc19efc3722b8a773f4d8a213007c4a085e1312faf913a",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B06.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B06",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "a4a61039b79515d32bcffcdb2b50a03266a8f0df017c35528f9b379a25b4c1ea",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-B07.webp",
+    "source": "index.html embedded FINAL_CARD_ART-B07",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "679eb0ff2986c1a5546fd1f1263e2e2ec729676c5708304944bea5c832dc421c",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS1.webp",
+    "source": "index.html embedded FINAL_CARD_ART-BS1",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "89a7d6c8d395f90de44bbfd96b8f540e28870ad21b2d0b0305e7dc4b18e7b56f",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-BS2.webp",
+    "source": "index.html embedded FINAL_CARD_ART-BS2",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "5ace949da2d7d6ca5fdc05e2fb8c63a4c575d45b410d78ae298ac3fd10d818a6",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F02.webp",
+    "source": "index.html embedded FINAL_CARD_ART-F02",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "de778745b00be6e4a4020fb3a0107348c950265c9fada60af0101d7f279efc09",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F03.webp",
+    "source": "index.html embedded FINAL_CARD_ART-F03",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "e9c9a9c6628b41477cade0ca4b7b08f32d2772226bcb90b7b83b6fb8dbf99678",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-F04.webp",
+    "source": "index.html embedded FINAL_CARD_ART-F04",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "8c43d6e38efc31e76c6e9de003b00b527dfb6b8f2552ee39bff70063239cac6d",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-FS1.webp",
+    "source": "index.html embedded FINAL_CARD_ART-FS1",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "8772322ab49a84cdc238d19b4032083bb7326ad95cfaed35c99c283b60071862",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G03.webp",
+    "source": "index.html embedded FINAL_CARD_ART-G03",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "9194ec34458369bf8bfdad1a4effbdf6afa93410a60ec76c731fa949bf0c9881",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G04.webp",
+    "source": "index.html embedded FINAL_CARD_ART-G04",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "f7f7f1456d036ce13789649a33e7f0ad963e180a3853ea3fd29f312b3a42c207",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-G07.webp",
+    "source": "index.html embedded FINAL_CARD_ART-G07",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "77c91d0e11ee432380e4407615a397167225548de8d5d576dcde55b142bdcf5d",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS1.webp",
+    "source": "index.html embedded FINAL_CARD_ART-GS1",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "69b75426084cff54a89deee581502b13efbbed9e8cd675266c846b3151b70c35",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-GS2.webp",
+    "source": "index.html embedded FINAL_CARD_ART-GS2",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "8504caa52b20acaa76fad985825a0eeb4b7bbf2088a83982cbdf852b5910f7a1",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W02.webp",
+    "source": "index.html embedded FINAL_CARD_ART-W02",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "3c2c7cf44862b4f5db17915520ffbbc954083f8df82c48f61ecc723ab6456bac",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-W09.webp",
+    "source": "index.html embedded FINAL_CARD_ART-W09",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "97a19cca18138c0b4e4f2f90d10a216415e314fe76ef62004c43f277e3dd1ab9",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/FINAL_CARD_ART-WS2.webp",
+    "source": "index.html embedded FINAL_CARD_ART-WS2",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "406afcb97f427f4f44af1e91e32dbd8648a6df3f02885c404f27f4149021ecda",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/KEEPER_ART-liora.webp",
+    "source": "index.html embedded KEEPER_ART-liora",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "f32733e5f317164d3f8153421cd77d43ea92b3050e3731317ec59d03b6f98474",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-moonbridge.webp",
+    "source": "index.html embedded WORLD_ART-landmarks-moonbridge",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "73927264e9611ff1ff74d124668b46f24e110405fdfcd81b10343dd9b3753c38",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-observatory.webp",
+    "source": "index.html embedded WORLD_ART-landmarks-observatory",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "49cd20a4b3a0857bdece6baa908f4184c0295b39860f54b0f974571dfd6a0c09",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+    "source": "index.html embedded WORLD_ART-landmarks-relay",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "cc53e9cd1f7c5339a2284774b155456f47de74c01a46e0cc892f788d895896a0",
+    "purpose": "reference only, not new primary artwork"
+  },
+  {
+    "path": "assets/art/adventure/previews/references/WORLD_ART-landmarks-sanctuary.webp",
+    "source": "index.html embedded WORLD_ART-landmarks-sanctuary",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "358b51412f226ccbf845f1260484df771ca8268df9e96930989d961f1a27cd60",
+    "purpose": "reference only, not new primary artwork"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": [
+    {
+      "asset_id": "living-atlas",
+      "status": "style-proof-candidate",
+      "prompt": "Use case: stylized-concept. Asset: Living Atlas Adventure Tree background STYLE PROOF for WONDERBOUND: RESONANCE. Generate one tall 1:2 portrait image, target 2048x4096. Reference images: first is existing Whisperglass Relay for painterly dark high fantasy material and atmospheric continuity; second is existing Living Atlas Fragment for pale fractured stone, black glass and aged brass language. This is an abstract symbolic Atlas memory surface, NOT a geographic map of new Caldris territory. A monumental ancient pale-stone and black-glass relief, restrained aged bronze margins, layered faint contradictory terrain memories. Layout: broad quiet lower introductory band at bottom 25%, four quiet vertical resonance areas across middle 55% (disciplined pale stone warm dawn Beacon; smoked glass silver cool Glasswind; obsidian stressed geometry restrained ember Fracture; ancient bark moss amber Wildroot), quiet upper convergence band top 20%. Subtle painterly environmental hints only at margins of these bands, interconnected world culture, not four colored countries. Keep 70 percent of image low-detail dark slate-teal readable negative space to support 24 separately rendered stage nodes later. Do not draw ANY nodes, circles, route lines, connectors, unlocked or locked states, labels, text, buttons, icons, map pins, frames or UI. No characters, bosses, creatures, new named places, geographic boundaries, logos or watermark. Low contrast at overlay areas, rich detail concentrated on peripheral worn mineral/black glass/brass material. No paper map, no hologram, no neon, no glowing rune text. The UI will overlay prologue, branches and convergence independently.",
+      "reference_paths": [
+        "assets/art/adventure/previews/references/WORLD_ART-landmarks-relay.webp",
+        "assets/art/adventure/previews/references/FINAL_CARD_ART-B01.webp"
+      ],
+      "transparent_background": false
+    }
+  ]
+}
