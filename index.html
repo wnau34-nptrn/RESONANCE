@@ -29320,7 +29320,102 @@ function card(x,zone='hand',owner=0){
 }
 function stones(p){return p.keys.map(k=>{const ready=p.readyStones[k]||0,total=p.stones[k]||0,dormant=p.dormantStones[k]||0,committed=p.committedStones[k]||0;return `<span class="stone resonance-pool" style="--stone:${R[k].color}" title="${R[k].name}: READY ${ready} / TOTAL ${total}${committed?` · COMMITTED ${committed}`:''}${dormant?` · DORMANT ${dormant}`:''}"><i>${R[k].icon}</i><span class="stone-copy">${R[k].name}<small>${dormant?`${dormant} DORMANT`:committed?`${committed} COMMITTED`:'READY'}</small></span><b>${ready}<em>/ ${total}</em></b></span>`}).join('')}
 function keeper(p,i){const enemy=i===1,attacker=enemy&&selected?.kind==='attack'?game.players[0].board.find(x=>x.uid===selected.uid):null,block=enemy&&attacker?game.directAttackBlock(attacker,p):'',directOpen=!!(enemy&&attacker&&!block),blocked=!!block,targetable=!!directOpen,keeperClickable=!!(enemy&&attacker),tag=keeperClickable?'button':'div',spirit=Math.max(0,p.spirit),guardCount=block==='guard'?game.protectors(p).length:0;return `<${tag} class="keeper ${enemy?'enemy':'player'} ${targetable?'keeper-targetable target':''} ${blocked?'keeper-protected':''}" ${keeperClickable?`type="button" data-keeper="${i}" aria-label="${blocked?'Keeper ถูกป้องกัน · เลือก Creature ผู้ป้องกัน':'โจมตี Keeper '+esc(p.name)+' · '+p.spirit+' Spirit'}"`:''}>${art(C[p.archetype?'fracturedHost':'liora'],'portrait')}${targetable&&!game.attackHasRiftstrike(attacker)?'<span class="keeper-target-cue" aria-hidden="true">TARGET · KEEPER</span>':''}${block==='guard'?`<span class="keeper-guard-badge">PROTECTED · ${guardCount}</span>`:''}${targetable&&game.attackHasRiftstrike(attacker)?'<span class="keeper-rift-badge">RIFTSTRIKE</span>':''}<div class="keeper-info"><span class="eyebrow">${enemy?'OPPONENT':'YOUR KEEPER'}</span><div class="keeper-title-row"><strong>${p.name}</strong></div><div class="keeper-meta"><span>${p.keys.map(k=>R[k].icon+' '+R[k].name).join(' · ')}</span><span>มือ ${p.hand.length} · สำรับ ${p.deck.length} · Grave ${p.grave.length}</span></div></div><div class="keeper-spirit-footer" aria-label="Keeper Spirit ${p.spirit} จาก 100"><span class="spirit inline-spirit inline-spirit-badge keeper-spirit-badge"><b>${spirit}</b></span><span class="keeper-spirit-meter" aria-hidden="true"><i style="width:${Math.min(100,spirit)}%"></i></span></div></${tag}>`}
-function permanent(p,i){const boons=[];if(p.boons.echoAttack)boons.push('◇ Echo Assault');if(p.boons.refundNext)boons.push('☾ Refund 2');if(p.boons.nextCreatureAt||p.boons.nextCreatureHp)boons.push(`⚒ Creature ถัดไป +${p.boons.nextCreatureAt} AT / +${p.boons.nextCreatureHp} HP`);if(p.boons.nextCreatureReady)boons.push('☆ Creature ถัดไปเข้า READY');if(p.boons.nextAttackRiftstrike)boons.push('R การโจมตีถัดไป · RIFTSTRIKE');if(p.boons.nextCreatureRiftstrike)boons.push('R Creature ถัดไป · การโจมตีแรก RIFTSTRIKE');return `<div class="permanents ${i===1?'opponent-permanents':'player-permanents'} ${p.artifacts.length?'has-artifacts':'no-artifacts'} artifact-count-${Math.min(p.artifacts.length,6)}">${p.artifacts.map(a=>{const d=C[a.key];return `<button class="permanent" data-card="${a.uid}" data-zone="artifact" data-owner="${i}">${art(d)}<span class="permanent-copy"><span class="permanent-name">${esc(d.name)}</span></span></button>`}).join('')}${p.buff?`<span class="buff">✦ Creature ถัดไป +${p.buff*10} AT / +${p.buff*10} Max HP</span>`:''}${boons.map(x=>`<span class="buff landmark-boon">${x}</span>`).join('')}</div>`}
+const WB_ARTIFACT_DEFS={
+  atlas:{
+    faction:'beacon',
+    summary:'Restore → Creature ถัดไป +10 AT / +10 Max HP',
+    status(a,p,owner,g){
+      const pending=(p?.p3cNextCreatureBuffs||[]).filter(b=>b.sourceUid===a.uid).length;
+      if(pending>0)return{state:'pending-bonus',icon:'✦',label:`+${pending*10}/+${pending*10} รอ Creature`,desc:`มีโบนัส +${pending*10} AT / +${pending*10} Max HP รอมอบให้ Creature ถัดไปใน Turn นี้`};
+      return{state:'waiting',icon:'◇',label:'รอ Restore',desc:'รอเหตุการณ์ Restore เพื่อเตรียมโบนัส +10 AT / +10 Max HP สำหรับ Creature ถัดไป'};
+    }
+  },
+  bastion:{
+    faction:'beacon',
+    summary:'1 ครั้ง/Turn · ป้องกัน Creature ตายจาก Damage (เหลือ 10 HP)',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.B08_SAVE===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'ช่วยชีวิต Creature จาก Damage ไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอช่วย Creature (HP 0)',desc:'พร้อมป้องกัน: เมื่อ Creature ฝ่ายเราจะตายจาก Damage ครั้งแรกใน Turn นี้ จะเหลือ 10 HP แทน'};
+    }
+  },
+  citadel:{
+    faction:'beacon',
+    summary:'เมื่อคุณอัญเชิญ Creature → ได้รับ Barrier 10',
+    status(a,p,owner,g){return{state:'passive',icon:'◆',label:'ทำงานเมื่ออัญเชิญ',desc:'เอฟเฟกต์ทำงานอัตโนมัติ: มอบ Barrier 10 ให้แก่ Creature ทุกใบที่คุณอัญเชิญลงสู่ Arena'};}
+  },
+  refraction:{
+    faction:'glass',
+    summary:'1 ครั้ง/Turn · RETURN → อัญเชิญ Afterimage 10/10',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.G08_RETURN===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'อัญเชิญ Afterimage ไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอ Creature RETURN',desc:'พร้อมทำงานเมื่อมี Creature ฝ่ายเรา RETURN ขึ้นมือครั้งแรกใน Turn นี้'};
+    }
+  },
+  hallReturning:{
+    faction:'glass',
+    summary:'1 ครั้ง/Turn · RETURN → EXHAUST ศัตรู 1 ใบ',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.GS1_RETURN===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'EXHAUST ศัตรูไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอ Creature RETURN',desc:'พร้อมทำงานเมื่อมี Creature ฝ่ายเรา RETURN ขึ้นมือครั้งแรกใน Turn นี้'};
+    }
+  },
+  idol:{
+    faction:'fracture',
+    summary:'1 ครั้ง/Turn ของคุณ · Creature ตาย → ศัตรูเสีย 10 Spirit',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.F02_DEATH===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'ทำลาย 10 Spirit ของ Keeper ศัตรูไปแล้วใน Turn นี้'};
+      if(g?.active!==owner)return{state:'dormant',icon:'☾',label:'รอเทิร์นของตนเอง',desc:'ทำงานเฉพาะใน Turn ของตนเองเท่านั้น'};
+      return{state:'waiting',icon:'◇',label:'รอ Creature ตาย',desc:'พร้อมทำงานเมื่อ Creature ฝ่ายเราตายครั้งแรกใน Turn นี้'};
+    }
+  },
+  nursery:{
+    faction:'root',
+    summary:'1 ครั้ง/Turn ของคุณ · GROW → อัญเชิญ Seedling 10/10',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.W09_GROW===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'อัญเชิญ Seedling ไปแล้วใน Turn นี้'};
+      if(g?.active!==owner)return{state:'dormant',icon:'☾',label:'รอเทิร์นของตนเอง',desc:'ทำงานเฉพาะใน Turn ของตนเองเท่านั้น'};
+      return{state:'waiting',icon:'◇',label:'รอ GROW Creature',desc:'พร้อมทำงานเมื่อคุณ GROW Creature ครั้งแรกใน Turn นี้'};
+    }
+  },
+  firstGrove:{
+    faction:'root',
+    summary:'1 ครั้ง/Turn · Creature (ไม่ใช่ Token) ตาย → Seedling 10/10',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.WS1_DEATH===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'อัญเชิญ Seedling ไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอ Creature ตาย',desc:'พร้อมทำงานเมื่อ Creature ที่ไม่ใช่ Token ฝ่ายเราตายครั้งแรกใน Turn นี้'};
+    }
+  },
+  edgeRuin:{
+    faction:'fracture',
+    summary:'1 ครั้ง/Turn · รอดจาก Damage → +10 AT จนจบ Turn',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.B24_FS2===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'มอบ +10 AT ไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอรับ Damage และรอด',desc:'พร้อมทำงานเมื่อ Creature ฝ่ายเรารับ Damage และรอดชีวิตครั้งแรกใน Turn นี้'};
+    }
+  },
+  canopy:{
+    faction:'root',
+    summary:'1 ครั้ง/Turn · Seedling ตาย → GROW Creature 1 ใบ',
+    status(a,p,owner,g){
+      if(a.p3cOnce?.B24_W07===g?.p3cTurnSerial)return{state:'used',icon:'✓',label:'ใช้แล้วในเทิร์นนี้',desc:'GROW Creature ไปแล้วใน Turn นี้ จะพร้อมใช้งานใหม่ใน Turn ถัดไป'};
+      return{state:'waiting',icon:'◇',label:'รอ Seedling ตาย',desc:'พร้อมทำงานเมื่อ Seedling ฝ่ายเราตายครั้งแรกใน Turn นี้'};
+    }
+  }
+};
+function wbArtifactDisplayState(a,p,owner,g){
+  const def=WB_ARTIFACT_DEFS[a?.key];
+  if(!def)return{faction:C[a?.key]?.presentationFaction||Object.keys(C[a?.key]?.req||{})[0]||'beacon',summary:C[a?.key]?.text||'Artifact ประจำสนาม',state:'passive',icon:'◆',label:'◆ วัตถุเวทประจำสนาม',desc:C[a?.key]?.text||'วัตถุเวทโบราณบนสนาม'};
+  const st=def.status(a,p,owner,g);
+  return{faction:def.faction,summary:def.summary,state:st.state,icon:st.icon||'◆',label:st.label||st.text||'พร้อมทำงาน',desc:st.desc||st.text||def.summary};
+}
+function wbArtifactShortStatus(info){
+  return info.state==='pending-bonus'?'โบนัส':({used:'ใช้แล้ว',dormant:'รอเทิร์น',passive:'อัตโนมัติ',waiting:'รอผล'})[info.state]||'ดูผล';
+}
+function wbArtifactDetailNote(c,a,owner,p){
+  const info=wbArtifactDisplayState(a,p,owner,game);
+  return `<section class="detail-section artifact-detail-section"><div class="artifact-detail-status-banner state-${info.state}"><span class="artifact-detail-status-pill"><i aria-hidden="true">${esc(info.icon)}</i> ${esc(info.label)}</span><p class="artifact-detail-status-desc">${esc(info.desc)}</p></div><div class="artifact-detail-summary-row"><span class="summary-label">สรุปความสามารถ:</span> <strong>${esc(info.summary)}</strong></div></section>`;
+}
+function permanent(p,i){const boons=[];if(p.boons.echoAttack)boons.push('◇ Echo Assault');if(p.boons.refundNext)boons.push('☾ Refund 2');if(p.boons.nextCreatureAt||p.boons.nextCreatureHp)boons.push(`⚒ Creature ถัดไป +${p.boons.nextCreatureAt} AT / +${p.boons.nextCreatureHp} HP`);if(p.boons.nextCreatureReady)boons.push('☆ Creature ถัดไปเข้า READY');if(p.boons.nextAttackRiftstrike)boons.push('R การโจมตีถัดไป · RIFTSTRIKE');if(p.boons.nextCreatureRiftstrike)boons.push('R Creature ถัดไป · การโจมตีแรก RIFTSTRIKE');const emptyNotice=p.artifacts.length===0?`<div class="permanents-empty" aria-label="ไม่มี Artifact บนสนาม"><span class="empty-relic-icon" aria-hidden="true">✧</span><span class="empty-relic-text">ไม่มี Artifact บนสนาม</span></div>`:'';const artifactItems=p.artifacts.map(a=>{const d=C[a.key];const info=wbArtifactDisplayState(a,p,i,game);const factionKey=info.faction||d.presentationFaction||Object.keys(d.req||{})[0]||'beacon';const factionColor=R[factionKey]?.color||'#c9a44c';const accessibleLabel=`${d.name} · ${info.summary} · สถานะ: ${info.label}`;const tooltip=`${d.name}\n${info.summary}\n[${info.label}]`;return `<button class="permanent relic-card artifact-card faction-${factionKey} state-${info.state} ${info.state} ${i===1?'enemy-artifact':'player-artifact'}" type="button" data-card="${a.uid}" data-zone="artifact" data-owner="${i}" style="--artifact-faction:${factionColor}" title="${esc(tooltip)}" aria-label="${esc(accessibleLabel)} · ดูรายละเอียด"><div class="artifact-art-frame">${art(d)}<span class="artifact-faction-glow" aria-hidden="true"></span></div><span class="permanent-copy"><span class="permanent-header"><strong class="permanent-name artifact-name">${esc(d.name)}</strong><span class="artifact-faction-pip" style="background:${factionColor};box-shadow:0 0 4px ${factionColor}" title="${esc(factionKey)}"></span></span><span class="artifact-summary">${esc(info.summary)}</span><span class="artifact-status ${info.state}"><span class="status-icon" aria-hidden="true">${esc(info.icon)}</span><span class="status-text" data-short="${esc(wbArtifactShortStatus(info))}">${esc(info.label)}</span></span></span></button>`}).join('');return `<div class="permanents ${i===1?'opponent-permanents':'player-permanents'} ${p.artifacts.length?'has-artifacts':'no-artifacts'} artifact-count-${Math.min(p.artifacts.length,6)}">${emptyNotice}${artifactItems}${p.buff?`<span class="buff">✦ Creature ถัดไป +${p.buff*10} AT / +${p.buff*10} Max HP</span>`:''}${boons.map(x=>`<span class="buff landmark-boon">${x}</span>`).join('')}</div>`}
 const phases=['REFILL','ATTUNE','ACTION','END'];
 
 /* M12.13J — one viewport owner for the whole Duel presentation. */
@@ -32038,7 +32133,87 @@ function p4DomBoardUidSets(){return [0,1].map(owner=>new Set([...document.queryS
 function p4NewTokensSince(beforeSets){const out=[];for(let owner=0;owner<2;owner++)for(const x of game.players[owner].board)if(C[x.key].token&&!beforeSets?.[owner]?.has(x.uid))out.push({owner,uid:x.uid,key:x.key});return out}
 function p4RemovedDomEntries(){const out=[];for(const el of document.querySelectorAll('.card.board[data-card][data-owner]')){const owner=Number(el.dataset.owner),uid=Number(el.dataset.card);if(!game.players[owner].board.some(x=>x.uid===uid))out.push({owner,uid,el,name:p4CardName(el)})}return out}
 function p4TriggerEvents(events=[]){return events.filter(e=>{const t=String(e.text||'');return e.fxKind==='TRIGGER'||/เมื่อตาย\s*→|Fractured Idol|Living Atlas Fragment/.test(t)})}
-function p4PresentTriggerEvents(events=[]){for(const ev of p4TriggerEvents(events)){const anchor=p4SourceFromEvent(ev);if(anchor)p4TriggerCue(anchor,m12115TriggerFloatLabel(ev))}}
+const wbPlayedArtifactFx=new WeakMap();
+function wbIsCitadelBarrierEvent(ev){
+  if(ev?.fxKind!=='BUFF'||ev.amount!==10||!Number.isInteger(ev.targetOwner)||ev.targetUid==null)return false;
+  const target=game?.players?.[ev.targetOwner]?.board?.find(x=>x.uid===ev.targetUid);
+  return !!target&&ev.text===`${C[target.key]?.name} · Citadel Barrier 10`;
+}
+function wbClearArtifactFx(){const el=document.getElementById('wb-artifact-fx-layer');if(el)el.remove()}
+window.addEventListener('resize',wbClearArtifactFx);
+function wbDrawArtifactBeam(sourceEl,targetEl,color='#c9a44c'){
+  if(!sourceEl||!targetEl||typeof window==='undefined')return;
+  if(window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches)return;
+  const r1=sourceEl.getBoundingClientRect(),r2=targetEl.getBoundingClientRect();
+  if(!r1.width||!r2.width)return;
+  const x1=Math.round(r1.left+r1.width/2),y1=Math.round(r1.top+r1.height/2);
+  const x2=Math.round(r2.left+r2.width/2),y2=Math.round(r2.top+r2.height/2);
+  let layer=document.getElementById('wb-artifact-fx-layer');
+  if(!layer){layer=document.createElement('div');layer.id='wb-artifact-fx-layer';layer.setAttribute('aria-hidden','true');layer.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden;';document.body.appendChild(layer);}
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','artifact-fx-beam-svg');
+  svg.style.cssText='position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;';
+  const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+  line.setAttribute('x1',String(x1));line.setAttribute('y1',String(y1));
+  line.setAttribute('x2',String(x2));line.setAttribute('y2',String(y2));
+  line.setAttribute('class','artifact-beam-line');
+  line.style.setProperty('--beam-color',color);
+  line.setAttribute('stroke',color);
+  svg.appendChild(line);layer.appendChild(svg);
+  setTimeout(()=>{svg.remove();if(layer&&layer.children.length===0)layer.remove();},550);
+}
+function wbPresentArtifactEventFx(ev){
+  if(!ev||!game)return;
+  let played=wbPlayedArtifactFx.get(game);
+  if(!played){played=new Set();wbPlayedArtifactFx.set(game,played);}
+  const evId=ev.id??ev;
+  if(played.has(evId))return;
+  // Citadel's existing BUFF event identifies its recipient, not a source instance.
+  if(wbIsCitadelBarrierEvent(ev)&&ev.sourceUid==null){
+    const target=fxCard(ev.targetUid,ev.targetOwner);
+    if(target?.isConnected){played.add(evId);fxFloat(target,'BARRIER 10','block');}
+    return;
+  }
+  const sourceOwner=ev.sourceOwner??ev.owner;
+  let artifact=null,artifactEl=null,ownerIndex=sourceOwner;
+  if(ev.sourceUid!==undefined&&ev.sourceUid!==null&&Number.isInteger(ownerIndex)){
+    artifact=game?.players?.[ownerIndex]?.artifacts?.find(a=>a.uid===ev.sourceUid);
+    if(artifact)artifactEl=fxPermanent(artifact.uid,ownerIndex);
+  }
+  if(!artifact||!artifactEl)return;
+  played.add(evId);
+  const factionKey=C[artifact.key]?.presentationFaction||Object.keys(C[artifact.key]?.req||{})[0]||'beacon';
+  const factionColor=R[factionKey]?.color||'#c9a44c';
+  artifactEl.style.setProperty('--artifact-faction',factionColor);
+  artifactEl.classList.remove('fx-artifact-pulse');
+  void artifactEl.offsetWidth;
+  artifactEl.classList.add('fx-artifact-pulse');
+  setTimeout(()=>{if(artifactEl.isConnected)artifactEl.classList.remove('fx-artifact-pulse');},650);
+  let targetEl=null,targetFloatText='',floatKind='trigger';
+  if(ev.targetUid!==undefined&&ev.targetUid!==null){
+    const targetOwner=ev.targetOwner??ownerIndex;
+    targetEl=fxCard(ev.targetUid,targetOwner)||fxPermanent(ev.targetUid,targetOwner);
+  }else if(ev.targetOwner!==undefined&&ev.targetOwner!==null&&ev.targetOwner!==ownerIndex){
+    targetEl=fxKeeper(ev.targetOwner);
+  }
+  if(artifact.key==='bastion'){targetFloatText='เหลือ 10 HP';floatKind='block';}
+  else if(artifact.key==='idol'){targetFloatText='−10 SPIRIT';floatKind='damage';}
+  else if(artifact.key==='hallReturning'){targetFloatText='EXHAUST';floatKind='ability';}
+  else if(artifact.key==='edgeRuin'){targetFloatText='+10 AT';floatKind='heal';}
+  else if(artifact.key==='canopy'){targetFloatText='+10 MAX HP';floatKind='heal';}
+  else if(artifact.key==='citadel'){targetFloatText='BARRIER 10';floatKind='block';}
+  else if(artifact.key==='atlas'){fxFloat(artifactEl,'✦ +10/+10 รอ Creature','heal');return;}
+  else if(['refraction','firstGrove','nursery'].includes(artifact.key)){fxFloat(artifactEl,'✦ SUMMON TOKEN','token');return;}
+  if(targetEl&&targetEl.isConnected){
+    if(targetFloatText)fxFloat(targetEl,targetFloatText,floatKind);
+    targetEl.classList.remove('fx-artifact-target');
+    void targetEl.offsetWidth;
+    targetEl.classList.add('fx-artifact-target');
+    setTimeout(()=>{if(targetEl.isConnected)targetEl.classList.remove('fx-artifact-target');},600);
+    wbDrawArtifactBeam(artifactEl,targetEl,factionColor);
+  }
+}
+function p4PresentTriggerEvents(events=[]){for(const ev of p4TriggerEvents(events)){const anchor=p4SourceFromEvent(ev);if(anchor)p4TriggerCue(anchor,m12115TriggerFloatLabel(ev));wbPresentArtifactEventFx(ev);}for(const ev of events)if(wbIsCitadelBarrierEvent(ev))wbPresentArtifactEventFx(ev);}
 function p4HasMajorEvents(events=[]){return events.some(e=>['SACRIFICE','DEATH','TOKEN','TRIGGER','LANDMARK','HEAL','RETURN','PERMANENT','BUFF','READY'].includes(e.fxKind)||/สังเวย| · ตาย$|Token ลงสนาม|CLAIM|Landmark Pressure/.test(String(e.text||'')))}
 function p4SnapshotBoard(snapshot,owner){return snapshot?.players?.[owner]?.board||[]}
 function p4PrepareAITransition(prevSnapshot,nextSnapshot,label,kind='death'){const ghosts=[];if(!prevSnapshot||!nextSnapshot||!['DEATH','RETURN'].includes(label))return {ghosts};for(let owner=0;owner<2;owner++){const nextIds=new Set(p4SnapshotBoard(nextSnapshot,owner).map(x=>x.uid));for(const x of p4SnapshotBoard(prevSnapshot,owner)){if(nextIds.has(x.uid))continue;const el=fxCard(x.uid,owner);if(el)ghosts.push(p4GhostFromElement(el,label==='RETURN'?'afterimage':kind,label==='RETURN'?'':'ตาย'))}}return {ghosts:ghosts.filter(Boolean)}}
@@ -32244,7 +32419,7 @@ async function presentPlayerPlayP4(events=[],beforeSets=null){
  render();await p4AfterPlayerRender(beforeSets||[new Set(),new Set()]);
  fxLock=false;resolutionState=null;render();
 }
-function showCard(uid,zone,owner){const p=game.players[owner],x=[...p.hand,...p.board,...p.artifacts,...p.grave].find(x=>x.uid===uid);if(!x)return;if(zone==='grave'&&graveyard.open)graveyard.close();const c=C[x.key];if(selected&&zone==='board'){if(selected.kind==='attack'&&owner===1){resolveAttackFx(selected.uid,uid);return;}if(selected.kind==='ability'){const src=game.players[0].board.find(a=>a.uid===selected.uid);if(src&&game.abilityTargetLegal(selected.uid,uid,game.players[0])){resolveAbilityFx(selected.uid,uid);return;}}if(selected.kind==='play'){const s=game.players[0].hand.find(a=>a.uid===selected.uid);if(s&&owner===(C[s.key].target==='enemy'?1:0)){const playUid=selected.uid;selected=null;render();startPayment(playUid,uid)}return;}}const reason=owner===0&&game.active===0?game.reason(x):'รอ Turn ของคุณ';const effectSections=detailTextSections(c)+detailKeywordSection(c,x)+detailAbilitySection(c);const detailDensity=rulesTextLines(c).length+(c.activated?1:0);const equipNote=zone==='board'&&x.equipment?.length?`<section class="detail-section equipment-detail-section"><h3>Equipment · อุปกรณ์ที่ติดตั้ง (${x.equipment.length})</h3>${x.equipment.map(a=>`<div class="equipment-detail-item"><strong>${esc(C[a.key].name)}</strong><p>${esc(thaiDisplayText(C[a.key].text))}</p></div>`).join('')}</section>`:'';const artifactNote='';const abilityBlock=zone==='board'&&owner===0&&c.activated?game.abilityReason(x,p):'';const abilityBlockText=abilityReasonText(abilityBlock);const abilityBlockHint=abilityReasonHint(abilityBlock);const attackBlockReason=zone==='board'&&owner===0?detailAttackBlockReason(x):'';const attackDisabled=!!attackBlockReason;const abilityCostNote=c.activated?detailAbilityCostNotation(c):'';const attackSlot=zone==='board'&&owner===0?`<div class="detail-action-slot attack-slot ${c.activated?'':'solo'}"><button class="primary" data-attack="${uid}" ${attackDisabled?'disabled':''}>โจมตี →</button><small class="detail-action-reason ${attackBlockReason?'':'is-clear'}">${attackBlockReason?esc(attackBlockReason):'พร้อมโจมตีใน ACTION'}</small></div>`:'';const abilitySlot=zone==='board'&&owner===0&&c.activated?`<div class="detail-action-slot ability-slot"><button class="secondary ability-action ${abilityBlock?'blocked':''}" data-activate="${uid}" ${abilityBlock?'disabled':''} title="${esc(abilityBlockText||'ใช้ความสามารถ')}">ใช้ความสามารถ${abilityCostNote?` ${esc(abilityCostNote)}`:''} →</button><small class="detail-action-reason ${abilityBlock?'':'is-clear'}">${abilityBlock?(abilityBlockHint?esc(abilityBlockHint):esc(abilityBlockText)):`${abilityCostNote?`Cost ${esc(abilityCostNote)} · `:''}พร้อมใช้ · 1 ครั้ง/Turn`}</small></div>`:'';const boardActions=zone==='board'&&owner===0?`<div class="detail-actions detail-action-grid">${attackSlot}${abilitySlot}</div>`:'';const handDragHint=zone==='hand'&&owner===0&&c.type==='Creature'&&!reason?`<small class="detail-drag-fallback">ทางลัด · ลาก Creature จากมือขึ้น Player Arena เพื่อเล่นได้ทันที</small>`:'';const handAction=zone==='hand'?`<button class="primary" data-play="${uid}" ${reason?'disabled':''}>${reason||'เล่นการ์ดนี้ →'}</button>${handDragHint}`:'';const actionBar=(boardActions||handAction)?`<div class="detail-action-bar">${boardActions||handAction}</div>`:'';detail.style.setProperty('--detail-art',`url("${cardArtworkSrc(c)}")`);detail.dataset.density=detailDensity>=3?'dense':'normal';detail.dataset.artId=c.c8id||'';detail.className='card-detail-modal';detail.innerHTML=`<button class="close" data-close="detail" aria-label="ปิด">×</button><div class="detail-layout"><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">${c.type} · ${Object.keys(c.req).map(k=>R[k].name).join(' + ')}</span><h2>${esc(c.name)}</h2><div class="detail-cost"><span><small>COST</small><b>${c.cost} Resonance</b></span><span><small>REQUIRES READY</small><b>${req(c)}</b></span>${c.type==='Creature'?`<span><small>STATS</small><b>AT ${x.at??c.at} / HP ${x.hp??c.hp}</b></span>`:''}</div>${detailStatusRow(c,x,zone,owner,p)}<div class="detail-sections">${effectSections}${equipNote}</div>${artifactNote}${actionBar}</div></div>`;detail.showModal();requestAnimationFrame(()=>fitCardDetailViewport())}
+function showCard(uid,zone,owner){const p=game.players[owner],x=[...p.hand,...p.board,...p.artifacts,...p.grave].find(x=>x.uid===uid);if(!x)return;if(zone==='grave'&&graveyard.open)graveyard.close();const c=C[x.key];if(selected&&zone==='board'){if(selected.kind==='attack'&&owner===1){resolveAttackFx(selected.uid,uid);return;}if(selected.kind==='ability'){const src=game.players[0].board.find(a=>a.uid===selected.uid);if(src&&game.abilityTargetLegal(selected.uid,uid,game.players[0])){resolveAbilityFx(selected.uid,uid);return;}}if(selected.kind==='play'){const s=game.players[0].hand.find(a=>a.uid===selected.uid);if(s&&owner===(C[s.key].target==='enemy'?1:0)){const playUid=selected.uid;selected=null;render();startPayment(playUid,uid)}return;}}const reason=owner===0&&game.active===0?game.reason(x):'รอ Turn ของคุณ';const effectSections=detailTextSections(c)+detailKeywordSection(c,x)+detailAbilitySection(c);const detailDensity=rulesTextLines(c).length+(c.activated?1:0);const equipNote=zone==='board'&&x.equipment?.length?`<section class="detail-section equipment-detail-section"><h3>Equipment · อุปกรณ์ที่ติดตั้ง (${x.equipment.length})</h3>${x.equipment.map(a=>`<div class="equipment-detail-item"><strong>${esc(C[a.key].name)}</strong><p>${esc(thaiDisplayText(C[a.key].text))}</p></div>`).join('')}</section>`:'';const artifactNote=zone==='artifact'?wbArtifactDetailNote(c,x,owner,p):'';const abilityBlock=zone==='board'&&owner===0&&c.activated?game.abilityReason(x,p):'';const abilityBlockText=abilityReasonText(abilityBlock);const abilityBlockHint=abilityReasonHint(abilityBlock);const attackBlockReason=zone==='board'&&owner===0?detailAttackBlockReason(x):'';const attackDisabled=!!attackBlockReason;const abilityCostNote=c.activated?detailAbilityCostNotation(c):'';const attackSlot=zone==='board'&&owner===0?`<div class="detail-action-slot attack-slot ${c.activated?'':'solo'}"><button class="primary" data-attack="${uid}" ${attackDisabled?'disabled':''}>โจมตี →</button><small class="detail-action-reason ${attackBlockReason?'':'is-clear'}">${attackBlockReason?esc(attackBlockReason):'พร้อมโจมตีใน ACTION'}</small></div>`:'';const abilitySlot=zone==='board'&&owner===0&&c.activated?`<div class="detail-action-slot ability-slot"><button class="secondary ability-action ${abilityBlock?'blocked':''}" data-activate="${uid}" ${abilityBlock?'disabled':''} title="${esc(abilityBlockText||'ใช้ความสามารถ')}">ใช้ความสามารถ${abilityCostNote?` ${esc(abilityCostNote)}`:''} →</button><small class="detail-action-reason ${abilityBlock?'':'is-clear'}">${abilityBlock?(abilityBlockHint?esc(abilityBlockHint):esc(abilityBlockText)):`${abilityCostNote?`Cost ${esc(abilityCostNote)} · `:''}พร้อมใช้ · 1 ครั้ง/Turn`}</small></div>`:'';const boardActions=zone==='board'&&owner===0?`<div class="detail-actions detail-action-grid">${attackSlot}${abilitySlot}</div>`:'';const handDragHint=zone==='hand'&&owner===0&&c.type==='Creature'&&!reason?`<small class="detail-drag-fallback">ทางลัด · ลาก Creature จากมือขึ้น Player Arena เพื่อเล่นได้ทันที</small>`:'';const handAction=zone==='hand'?`<button class="primary" data-play="${uid}" ${reason?'disabled':''}>${reason||'เล่นการ์ดนี้ →'}</button>${handDragHint}`:'';const actionBar=(boardActions||handAction)?`<div class="detail-action-bar">${boardActions||handAction}</div>`:'';detail.style.setProperty('--detail-art',`url("${cardArtworkSrc(c)}")`);detail.dataset.density=detailDensity>=3?'dense':'normal';detail.dataset.artId=c.c8id||'';detail.className='card-detail-modal';detail.innerHTML=`<button class="close" data-close="detail" aria-label="ปิด">×</button><div class="detail-layout"><div class="detail-art">${art(c)}</div><div class="detail-body"><span class="eyebrow">${c.type} · ${Object.keys(c.req).map(k=>R[k].name).join(' + ')}</span><h2>${esc(c.name)}</h2><div class="detail-cost"><span><small>COST</small><b>${c.cost} Resonance</b></span><span><small>REQUIRES READY</small><b>${req(c)}</b></span>${c.type==='Creature'?`<span><small>STATS</small><b>AT ${x.at??c.at} / HP ${x.hp??c.hp}</b></span>`:''}</div>${detailStatusRow(c,x,zone,owner,p)}<div class="detail-sections">${effectSections}${equipNote}</div>${artifactNote}${actionBar}</div></div>`;detail.showModal();requestAnimationFrame(()=>fitCardDetailViewport())}
 
 function showRules(landmark=false){
   const lm=game.currentLandmark;
@@ -35534,9 +35709,13 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  #app.d52-mobile .hand-area>.hand-scroll>.card .mobile-focus-phase-chip,
  #app.d52-mobile .hand-area>.hand-scroll>.card .d42-focus-cue{display:none!important}
  #app.d52-mobile .d52-toggle{
-  position:absolute;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(var(--d52-hand) + var(--d52-turn) + 4px);
+  position:absolute;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(var(--d52-hand) + 2px + (var(--d52-turn) - 44px)/2);
   z-index:91;border:1px solid #88b0b6;border-radius:6px;background:#09232de8;color:#e7eee8;
-  min-width:44px;min-height:32px;padding:4px 10px;font:600 11px/1.2 system-ui,sans-serif;
+  box-sizing:border-box;width:64px;min-width:64px;height:44px;min-height:44px;padding:4px;font:600 9px/1.2 system-ui,sans-serif;
+ }
+ #app#app.d52-mobile .mobile-primary-cta-host,
+ #app#app.d52-mobile .turn-panel.phase3-panel:not(.mobile-has-primary-cta) .turn-action{
+  box-sizing:border-box!important;padding-right:78px!important;
  }
  #app.d52-mobile .d52-inspector{
   position:absolute;top:4px;right:max(96px,calc(env(safe-area-inset-right,0px) + 92px));z-index:90;
@@ -35674,7 +35853,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   const v=vp(),small=v.height<=430||v.width<=700;
   const expandedHandHeight=small?clamp(126,Math.round(v.height*.36),144):clamp(148,Math.round(v.height*.26),195);
   const handHeight=state.tucked?46:expandedHandHeight;
-  const turnHeight=small?clamp(42,Math.round(v.height*.11),48):clamp(48,Math.round(v.height*.085),62);
+  const turnHeight=small?clamp(44,Math.round(v.height*.11),48):clamp(48,Math.round(v.height*.085),62);
   const expandedCardHeight=small?expandedHandHeight-12:expandedHandHeight-14;
   const cardHeight=state.tucked?114:expandedCardHeight;
   const cardWidth=small?clamp(142,Math.round(v.width*.19),164):clamp(162,Math.round(v.width*.17),210);
@@ -40953,6 +41132,151 @@ body.battlefield-first-desktop-active #app.duel-viewport .battlefield .arena-row
     height:22px!important;min-height:22px!important;max-height:22px!important;
     padding:1px 2px!important;gap:3px!important;
   }
+}
+
+/* Antigravity Artifact UX Presentation (Scoped) */
+.relic-card.faction-beacon{--art-accent:#e3c674;--art-border:rgba(227,198,116,0.45);--art-glow:rgba(227,198,116,0.20)}
+.relic-card.faction-glass{--art-accent:#6cd9d0;--art-border:rgba(108,217,208,0.45);--art-glow:rgba(108,217,208,0.20)}
+.relic-card.faction-fracture{--art-accent:#e27575;--art-border:rgba(226,117,117,0.45);--art-glow:rgba(226,117,117,0.20)}
+.relic-card.faction-root{--art-accent:#7dd388;--art-border:rgba(125,211,136,0.45);--art-glow:rgba(125,211,136,0.20)}
+
+body.battlefield-first-desktop-active #app.duel-viewport .permanents .permanent.relic-card,
+#app.duel-viewport:not(.mobile-duel-viewport) .permanents .permanent.relic-card{
+  display:flex!important;flex-direction:row!important;align-items:center!important;height:auto!important;
+  min-height:48px!important;max-height:52px!important;width:100%!important;max-width:100%!important;
+  padding:4px 6px 4px 5px!important;gap:7px!important;border-radius:8px!important;
+  background:linear-gradient(135deg,rgba(8,28,36,0.94),rgba(12,38,48,0.90))!important;
+  border:1px solid var(--art-border,rgba(85,126,132,0.35))!important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.30),inset 0 1px 0 rgba(255,255,255,0.05)!important;
+  text-align:left!important;cursor:pointer!important;position:relative!important;overflow:hidden!important;
+  transition:border-color 0.18s ease,box-shadow 0.18s ease,transform 0.12s ease!important;
+}
+body.battlefield-first-desktop-active #app.duel-viewport .opponent-permanents .permanent.relic-card{
+  background:linear-gradient(135deg,rgba(14,22,28,0.94),rgba(20,28,34,0.90))!important;
+  border-color:var(--art-border,rgba(120,100,110,0.35))!important;
+}
+.permanents .permanent.relic-card:hover{
+  border-color:var(--art-accent,#e3c674)!important;box-shadow:0 4px 16px rgba(0,0,0,0.40),0 0 10px var(--art-glow,rgba(227,198,116,0.20))!important;
+}
+.permanents .permanent.relic-card:focus-visible{
+  outline:2px solid var(--art-accent,#e3c674)!important;outline-offset:1px!important;
+}
+.permanent.relic-card .artifact-art-frame{
+  flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;
+  min-height:34px!important;max-height:34px!important;border-radius:6px!important;
+  border:1px solid var(--art-border,rgba(85,126,132,0.35))!important;
+  box-shadow:0 0 6px var(--art-glow,transparent),inset 0 0 4px rgba(0,0,0,0.6)!important;
+  overflow:hidden!important;position:relative!important;background:#041318!important;
+}
+.permanent.relic-card .artifact-art-frame .art{
+  width:100%!important;height:100%!important;min-width:100%!important;min-height:100%!important;object-fit:cover!important;
+}
+.permanent.relic-card .permanent-copy{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;min-width:0!important;flex:1 1 auto!important;gap:2px!important;
+}
+.permanent.relic-card .permanent-header{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:4px!important;
+}
+.permanent.relic-card .permanent-name{
+  font-size:10px!important;font-weight:700!important;color:#f2eee3!important;white-space:nowrap!important;
+  overflow:hidden!important;text-overflow:ellipsis!important;line-height:1.15!important;
+}
+.permanent.relic-card .artifact-faction-pip{
+  width:5px!important;height:5px!important;border-radius:50%!important;background:var(--art-accent,#c9a44c)!important;box-shadow:0 0 4px var(--art-accent,#c9a44c)!important;flex-shrink:0!important;
+}
+.permanent.relic-card .artifact-summary{
+  font-size:8px!important;color:#9bb2b5!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;line-height:1.15!important;
+}
+.permanent.relic-card .artifact-status{
+  display:inline-flex!important;align-items:center!important;gap:3px!important;font-size:8px!important;
+  font-weight:600!important;line-height:1.15!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+}
+.permanent.relic-card .artifact-status.pending-bonus{color:#e8ca79!important;text-shadow:0 0 5px rgba(232,202,121,0.35)!important}
+.permanent.relic-card .artifact-status.waiting{color:#88c2be!important}
+.permanent.relic-card .artifact-status.used{color:#6d8488!important}
+.permanent.relic-card .artifact-status.dormant{color:#7d8e95!important}
+.permanent.relic-card .artifact-status.passive,.permanent.relic-card .artifact-status.neutral{color:#8ecbd0!important}
+.permanent.relic-card.used{opacity:0.75!important;filter:saturate(0.85)!important}
+.permanent.relic-card.pending-bonus{border-color:var(--art-accent,#e3c674)!important;box-shadow:0 0 10px var(--art-glow,rgba(227,198,116,0.20))!important}
+
+.permanents-empty{
+  display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;
+  padding:8px 12px!important;border:1px dashed rgba(85,126,132,0.25)!important;border-radius:8px!important;
+  color:#6e888d!important;font-size:9px!important;opacity:0.8!important;
+}
+.empty-relic-icon{font-size:11px!important;opacity:0.6!important}
+
+@keyframes wbArtifactPulseKey{
+  0%{transform:scale(1);filter:brightness(1)}
+  50%{transform:scale(1.05);filter:brightness(1.4) drop-shadow(0 0 8px var(--artifact-faction,#c9a44c))}
+  100%{transform:scale(1);filter:brightness(1)}
+}
+.permanent.relic-card.fx-artifact-pulse{animation:wbArtifactPulseKey 0.6s ease-out!important;z-index:20!important}
+
+@keyframes wbArtifactTargetKey{
+  0%{box-shadow:0 0 0 0 rgba(201,164,76,0.7)}
+  50%{box-shadow:0 0 12px 4px rgba(201,164,76,0.9)}
+  100%{box-shadow:0 0 0 0 rgba(201,164,76,0)}
+}
+.fx-artifact-target{animation:wbArtifactTargetKey 0.55s ease-out!important}
+
+.artifact-beam-line{stroke-width:2.5;stroke-dasharray:6 4;animation:wbBeamDash 0.5s linear infinite;filter:drop-shadow(0 0 4px var(--beam-color,#c9a44c))}
+@keyframes wbBeamDash{to{stroke-dashoffset:-20}}
+
+.artifact-detail-section{
+  margin-top:8px!important;padding:8px 10px!important;background:rgba(10,32,40,0.65)!important;
+  border:1px solid rgba(85,126,132,0.3)!important;border-radius:8px!important;
+}
+.artifact-detail-status-banner{display:flex!important;flex-direction:column!important;gap:4px!important;margin-bottom:6px!important}
+.artifact-detail-status-pill{display:inline-flex!important;align-items:center!important;gap:5px!important;font-size:11px!important;font-weight:700!important;color:#e3c674!important}
+.artifact-detail-status-desc{margin:0!important;font-size:10px!important;color:#adc6c9!important;line-height:1.3!important}
+.artifact-detail-summary-row{font-size:10px!important;color:#dfdbcd!important;border-top:1px solid rgba(85,126,132,0.2)!important;padding-top:5px!important}
+.artifact-detail-summary-row .summary-label{color:#7d9ba0!important;margin-right:4px!important}
+
+@media (max-width:1180px){
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .permanents .permanent.relic-card,
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card{
+    display:flex!important;flex-direction:row!important;align-items:center!important;flex:0 0 auto!important;
+    height:auto!important;min-height:34px!important;max-height:38px!important;padding:2px 4px!important;gap:4px!important;border-radius:6px!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .permanents .permanent.relic-card .artifact-art-frame,
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-art-frame{
+    flex:0 0 24px!important;width:24px!important;min-width:24px!important;height:24px!important;min-height:24px!important;max-height:24px!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .permanents .permanent.relic-card .permanent-name,
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .permanent-name{font-size:7.5px!important;line-height:1.15!important}
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .permanent-copy{
+    display:flex!important;flex-direction:column!important;min-width:0!important;gap:1px!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-summary{
+    display:block!important;width:100%!important;min-width:0!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-status{
+    display:flex!important;width:100%!important;min-width:0!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .status-text{
+    min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:0!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .status-text::after{
+    content:attr(data-short);font-size:7.5px;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card.pending-bonus .status-icon{
+    display:none!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-summary{
+    display:none!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-art-frame{
+    flex-basis:18px!important;width:18px!important;min-width:18px!important;height:18px!important;min-height:18px!important;max-height:18px!important;
+  }
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .permanents .permanent.relic-card .artifact-summary,
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-summary{font-size:6.5px!important;line-height:1.15!important}
+  body[data-wb-viewport-mode="mobile"] #app.mobile-duel-viewport .permanents .permanent.relic-card .artifact-status,
+  body[data-wb-viewport-mode="mobile"] #app#app .permanents .permanent.relic-card .artifact-status{font-size:6.2px!important;line-height:1.15!important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .permanent.relic-card.fx-artifact-pulse,.fx-artifact-target,.artifact-beam-line{animation:none!important}
 }
 </style>
 <style id="r4-landscape-only-lock">
