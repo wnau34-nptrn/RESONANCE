@@ -30148,7 +30148,19 @@ function commitDuelMarkup(html){
  const beforeLandmark=beforeLandmarkRow?.querySelector('.dynamic-landmark')||null;
  const beforeLandmarkArt=beforeLandmark?.querySelector('.landmark-art img')||null;
  const template=document.createElement('template');
- template.innerHTML=html.trim();
+ /* Parse short image tokens, then restore the original URLs before DOM patching.
+    Embedded artwork is unchanged; repeated base64 payloads stay out of the HTML parser. */
+ const imageSources=[];
+ const compact=html.trim().replace(/data:image\/[a-z0-9.+-]+;base64,[a-z0-9+/=]+/gi,source=>{
+  imageSources.push(source);return `__wbP0Image${imageSources.length-1}__`;
+ });
+ template.innerHTML=compact;
+ if(imageSources.length)for(const el of template.content.querySelectorAll('[src],[style]')){
+  for(const name of ['src','style']){
+   const value=el.getAttribute(name);
+   if(value&&value.includes('__wbP0Image'))el.setAttribute(name,value.replace(/__wbP0Image(\d+)__/g,(_,index)=>imageSources[Number(index)]));
+  }
+ }
  const nextRoot=document.createElement('div');
  nextRoot.append(template.content.cloneNode(true));
  /* Critical 13I step: desired DOM already has its FINAL mobile structure before P0 sees it. */
@@ -32495,12 +32507,12 @@ function signaturePlayBeat(value){return aiCanonicalBeat(value?.label)==='PLAY'&
 function aiBeatDelay(value){const p=m12115aBeatParts(value);return m12115aReadDelay(value,AI_PACING[p.label]||AI_PACING.ACTION)+(AI_READ_BONUS[p.label]||0)+(signaturePlayBeat(value)?520:0)}
 function aiDecisionSettleDelay(report){
  const labels=(report?.beats||[]).map(b=>aiCanonicalBeat(b.label));
- if(report?.kind==='turn')return 380;
- if(report?.kind==='combat'||labels.includes('DEATH')||labels.includes('LANDMARK'))return 420;
- if(report?.kind==='ability'||labels.includes('TRIGGER'))return 370;
- if(report?.kind==='play'||labels.includes('SUMMON'))return 370;
- if(report?.kind==='attune'||report?.kind==='refill')return 300;
- return 300;
+ if(report?.kind==='turn')return 180;
+ if(report?.kind==='combat'||labels.includes('DEATH')||labels.includes('LANDMARK'))return 220;
+ if(report?.kind==='ability'||labels.includes('TRIGGER'))return 180;
+ if(report?.kind==='play'||labels.includes('SUMMON'))return 180;
+ if(report?.kind==='attune'||report?.kind==='refill')return 140;
+ return 140;
 }
 function aiPresentationBeats(events,kind,winner=null,captures=[],finalSnapshot=null){
  const beats=[],captureById=new Map(captures.map(x=>[x.id,x.snapshot]));
@@ -32644,6 +32656,11 @@ async function presentPlayerActionReport(report){
   const beat=report.beats[i],nextSnapshot=beat.snapshot||report.finalSnapshot,label=aiCanonicalBeat(beat.label),transition=p4PrepareAITransition(presentedSnapshot,nextSnapshot,label,'death');
   renderPresentationSnapshot(nextSnapshot);
   if(label==='SUMMON'&&dragPlayHandoff?.state==='committed')dragHandoffMeetSummon(dragPlayHandoff.uid);
+  /* Equipment meets its host at attachment, before follow-up effects finish resolving. */
+  if(report.equipmentPlay&&label==='BUFF'&&dragPlayHandoff?.state==='committed'&&beat.event?.sourceUid===dragPlayHandoff.uid){
+   const host=nextSnapshot?.players?.[0]?.board.find(unit=>unit.uid===beat.event.targetUid);
+   if(host?.equipment?.some(item=>item.uid===dragPlayHandoff.uid))dragHandoffMeetSummon(dragPlayHandoff.uid);
+  }
   presentCausalBeatFx(beat,report,0,transition,presentedSnapshot,nextSnapshot);presentedSnapshot=nextSnapshot;await waitForCausalBeat(beat,playerBeatDelay(beat,report));
  }
  renderPresentationSnapshot(report.finalSnapshot);await aiWait(report.equipmentPlay?100:180);deferResultPresentation=false;fxLock=false;resolutionState=null;m12115ClearCausalReadout();
@@ -32747,7 +32764,7 @@ function runAI(){
  if(mulliganOpen||game.active!==1||game.winner!==null)return;
  if(aiQueueRunning)return;
  const generation=aiQueueGeneration;
- timer=setTimeout(()=>{if(detail.open||rules.open||graveyard.open)return;drainAIQueue(generation)},420);
+ timer=setTimeout(()=>{if(detail.open||rules.open||graveyard.open)return;drainAIQueue(generation)},220);
 }
 // Closing any inspection dialog resumes an AI turn paused before or during its FX queue.
 for(const dialog of [detail,rules,graveyard])dialog.addEventListener('close',()=>{
@@ -35464,7 +35481,7 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  function ensureCue(el){
   let cue=el.querySelector(':scope > .card-image > .d42-focus-cue');
   if(!cue){cue=document.createElement('span');cue.className='d42-focus-cue';el.querySelector(':scope > .card-image')?.appendChild(cue)}
-  if(cue)cue.textContent=focusText(el);
+  if(cue){const text=focusText(el);if(cue.textContent!==text)cue.textContent=text;}
  }
  function activeUid(){
   if(isTouchLayout()&&mobileHandFocusUid!==null)return Number(mobileHandFocusUid);
