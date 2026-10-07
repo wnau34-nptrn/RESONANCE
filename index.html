@@ -40188,15 +40188,24 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
 #wb-adventure .adv-tree-routes{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 #wb-adventure .adv-tree-routes path{fill:none;stroke:#bdcfc08c;stroke-width:3;stroke-dasharray:5 8;stroke-linecap:round;vector-effect:non-scaling-stroke}
 #wb-adventure .adv-tree-routes path.done{stroke:#e3c27f;stroke-dasharray:none;filter:drop-shadow(0 0 4px #e9c97966)}
-#wb-adventure .adv-tree-node{--node-accent:#dbbe7a;position:absolute;transform:translate(-50%,-70px);width:188px;display:flex;align-items:stretch;flex-direction:column;gap:0;border:1px solid var(--node-accent);border-radius:12px;background:#0b2029f5;color:#edf1df;padding:0;text-align:left;box-shadow:0 8px 22px #0007;transition:filter .2s,box-shadow .2s}
+#wb-adventure .adv-tree-node{--node-accent:#dbbe7a;position:absolute;transform:translate(-50%,-50%);width:188px;height:188px;display:flex;align-items:stretch;flex-direction:column;gap:0;border:1px solid var(--node-accent);border-radius:12px;background:#0b2029f5;color:#edf1df;padding:0;text-align:left;box-shadow:0 8px 22px #0007;transition:filter .2s,box-shadow .2s}
 #wb-adventure .adv-tree-node[data-adv-stage^="g"]{--node-accent:#8ecddf}
 #wb-adventure .adv-tree-node[data-adv-stage^="f"]{--node-accent:#db9b83}
 #wb-adventure .adv-tree-node[data-adv-stage^="w"]{--node-accent:#a4c58c}
 #wb-adventure .adv-tree-node[data-adv-stage^="et"]{--node-accent:#c4afe4}
-#wb-adventure .adv-tree-portrait{position:relative;width:100%;height:140px;display:block;border-bottom:1px solid var(--node-accent);border-radius:11px 11px 0 0;background:#10232b}
-#wb-adventure .adv-tree-portrait img{width:100%;height:100%;object-fit:cover;border-radius:11px 11px 0 0}
-#wb-adventure .adv-tree-state{position:absolute;right:8px;bottom:8px;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--node-accent);border-radius:6px;background:#071b25ed;color:#f4da9c;font-size:16px}
-#wb-adventure .adv-tree-label{display:flex;flex-direction:column;gap:4px;width:100%;padding:10px 12px 12px}
+#wb-adventure .adv-tree-portrait{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:11px;background:#10232b}
+#wb-adventure .adv-tree-portrait img{width:100%;height:100%;object-fit:contain;border-radius:11px}
+#wb-adventure .adv-tree-icon{width:14px;height:14px;flex:0 0 14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#wb-adventure .adv-tree-affinity,#wb-adventure .adv-tree-state{position:absolute;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:0;border-radius:5px;background:#071b25dc;font-size:15px;line-height:1}
+#wb-adventure .adv-tree-affinity{left:6px;top:6px;color:var(--node-accent)}
+#wb-adventure .adv-tree-state{right:6px;top:6px;color:#a4dbe9}
+#wb-adventure .adv-tree-node.locked .adv-tree-state{color:#b8c4c8}
+#wb-adventure .adv-tree-legend{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+#wb-adventure .adv-tree-legend>span{display:inline-flex;align-items:center;gap:5px}
+#wb-adventure .adv-tree-legend .is-locked{color:#b8c4c8}
+#wb-adventure .adv-tree-legend .is-available{color:#a4dbe9}
+#wb-adventure .adv-tree-legend .is-done{color:#b6e3c6}
+#wb-adventure .adv-tree-label{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;gap:4px;width:100%;padding:24px 12px 12px;border-radius:0 0 11px 11px;background:linear-gradient(transparent,#06131acc 30%,#06131aee);text-shadow:0 1px 3px #000;pointer-events:none}
 #wb-adventure .adv-tree-label small{font-size:11px;color:var(--node-accent);letter-spacing:.03em}
 #wb-adventure .adv-tree-label strong{font-size:15px;font-weight:600;line-height:1.4;color:#ffe8b7}
 #wb-adventure .adv-tree-label em{font-size:11px;font-style:normal;color:#c4d8ce}
@@ -40207,7 +40216,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
 #wb-adventure .adv-tree-node.done .adv-tree-state{border-color:#9ac9ac;color:#b6e3c6}
 #wb-adventure .adv-tree-node.available{box-shadow:0 0 0 3px #e7cf9222,0 8px 22px #0007}
 #wb-adventure .adv-tree-node.available:hover{filter:brightness(1.12);box-shadow:0 0 0 3px #e7cf9255,0 10px 28px #0009}
-#wb-adventure .adv-tree-node[data-adv-stage="c1"],#wb-adventure .adv-tree-node[data-adv-stage="c2"]{width:228px;border-width:2px}
+#wb-adventure .adv-tree-node[data-adv-stage="c1"],#wb-adventure .adv-tree-node[data-adv-stage="c2"]{width:228px;height:228px;border-width:2px}
 #wb-adventure .adv-tree-node[data-adv-stage="c2"] .adv-tree-label strong{font-size:18px}
 #wb-adventure .adv-tree-titles span:nth-child(2){color:#a7d6e1;border-color:#8ecddf77}
 #wb-adventure .adv-tree:has([data-adv-stage="p1"]) .adv-tree-titles span:nth-child(2){color:#d6c4ed;border-color:#c4afe477}
@@ -40218,11 +40227,10 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
  #wb-adventure .adv-tree:has([data-adv-stage="p1"]){height:1320px;min-width:600px}
  #wb-adventure .adv-tree-titles{padding-block:16px;font-size:14px}
  #wb-adventure .adv-tree-titles span{min-width:130px;padding:7px 10px}
- #wb-adventure .adv-tree-node{width:164px;transform:translate(-50%,-44px)}
- #wb-adventure .adv-tree-portrait{height:88px}
- #wb-adventure .adv-tree-label{padding:8px 10px;gap:3px}
+ #wb-adventure .adv-tree-node{width:164px;height:164px}
+ #wb-adventure .adv-tree-label{padding:20px 10px 8px;gap:3px}
  #wb-adventure .adv-tree-label strong{font-size:14px}
- #wb-adventure .adv-tree-node[data-adv-stage="c1"],#wb-adventure .adv-tree-node[data-adv-stage="c2"]{width:204px}
+ #wb-adventure .adv-tree-node[data-adv-stage="c1"],#wb-adventure .adv-tree-node[data-adv-stage="c2"]{width:180px;height:180px}
  #wb-adventure .adv-tree-node[data-adv-stage="c2"] .adv-tree-label strong{font-size:16px}
 }
 @media(max-width:900px){#wb-adventure .adv-mode-list{gap:12px}#wb-adventure .adv-mode{min-height:280px;padding:22px 16px;border-radius:50px 50px 10px 10px}#wb-adventure .adv-atlas-intro{padding:12px 0}#wb-adventure .adv-mode strong{font-size:22px}}
@@ -40346,6 +40354,10 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     drawLayer();
     return true;
   }
+  function treeIcon(kind){
+    const paths={locked:'<rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',available:'<path d="m9 5 10 7-10 7Z"/>',done:'<path d="m5 12 4 4L19 6"/>',lesson:'<path d="M12 5v15M12 5C9 3 5 3 3 4v14c3-1 6-1 9 2 3-3 6-3 9-2V4c-2-1-6-1-9 1Z"/>',puzzle:'<path d="M4 4h6c-2-5 6-5 4 0h6v6c5-2 5 6 0 4v6h-6c2-5-6-5-4 0H4v-6c5 2 5-6 0-4Z"/>',convergence:'<path d="M4 4v4l8 6 8-6V4M12 14v6M12 4v10"/><circle cx="12" cy="20" r="1"/>',final:'<path d="m3 6 5 4 4-7 4 7 5-4-2 12H5ZM6 21h12"/>'};
+    return `<svg class="adv-tree-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind]}</svg>`;
+  }
   function mapMarkup(){
     const path='assets/art/adventure/';
     if(!atlasMode)return `<main class="adv-shell adv-atlas"><header class="adv-head"><div><span class="adv-eyebrow">THE CHRONICLES OF CALDRIS · ACT I</span><h1>Living Atlas</h1><p>เลือกเส้นทางของคุณ · เรียนรู้ ออกเดินทาง และค้นพบ</p></div>${button('close','กลับหน้าเลือก Deck ×')}</header><div class="adv-scroll"><div class="adv-atlas-intro"><span class="adv-eyebrow">ชิ้นส่วนแห่งความทรงจำ</span><h2>ทุกการเดินทางเริ่มจากการเลือก</h2><p>เรียนรู้พลังทั้งสี่ใน Basic แล้วติดตามเรื่องราวของ Liora ใน Story</p></div><nav class="adv-mode-list" aria-label="เลือกโหมด Adventure">${[['basic','BASIC ADVENTURE','เรียนรู้เสียงสะท้อน','บทเรียน 6 ด่าน + ปริศนา 4 ด่าน','เรียนรู้ระบบและทดลองคอมโบในสนามที่เตรียมไว้'],['story','STORY ADVENTURE','การตื่นของทั้งหก','14 ด่าน · สี่เส้นทาง Resonance','ติดตามเรื่องราวและเผชิญด่านที่ท้าทายขึ้น'],['expedition','EXPEDITION','เส้นทางที่ยังไม่ถูกเขียน','อยู่ระหว่างเตรียมพัฒนา','เลือกรางวัล เก็บทรัพยากร และพัฒนาเด็คระหว่างทาง']].map(([mode,label,title,count,copy])=>`<button type="button" class="adv-mode" data-adv="mode" data-adv-mode="${mode}" ${mode==='expedition'?'disabled':''} style="--mode-art:url('${path}modes/${mode}.webp')"><span class="adv-eyebrow">${label}</span><strong>${title}</strong><span>${count}</span><p>${copy}</p><b>${mode==='expedition'?'เร็ว ๆ นี้':modeStages(mode).filter(stageDone).length+'/'+modeStages(mode).length+' ผ่านแล้ว · เปิดเส้นทาง →'}</b></button>`).join('')}</nav></div></main>`;
@@ -40354,7 +40366,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     else {order.forEach((group,column)=>list.filter(s=>s.group===group).forEach((s,i)=>positions[s.id]=[14+column*24,12+i*21]));positions.c1=[50,72];positions.c2=[50,88];}
     const edges=basic?['p1','p2','p3','p4','p5'].map((id,i)=>[id,'p'+(i+2)]):order.flatMap(group=>{const chain=list.filter(s=>s.group===group);return [[chain[0].id,chain[1].id],[chain[1].id,chain[2].id],[chain[2].id,'c1']]}).concat([['c1','c2']]);
     const routes=edges.map(([from,to])=>{const a=positions[from],b=positions[to];return `<path class="${stageDone(byId[from])?'done':''}" d="M ${a[0]*10} ${a[1]*11} L ${b[0]*10} ${b[1]*11}"/>`}).join('');
-    return `<main class="adv-shell adv-atlas"><header class="adv-head"><div><span class="adv-eyebrow">LIVING ATLAS · ${basic?'BASIC':'STORY'} ADVENTURE</span><h1>${basic?'เรียนรู้เสียงสะท้อน':'การตื่นของทั้งหก'}</h1><p>${basic?'บทเรียน 6 ด่านตามลำดับ · ปริศนา 4 ด่านเลือกเล่นได้อิสระ':'สี่แขนง Resonance บรรจบสู่บทสุดท้าย · เปิดเมื่อผ่านบทเรียนด่าน 6'}</p></div>${button('atlas','← เลือกโหมด')}</header><div class="adv-scroll"><div class="adv-tree-toolbar"><span class="adv-stat">ผ่านแล้ว <b>${list.filter(stageDone).length}/${list.length}</b> ด่าน</span><span>◇ ยังไม่ปลดล็อก · ✦ พร้อมเล่น · ✓ ผ่านแล้ว</span>${basic?button('learn','คู่มือก่อนต่อสู้'):''}</div><div class="adv-tree" style="--tree-art:url('${path}modes/${atlasMode}.webp')"><div class="adv-tree-titles">${basic?'<span>บทเรียนพื้นฐาน</span><span>Echo Trials · ปริศนา 1 เทิร์น</span>':order.map(k=>`<span>${labels[k]}</span>`).join('')}</div><svg class="adv-tree-routes" viewBox="0 0 1000 1100" preserveAspectRatio="none" aria-hidden="true">${routes}</svg>${list.map(s=>{const done=stageDone(s),open=unlocked(s),[x,y]=positions[s.id];return `<button type="button" class="adv-tree-node ${done?'done':open?'available':'locked'}" data-adv-stage="${s.id}" style="left:${x}%;top:${y}%" ${open?'':'disabled'} aria-label="${safe(s.title)} · ${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}"><span class="adv-tree-portrait"><img src="${path}nodes/stage-${s.id}.webp" alt="" loading="lazy"><span class="adv-tree-state" aria-hidden="true">${done?'✓':open?'✦':'◇'}</span></span><span class="adv-tree-label"><small>${s.puzzle?'ปริศนา '+s.id.slice(2):s.group==='prologue'?'บทเรียน '+s.id.slice(1):s.id==='c2'?'บทสุดท้าย':s.id==='c1'?'บทบรรจบ':labels[s.group]+' '+s.id.slice(1)}</small><strong>${safe(s.title)}</strong><em>${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}${s.puzzle?(progress.puzzles?.[s.id]?.unaided?' · ★':''):(progress.mastery[s.id]?' · ★':'')}</em></span></button>`}).join('')}</div>${!basic?`<section class="adv-collection"><h2>บันทึกการเดินทาง</h2><p>การ์ดสะสม ${Object.values(progress.owned).reduce((a,b)=>a+b,0)} ใบ · Echoes ${progress.echoes||0} · ใช้เด็คยืมได้ทุกเส้นทาง</p></section>`:''}</div></main>`;
+    return `<main class="adv-shell adv-atlas"><header class="adv-head"><div><span class="adv-eyebrow">LIVING ATLAS · ${basic?'BASIC':'STORY'} ADVENTURE</span><h1>${basic?'เรียนรู้เสียงสะท้อน':'การตื่นของทั้งหก'}</h1><p>${basic?'บทเรียน 6 ด่านตามลำดับ · ปริศนา 4 ด่านเลือกเล่นได้อิสระ':'สี่แขนง Resonance บรรจบสู่บทสุดท้าย · เปิดเมื่อผ่านบทเรียนด่าน 6'}</p></div>${button('atlas','← เลือกโหมด')}</header><div class="adv-scroll"><div class="adv-tree-toolbar"><span class="adv-stat">ผ่านแล้ว <b>${list.filter(stageDone).length}/${list.length}</b> ด่าน</span><span class="adv-tree-legend"><span class="is-locked">${treeIcon("locked")}ยังไม่ปลดล็อก</span><span class="is-available">${treeIcon("available")}พร้อมเล่น</span><span class="is-done">${treeIcon("done")}ผ่านแล้ว</span></span>${basic?button('learn','คู่มือก่อนต่อสู้'):''}</div><div class="adv-tree" style="--tree-art:url('${path}modes/${atlasMode}.webp')"><div class="adv-tree-titles">${basic?'<span>บทเรียนพื้นฐาน</span><span>Echo Trials · ปริศนา 1 เทิร์น</span>':order.map(k=>`<span>${labels[k]}</span>`).join('')}</div><svg class="adv-tree-routes" viewBox="0 0 1000 1100" preserveAspectRatio="none" aria-hidden="true">${routes}</svg>${list.map(s=>{const done=stageDone(s),open=unlocked(s),[x,y]=positions[s.id];return `<button type="button" class="adv-tree-node ${done?'done':open?'available':'locked'}" data-adv-stage="${s.id}" style="left:${x}%;top:${y}%" ${open?'':'disabled'} aria-label="${safe(s.title)} · ${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}"><span class="adv-tree-portrait"><img src="${path}nodes/stage-${s.id}.webp" alt="" loading="lazy"><span class="adv-tree-affinity" title="${safe(labels[s.group]|| (s.puzzle?'Echo Trials':s.id==='c2'?'บทสุดท้าย':s.group==='convergence'?'บทบรรจบ':'บทเรียน'))}" aria-hidden="true">${R[s.group]?.icon||treeIcon(s.puzzle?'puzzle':s.id==='c2'?'final':s.group==='convergence'?'convergence':'lesson')}</span><span class="adv-tree-state" title="${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}" aria-hidden="true">${treeIcon(done?'done':open?'available':'locked')}</span></span><span class="adv-tree-label"><small>${s.puzzle?'ปริศนา '+s.id.slice(2):s.group==='prologue'?'บทเรียน '+s.id.slice(1):s.id==='c2'?'บทสุดท้าย':s.id==='c1'?'บทบรรจบ':labels[s.group]+' '+s.id.slice(1)}</small><strong>${safe(s.title)}</strong><em>${done?'ผ่านแล้ว':open?'พร้อมเล่น':'ยังไม่ปลดล็อก'}${s.puzzle?(progress.puzzles?.[s.id]?.unaided?' · ★':''):(progress.mastery[s.id]?' · ★':'')}</em></span></button>`}).join('')}</div>${!basic?`<section class="adv-collection"><h2>บันทึกการเดินทาง</h2><p>การ์ดสะสม ${Object.values(progress.owned).reduce((a,b)=>a+b,0)} ใบ · Echoes ${progress.echoes||0} · ใช้เด็คยืมได้ทุกเส้นทาง</p></section>`:''}</div></main>`;
   }
   function loreMarkup(s){
     const last=lorePage>=s.lines.length-1;
