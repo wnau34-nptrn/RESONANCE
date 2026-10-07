@@ -35726,13 +35726,16 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
  #app.d52-mobile .hand-area>.hand-scroll>.card .mobile-focus-phase-chip,
  #app.d52-mobile .hand-area>.hand-scroll>.card .d42-focus-cue{display:none!important}
  #app.d52-mobile .d52-toggle{
-  position:absolute;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(var(--d52-hand) + 2px + (var(--d52-turn) - 44px)/2);
+  position:static;flex:0 0 64px;margin:0;
   z-index:91;border:1px solid #88b0b6;border-radius:6px;background:#09232de8;color:#e7eee8;
   box-sizing:border-box;width:64px;min-width:64px;height:44px;min-height:44px;padding:4px;font:600 9px/1.2 system-ui,sans-serif;
  }
  #app#app.d52-mobile .mobile-primary-cta-host,
  #app#app.d52-mobile .turn-panel.phase3-panel:not(.mobile-has-primary-cta) .turn-action{
-  box-sizing:border-box!important;padding-right:78px!important;
+  box-sizing:border-box!important;gap:6px!important;
+ }
+ #app#app.d52-mobile .mobile-primary-cta-host>.mobile-primary-cta{
+  flex:1 1 0!important;min-width:0!important;width:auto!important;
  }
  #app.d52-mobile .d52-inspector{
   position:absolute;top:4px;right:max(96px,calc(env(safe-area-inset-right,0px) + 92px));z-index:90;
@@ -35897,8 +35900,10 @@ window.__RESONANCE_PHASE3C__={phase:'3C',authority:'PHASE2I',status:'JOURNEY_TRI
   return {v,small,handHeight,turnHeight,cardHeight,cardWidth,overlap};
  }
  function ensureTools(game){
-  let toggle=game.querySelector(':scope>.d52-toggle');
-  if(!toggle){toggle=document.createElement('button');toggle.className='d52-toggle';toggle.type='button';toggle.addEventListener('click',()=>{state.manualTucked=!state.manualTucked;if(state.manualTucked)mobileHandFocusUid=null;schedule()});game.appendChild(toggle)}
+  let toggle=game.querySelector('.d52-toggle');
+  if(!toggle){toggle=document.createElement('button');toggle.className='d52-toggle';toggle.type='button';toggle.addEventListener('click',()=>{state.manualTucked=!state.manualTucked;if(state.manualTucked)mobileHandFocusUid=null;schedule()})}
+  const toggleHost=game.querySelector('.mobile-primary-cta-host')||game.querySelector('.turn-action');
+  if(toggleHost&&toggle.parentElement!==toggleHost)toggleHost.appendChild(toggle);
   const autoTucking=!!state.autoTuckReason&&!state.manualTucked;
   const label=autoTucking?'AUTO · พับมือ':state.manualTucked?'▲ เปิดมือ':'▼ พับมือ';if(toggle.textContent!==label)toggle.textContent=label;
   toggle.disabled=autoTucking;
