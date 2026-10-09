@@ -39482,6 +39482,14 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   try {const value=JSON.parse(localStorage.getItem(STORE)||'null');if(value&&typeof value==='object')settings={muted:!!value.muted,music:Math.max(0,Math.min(1,Number(value.music??defaults.music)||0)),sfx:Math.max(0,Math.min(1,Number(value.sfx??defaults.sfx)||0))}} catch {}
   let context=null,musicBus=null,sfxBus=null,noiseBuffer=null,scene=null,playing=null,generation=0,resultPlayed=false;
   const buffers=new Map(),lastCue=new Map();
+  // Prepare Home audio offline; the playback context still opens only after a gesture.
+  const homeTrackBuffer=AudioCtor?fetch(TRACKS.lore).then(response=>{
+    if(!response.ok)throw new Error('Audio load failed: '+response.status);
+    return response.arrayBuffer();
+  }).then(data=>{
+    const DecoderCtor=window.OfflineAudioContext||window.webkitOfflineAudioContext;
+    return new DecoderCtor(2,1,44100).decodeAudioData(data);
+  }).catch(()=>null):Promise.resolve(null);
   const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(settings))}catch{}};
   const targetGain=(bus,value)=>{
     if(!context||!bus)return;
@@ -39508,6 +39516,8 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   async function loadTrack(name){
     if(buffers.has(name))return buffers.get(name);
     const promise=(async()=>{
+      const preloaded=TRACKS[name]===TRACKS.lore?await homeTrackBuffer:null;
+      if(preloaded)return preloaded;
       const response=await fetch(TRACKS[name]);
       if(!response.ok)throw new Error('Audio load failed: '+response.status);
       return audioContext().decodeAudioData(await response.arrayBuffer());
