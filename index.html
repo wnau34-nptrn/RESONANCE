@@ -39482,7 +39482,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   try {const value=JSON.parse(localStorage.getItem(STORE)||'null');if(value&&typeof value==='object')settings={muted:!!value.muted,music:Math.max(0,Math.min(1,Number(value.music??defaults.music)||0)),sfx:Math.max(0,Math.min(1,Number(value.sfx??defaults.sfx)||0))}} catch {}
   let context=null,musicBus=null,sfxBus=null,noiseBuffer=null,scene=null,playing=null,generation=0,resultPlayed=false;
   const buffers=new Map(),lastCue=new Map();
-  // Prepare Home audio offline; the playback context still opens only after a gesture.
+  // Prepare Home audio offline before attempting playback.
   const homeTrackBuffer=AudioCtor?fetch(TRACKS.lore).then(response=>{
     if(!response.ok)throw new Error('Audio load failed: '+response.status);
     return response.arrayBuffer();
@@ -39727,7 +39727,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     let dialog=document.querySelector('dialog.wb-audio-settings');
     if(!dialog){
       dialog=document.createElement('dialog');dialog.className='wb-audio-settings';
-      dialog.innerHTML='<div class="wb-audio-head"><div><span>WONDERBOUND · RESONANCE</span><h2>ตั้งค่าเสียง</h2></div><button type="button" data-audio-close aria-label="ปิด">×</button></div><div class="wb-audio-body"><label>ดนตรี <output data-audio-music-value></output><input type="range" min="0" max="100" step="1" data-audio-level="music" aria-label="ระดับเสียงดนตรี"></label><label>เสียงเอฟเฟกต์ <output data-audio-sfx-value></output><input type="range" min="0" max="100" step="1" data-audio-level="sfx" aria-label="ระดับเสียงเอฟเฟกต์"></label><button type="button" data-audio-mute></button><p>ระบบเสียงเริ่มหลังจากแตะหรือคลิกเกม และจำค่าที่เลือกไว้</p></div>';
+      dialog.innerHTML='<div class="wb-audio-head"><div><span>WONDERBOUND · RESONANCE</span><h2>ตั้งค่าเสียง</h2></div><button type="button" data-audio-close aria-label="ปิด">×</button></div><div class="wb-audio-body"><label>ดนตรี <output data-audio-music-value></output><input type="range" min="0" max="100" step="1" data-audio-level="music" aria-label="ระดับเสียงดนตรี"></label><label>เสียงเอฟเฟกต์ <output data-audio-sfx-value></output><input type="range" min="0" max="100" step="1" data-audio-level="sfx" aria-label="ระดับเสียงเอฟเฟกต์"></label><button type="button" data-audio-mute></button><p>หากเสียงยังไม่เริ่ม ให้แตะหรือคลิกเกม ระบบจำค่าที่เลือกไว้</p></div>';
       (document.querySelector('.wb-shell')||document.body).appendChild(dialog);
       dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
     }
@@ -39774,6 +39774,8 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
   bindAdventureAudioScene();
   window.__WB_AUDIO__={cue,beat,get settings(){return {...settings}},get scene(){return scene}};
   syncUI();
+  const gameLoaded=document.readyState==='complete'?Promise.resolve():new Promise(resolve=>window.addEventListener('load',resolve,{once:true}));
+  void Promise.all([gameLoaded,homeTrackBuffer]).then(()=>{if(!document.hidden)unlock()});
 })();
 
 </script>
