@@ -39471,10 +39471,10 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
 }
 </style>
 <script id="resonance-audio-v1">
-/* WONDERBOUND audio: original looping score + event-synced procedural SFX. Opening/Home/Lore score V60 is the selected Cinematic Bright Opening + Beat theme at 88 BPM, with clear piano arpeggio, hopeful bell melody, gradual strings and restrained beat. Battle score remains V55 Clear Gentle Card Duel Song. */
+/* WONDERBOUND audio: selected Echoes of Caldris looping score across non-battle screens + event-synced procedural SFX. Battle score remains V55 Clear Gentle Card Duel Song. */
 (() => {
-  const TRACKS = {lore:'assets/audio/home-lore-v60.mp3',battle:'assets/audio/battle-v55.mp3'};
-  TRACKS.deck=TRACKS.lore; // V60 is shared across opening/home/lore/deck so pre-battle navigation stays musically continuous.
+  const TRACKS = {lore:'assets/audio/echoes-of-caldris-home.mp3',battle:'assets/audio/battle-v55.mp3'};
+  TRACKS.deck=TRACKS.lore; // Non-battle screens share one score so navigation stays musically continuous.
   const AudioCtor = window.AudioContext || window.webkitAudioContext;
   const STORE = 'wb-resonance-audio-v1';
   const defaults = {muted:false,music:.58,sfx:.68};
@@ -39682,8 +39682,8 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     else if(kind==='RESULT'&&!resultPlayed){resultPlayed=true;cue(game.winner===0?'victory':'defeat')}
   }
   function desiredScene(){
-    if(document.querySelector('#app .result-layer'))return null;
-    // V61: all pre-battle story/home surfaces share V60 as one continuous musical scene.
+    if(document.querySelector('#app .result-layer'))return 'lore';
+    // All non-battle story/home surfaces, including results, share one musical scene.
     if(document.querySelector('#wb-adventure:not([hidden])'))return 'lore';
     if(document.querySelector('#app .resonance-prologue'))return 'lore';
     if(document.querySelector('#app .start-layer,#app .deck-builder-layer'))return 'lore';
@@ -39709,7 +39709,7 @@ html.wb-iphone-landscape .deck-builder-shell.c84dx-builder {
     const next=desiredScene(),previous=scene;
     if(next==='battle'&&previous!=='battle')resultPlayed=false;
     if(next!==scene)void changeMusic(next);
-    if(next===null&&!resultPlayed&&document.querySelector('#app .result-layer')){
+    if(next==='lore'&&!resultPlayed&&document.querySelector('#app .result-layer')){
       resultPlayed=true;cue(game.winner===0?'victory':'defeat');
     }
   }
